@@ -1,0 +1,16 @@
+**/.vs/**
+**/Debug/**
+**/obj/**
+**\obj\**
+**/~*
+**/node_modules/**
+/3 курс 6 семестр/Интернет технологии/ЛР 2/LR2_Server/nbproject/private/
+/3 курс 6 семестр/Интернет технологии/ЛР 2/LR2_Server/build/
+/3 курс 6 семестр/Интернет технологии/ЛР 2/LR2_Server_multi/nbproject/private/
+/3 курс 6 семестр/Интернет технологии/ЛР 2/LR2_Server_multi/build/
+/Разное/JavaApplication4/nbproject/private/
+/Разное/JavaApplication4/build/
+/4 курс 7 семестр/Системное ПО/SPO_LR5_Java/nbproject/private/
+/4 курс 7 семестр/Системное ПО/SPO_LR5_Java/build/
+/4 курс 8 семестр/Конструирование компиляторов/LR1/LR1_Form/obj
+/4 курс 8 семестр/Конструирование компиляторов/LR1/LR1/obj

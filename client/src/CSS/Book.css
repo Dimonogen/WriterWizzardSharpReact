@@ -1,0 +1,172 @@
+.Block {
+    background-color: rgb(255, 255, 255);
+    filter: drop-shadow(0 0 0.5rem rgb(182, 182, 182));
+    border-radius: 5px;
+    padding: 20px;
+}
+
+p {
+/*text-indent: 20px; Отступ первой строки в пикселах */
+    margin-bottom: 0.3rem;
+}
+
+.MContent {
+    margin: 80px 20px 10px 20px;
+    min-height: 90vh;
+}
+
+.large-modal {
+    --bs-modal-width: 90%;
+}
+
+.W-70 {
+    width: 70%;
+}
+
+.W-30 {
+    width: 30%;
+}
+
+.W-100 {
+    width: 100%;
+}
+
+.W-90 {
+    width: 90%;
+}
+
+.W-80 {
+    width: 80%;
+}
+
+.W-45 {
+    width: 45%;
+}
+
+.W-33 {
+    width: 33%;
+}
+
+.W-25 {
+    width: 25%;
+}
+
+.W-50 {
+    width: 50%;
+}
+
+.W-20 {
+    width: 20%;
+}
+
+.W-10 {
+    width: 10%;
+}
+
+.W-15{
+    width: 15%;
+}
+
+.fieldErr{
+    border-color: #ff1c21;
+}
+
+.btn-outline-alter {
+    --bs-btn-border-color: var(--c-alter);
+    --bs-btn-color: var(--c-alter);
+    --bs-btn-hover-color: var(--c-ligh);
+    --bs-btn-hover-bg: var(--c-alter);
+    --bs-btn-hover-border-color: var(--c-alter);
+    --bs-btn-focus-shadow-rgb: 25,135,84;
+    --bs-btn-active-color: var(--c-dark);
+    --bs-btn-active-bg: var(--c-alter);
+    --bs-btn-active-border-color: var(--c-dark);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #198754;
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: #198754;
+    --bs-gradient: none;
+}
+
+.btn-outline-alter-darken {
+    --bs-btn-border-color: var(--c-alter);
+    --bs-btn-color: var(--c-dark);
+    --bs-btn-hover-color: var(--c-dark);
+    --bs-btn-hover-bg: var(--c-alter);
+    --bs-btn-hover-border-color: var(--c-alter);
+    --bs-btn-focus-shadow-rgb: 25,135,84;
+    --bs-btn-active-color: var(--c-dark);
+    --bs-btn-active-bg: var(--c-alter);
+    --bs-btn-active-border-color: var(--c-dark);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #198754;
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: #198754;
+    --bs-gradient: none;
+}
+
+.btn-alter {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: var(--c-alter);
+    --bs-btn-border-color: var(--c-alter);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: var(--c-alter-darken);
+    --bs-btn-hover-border-color: var(--c-alter-darken);
+    --bs-btn-focus-shadow-rgb: 60,153,110;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: var(--c-alter-dark);
+    --bs-btn-active-border-color: var(--c-alter-dark);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: var(--c-alter-dark);
+    --bs-btn-disabled-border-color: var(--c-alter-dark);
+}
+
+.btn-alter-darken {
+    --bs-btn-color: var(--c-dark);
+    --bs-btn-bg: var(--c-alter);
+    --bs-btn-border-color: var(--c-dark);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: var(--c-alter-darken);
+    --bs-btn-hover-border-color: var(--c-alter-darken);
+    --bs-btn-focus-shadow-rgb: 60,153,110;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: var(--c-alter-dark);
+    --bs-btn-active-border-color: var(--c-alter-dark);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: var(--c-alter-dark);
+    --bs-btn-disabled-border-color: var(--c-alter-dark);
+}
+
+.btn-alter-dark {
+    --bs-btn-color: var(--c-alter);
+    --bs-btn-bg: var(--c-dark);
+    --bs-btn-border-color: var(--c-dark);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: var(--c-alter-darken);
+    --bs-btn-hover-border-color: var(--c-alter-darken);
+    --bs-btn-focus-shadow-rgb: 60,153,110;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: var(--c-alter-dark);
+    --bs-btn-active-border-color: var(--c-alter-dark);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: var(--c-alter-dark);
+    --bs-btn-disabled-border-color: var(--c-alter-dark);
+}
+.text-area {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    min-height: 50px;
+    height: auto;
+}
+
+.text-area1 {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    overflow:visible;
+    min-height:100%;
+}

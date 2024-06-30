@@ -1,0 +1,58 @@
+[
+  {
+    "Id": 1,
+    "Name": "Текст",
+    "IsComplex": false,
+    "Type": 0,
+    "RegExValidation": ""
+  },
+  {
+    "Id": 2,
+    "Name": "Число",
+    "IsComplex": false,
+    "Type": 1,
+    "RegExValidation": ""
+  },
+  {
+    "Id": 3,
+    "Name": "Дата",
+    "IsComplex": false,
+    "Type": 2,
+    "RegExValidation": ""
+  },
+  {
+    "Id": 4,
+    "Name": "Объект договор",
+    "IsComplex": true,
+    "Type": 2,
+    "RegExValidation": ""
+  },
+  {
+    "Id": 5,
+    "Name": "Объект",
+    "IsComplex": true,
+    "Type": 0,
+    "RegExValidation": ""
+  },
+  {
+    "Id": 6,
+    "Name": "Связанные документы",
+    "IsComplex": true,
+    "Type": 1,
+    "RegExValidation": "Reference"
+  },
+  {
+    "Id": 7,
+    "Name": "Объект организация",
+    "IsComplex": true,
+    "Type": 3,
+    "RegExValidation": ""
+  },
+  {
+    "Id": 8,
+    "Name": "Файл",
+    "IsComplex": false,
+    "Type": 3,
+    "RegExValidation": ""
+  }
+]

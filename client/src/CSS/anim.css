@@ -1,0 +1,120 @@
+.anim1 {
+    transition: all 0.2s ease-in-out;
+    opacity: 0%;
+    transform: translateY(0px);
+
+    /*display: none;*/
+}
+
+.anim1:hover{
+    opacity: 100%;
+    transform: translateY(-100px);
+    display: block;
+}
+
+.modal-my-inv
+{
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0);
+}
+
+.modal-my {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header-my {
+    padding: 5px;
+    background-color: var(--c-ligh);
+    color: white;
+}
+
+.modal-body-my {padding: 5px 10px;}
+
+.modal-footer-my {
+    border-top: 1px solid var(--c-ligh-darken) ;
+    padding: 5px;
+    padding-top: 15px;
+    background-color: var(--c-ligh);
+    color: white;
+    display: flex;
+    justify-content: end;
+}
+
+.modal-content-my {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    top: 33vh;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animateTop;
+    animation-duration: 0.4s
+}
+
+.modal-content-center-my {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    top: 7vh;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animateCenterTop;
+    animation-duration: 0.4s
+}
+
+.modal-content-my-left{
+    position: relative;
+    background-color: #fefefe;
+
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animModalLeft;
+    animation-duration: 0.4s
+}
+
+@keyframes animModalLeft {
+    from {left: -33vw}
+    to {left: 0vw}
+}
+
+@keyframes animateTop {
+    from {top: 0; opacity: 0}
+    to {top: 33vh; opacity: 1}
+}
+
+@keyframes animateCenterTop {
+    from {top: 0; opacity: 0}
+    to {top: 7vh; opacity: 1}
+}

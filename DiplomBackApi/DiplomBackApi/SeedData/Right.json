@@ -1,0 +1,80 @@
+[
+  {
+    "Id": 1,
+    "Code": "Request.View",
+    "Name": "Просмотр заявок на претензии",
+    "Description": ""
+  },
+  {
+    "Id": 2,
+    "Code": "Request.Edit",
+    "Name": "Изменение заявок на претензии",
+    "Description": ""
+  },
+  {
+    "Id": 3,
+    "Code": "Contract.View",
+    "Name": "Просмотр договоров",
+    "Description": ""
+  },
+  {
+    "Id": 4,
+    "Code": "Contract.Edit",
+    "Name": "Редатирование договоров",
+    "Description": ""
+  },
+  {
+    "Id": 5,
+    "Code": "Document.View",
+    "Name": "Просмотр документов",
+    "Description": ""
+  },
+  {
+    "Id": 6,
+    "Code": "Document.Edit",
+    "Name": "Редатирование документов",
+    "Description": ""
+  },
+  {
+    "Id": 7,
+    "Code": "Organization.View",
+    "Name": "Просмотр организаций",
+    "Description": ""
+  },
+  {
+    "Id": 8,
+    "Code": "Organization.Edit",
+    "Name": "Редатирование организаций",
+    "Description": ""
+  },
+  {
+    "Id": 9,
+    "Code": "Complaiment.View",
+    "Name": "Просмотр претензий",
+    "Description": ""
+  },
+  {
+    "Id": 10,
+    "Code": "Complaiment.Edit",
+    "Name": "Редатирование претензий",
+    "Description": ""
+  },
+  {
+    "Id": 11,
+    "Code": "CourtCase.View",
+    "Name": "Просмотр судебных дел",
+    "Description": ""
+  },
+  {
+    "Id": 12,
+    "Code": "CourtCase.Edit",
+    "Name": "Редатирование судебных дел",
+    "Description": ""
+  },
+  {
+    "Id": 13,
+    "Code": "System.Edit",
+    "Name": "Редатирование настроект системы",
+    "Description": ""
+  }
+]

@@ -1,0 +1,99 @@
+
+:root {
+  --c-dark: #282c34;
+  --c-ligh-darken: #cbcbcb;
+  --c-alter: khaki;
+  --c-alter-darken: #ded378;
+  --c-alter-dark: #c9bf65;
+  --c-ligh: white;
+}
+
+body {
+  background-color: rgb(241, 241, 232);
+}
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.DashLeft{
+  border-left:1px dashed var(--c-ligh-darken)
+}
+
+.ImgHover{
+  transition: background-color 100ms ease-in-out 100ms
+}
+
+.ImgHover:hover{
+  background-color: var(--c-ligh-darken);
+}
+
+@media (min-width:0px)    { .MobileHide{display: none} .MobileShow{display: block} .NavBarLeftDiv{display: none} .NavBarLeftIcon{display: none}}
+@media (min-width:320px)  { .MobileHide{display: none} .MobileShow{display: block} .NavBarLeftIcon{display: none} /* smartphones, iPhone, portrait 480x320 phones */ }
+@media (min-width:481px)  { .MobileHide{display: none} .MobileShow{display: block} .NavBarLeftDiv{display: none} .NavBarLeftIcon{display: none} /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }
+@media (min-width:800px)  { .MobileHide{display: block} .MobileShow{display: none} .NavBarLeftDiv{display: flex} .NavBarLeftIcon{display: block} .BookAuthorRight{display: block} .NavBarLeftMenu{display: none}/* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
+@media (min-width:961px)  { .MobileHide{display: block} .MobileShow{display: none} .NavBarLeftDiv{display: flex}/* tablet, landscape iPad, lo-res laptops ands desktops */ }
+@media (min-width:1025px) { .MobileHide{display: block} .MobileShow{display: none} /* big landscape tablets, laptops, and desktops */ }
+@media (min-width:1281px) { .MobileHide{display: block} .MobileShow{display: none} .NavBarLeftDiv{display: flex;} /* hi-res laptops and desktops */ }
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@media (min-width: 0px) {
+  .BookLeft{width: 100%}
+  .BookAuthorRight{width: 0%}
+  .MContent{margin: 70px 5px 10px 5px !important;}
+  .ReaderSettings{width: 70%}
+  .ReaderPartList{width: 70%}
+  .BookItemImage{width: 150px; height: 214px}
+  .BookItemCard{width: 150px}
+}
+
+@media (min-width: 800px) {
+  .BookLeft{width: 70%}
+  .BookAuthorRight{width: 30%}
+  .MContent{margin: 80px 20px 10px 20px !important;}
+  .ReaderSettings{width: 33%}
+  .ReaderPartList{width: 33%}
+  .BookItemImage{width: 200px; height: 285px}
+  .BookItemCard{width:200px}
+}
+
+.BookAccountItemImage {
+  width: 80px; height: 114px;
+}
+
+.img-invert {
+  filter: invert(1);
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

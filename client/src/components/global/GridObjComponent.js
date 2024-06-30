@@ -1,0 +1,149 @@
+import {useNavigate, useParams} from "react-router-dom";
+import {DataGrid} from "@mui/x-data-grid";
+import {DeleteObj, DeleteObjList, GetAllOneTypeObjects} from "../../http/ObjAPI";
+import {GetOneType} from "../../http/ObjTypeApi"
+import React, {useContext, useEffect, useState} from "react";
+import Box from '@mui/material/Box';
+import {Button, Image} from "react-bootstrap";
+import {MENU_ROUTE} from "../../utils/consts";
+import ModalYesNoMy from "../modals/ModalYesNoMy";
+import ModalOkMy from "../modals/ModalOkMy";
+import iconCreate from '../../assets/icons8-addFile.png'
+import iconView from '../../assets/icons8-viewFile.png'
+import iconDelete from '../../assets/icons8-delete.svg'
+import iconUpdate from '../../assets/icons8-restart.svg'
+import {Context} from "../../index";
+
+const GridObjComponent = () => {
+
+    const navigate = useNavigate();
+    const {id} = useParams()
+    const {user} = useContext(Context);
+
+    const [rights, SetRights] = useState(user.rights)
+    //console.log(user.rights)
+    //console.log(user)
+
+    const [visible, SetVisible] = useState(false);
+    const [show, SetShow] = useState(false);
+    const [showOk, SetOkShow] = useState(false);
+
+    useEffect(()=>{
+        if(id != null) {
+            //console.log(id);
+            LoadData(id);
+        }
+        else
+            SetVisible(false);
+    }, [id])
+
+    const [objData, SetObjData] = useState([]);
+    const [typeData, SetTypeData] = useState({});
+    const [rows, SetRows] = useState([]);
+    const [columns, SetColumns] = useState([
+        { field: 'col1', headerName: 'Id', width: 50 },
+        { field: 'col2', headerName: 'Название', width: 150 },
+    ]);
+
+    const [selectionIds, SetSelectionIds] = useState([]);
+
+    const LoadData = (id) => {
+        GetAllOneTypeObjects(id).then(data => {SetObjData(data);
+
+            let arr = [];
+            data.forEach(e => {
+                let elem = {id: e.id, state:e.state, name: e.name};
+                e.attributes.forEach(a => elem["c"+a.number] = a.value)
+                //console.log(elem);
+                arr.push(elem);
+            });
+            SetRows(arr);
+        });
+        GetOneType(id).then(data => {
+            //console.log(data);
+            SetTypeData(data);
+            let arr = [{field: 'id', headerName: 'Id', width: 50},
+                {field: 'state', headerName: 'Статус', width: 120},
+                {field: 'name', headerName: 'Название', width: 150}
+            ];
+            data.attributes.forEach(e => arr.push({field: 'c'+e.number, headerName: e.name,
+                width: 150
+            }));
+            SetColumns(arr);
+            SetVisible(true);
+        });
+    }
+
+    const ObjDelMsg = () => {
+        let end;
+        let count = selectionIds.length;
+        if(count < 2)
+            end = ' объект?';
+        else if (count < 5)
+            end = ' объекта?';
+        else
+            end = ' объектов?';
+
+        return "Вы действительно хотите удалить "+ count + end;
+    }
+
+    return (
+
+       visible ?
+
+           <div className='W-100'>
+               <div className='d-flex flex-row'>
+                   {
+                       rights.includes(typeData.code + '.' + 'Edit') ?
+                       <div>
+                       <Image className='m-2 ms-1 me-0' height='32px' width='32px' src={iconCreate}/>
+                       <Button variant='dark' className='m-2'
+                       onClick={()=>{navigate(MENU_ROUTE+'/'+id+'/0')}}>Создать</Button>
+                       </div> : null
+                   }
+                   <Image className='m-2 ms-1 me-0' height='32px' width='32px' src={iconView}/>
+                   <Button variant='outline-dark' className='m-2'
+                           onClick={()=>{
+                               if(selectionIds.length > 0)
+                                   navigate(MENU_ROUTE+'/'+id+'/'+selectionIds[0])
+                           }}
+                   >Открыть</Button>
+                   {
+                       rights.includes(typeData.code + '.' + 'Edit') ?
+                       <div>
+                       <Image className='m-2 ms-1 me-0' height='32px' width='32px' src={iconDelete}/>
+                       <Button variant='outline-dark' className='m-2' onClick={() => {
+                            if(selectionIds.length > 0)
+                            {
+                                SetShow(true);
+                            }
+                            else
+                            {
+                                SetOkShow(true);
+                            }
+                       }}>Удалить</Button>
+                       </div> : null
+                   }
+                   <Image className='m-2 ms-1 me-0' height='32px' width='32px' src={iconUpdate}/>
+                   <Button variant='outline-dark' className='m-2'
+                           onClick={()=>{LoadData(id)}}>Обновить</Button>
+               </div>
+           <Box sx={{height: window.innerHeight-150+'px', width: '100%'}}>
+               <DataGrid rows={rows} columns={columns} checkboxSelection
+                         onRowSelectionModelChange={(ids) =>{SetSelectionIds(ids)}}/>
+           </Box>
+               <ModalYesNoMy title={ObjDelMsg()} notitle="Отмена" yestitle="Удалить"
+                             show={show} onHide={() => SetShow(false)} final={() => {
+                   DeleteObjList(selectionIds).then(data => LoadData(id));
+               }}/>
+               <ModalOkMy show={showOk} onHide={() => SetOkShow(false)}
+                          title='Внимание! Не выбрано ни одно значение.' okTitle='Ок'/>
+           </div>
+           :
+           null
+
+    )
+}
+
+
+export default GridObjComponent

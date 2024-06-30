@@ -1,0 +1,305 @@
+﻿using Microsoft.EntityFrameworkCore;
+//using System.Data.Entity;
+using DiplomBackApi.Models;
+using DiplomBackApi.DTO;
+using System.Text.Json.Serialization;
+using Newtonsoft.Json;
+using System.Security.Claims;
+
+namespace DiplomBackApi
+{
+    /// <summary>
+    /// Класс контекста БД
+    /// </summary>
+    public class ApplicationContext : DbContext
+    {
+        /// <summary>
+        /// Таблица пользователей
+        /// </summary>
+        public DbSet<User> Users { get; set; }
+
+        /// <summary>
+        /// Таблица типов объектов
+        /// </summary>
+        public DbSet<ObjType> ObjTypes { get; set; }
+
+        /// <summary>
+        /// Таблица атрибутов типов объектов
+        /// </summary>
+        public DbSet<ObjTypeAttribute> ObjTypeAttributes { get; set; }
+
+        /// <summary>
+        /// Таблица объектов
+        /// </summary>
+        public DbSet<Obj> Objs { get; set; }
+
+        /// <summary>
+        /// Таблица атрибутов объектов
+        /// </summary>
+        public DbSet<ObjAttribute> ObjAttributes { get; set; }
+
+        /// <summary>
+        /// Таблица дополнительных атрибутов, не входящих в тип
+        /// </summary>
+        public DbSet<ObjAdditionalAttribute> ObjAdditionalAttributes { get; set; }
+
+        /// <summary>
+        /// Таблица типов атрибутов
+        /// </summary>
+        public DbSet<AttributeType> attributeTypes { get; set; }
+
+        /// <summary>
+        /// Таблица ролей пользователей
+        /// </summary>
+        public DbSet<Role> roles { get; set; }
+
+        /// <summary>
+        /// Таблица связи многие ко многим между пользователями и ролями
+        /// </summary>
+        public DbSet<UserRole> userRoles { get; set; }
+
+        /// <summary>
+        /// Таблица избранных объектов
+        /// </summary>
+        public DbSet<FavoriteObj> favoriteObjs { get; set; }
+
+        /// <summary>
+        /// Уведомления
+        /// </summary>
+        public DbSet<Notification> notifications { get; set; }
+
+        /// <summary>
+        /// Состояния объектов
+        /// </summary>
+        public DbSet<ObjState> objStates { get; set; }
+
+        /// <summary>
+        /// Переходы между состояними объектов
+        /// </summary>
+        public DbSet<ObjStateTransiton> objStateTransitons { get; set; }
+
+        /// <summary>
+        /// Пункты левого меню
+        /// </summary>
+        public DbSet<MenuElement> menuElements { get; set; }
+
+        /// <summary>
+        /// Права доступа к атомарным функциям
+        /// </summary>
+        public DbSet<Right> rights { get; set; }
+
+        /// <summary>
+        /// Таблица связи прав и ролей
+        /// </summary>
+        public DbSet<RightRole> rightRoles { get; set; }
+
+        /// <summary>
+        /// Таблица связей объектов
+        /// </summary>
+        public DbSet<LinkObj> linkObjs { get; set; }
+
+        /// <summary>
+        /// Конструктор контекста БД
+        /// </summary>
+        public ApplicationContext() => Database.EnsureCreated();
+
+        /// <summary>
+        /// Вызываемая при конфигурации функция, здесь настройки подключения к БД
+        /// </summary>
+        /// <param name="optionsBuilder"></param>
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=postgres;Username=postgres;Password=QazWsx12@;IncludeErrorDetail=true;");
+
+            
+            //base.OnConfiguring(optionsBuilder);
+        }
+
+        /// <summary>
+        /// При создании модели БД вызывается функция, но делает ли она что-то хз. Вроде миграции базу меняют, а это шляпа...
+        /// </summary>
+        /// <param name="modelBuilder"></param>
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.HasDefaultSchema("Diplom");
+            base.OnModelCreating(modelBuilder);
+        }
+
+
+
+        /// <summary>
+        /// Функция возвращает объект по его ID, обогащая сущность атрибутами
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<ObjDto?> GetObjDtoAsync(int id) 
+        {
+            Obj? obj = await Objs.FirstOrDefaultAsync(x => x.Id == id);
+            if (obj == null) { return null; }
+
+            ObjDto objDto = new ObjDto(obj);
+            var State = objStates.FirstOrDefault(x => obj.StateId == x.Id);
+            objDto.State = State?.Name ?? "Состояние";
+
+            var attributes = await ObjAttributes.Where(x => x.ObjId == objDto.Id).ToListAsync();
+            var typeAttributes = await ObjTypeAttributes.Where(x => x.TypeId == objDto.TypeId).ToListAsync();
+
+            if(typeAttributes == null)
+            {
+                return objDto;
+            }
+
+            foreach (var tAttribute in typeAttributes)
+            {
+                var attribute = attributes.FirstOrDefault(x => x.Number == tAttribute.Number);
+                var attrib_type = attributeTypes.FirstOrDefault(x => x.Id == tAttribute.AttributeTypeId);
+
+                if (attribute != null)
+                {
+                    objDto.attributes.Add(new ObjAttributeDto
+                    {
+                        Id = attribute.Id,
+                        Name = tAttribute.Name,
+                        Number = tAttribute.Number,
+                        Value = attribute.Value,
+                        TypeId = tAttribute.AttributeTypeId,
+                        Type = attrib_type.Type,
+                        RegEx = attrib_type.RegExValidation,
+                        IsComplexType = attrib_type.IsComplex,
+                        IsAdditional = false
+                    });
+                }
+                else
+                {
+                    objDto.attributes.Add(new ObjAttributeDto
+                    {
+                        Id = null,
+                        Name = tAttribute.Name,
+                        Number = tAttribute.Number,
+                        Value = null,
+                        TypeId = tAttribute.AttributeTypeId,
+                        Type = attrib_type.Type,
+                        RegEx = attrib_type.RegExValidation,
+                        IsComplexType = attrib_type.IsComplex,
+                        IsAdditional = false
+                    });
+                }
+            }
+
+            var addAttr = await ObjAdditionalAttributes.Where(x => x.ObjId == id).ToListAsync();
+
+            foreach(var attr in addAttr)
+            {
+                objDto.attributes.Add(new ObjAttributeDto
+                {
+                    Name = attr.Name,
+                    Number = attr.Number,
+                    Id = attr.Id,
+                    Value = attr.Value,
+                    Type = attr.AttributeTypeId,
+                    IsAdditional = true,
+                }
+                );
+            }
+
+            return objDto;
+        
+        }
+
+
+        /// <summary>
+        /// Очистка и заполнение базы заранее подготовленными данными
+        /// </summary>
+        /// <returns></returns>
+        public async Task ClearInit()
+        {
+            string DataFolder = "SeedData";
+
+            await ClearData(menuElements);
+            await ClearData(ObjAttributes);
+            await ClearData(Objs);
+            await ClearData(linkObjs);
+            //await ClearData(objStateTransitons);
+            await ClearData(objStates);
+            await ClearData(ObjTypeAttributes);
+            await ClearData(attributeTypes);
+            await ClearData(ObjTypes);
+            await ClearData(rightRoles);
+            await ClearData(userRoles);
+            await ClearData(Users);
+            await ClearData(roles);
+            await ClearData(rights);
+
+            await SeedData(rights, DataFolder);
+            await SeedData(roles, DataFolder);
+            await SeedData(rightRoles, DataFolder);
+            await SeedData(Users, DataFolder);
+            await SeedData(userRoles, DataFolder);
+            await SeedData(objStates, DataFolder);
+            await SeedData(ObjTypes, DataFolder);
+            await SeedData(attributeTypes, DataFolder);
+            await SeedData(ObjTypeAttributes, DataFolder);
+            await SeedData(Objs, DataFolder);
+            await SeedData(linkObjs, DataFolder);
+            await SeedData(ObjAttributes, DataFolder);
+            await SeedData(menuElements, DataFolder);
+        }
+
+
+        /// <summary>
+        /// Функция очистки таблицы соответствующего DbSet'а.
+        /// </summary>
+        /// <typeparam name="TEntity"></typeparam>
+        /// <param name="dbSet"></param>
+        /// <returns></returns>
+        private async Task ClearData<TEntity>(DbSet<TEntity> dbSet) where TEntity : class
+        {
+            dbSet.ExecuteDelete();
+            await this.SaveChangesAsync();
+        }
+
+        /// <summary>
+        /// Функция заполнения таблицы соответствующего DbSet'а начальными тестовыми данными.
+        /// </summary>
+        /// <typeparam name="TEntity"></typeparam>
+        /// <param name="dbSet"></param>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
+        private async Task SeedData<TEntity>(DbSet<TEntity> dbSet, string filePath) where TEntity : class
+        {
+            string name = typeof(TEntity).Name;
+            Console.WriteLine(name);
+
+            string fileJson = File.ReadAllText(Path.Combine(filePath, name+".json"));
+
+            var objs = JsonConvert.DeserializeObject<List<TEntity>>(fileJson);
+
+            if (objs == null)
+                return;
+
+            dbSet.AddRange(objs);
+
+            await this.SaveChangesAsync();
+
+            HashSet<string> another = new HashSet<string>
+            {
+                "ObjStateTransiton", "RightRole", "UserRole", "FavoriteObj", "LinkObj"
+            };
+
+            if (another.Contains(name))
+                return;
+
+            string q1 = $"select max(id) from \"Diplom\".{name.ToLower()};";
+
+            int max_id = (Database.SqlQueryRaw<int>(q1).ToList())[0];
+
+            string query = $"select setval('\"Diplom\".{name.ToLower()}_id_seq',{max_id});" ;
+
+            var seq = Database.SqlQueryRaw<long>(query).ToList();
+
+            await this.SaveChangesAsync();
+        }
+
+    }
+
+}

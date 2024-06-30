@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3d525cd8-4ca4-4c02-af18-e14ea1633f2a" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2c7ldn5eYlwoU3XAJjGGFcWhg7M" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/_Files/MAI/Diplom/client/src/components/modals",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\_Files\MAI\Diplom\client\src\components\modals" />
+      <recent name="C:\_Files\MAI\Diplom\client\src\components\elementary" />
+      <recent name="C:\_Files\MAI\Diplom\client\src\http" />
+      <recent name="C:\_Files\MAI\Diplom\client\src\components\config" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\_Files\MAI\Diplom\client\src\components\global" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3d525cd8-4ca4-4c02-af18-e14ea1633f2a" name="Changes" comment="" />
+      <created>1707470587671</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1707470587671</updated>
+      <workItem from="1707470589409" duration="2795000" />
+      <workItem from="1707479180157" duration="7760000" />
+      <workItem from="1708596105930" duration="61000" />
+      <workItem from="1710667771476" duration="1969000" />
+      <workItem from="1715235688777" duration="10226000" />
+      <workItem from="1715361478381" duration="43086000" />
+      <workItem from="1715791837353" duration="5086000" />
+      <workItem from="1715926745767" duration="555000" />
+      <workItem from="1715949420943" duration="2342000" />
+      <workItem from="1716019363287" duration="1128000" />
+      <workItem from="1716035453933" duration="1061000" />
+      <workItem from="1716221739438" duration="7559000" />
+      <workItem from="1716575419915" duration="4730000" />
+      <workItem from="1716967988133" duration="1051000" />
+      <workItem from="1717709019425" duration="39553000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
