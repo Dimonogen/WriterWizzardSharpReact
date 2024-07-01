@@ -37,6 +37,7 @@ const ObjTypeCard = ({reloadGrid}) => {
             SetAttrValues({});
             SetIsEdit(false);
             SetTypeData(data);
+            SetTypeCode(data.code)
             SetTypeName(data.name);
             SetTypeDescr(data.description);
             SetAttributesMap(data.attributes);

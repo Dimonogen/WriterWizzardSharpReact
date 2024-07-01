@@ -1,56 +1,11 @@
 [
   {
     "Id": 1,
-    "Name": "Заявки на претензии",
-    "Description": "Грид объекта типа заявки на претензии",
+    "Name": "Персонажи",
+    "Description": "Персонажи",
     "RightId": 1,
     "ParentMenuId": null,
-    "ObjTypeId": 6,
-    "Filters": ""
-  },
-  {
-    "Id": 2,
-    "Name": "Договоры",
-    "Description": "string",
-    "RightId": 3,
-    "ParentMenuId": null,
-    "ObjTypeId": 2,
-    "Filters": ""
-  },
-  {
-    "Id": 3,
-    "Name": "Документы",
-    "Description": "string",
-    "RightId": 5,
-    "ParentMenuId": null,
     "ObjTypeId": 1,
-    "Filters": ""
-  },
-  {
-    "Id": 4,
-    "Name": "Организации",
-    "Description": "string",
-    "RightId": 7,
-    "ParentMenuId": null,
-    "ObjTypeId": 3,
-    "Filters": ""
-  },
-  {
-    "Id": 5,
-    "Name": "Претензии",
-    "Description": "string",
-    "RightId": 9,
-    "ParentMenuId": null,
-    "ObjTypeId": 4,
-    "Filters": ""
-  },
-  {
-    "Id": 6,
-    "Name": "Судебные дела",
-    "Description": "string",
-    "RightId": 11,
-    "ParentMenuId": null,
-    "ObjTypeId": 5,
     "Filters": ""
   }
 ]

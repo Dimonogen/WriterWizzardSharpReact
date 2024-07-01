@@ -1,80 +1,14 @@
 [
   {
-    "Name": "Название файла",
+    "Name": "ФИО",
     "Number": 0,
     "TypeId": 1,
     "AttributeTypeId": 1
   },
   {
-    "Name": "Файл",
+    "Name": "Описание",
     "Number": 1,
     "TypeId": 1,
-    "AttributeTypeId": 8
-  },
-  {
-    "Name": "Поставщик",
-    "Number": 0,
-    "TypeId": 2,
-    "AttributeTypeId": 7
-  },
-  {
-    "Name": "Потребитель",
-    "Number": 1,
-    "TypeId": 2,
-    "AttributeTypeId": 7
-  },
-  {
-    "Name": "Предмет договора",
-    "Number": 2,
-    "TypeId": 2,
     "AttributeTypeId": 1
-  },
-  {
-    "Name": "Сумма договора",
-    "Number": 3,
-    "TypeId": 2,
-    "AttributeTypeId": 2
-  },
-  {
-    "Name": "Дата заключения договора",
-    "Number": 4,
-    "TypeId": 2,
-    "AttributeTypeId": 3
-  },
-  {
-    "Name": "ИНН",
-    "Number": 0,
-    "TypeId": 3,
-    "AttributeTypeId": 1
-  },
-  {
-    "Name": "Договор",
-    "Number": 0,
-    "TypeId": 4,
-    "AttributeTypeId": 4
-  },
-  {
-    "Name": "Договор",
-    "Number": 0,
-    "TypeId": 5,
-    "AttributeTypeId": 4
-  },
-  {
-    "Name": "Договор",
-    "Number": 0,
-    "TypeId": 6,
-    "AttributeTypeId": 4
-  },
-  {
-    "Name": "Предмет претензии",
-    "Number": 1,
-    "TypeId": 6,
-    "AttributeTypeId": 1
-  },
-  {
-    "Name": "Документы претензии",
-    "Number": 2,
-    "TypeId": 6,
-    "AttributeTypeId": 6
   }
 ]

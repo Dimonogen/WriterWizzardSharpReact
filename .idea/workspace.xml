@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3d525cd8-4ca4-4c02-af18-e14ea1633f2a" name="Changes" comment="" />
+    <list default="true" id="3d525cd8-4ca4-4c02-af18-e14ea1633f2a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/ApplicationContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/ApplicationContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/AttributeType.json" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/AttributeType.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/LinkObj.json" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/LinkObj.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/MenuElement.json" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/MenuElement.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/Obj.json" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/Obj.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/ObjAttribute.json" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/ObjAttribute.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/ObjType.json" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/ObjType.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/ObjTypeAttribute.json" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/ObjTypeAttribute.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/Right.json" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/Right.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/RightRole.json" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/RightRole.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/Role.json" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/Role.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/User.json" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/User.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/UserRole.json" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/UserRole.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/config/ObjTypeCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/config/ObjTypeCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/global/NavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/global/NavBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/StartPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/StartPage.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,7 +91,7 @@
       <workItem from="1716575419915" duration="4730000" />
       <workItem from="1716967988133" duration="1051000" />
       <workItem from="1717709019425" duration="39553000" />
-      <workItem from="1719725279911" duration="49000" />
+      <workItem from="1719725279911" duration="3352000" />
     </task>
     <servers />
   </component>

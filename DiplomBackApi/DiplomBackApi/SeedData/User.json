@@ -1,64 +1,9 @@
 [
   {
     "Id": 1,
-    "Name": "Инициатор заявки",
-    "Email": "InitRequest",
-    "Password": "Pa$$w0rd",
-    "Description": "string",
-    "Title": "string",
-    "Role": "string",
-    "Icon": "iconNotFound.png",
-    "LastAuth": "2024-03-25T11:51:09.365Z"
-  },
-  {
-    "Id": 2,
-    "Name": "Начальник юридического отдела",
-    "Email": "JuristMain",
-    "Password": "Pa$$w0rd",
-    "Description": "string",
-    "Title": "string",
-    "Role": "string",
-    "Icon": "iconNotFound.png",
-    "LastAuth": "2024-03-25T11:51:09.365Z"
-  },
-  {
-    "Id": 3,
-    "Name": "Юрист",
-    "Email": "Jurist",
-    "Password": "Pa$$w0rd",
-    "Description": "string",
-    "Title": "string",
-    "Role": "string",
-    "Icon": "iconNotFound.png",
-    "LastAuth": "2024-03-25T11:51:09.365Z"
-  },
-  {
-    "Id": 4,
-    "Name": "Администратор системы",
-    "Email": "SysAdmin",
-    "Password": "Pa$$w0rd",
-    "Description": "string",
-    "Title": "string",
-    "Role": "string",
-    "Icon": "iconNotFound.png",
-    "LastAuth": "2024-03-25T11:51:09.365Z"
-  },
-  {
-    "Id": 5,
-    "Name": "Администратор данных",
-    "Email": "DataAdmin",
-    "Password": "Pa$$w0rd",
-    "Description": "string",
-    "Title": "string",
-    "Role": "string",
-    "Icon": "iconNotFound.png",
-    "LastAuth": "2024-03-25T11:51:09.365Z"
-  },
-  {
-    "Id": 6,
-    "Name": "Оператор данных",
-    "Email": "DataOperator",
-    "Password": "Pa$$w0rd",
+    "Name": "Админ",
+    "Email": "admin",
+    "Password": "admin",
     "Description": "string",
     "Title": "string",
     "Role": "string",

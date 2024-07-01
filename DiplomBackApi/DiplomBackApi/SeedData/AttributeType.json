@@ -22,9 +22,9 @@
   },
   {
     "Id": 4,
-    "Name": "Объект договор",
+    "Name": "Объект персонаж",
     "IsComplex": true,
-    "Type": 2,
+    "Type": 1,
     "RegExValidation": ""
   },
   {
@@ -32,27 +32,6 @@
     "Name": "Объект",
     "IsComplex": true,
     "Type": 0,
-    "RegExValidation": ""
-  },
-  {
-    "Id": 6,
-    "Name": "Связанные документы",
-    "IsComplex": true,
-    "Type": 1,
-    "RegExValidation": "Reference"
-  },
-  {
-    "Id": 7,
-    "Name": "Объект организация",
-    "IsComplex": true,
-    "Type": 3,
-    "RegExValidation": ""
-  },
-  {
-    "Id": 8,
-    "Name": "Файл",
-    "IsComplex": false,
-    "Type": 3,
     "RegExValidation": ""
   }
 ]
