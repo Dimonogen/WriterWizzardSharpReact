@@ -43,7 +43,16 @@ const App = observer( () => {
 
 
   if(loading){
-    return <Spinner animation={'grow'}/>
+    return <div className='MContent d-flex justify-content-center align-items-center'>
+        <div className='d-flex flex-column'>
+            <div className='d-flex justify-content-center'>
+                <Spinner style={{height:'64px', width:'64px'}} animation={'border'}/>
+            </div>
+
+            Загрузка...
+        </div>
+
+    </div>
   }
 
   return (
