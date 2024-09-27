@@ -9,6 +9,7 @@ namespace DiplomBackApi.Models
     /// </summary>
     [Table("linkobj", Schema = "Diplom")]
     [PrimaryKey(nameof(ObjParentId), nameof(ObjChildId))]
+    [Index(nameof(UserId))]
     public class LinkObj
     {
         /// <summary>
@@ -24,5 +25,12 @@ namespace DiplomBackApi.Models
         [ForeignKey("Obj")]
         public int ObjChildId { get; set; }
         public Obj ObjChild { get; set; }
+
+
+        /// <summary>
+        /// Id пользователя, чтобы для каждого юзера был "своя" БД
+        /// </summary>
+        [Column("userId")]
+        public int UserId { get; set; }
     }
 }

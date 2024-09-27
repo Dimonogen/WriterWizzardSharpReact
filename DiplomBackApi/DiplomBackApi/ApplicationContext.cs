@@ -109,7 +109,7 @@ public class ApplicationContext : DbContext
     /// <param name="optionsBuilder"></param>
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=postgres;Username=postgres;Password=QazWsx12@;IncludeErrorDetail=true;");
+        optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=postgres;Username=postgres;Password=postgres;IncludeErrorDetail=true;");
 
         
         //base.OnConfiguring(optionsBuilder);

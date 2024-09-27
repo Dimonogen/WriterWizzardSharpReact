@@ -1,11 +1,32 @@
 [
   {
     "Id": 1,
+    "UserId": 1,
     "Name": "Персонажи",
     "Description": "Персонажи",
     "RightId": 1,
     "ParentMenuId": null,
     "ObjTypeId": 1,
+    "Filters": ""
+  },
+  {
+    "Id": 2,
+    "UserId": 1,
+    "Name": "Локации",
+    "Description": "Локации",
+    "RightId": 1,
+    "ParentMenuId": null,
+    "ObjTypeId": 2,
+    "Filters": ""
+  },
+  {
+    "Id": 3,
+    "UserId": 1,
+    "Name": "События",
+    "Description": "События",
+    "RightId": 1,
+    "ParentMenuId": null,
+    "ObjTypeId": 3,
     "Filters": ""
   }
 ]

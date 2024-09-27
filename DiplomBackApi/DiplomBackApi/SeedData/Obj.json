@@ -1,8 +1,42 @@
 [
   {
     "Id": 1,
-    "Name": "Главный герой",
+    "Name": "Гарри Поттер",
     "TypeId": 1,
+    "StateId": 3
+  },
+  {
+    "Id": 2,
+    "Name": "Волан де Морт",
+    "TypeId": 1,
+    "StateId": 3
+  },
+  {
+    "Id": 3,
+    "UserId": 1,
+    "Name": "Платформа 3/4",
+    "TypeId": 2,
+    "StateId": 3
+  },
+  {
+    "Id": 4,
+    "UserId": 1,
+    "Name": "Хогвартс",
+    "TypeId": 2,
+    "StateId": 3
+  },
+  {
+    "Id": 5,
+    "UserId": 1,
+    "Name": "Приход письма в хогвартс",
+    "TypeId": 3,
+    "StateId": 3
+  },
+  {
+    "Id": 6,
+    "UserId": 1,
+    "Name": "Распределительная шляпа",
+    "TypeId": 3,
     "StateId": 3
   }
 ]

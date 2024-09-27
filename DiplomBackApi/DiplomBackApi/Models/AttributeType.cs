@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
 
@@ -8,6 +9,7 @@ namespace DiplomBackApi.Models
     /// Тип атрибута, примитив число, текст или объект, или даже один из перечня объектов
     /// </summary>
     [Table("attributetype", Schema = "Diplom")]
+    [Index(nameof(UserId))]
     public class AttributeType
     {
         /// <summary>
@@ -16,6 +18,12 @@ namespace DiplomBackApi.Models
         [Key]
         [Column("id")]
         public int Id { get; set; }
+
+        /// <summary>
+        /// Id пользователя, чтобы для каждого юзера был "своя" БД
+        /// </summary>
+        [Column("userId")]
+        public int UserId { get; set; }
 
         /// <summary>
         /// Название объекта

@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
+using Microsoft.EntityFrameworkCore;
 
 namespace DiplomBackApi.Models
 {
@@ -8,6 +9,7 @@ namespace DiplomBackApi.Models
     /// Модель аттрибута объекта
     /// </summary>
     [Table("objadditionalattribute", Schema = "Diplom")]
+    [Index(nameof(UserId))]
     public class ObjAdditionalAttribute
     {
         /// <summary>
@@ -16,6 +18,12 @@ namespace DiplomBackApi.Models
         [Key]
         [Column("id")]
         public int Id { get; set; }
+
+        /// <summary>
+        /// Id пользователя, чтобы для каждого юзера был "своя" БД
+        /// </summary>
+        [Column("userId")]
+        public int UserId { get; set; }
 
         /// <summary>
         /// ID объекта

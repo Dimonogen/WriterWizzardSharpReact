@@ -10,6 +10,7 @@ namespace DiplomBackApi.Models
     /// </summary>
     [Table("objstatetransition", Schema = "Diplom")]
     [PrimaryKey(nameof(StateFromId), nameof(StateToId))]
+    [Index(nameof(UserId))]
     public class ObjStateTransiton
     {
         [Column("stateFromId", Order = 0), ForeignKey("ObjState")]
@@ -25,5 +26,10 @@ namespace DiplomBackApi.Models
         public int RightId { get; set; }
         public Right Right { get; set; }
 
+        /// <summary>
+        /// Id пользователя, чтобы для каждого юзера был "своя" БД
+        /// </summary>
+        [Column("userId")]
+        public int UserId { get; set; }
     }
 }

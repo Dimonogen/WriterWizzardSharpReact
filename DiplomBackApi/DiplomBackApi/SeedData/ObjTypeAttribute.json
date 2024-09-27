@@ -1,12 +1,7 @@
 [
   {
-    "Name": "ФИО",
-    "Number": 0,
-    "TypeId": 1,
-    "AttributeTypeId": 1
-  },
-  {
     "Name": "Описание",
+    "UserId": 1,
     "Number": 1,
     "TypeId": 1,
     "AttributeTypeId": 1

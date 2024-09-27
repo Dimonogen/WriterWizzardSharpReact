@@ -1,6 +1,11 @@
 [
   {
-    "RightId": 1, //просмотр заявок
-    "RoleId": 1 //Инициатор заявки
+    "RightId": 1,
+    "RoleId": 1
+  },
+  {
+    "RightId": 2, 
+    "RoleId": 1 
   }
+
 ]

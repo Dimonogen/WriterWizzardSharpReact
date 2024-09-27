@@ -9,6 +9,7 @@ namespace DiplomBackApi.Models
     /// </summary>
     [Table("favoriteobj", Schema = "Diplom")]
     [PrimaryKey(nameof(UserId), nameof(ObjId))]
+    [Index(nameof(UserId))]
     public class FavoriteObj
     {
         /// <summary>

@@ -22,6 +22,7 @@ const GridObjComponent = () => {
 
     const [rights, SetRights] = useState(user.rights)
     //console.log(user.rights)
+
     //console.log(user)
 
     const [visible, SetVisible] = useState(false);
@@ -71,6 +72,8 @@ const GridObjComponent = () => {
             }));
             SetColumns(arr);
             SetVisible(true);
+            //console.log(rights)
+            //console.log(rights.includes(typeData.code + '.' + 'Edit'))
         });
     }
 
@@ -93,44 +96,44 @@ const GridObjComponent = () => {
 
            <div className='W-100'>
                <div className='d-flex flex-row'>
-                   {
-                       rights.includes(typeData.code + '.' + 'Edit') ?
-                       <div>
-                       <Image className='m-2 ms-1 me-0' height='32px' width='32px' src={iconCreate}/>
-                       <Button variant='dark' className='m-2'
-                       onClick={()=>{navigate(MENU_ROUTE+'/'+id+'/0')}}>Создать</Button>
-                       </div> : null
-                   }
+                   <div>
+                   <Image className='m-2 ms-1 me-0' height='32px' width='32px' src={iconCreate}/>
+                   <Button variant='dark' className='m-2'
+                   onClick={()=>{navigate(MENU_ROUTE+'/'+id+'/0')}}>{"Новый "+typeData.name}</Button>
+                   </div>
                    <Image className='m-2 ms-1 me-0' height='32px' width='32px' src={iconView}/>
                    <Button variant='outline-dark' className='m-2'
                            onClick={()=>{
                                if(selectionIds.length > 0)
                                    navigate(MENU_ROUTE+'/'+id+'/'+selectionIds[0])
                            }}
-                   >Открыть</Button>
-                   {
-                       rights.includes(typeData.code + '.' + 'Edit') ?
-                       <div>
-                       <Image className='m-2 ms-1 me-0' height='32px' width='32px' src={iconDelete}/>
-                       <Button variant='outline-dark' className='m-2' onClick={() => {
-                            if(selectionIds.length > 0)
-                            {
-                                SetShow(true);
-                            }
-                            else
-                            {
-                                SetOkShow(true);
-                            }
-                       }}>Удалить</Button>
-                       </div> : null
-                   }
+                   >{"Открыть "+typeData.name}</Button>
                    <Image className='m-2 ms-1 me-0' height='32px' width='32px' src={iconUpdate}/>
                    <Button variant='outline-dark' className='m-2'
-                           onClick={()=>{LoadData(id)}}>Обновить</Button>
+                           onClick={()=>{LoadData(id)}}>Обновить грид</Button>
+
+                   <div>
+                       <Image className='m-2 ms-1 me-0' height='32px' width='32px' src={iconDelete}/>
+                       <Button variant='outline-dark' className='m-2' onClick={() => {
+                           if(selectionIds.length > 0)
+                           {
+                               SetShow(true);
+                           }
+                           else
+                           {
+                               SetOkShow(true);
+                           }
+                       }}>{"Удалить "+typeData.name}</Button>
+                   </div>
+
                </div>
            <Box sx={{height: window.innerHeight-150+'px', width: '100%'}}>
                <DataGrid rows={rows} columns={columns} checkboxSelection
-                         onRowSelectionModelChange={(ids) =>{SetSelectionIds(ids)}}/>
+                         onRowSelectionModelChange={(ids) =>{SetSelectionIds(ids)}}
+                         getRowClassName={(params) =>
+                             params.indexRelativeToCurrentPage % 2 === 0 ? 'even' : 'odd'
+                         }
+               />
            </Box>
                <ModalYesNoMy title={ObjDelMsg()} notitle="Отмена" yestitle="Удалить"
                              show={show} onHide={() => SetShow(false)} final={() => {
