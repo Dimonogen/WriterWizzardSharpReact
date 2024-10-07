@@ -32,5 +32,8 @@ namespace DiplomBackApi.Models
 
         [Column("lastauth")]
         public DateTime LastAuth { get; set; }
+
+        [Column("project")]
+        public string ProjectName { get; set; }
     }
 }

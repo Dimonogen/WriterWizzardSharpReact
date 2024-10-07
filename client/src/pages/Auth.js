@@ -36,8 +36,8 @@ const Auth = observer( () => {
         user.setUser(user_l)
         user.setIsAuth(true)
         //console.log(user.user.id)
-        getInfo(user.user.id).then(data => user.setInfo(data))
-        getRights().then(data => {user.setRights(data);navigate(MENU_ROUTE)})
+        getInfo(user.user.id).then(data => {user.setInfo(data); navigate(MENU_ROUTE)})
+        //getRights().then(data => {user.setRights(data);navigate(MENU_ROUTE)})
       } catch(e){
         console.log(e);
         alert(e.response.data.message)

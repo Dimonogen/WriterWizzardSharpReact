@@ -49,16 +49,6 @@ public class ApplicationContext : DbContext
     public DbSet<AttributeType> attributeTypes { get; set; }
 
     /// <summary>
-    /// Таблица ролей пользователей
-    /// </summary>
-    public DbSet<Role> roles { get; set; }
-
-    /// <summary>
-    /// Таблица связи многие ко многим между пользователями и ролями
-    /// </summary>
-    public DbSet<UserRole> userRoles { get; set; }
-
-    /// <summary>
     /// Таблица избранных объектов
     /// </summary>
     public DbSet<FavoriteObj> favoriteObjs { get; set; }
@@ -82,16 +72,6 @@ public class ApplicationContext : DbContext
     /// Пункты левого меню
     /// </summary>
     public DbSet<MenuElement> menuElements { get; set; }
-
-    /// <summary>
-    /// Права доступа к атомарным функциям
-    /// </summary>
-    public DbSet<Right> rights { get; set; }
-
-    /// <summary>
-    /// Таблица связи прав и ролей
-    /// </summary>
-    public DbSet<RightRole> rightRoles { get; set; }
 
     /// <summary>
     /// Таблица связей объектов
@@ -224,17 +204,9 @@ public class ApplicationContext : DbContext
         await ClearData(ObjTypeAttributes);
         await ClearData(attributeTypes);
         await ClearData(ObjTypes);
-        await ClearData(rightRoles);
-        await ClearData(userRoles);
         await ClearData(Users);
-        await ClearData(roles);
-        await ClearData(rights);
 
-        await SeedData(rights, DataFolder);
-        await SeedData(roles, DataFolder);
-        await SeedData(rightRoles, DataFolder);
         await SeedData(Users, DataFolder);
-        await SeedData(userRoles, DataFolder);
         await SeedData(objStates, DataFolder);
         await SeedData(ObjTypes, DataFolder);
         await SeedData(attributeTypes, DataFolder);

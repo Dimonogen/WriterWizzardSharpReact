@@ -34,12 +34,22 @@ const ObjCardComponent = () => {
 
     const attributeEdits = {};
 
+    const setHistory = (name) => {
+        let arr = user.path;
+        if(arr.length == 1)
+            arr.push(name);
+        else
+            arr[1] = name;
+        user.setPath(arr);
+    }
+
     useEffect(() => {
         if(!isNewObj) {
             GetOneObj(objId).then(data => {
                 console.log(data)
                 SetObj(data);
                 SetObjName(data.name);
+                setHistory(data.name);
                 GetOneType(data.typeId).then(data => {SetType(data); SetIsLoading(false) });
             });
         }

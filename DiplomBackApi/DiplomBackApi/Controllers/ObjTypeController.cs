@@ -11,7 +11,7 @@ namespace DiplomBackApi.Controllers
     /// </summary>
     [ApiController]
     [Route("api/objType")]
-    public class ObjTypeController : ControllerBase
+    public class ObjTypeController : MyBaseController
     {
 
 
@@ -167,10 +167,11 @@ namespace DiplomBackApi.Controllers
         [HttpGet("all")]
         public async Task<ActionResult> GetAll()
         {
+            var user = GetUserIdByAuth();
             using (ApplicationContext db = new ApplicationContext())
             {
                 List<ObjTypeDto> list = new List<ObjTypeDto>();
-                db.ObjTypes.OrderBy(x => x.Id).ToList().ForEach(type =>
+                db.ObjTypes.Where(x=> x.UserId == user.Id).OrderBy(x => x.Id).ToList().ForEach(type =>
                 {
                     list.Add(
                         new ObjTypeDto

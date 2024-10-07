@@ -4,7 +4,6 @@
     "UserId": 1,
     "Name": "Персонажи",
     "Description": "Персонажи",
-    "RightId": 1,
     "ParentMenuId": null,
     "ObjTypeId": 1,
     "Filters": ""
@@ -14,7 +13,6 @@
     "UserId": 1,
     "Name": "Локации",
     "Description": "Локации",
-    "RightId": 1,
     "ParentMenuId": null,
     "ObjTypeId": 2,
     "Filters": ""
@@ -24,7 +22,33 @@
     "UserId": 1,
     "Name": "События",
     "Description": "События",
-    "RightId": 1,
+    "ParentMenuId": null,
+    "ObjTypeId": 3,
+    "Filters": ""
+  },
+  {
+    "Id": 4,
+    "UserId": 2,
+    "Name": "Персонажи",
+    "Description": "Персонажи",
+    "ParentMenuId": null,
+    "ObjTypeId": 1,
+    "Filters": ""
+  },
+  {
+    "Id": 5,
+    "UserId": 2,
+    "Name": "Локации",
+    "Description": "Локации",
+    "ParentMenuId": null,
+    "ObjTypeId": 2,
+    "Filters": ""
+  },
+  {
+    "Id": 6,
+    "UserId": 2,
+    "Name": "События",
+    "Description": "События",
     "ParentMenuId": null,
     "ObjTypeId": 3,
     "Filters": ""

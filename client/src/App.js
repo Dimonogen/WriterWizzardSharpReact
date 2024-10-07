@@ -13,6 +13,7 @@ import UnderBar from "./components/global/UnderBar";
 import {authRoutes, noBarsRoutes, publicRoutes} from "./routes";
 import {BASE_ROUTE} from "./utils/consts";
 import AuthComponent from "./components/global/AuthComponent";
+import HistoryBar from "./components/global/HistoryBar";
 
 const App = observer( () => {
   const {user} = useContext(Context)
@@ -31,7 +32,7 @@ const App = observer( () => {
        user.setUser(data)
        user.setIsAuth(true)
        getInfo(user.user.id).then(data => user.setInfo(data))
-           getRights().then(data => user.setRights(data))
+           //getRights().then(data => user.setRights(data))
      }).catch(e => console.log(e))
        .finally(()=>setLoading(false))
       else
@@ -59,7 +60,7 @@ const App = observer( () => {
     <BrowserRouter>
         <Routes>
             {authRoutes.map(({path, Component}) =>
-                <Route key = {path} path = {path} element = {<div><NavBar/><AuthComponent child={<Component/>}/><UnderBar/></div>} exact/>
+                <Route key = {path} path = {path} element = {<div><NavBar/><HistoryBar/><AuthComponent child={<Component/>}/><UnderBar/></div>} exact/>
             )}
             {publicRoutes.map(({path, Component}) =>
                 <Route key = {path} path = {path} element = {<div><NavBar/><Component/><UnderBar/></div>} exact/>

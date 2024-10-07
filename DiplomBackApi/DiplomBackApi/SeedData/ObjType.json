@@ -19,5 +19,26 @@
     "Name": "Событие",
     "Code": "Event",
     "Description": "Событие"
+  },
+  {
+    "Id": 4,
+    "UserId": 2,
+    "Name": "Персонаж",
+    "Code": "Character",
+    "Description": "Персонаж"
+  },
+  {
+    "Id": 5,
+    "UserId": 2,
+    "Name": "Локация",
+    "Code": "Location",
+    "Description": "Локация"
+  },
+  {
+    "Id": 6,
+    "UserId": 2,
+    "Name": "Событие",
+    "Code": "Event",
+    "Description": "Событие"
   }
 ]

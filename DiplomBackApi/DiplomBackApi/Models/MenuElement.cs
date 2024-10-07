@@ -32,13 +32,6 @@ namespace DiplomBackApi.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Право, позволяющая видеть этот пункт меню
-        /// </summary>
-        [ForeignKey("Right"), Column("rightId")]
-        public int RightId { get; set; }
-        public Right Right { get; set; }
-
-        /// <summary>
         /// Описание пункта меню
         /// </summary>
         [Column("description")]

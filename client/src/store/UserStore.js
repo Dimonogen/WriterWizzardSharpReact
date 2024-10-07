@@ -9,6 +9,7 @@ export default class UserStore {
         this._info = {}
         this._icon = defaultIcon
         this._rights = []
+        this._path = []
         makeAutoObservable(this)
     }
 
@@ -35,6 +36,15 @@ export default class UserStore {
 
     setRights(arr){
         this._rights = arr
+    }
+
+    setPath(path){
+        console.log(path)
+        this._path = path
+    }
+
+    get path(){
+        return this._path;
     }
 
     get isAuth(){

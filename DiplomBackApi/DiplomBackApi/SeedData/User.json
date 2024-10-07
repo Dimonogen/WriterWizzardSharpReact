@@ -1,9 +1,22 @@
 [
   {
     "Id": 1,
-    "Name": "Админ",
-    "Email": "admin",
-    "Password": "admin",
+    "Name": "Дж. К. Роулинг",
+    "ProjectName": "Гарри Поттер",
+    "Email": "roaling",
+    "Password": "roaling",
+    "Description": "string",
+    "Title": "string",
+    "Role": "string",
+    "Icon": "iconNotFound.png",
+    "LastAuth": "2024-03-25T11:51:09.365Z"
+  },
+  {
+    "Id": 2,
+    "Name": "Дмитрий Толстиков",
+    "ProjectName": "Неправильный друид",
+    "Email": "dotolstikov",
+    "Password": "dotolstikov",
     "Description": "string",
     "Title": "string",
     "Role": "string",

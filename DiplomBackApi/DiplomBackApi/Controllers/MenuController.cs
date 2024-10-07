@@ -21,32 +21,32 @@ namespace DiplomBackApi.Controllers
             using (ApplicationContext db = new ApplicationContext())
             {
                 var user = GetUserIdByAuth();
-                var rolesRaw = db.userRoles.Where(x => x.UserId == user.Id).ToList();
+                //var rolesRaw = db.userRoles.Where(x => x.UserId == user.Id).ToList();
 
-                if (rolesRaw.Count == 0)
-                {
-                    return Ok(new List<int>());
-                }
+                //if (rolesRaw.Count == 0)
+                //{
+                //    return Ok(new List<int>());
+                //}
 
-                HashSet<int> roleIds = new HashSet<int>();
+                //HashSet<int> roleIds = new HashSet<int>();
 
-                foreach (var role in rolesRaw)
-                {
-                    roleIds.Add(role.RoleId);
-                }
+                //foreach (var role in rolesRaw)
+                //{
+                //    roleIds.Add(role.RoleId);
+                //}
 
-                HashSet<int> rightIds = new HashSet<int>();
+                //HashSet<int> rightIds = new HashSet<int>();
 
-                foreach (var roleId in  roleIds)
-                {
-                    var rights = db.rightRoles.Where(x => x.RoleId == roleId).ToList();
-                    foreach (var right in rights)
-                    {
-                        rightIds.Add(right.RightId);
-                    }
-                }
+                //foreach (var roleId in  roleIds)
+                //{
+                //    var rights = db.rightRoles.Where(x => x.RoleId == roleId).ToList();
+                //    foreach (var right in rights)
+                //    {
+                //        rightIds.Add(right.RightId);
+                //    }
+                //}
 
-                var objs = db.menuElements.Where(x => rightIds.Contains(x.RightId)).ToList();
+                var objs = db.menuElements.Where(x => x.UserId == user.Id).ToList();//.Where(x => rightIds.Contains(x.RightId)).ToList();
 
                 List<MenuElemViewDto> list = new List<MenuElemViewDto>();
 
@@ -83,7 +83,7 @@ namespace DiplomBackApi.Controllers
                     ObjTypeId = model.ObjTypeId,
                     ParentMenuId = model.ParentMenuId,
                     Filters = model.Filters,
-                    RightId = model.RightId
+                    //RightId = model.RightId
                 };
                 db.menuElements.Add(obj);
                 db.SaveChanges();

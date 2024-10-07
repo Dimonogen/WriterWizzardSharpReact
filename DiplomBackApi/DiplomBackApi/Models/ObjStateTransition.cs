@@ -21,11 +21,6 @@ namespace DiplomBackApi.Models
         public int StateToId { get; set; }
         public ObjState StateTo { get; set; }
 
-        [Column("right")]
-        [ForeignKey("Right")]
-        public int RightId { get; set; }
-        public Right Right { get; set; }
-
         /// <summary>
         /// Id пользователя, чтобы для каждого юзера был "своя" БД
         /// </summary>

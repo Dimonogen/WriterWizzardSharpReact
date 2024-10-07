@@ -28,51 +28,52 @@ namespace DiplomBackApi.Controllers
             _logger = logger;
         }
 
+        
         /// <summary>
         /// Получение всех прав пользователя
         /// </summary>
         /// <returns></returns>
-        [HttpGet("rights")]
-        public async Task<ActionResult> GetRights()
-        {
-            using (ApplicationContext db = new ApplicationContext())
-            {
-                var user = GetUserIdByAuth();
-                var rolesRaw = db.userRoles.Where(x => x.UserId == user.Id).ToList();
+        //[HttpGet("rights")]
+        //public async Task<ActionResult> GetRights()
+        //{
+        //    using (ApplicationContext db = new ApplicationContext())
+        //    {
+        //        var user = GetUserIdByAuth();
+        //        var rolesRaw = db.userRoles.Where(x => x.UserId == user.Id).ToList();
 
-                if (rolesRaw.Count == 0)
-                {
-                    return Ok(new List<int>());
-                }
+        //        if (rolesRaw.Count == 0)
+        //        {
+        //            return Ok(new List<int>());
+        //        }
 
-                HashSet<int> roleIds = new HashSet<int>();
+        //        HashSet<int> roleIds = new HashSet<int>();
 
-                foreach (var role in rolesRaw)
-                {
-                    roleIds.Add(role.RoleId);
-                }
+        //        foreach (var role in rolesRaw)
+        //        {
+        //            roleIds.Add(role.RoleId);
+        //        }
 
-                HashSet<int> rightIds = new HashSet<int>();
+        //        HashSet<int> rightIds = new HashSet<int>();
 
-                foreach (var roleId in roleIds)
-                {
-                    var rights = db.rightRoles.Where(x => x.RoleId == roleId).ToList();
-                    foreach (var right in rights)
-                    {
-                        rightIds.Add(right.RightId);
-                    }
-                }
+        //        foreach (var roleId in roleIds)
+        //        {
+        //            var rights = db.rightRoles.Where(x => x.RoleId == roleId).ToList();
+        //            foreach (var right in rights)
+        //            {
+        //                rightIds.Add(right.RightId);
+        //            }
+        //        }
 
-                var objs = db.rights.Where(x => rightIds.Contains(x.Id)).ToList();
-                List<string> list = new List<string>();
-                foreach (var obj in objs)
-                {
-                    list.Add(obj.Code);
-                }
+        //        var objs = db.rights.Where(x => rightIds.Contains(x.Id)).ToList();
+        //        List<string> list = new List<string>();
+        //        foreach (var obj in objs)
+        //        {
+        //            list.Add(obj.Code);
+        //        }
 
-                return Ok(list);
-            }
-        }
+        //        return Ok(list);
+        //    }
+        //}
 
 
         /// <summary>
