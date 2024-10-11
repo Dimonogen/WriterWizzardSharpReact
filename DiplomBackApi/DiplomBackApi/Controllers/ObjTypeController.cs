@@ -52,7 +52,7 @@ namespace DiplomBackApi.Controllers
 
                 if (typeModel.createMenu.HasValue && typeModel.createMenu.Value)
                 {
-                    db.menuElements.Add(new MenuElement
+                    db.MenuElements.Add(new MenuElement
                     {
                         Name = typeModel.name,
                         Description = typeModel.name,
@@ -251,7 +251,7 @@ namespace DiplomBackApi.Controllers
 
                 db.ObjTypeAttributes.Where(x => x.TypeId == type.Id).ToList().ForEach(a =>
                 {
-                    var attrType = db.attributeTypes.FirstOrDefault(x => x.Id == a.AttributeTypeId);
+                    var attrType = db.AttributeTypes.FirstOrDefault(x => x.Id == a.AttributeTypeId);
                     typeDto.attributes.Add(new ObjTypeAttributeDto
                     {
                         Id = a.Id,

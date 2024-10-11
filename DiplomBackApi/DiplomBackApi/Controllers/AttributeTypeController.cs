@@ -27,7 +27,7 @@ namespace DiplomBackApi.Controllers
                     RegExValidation = typeModel.regEx
                 };
 
-                await db.attributeTypes.AddAsync(
+                await db.AttributeTypes.AddAsync(
                     type
                     );
 
@@ -49,7 +49,7 @@ namespace DiplomBackApi.Controllers
         {
             using (ApplicationContext db = new ApplicationContext())
             {
-                var type = db.attributeTypes.FirstOrDefault(x=>x.Id== id);
+                var type = db.AttributeTypes.FirstOrDefault(x=>x.Id== id);
 
                 if (type == null)
                     return BadRequest();
@@ -67,7 +67,7 @@ namespace DiplomBackApi.Controllers
         {
             using (ApplicationContext db = new ApplicationContext())
             {
-                var type_e = db.attributeTypes.FirstOrDefault(x=>x.Id == typeModel.id);
+                var type_e = db.AttributeTypes.FirstOrDefault(x=>x.Id == typeModel.id);
 
                 if (type_e == null)
                     return BadRequest();
@@ -93,7 +93,7 @@ namespace DiplomBackApi.Controllers
             using (ApplicationContext db = new ApplicationContext())
             {
                 var list = new List<AttributeTypeDto>();
-                db.attributeTypes.OrderBy(x => x.Id).ToList().ForEach(t =>
+                db.AttributeTypes.OrderBy(x => x.Id).ToList().ForEach(t =>
                     list.Add(new AttributeTypeDto(t))
                 ); 
 
@@ -112,7 +112,7 @@ namespace DiplomBackApi.Controllers
         {
             using (ApplicationContext db = new ApplicationContext())
             {
-                db.attributeTypes.RemoveRange(db.attributeTypes.Where(x => x.Id == id).ToArray());
+                db.AttributeTypes.RemoveRange(db.AttributeTypes.Where(x => x.Id == id).ToArray());
 
                 await db.SaveChangesAsync();
 

@@ -46,7 +46,7 @@ namespace DiplomBackApi.Controllers
                 //    }
                 //}
 
-                var objs = db.menuElements.Where(x => x.UserId == user.Id).ToList();//.Where(x => rightIds.Contains(x.RightId)).ToList();
+                var objs = db.MenuElements.Where(x => x.UserId == user.Id).ToList();//.Where(x => rightIds.Contains(x.RightId)).ToList();
 
                 List<MenuElemViewDto> list = new List<MenuElemViewDto>();
 
@@ -85,7 +85,7 @@ namespace DiplomBackApi.Controllers
                     Filters = model.Filters,
                     //RightId = model.RightId
                 };
-                db.menuElements.Add(obj);
+                db.MenuElements.Add(obj);
                 db.SaveChanges();
 
                 return Ok(obj);
@@ -102,7 +102,7 @@ namespace DiplomBackApi.Controllers
         {
             using (ApplicationContext db = new ApplicationContext())
             {
-                var elems = db.menuElements.ToList();
+                var elems = db.MenuElements.ToList();
 
                 return Ok(elems);
             }

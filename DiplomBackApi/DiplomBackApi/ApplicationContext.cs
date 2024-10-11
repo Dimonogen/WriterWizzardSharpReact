@@ -46,37 +46,37 @@ public class ApplicationContext : DbContext
     /// <summary>
     /// Таблица типов атрибутов
     /// </summary>
-    public DbSet<AttributeType> attributeTypes { get; set; }
+    public DbSet<AttributeType> AttributeTypes { get; set; }
 
     /// <summary>
     /// Таблица избранных объектов
     /// </summary>
-    public DbSet<FavoriteObj> favoriteObjs { get; set; }
+    public DbSet<FavoriteObj> FavoriteObjs { get; set; }
 
     /// <summary>
     /// Уведомления
     /// </summary>
-    public DbSet<Notification> notifications { get; set; }
+    public DbSet<Notification> Notifications { get; set; }
 
     /// <summary>
     /// Состояния объектов
     /// </summary>
-    public DbSet<ObjState> objStates { get; set; }
+    public DbSet<ObjState> ObjStates { get; set; }
 
     /// <summary>
     /// Переходы между состояними объектов
     /// </summary>
-    public DbSet<ObjStateTransiton> objStateTransitons { get; set; }
+    public DbSet<ObjStateTransiton> ObjStateTransitons { get; set; }
 
     /// <summary>
     /// Пункты левого меню
     /// </summary>
-    public DbSet<MenuElement> menuElements { get; set; }
+    public DbSet<MenuElement> MenuElements { get; set; }
 
     /// <summary>
     /// Таблица связей объектов
     /// </summary>
-    public DbSet<LinkObj> linkObjs { get; set; }
+    public DbSet<LinkObj> LinkObjs { get; set; }
 
     /// <summary>
     /// Конструктор контекста БД
@@ -118,7 +118,7 @@ public class ApplicationContext : DbContext
         if (obj == null) { return null; }
 
         ObjDto objDto = new ObjDto(obj);
-        var State = objStates.FirstOrDefault(x => obj.StateId == x.Id);
+        var State = ObjStates.FirstOrDefault(x => obj.StateId == x.Id);
         objDto.State = State?.Name ?? "Состояние";
 
         var attributes = await ObjAttributes.Where(x => x.ObjId == objDto.Id).ToListAsync();
@@ -132,7 +132,7 @@ public class ApplicationContext : DbContext
         foreach (var tAttribute in typeAttributes)
         {
             var attribute = attributes.FirstOrDefault(x => x.Number == tAttribute.Number);
-            var attrib_type = attributeTypes.FirstOrDefault(x => x.Id == tAttribute.AttributeTypeId);
+            var attrib_type = AttributeTypes.FirstOrDefault(x => x.Id == tAttribute.AttributeTypeId);
 
             if (attribute != null)
             {
@@ -195,26 +195,26 @@ public class ApplicationContext : DbContext
     {
         string DataFolder = "SeedData";
 
-        await ClearData(menuElements);
+        await ClearData(MenuElements);
         await ClearData(ObjAttributes);
         await ClearData(Objs);
-        await ClearData(linkObjs);
-        //await ClearData(objStateTransitons);
-        await ClearData(objStates);
+        await ClearData(LinkObjs);
+        //await ClearData(ObjStateTransitons);
+        await ClearData(ObjStates);
         await ClearData(ObjTypeAttributes);
-        await ClearData(attributeTypes);
+        await ClearData(AttributeTypes);
         await ClearData(ObjTypes);
         await ClearData(Users);
 
         await SeedData(Users, DataFolder);
-        await SeedData(objStates, DataFolder);
+        await SeedData(ObjStates, DataFolder);
         await SeedData(ObjTypes, DataFolder);
-        await SeedData(attributeTypes, DataFolder);
+        await SeedData(AttributeTypes, DataFolder);
         await SeedData(ObjTypeAttributes, DataFolder);
         await SeedData(Objs, DataFolder);
-        await SeedData(linkObjs, DataFolder);
+        await SeedData(LinkObjs, DataFolder);
         await SeedData(ObjAttributes, DataFolder);
-        await SeedData(menuElements, DataFolder);
+        await SeedData(MenuElements, DataFolder);
     }
 
 

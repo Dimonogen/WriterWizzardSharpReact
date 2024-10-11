@@ -20,7 +20,7 @@ namespace DiplomBackApi.Controllers
             using (ApplicationContext db = new ApplicationContext())
             {
                 var user = GetUserIdByAuth();
-                var objs = db.favoriteObjs.Where(x => x.UserId == user.Id).ToList();
+                var objs = db.FavoriteObjs.Where(x => x.UserId == user.Id).ToList();
 
                 var list = new List<ObjDto>();
 
@@ -44,10 +44,10 @@ namespace DiplomBackApi.Controllers
             using (ApplicationContext db = new ApplicationContext())
             {
                 var user = GetUserIdByAuth();
-                var objs = db.favoriteObjs.Where(x => x.UserId == user.Id && x.ObjId == objId).ToList();
+                var objs = db.FavoriteObjs.Where(x => x.UserId == user.Id && x.ObjId == objId).ToList();
                 if(objs.Count == 0)
                 {
-                    db.favoriteObjs.Add(new Models.FavoriteObj { 
+                    db.FavoriteObjs.Add(new Models.FavoriteObj { 
                         UserId = user.Id,
                         ObjId = objId
                     });
@@ -73,10 +73,10 @@ namespace DiplomBackApi.Controllers
             using (ApplicationContext db = new ApplicationContext())
             {
                 var user = GetUserIdByAuth();
-                var objs = db.favoriteObjs.Where(x => x.UserId == user.Id && x.ObjId == objId).ToList();
+                var objs = db.FavoriteObjs.Where(x => x.UserId == user.Id && x.ObjId == objId).ToList();
                 if (objs.Count == 1)
                 {
-                    db.favoriteObjs.Remove(objs[0]);
+                    db.FavoriteObjs.Remove(objs[0]);
                     db.SaveChanges();
                     return Ok("Ok");
                 }

@@ -39,7 +39,7 @@ namespace DiplomBackApi.Controllers
             using (ApplicationContext db = new ApplicationContext())
             {
                 var list = new List<ObjDto>();
-                db.linkObjs.Where(x => x.ObjParentId == id).ToList().ForEach(e =>
+                db.LinkObjs.Where(x => x.ObjParentId == id).ToList().ForEach(e =>
                 {
                     list.Add(db.GetObjDtoAsync(e.ObjChildId).Result);
                     foreach (var attr in list.Last().attributes)
@@ -63,7 +63,7 @@ namespace DiplomBackApi.Controllers
         {
             using (ApplicationContext db = new ApplicationContext())
             {
-                db.linkObjs.Add(new LinkObj
+                db.LinkObjs.Add(new LinkObj
                 {
                     ObjParentId = parentId,
                     ObjChildId = childId
