@@ -1,0 +1,104 @@
+[
+  {
+    "Id": 1,
+    "UserId": 1,
+    "Name": "Персонажи",
+    "Description": "Персонажи",
+    "ParentMenuId": null,
+    "ParentMenu": null,
+    "ObjTypeId": 1,
+    "ObjType": {
+      "Id": 1,
+      "UserId": 1,
+      "Name": "Персонаж",
+      "Code": "Character",
+      "Description": "Персонаж"
+    },
+    "Filters": ""
+  },
+  {
+    "Id": 2,
+    "UserId": 1,
+    "Name": "Локации",
+    "Description": "Локации",
+    "ParentMenuId": null,
+    "ParentMenu": null,
+    "ObjTypeId": 2,
+    "ObjType": {
+      "Id": 2,
+      "UserId": 1,
+      "Name": "Локация",
+      "Code": "Location",
+      "Description": "Локация"
+    },
+    "Filters": ""
+  },
+  {
+    "Id": 3,
+    "UserId": 1,
+    "Name": "События",
+    "Description": "События",
+    "ParentMenuId": null,
+    "ParentMenu": null,
+    "ObjTypeId": 3,
+    "ObjType": {
+      "Id": 3,
+      "UserId": 1,
+      "Name": "Событие",
+      "Code": "Event",
+      "Description": "Событие"
+    },
+    "Filters": ""
+  },
+  {
+    "Id": 4,
+    "UserId": 2,
+    "Name": "Персонажи",
+    "Description": "Персонажи",
+    "ParentMenuId": null,
+    "ParentMenu": null,
+    "ObjTypeId": 1,
+    "ObjType": {
+      "Id": 1,
+      "UserId": 1,
+      "Name": "Персонаж",
+      "Code": "Character",
+      "Description": "Персонаж"
+    },
+    "Filters": ""
+  },
+  {
+    "Id": 5,
+    "UserId": 2,
+    "Name": "Локации",
+    "Description": "Локации",
+    "ParentMenuId": null,
+    "ParentMenu": null,
+    "ObjTypeId": 2,
+    "ObjType": {
+      "Id": 2,
+      "UserId": 1,
+      "Name": "Локация",
+      "Code": "Location",
+      "Description": "Локация"
+    },
+    "Filters": ""
+  },
+  {
+    "Id": 6,
+    "UserId": 2,
+    "Name": "События",
+    "Description": "События",
+    "ParentMenuId": null,
+    "ParentMenu": null,
+    "ObjTypeId": 3,
+    "ObjType": {
+      "Id": 3,
+      "UserId": 1,
+      "Name": "Событие",
+      "Code": "Event",
+      "Description": "Событие"
+    },
+    "Filters": ""
+  }
+]

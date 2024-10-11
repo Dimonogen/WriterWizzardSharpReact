@@ -32,6 +32,8 @@ const HistoryBar = observer(() => {
             res = 'Меню';
         else if (name == 'config')
             res = 'Найстройки';
+        else if (name == 'treshcan')
+            res = "Корзина";
         else if ('objId' in params && countSlesh == 3)
             res = user.path[1]
         else if ('id' in params && countSlesh == 2)
@@ -76,11 +78,11 @@ const HistoryBar = observer(() => {
           {
               elements.map(e =>
                   e.id + 1 != elements.length ?
-              <NavLink className="alter me-3" key={e.id} to={e.path}  >
+              <NavLink className="alter me-3 fs-5" key={e.id} to={e.path}  >
                   {e.name}
               </NavLink>
                 :
-              <span key={e.id}>
+              <span className="fs-5" key={e.id}>
                   {e.name}
               </span>
               )

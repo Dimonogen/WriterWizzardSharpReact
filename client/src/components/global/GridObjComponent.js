@@ -127,12 +127,13 @@ const GridObjComponent = () => {
                    </div>
 
                </div>
-           <Box sx={{height: window.innerHeight-150+'px', width: '100%'}}>
+           <Box sx={{height: window.innerHeight-215+'px', width: '100%'}}>
                <DataGrid rows={rows} columns={columns} checkboxSelection
                          onRowSelectionModelChange={(ids) =>{SetSelectionIds(ids)}}
                          getRowClassName={(params) =>
                              params.indexRelativeToCurrentPage % 2 === 0 ? 'even' : 'odd'
                          }
+                         onRowDoubleClick={(params) => {navigate(MENU_ROUTE + '/' + id + '/' + params.id)} }
                />
            </Box>
                <ModalYesNoMy title={ObjDelMsg()} notitle="Отмена" yestitle="Удалить"

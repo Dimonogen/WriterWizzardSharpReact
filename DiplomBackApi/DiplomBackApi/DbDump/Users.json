@@ -1,0 +1,26 @@
+[
+  {
+    "Id": 1,
+    "Name": "Дж. К. Роулинг",
+    "Email": "roaling",
+    "Password": "roaling",
+    "Description": "string",
+    "Title": "string",
+    "Role": "string",
+    "Icon": "iconNotFound.png",
+    "LastAuth": "2024-03-25T11:51:09.365Z",
+    "ProjectName": "Гарри Поттер"
+  },
+  {
+    "Id": 2,
+    "Name": "Дмитрий Толстиков",
+    "Email": "dotolstikov",
+    "Password": "dotolstikov",
+    "Description": "string",
+    "Title": "string",
+    "Role": "string",
+    "Icon": "iconNotFound.png",
+    "LastAuth": "2024-03-25T11:51:09.365Z",
+    "ProjectName": "Неправильный друид"
+  }
+]

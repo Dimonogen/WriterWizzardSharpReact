@@ -49,7 +49,7 @@ body {
 @media (min-width: 0px) {
   .BookLeft{width: 100%}
   .BookAuthorRight{width: 0%}
-  .MContent{margin: 70px 5px 10px 5px !important;}
+  .MContent{margin: 120px 5px 10px 5px !important;}
   .ReaderSettings{width: 70%}
   .ReaderPartList{width: 70%}
   .BookItemImage{width: 150px; height: 214px}
@@ -59,7 +59,7 @@ body {
 @media (min-width: 800px) {
   .BookLeft{width: 70%}
   .BookAuthorRight{width: 30%}
-  .MContent{margin: 130px 20px 10px 20px !important;}
+  .MContent{margin: 120px 20px 10px 20px !important;}
   .ReaderSettings{width: 33%}
   .ReaderPartList{width: 33%}
   .BookItemImage{width: 200px; height: 285px}

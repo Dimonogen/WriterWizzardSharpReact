@@ -1,8 +1,8 @@
 import {
     ACCOUNT_ROUTE,
-    ADMIN_ROUTE, BASE_ROUTE, CONFIG_ROUTE,
+    ADMIN_ROUTE, BASE_ROUTE, CONFIG_ROUTE, HOME_ROUTE,
     LOGIN_ROUTE, MENU_ROUTE,
-    REGISTRATION_ROUTE,
+    REGISTRATION_ROUTE, TRESHCAN_ROUTE,
     USER_ROUTE
 } from "./utils/consts"
 import Admin from "./pages/Admin"
@@ -13,6 +13,7 @@ import AccountPage from "./pages/AccountPage";
 import StartPage from "./pages/StartPage";
 import MenuPage from "./pages/MenuPage";
 import ConfigPage from "./pages/ConfigPage";
+import HomePage from "./pages/HomePage";
 
 export const authRoutes = [
     {
@@ -46,6 +47,14 @@ export const authRoutes = [
     {
         path: CONFIG_ROUTE + '/:id/:typeId',
         Component: ConfigPage
+    },
+    {
+        path: BASE_ROUTE,
+        Component: HomePage
+    },
+    {
+        path: TRESHCAN_ROUTE,
+        Component: MenuPage
     }
 ]
 
@@ -70,7 +79,5 @@ export const publicRoutes = [
 
 export const noBarsRoutes = [
     {
-        path: BASE_ROUTE,
-        Component: StartPage
     }
 ]

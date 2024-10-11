@@ -23,6 +23,7 @@ namespace DiplomBackApi.Controllers
         [HttpPost("create")]
         public async Task<ActionResult> CreateObjType(CreateTypeModel typeModel)
         {
+            var user = GetUserIdByAuth();
             using (ApplicationContext db = new ApplicationContext())
             {
                 ObjType type = new ObjType
@@ -30,6 +31,7 @@ namespace DiplomBackApi.Controllers
                     Name = typeModel.name,
                     Code = typeModel.code,
                     Description = typeModel.description,
+                    UserId = user.Id,
                 };
 
                 db.ObjTypes.Add(type);
@@ -44,6 +46,19 @@ namespace DiplomBackApi.Controllers
                         Number = attr.number,
                         TypeId = type.Id,
                         AttributeTypeId = attr.typeId,
+                        UserId = user.Id,
+                    });
+                }
+
+                if (typeModel.createMenu.HasValue && typeModel.createMenu.Value)
+                {
+                    db.menuElements.Add(new MenuElement
+                    {
+                        Name = typeModel.name,
+                        Description = typeModel.name,
+                        ObjTypeId = type.Id,
+                        UserId = user.Id,
+                        Filters = ""
                     });
                 }
 
@@ -265,6 +280,8 @@ namespace DiplomBackApi.Controllers
         public string code { get; set; }
 
         public List<CreateTypeAttributeModel> attributes {  get; set; }
+
+        public bool? createMenu { get; set; }
     }
 
     public class EditTypeModel

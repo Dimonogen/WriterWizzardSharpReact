@@ -9,7 +9,6 @@ namespace DiplomBackApi.Models
     /// Состояние объекта
     /// </summary>
     [Table("objstate", Schema = "Diplom")]
-    [Index(nameof(UserId))]
     public class ObjState
     {
         /// <summary>
@@ -18,12 +17,6 @@ namespace DiplomBackApi.Models
         [Key]
         [Column("id")]
         public int Id { get; set; }
-
-        /// <summary>
-        /// Id пользователя, чтобы для каждого юзера был "своя" БД
-        /// </summary>
-        [Column("userId")]
-        public int UserId { get; set; }
 
         /// <summary>
         /// Название состояния

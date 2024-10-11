@@ -287,4 +287,35 @@ public class ApplicationContext : DbContext
         
     }
 
+    /// <summary>
+    /// Сохранить базу данных в json'ы
+    /// </summary>
+    /// <returns></returns>
+    public async Task SaveDbToJson()
+    {
+        string folder = "DbDump";
+
+        var type = GetType();
+        var members = type.GetProperties();
+            
+        var membersFiltr = members.Where(m => m.PropertyType.Name.Contains("DbSet")).ToList();
+        foreach(var elem in membersFiltr)
+        {
+            Console.WriteLine(elem.Name);
+
+            var set = elem.GetValue(this); //Convert.ChangeType( elem.GetValue(this), elem.PropertyType);
+
+            var method = elem.PropertyType.GetMethod("AsQueryable");
+            var result = method.Invoke(set, null);
+            var list = ((IQueryable) result).Cast<object>().ToList();
+            string json = JsonConvert.SerializeObject(list, Formatting.Indented);
+            File.WriteAllText(folder + Path.DirectorySeparatorChar + elem.Name + ".json", json);
+            //Console.WriteLine();
+            //var list = await result;
+            //var method = methods.Where(m => m.Name.Contains("AsAsyncEnumerable")).ToList();
+            //var list = 
+        }
+        
+    }
+
 }

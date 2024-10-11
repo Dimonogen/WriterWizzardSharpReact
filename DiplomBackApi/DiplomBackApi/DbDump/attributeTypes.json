@@ -1,0 +1,42 @@
+[
+  {
+    "Id": 1,
+    "UserId": 1,
+    "Name": "Текст",
+    "IsComplex": false,
+    "Type": 0,
+    "RegExValidation": ""
+  },
+  {
+    "Id": 2,
+    "UserId": 1,
+    "Name": "Число",
+    "IsComplex": false,
+    "Type": 1,
+    "RegExValidation": ""
+  },
+  {
+    "Id": 3,
+    "UserId": 1,
+    "Name": "Дата",
+    "IsComplex": false,
+    "Type": 2,
+    "RegExValidation": ""
+  },
+  {
+    "Id": 4,
+    "UserId": 1,
+    "Name": "Объект персонаж",
+    "IsComplex": true,
+    "Type": 1,
+    "RegExValidation": ""
+  },
+  {
+    "Id": 5,
+    "UserId": 1,
+    "Name": "Объект",
+    "IsComplex": true,
+    "Type": 0,
+    "RegExValidation": ""
+  }
+]

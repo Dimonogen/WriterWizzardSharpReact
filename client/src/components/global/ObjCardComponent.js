@@ -58,6 +58,7 @@ const ObjCardComponent = () => {
             GetOneType(id).then(data => {SetType(data);
                 //console.log(data)
                 SetObjName('Новый объект')
+                setHistory('Создание нового объекта');
                 SetIsEdit(true);
                 SetIsLoading(false);
             });
@@ -120,12 +121,12 @@ const ObjCardComponent = () => {
             <hr className='mt-1 mb-2'/>
             <div className='d-flex'>
                 {ActionList.map(e =>
-                    (e.id == 1 || e.id == 3) && user.rights.includes(type.code + '.' + 'Edit') || e.id == 2 || e.id == 4 ?
+                    //(e.id == 1 || e.id == 3) && user.rights.includes(type.code + '.' + 'Edit') || e.id == 2 || e.id == 4 ?
                     <div key={e.id}>
                         <Image height='25px' width='25px' src={e.icon}/>
                         <Button onClick={e.action} className='p-1 ms-1 me-1'
                                 variant='outline-dark'>{e.name}</Button>
-                    </div> : null
+                    </div> //: null
                 )}
             </div>
             <hr className='mt-2 mb-1'/>

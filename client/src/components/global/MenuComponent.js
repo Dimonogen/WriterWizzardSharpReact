@@ -1,30 +1,48 @@
 import {GetAllObjTypes} from "../../http/ObjTypeApi";
-import {useContext, useEffect, useState} from "react";
-import {Button} from "react-bootstrap";
+import React, {useContext, useEffect, useState} from "react";
+import {Button, Image, Form} from "react-bootstrap";
 import {useNavigate, useParams} from "react-router-dom";
-import {MENU_ROUTE} from "../../utils/consts";
+import {MENU_ROUTE, TRESHCAN_ROUTE} from "../../utils/consts";
 import {GetMenuForUser} from "../../http/MenuApi";
+import {CreateType} from "../../http/ObjTypeApi";
 import {Context} from "../../index";
+import iconDelete from "../../assets/icons8-delete.svg";
 
 const MenuComponent = () => {
 
     const navigate = useNavigate();
     const {id, objId} = useParams()
 
+    const TreshCan = window.location.pathname.indexOf(TRESHCAN_ROUTE) != -1;
+
     const {user} = useContext(Context)
 
     const [menuElements, SetMenuElements] = useState([]);
 
+    const [IsAddNew, SetIsAddNew] = useState(false);
+    const [NewTypeName, SetNewTypeName] = useState("");
+
     useEffect(() => {
+        ReloadMenu();
+        //GetAllObjTypes().then(data => {SetTypes(data);//console.log(data)
+        //     });
+    }, [])
+
+    const ReloadMenu = () => {
         GetMenuForUser().then(data => {
             SetMenuElements(data);
             //console.log(data)
             if(id != undefined && objId == undefined)
                 user.setPath( [data.filter(obj => {return obj.objTypeId.toString() == id})[0].name] )
         });
-        //GetAllObjTypes().then(data => {SetTypes(data);//console.log(data)
-        //     });
-    }, [])
+    };
+
+    const CreateTypeLocal = (typeName) => {
+        CreateType({name: typeName, description: typeName, code: typeName, attributes: [], createMenu: true})
+            .then(data => { ReloadMenu(); navigate(MENU_ROUTE + '/' + data.id) });
+        SetIsAddNew(false);
+    };
+
 
     return (
         <div className='Block W-20'>
@@ -43,6 +61,39 @@ const MenuComponent = () => {
                     </div>
                 )
             }
+            <div className='mt-4 d-flex' key={1000} >
+                {
+                    !IsAddNew ?
+                    <Button className='W-100 text-start' variant={'outline-secondary'}
+                            onClick={() => {
+                                SetIsAddNew(true)
+                            }}>
+                        + Добавить тип (Не раб.)
+                    </Button>
+                        :
+                    <div className="W-100">
+                        <Form className='ms-auto me-auto ' onSubmit={event => {event.preventDefault();
+                            CreateTypeLocal(NewTypeName);
+                        }}>
+                        <Form.Control className="" style={{background: '0', border: '0', borderBottom: '1px solid #ccc'}}
+                                      placeholder={"Название нового типа"} onChange={event => SetNewTypeName(event.target.value)}
+                                      value={NewTypeName}
+                        />
+                        </Form>
+                        {//<Button className="W-100 text-start mt-2" variant="outline-dark">Добавить</Button>
+                            }
+                    </div>
+                }
+            </div>
+            <div className='mt-5 d-flex' key={1001} >
+                <Button className='W-100 text-start' variant={TreshCan?'dark':'outline-dark'}
+                        onClick={() => {
+                            user.setPath(["Корзина"])
+                            navigate(TRESHCAN_ROUTE)}} >
+                    Корзина (Не раб.)
+                </Button>
+                <Image className='m-1 ms-2 me-1' height='32px' width='32px' src={iconDelete}/>
+            </div>
         </div>
     )
 }
