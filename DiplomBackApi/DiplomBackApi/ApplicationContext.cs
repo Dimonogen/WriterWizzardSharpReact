@@ -309,7 +309,8 @@ public class ApplicationContext : DbContext
             var result = method.Invoke(set, null);
             var list = ((IQueryable) result).Cast<object>().ToList();
             string json = JsonConvert.SerializeObject(list, Formatting.Indented);
-            File.WriteAllText(folder + Path.DirectorySeparatorChar + elem.Name + ".json", json);
+            var name = elem.PropertyType.GenericTypeArguments[0].Name;
+            File.WriteAllText(folder + Path.DirectorySeparatorChar + name + ".json", json);
             //Console.WriteLine();
             //var list = await result;
             //var method = methods.Where(m => m.Name.Contains("AsAsyncEnumerable")).ToList();
