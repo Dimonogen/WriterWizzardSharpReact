@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace DiplomBackApi.Models
 {
@@ -30,6 +31,7 @@ namespace DiplomBackApi.Models
         /// </summary>
         [ForeignKey("ObjType")]
         public int TypeId { get; set; }
+        [JsonIgnore]
         public virtual ObjType ObjType { get; set; }
 
         /// <summary>
