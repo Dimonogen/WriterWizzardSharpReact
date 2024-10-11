@@ -1,9 +1,10 @@
 [
   {
-    "Name": "Описание",
+    "Id": 344,
     "UserId": 1,
-    "Number": 1,
     "TypeId": 1,
+    "Number": 1,
+    "Name": "Описание",
     "AttributeTypeId": 1
   }
 ]

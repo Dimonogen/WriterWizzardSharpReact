@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DiplomBackApi.Models
@@ -22,6 +23,7 @@ namespace DiplomBackApi.Models
         [ForeignKey("User")]
         [Column("userId")]
         public int UserId { get; set; }
+        [JsonIgnore]
         public User User { get; set; }
 
         /// <summary>
@@ -30,6 +32,7 @@ namespace DiplomBackApi.Models
         [ForeignKey("Obj")]
         [Column("objId")]
         public int ObjId { get; set; }
+        [JsonIgnore]
         public Obj Obj { get; set; }
 
         /// <summary>

@@ -1,12 +1,14 @@
 [
   {
     "Id": 1,
+    "UserId": 0,
     "Name": "Гарри Поттер",
     "TypeId": 1,
     "StateId": 3
   },
   {
     "Id": 2,
+    "UserId": 0,
     "Name": "Волан де Морт",
     "TypeId": 1,
     "StateId": 3

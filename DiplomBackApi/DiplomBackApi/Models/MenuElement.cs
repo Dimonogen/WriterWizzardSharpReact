@@ -43,6 +43,7 @@ namespace DiplomBackApi.Models
         /// </summary>
         [AllowNull, ForeignKey("MenuElement"), Column("parentMenuId")]
         public int? ParentMenuId { get; set; }
+        [JsonIgnore]
         public MenuElement? ParentMenu { get; set; }
 
         /// <summary>

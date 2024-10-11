@@ -53,6 +53,7 @@ namespace DiplomBackApi.Models
         /// </summary>
         [ForeignKey("AttributeType")]
         public int AttributeTypeId { get; set; }
+        [JsonIgnore]
         public virtual AttributeType AttributeType { get; set; }
     }
 }

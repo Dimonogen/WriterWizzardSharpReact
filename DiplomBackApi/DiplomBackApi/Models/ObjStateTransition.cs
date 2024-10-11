@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace DiplomBackApi.Models
 {
@@ -15,10 +16,12 @@ namespace DiplomBackApi.Models
     {
         [Column("stateFromId", Order = 0), ForeignKey("ObjState")]
         public int StateFromId { get; set; }
+        [JsonIgnore]
         public ObjState StateFrom { get; set; }
 
         [Column("stateToId", Order = 1), ForeignKey("ObjState")]
         public int StateToId { get; set; }
+        [JsonIgnore]
         public ObjState StateTo { get; set; }
 
         /// <summary>

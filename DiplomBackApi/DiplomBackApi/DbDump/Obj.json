@@ -4,89 +4,41 @@
     "UserId": 0,
     "Name": "Гарри Поттер",
     "TypeId": 1,
-    "ObjType": {
-      "Id": 1,
-      "UserId": 1,
-      "Name": "Персонаж",
-      "Code": "Character",
-      "Description": "Персонаж"
-    },
-    "StateId": 3,
-    "State": null
+    "StateId": 3
   },
   {
     "Id": 2,
     "UserId": 0,
     "Name": "Волан де Морт",
     "TypeId": 1,
-    "ObjType": {
-      "Id": 1,
-      "UserId": 1,
-      "Name": "Персонаж",
-      "Code": "Character",
-      "Description": "Персонаж"
-    },
-    "StateId": 3,
-    "State": null
+    "StateId": 3
   },
   {
     "Id": 3,
     "UserId": 1,
     "Name": "Платформа 3/4",
     "TypeId": 2,
-    "ObjType": {
-      "Id": 2,
-      "UserId": 1,
-      "Name": "Локация",
-      "Code": "Location",
-      "Description": "Локация"
-    },
-    "StateId": 3,
-    "State": null
+    "StateId": 3
   },
   {
     "Id": 4,
     "UserId": 1,
     "Name": "Хогвартс",
     "TypeId": 2,
-    "ObjType": {
-      "Id": 2,
-      "UserId": 1,
-      "Name": "Локация",
-      "Code": "Location",
-      "Description": "Локация"
-    },
-    "StateId": 3,
-    "State": null
+    "StateId": 3
   },
   {
     "Id": 5,
     "UserId": 1,
     "Name": "Приход письма в хогвартс",
     "TypeId": 3,
-    "ObjType": {
-      "Id": 3,
-      "UserId": 1,
-      "Name": "Событие",
-      "Code": "Event",
-      "Description": "Событие"
-    },
-    "StateId": 3,
-    "State": null
+    "StateId": 3
   },
   {
     "Id": 6,
     "UserId": 1,
     "Name": "Распределительная шляпа",
     "TypeId": 3,
-    "ObjType": {
-      "Id": 3,
-      "UserId": 1,
-      "Name": "Событие",
-      "Code": "Event",
-      "Description": "Событие"
-    },
-    "StateId": 3,
-    "State": null
+    "StateId": 3
   }
 ]

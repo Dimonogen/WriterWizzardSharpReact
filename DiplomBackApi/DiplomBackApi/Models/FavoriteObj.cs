@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -17,6 +18,7 @@ namespace DiplomBackApi.Models
         /// </summary>
         [ForeignKey("User")]
         public int UserId { get; set; }
+        [JsonIgnore]
         public User User { get; set; }
 
         /// <summary>
@@ -24,6 +26,7 @@ namespace DiplomBackApi.Models
         /// </summary>
         [ForeignKey("Obj")]
         public int ObjId { get; set; }
+        [JsonIgnore]
         public Obj Obj { get; set; }
     }
 }

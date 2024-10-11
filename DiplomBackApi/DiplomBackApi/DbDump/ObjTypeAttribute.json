@@ -1,18 +1,10 @@
 [
   {
-    "Id": 342,
+    "Id": 344,
     "UserId": 1,
     "TypeId": 1,
-    "ObjType": {
-      "Id": 1,
-      "UserId": 1,
-      "Name": "Персонаж",
-      "Code": "Character",
-      "Description": "Персонаж"
-    },
     "Number": 1,
     "Name": "Описание",
-    "AttributeTypeId": 1,
-    "AttributeType": null
+    "AttributeTypeId": 1
   }
 ]
