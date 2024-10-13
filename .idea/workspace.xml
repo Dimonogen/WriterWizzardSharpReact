@@ -3,25 +3,26 @@
   <component name="ChangeListManager">
     <list default="true" id="3d525cd8-4ca4-4c02-af18-e14ea1633f2a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/ApplicationContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/ApplicationContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Controllers/ObjController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Controllers/ObjController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Controllers/UserController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/DbDump/MenuElement.json" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/DbDump/MenuElement.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/DbDump/Obj.json" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/DbDump/Obj.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/DbDump/ObjTypeAttribute.json" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/DbDump/ObjTypeAttribute.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Models/FavoriteObj.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Models/FavoriteObj.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Models/LinkObj.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Models/LinkObj.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Models/MenuElement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Models/MenuElement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Models/Notification.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Models/Notification.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Models/Obj.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Models/Obj.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Models/ObjAdditionalAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Models/ObjAdditionalAttribute.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Models/ObjAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Models/ObjAttribute.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Models/ObjStateTransition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Models/ObjStateTransition.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Models/ObjTypeAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Models/ObjTypeAttribute.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/LinkObj.json" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/LinkObj.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/DbDump/ObjAttribute.json" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/DbDump/ObjAttribute.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/DbDump/ObjState.json" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/DbDump/ObjState.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/DbDump/ObjType.json" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/DbDump/ObjType.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Migrations/ApplicationContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Migrations/ApplicationContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Models/ObjState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Models/ObjState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/MenuElement.json" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/MenuElement.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/Obj.json" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/Obj.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/ObjAttribute.json" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/ObjAttribute.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/ObjTypeAttribute.json" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/ObjTypeAttribute.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/Role.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/User.json" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/User.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/UserRole.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/ObjState.json" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/ObjState.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/ObjType.json" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/SeedData/ObjType.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/global/GridObjComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/global/GridObjComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/global/MenuComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/global/MenuComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/http/ObjAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/http/ObjAPI.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/MenuPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/MenuPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +55,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/_Files/KittensBack",
+    "last_opened_file_path": "C:/_Files/WriterWizzardSharpReact/client/src/components/global",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
@@ -62,6 +63,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\_Files\WriterWizzardSharpReact\client\src\components\global" />
       <recent name="C:\_Files\MAI\Diplom\client\src\components\modals" />
       <recent name="C:\_Files\MAI\Diplom\client\src\components\elementary" />
       <recent name="C:\_Files\MAI\Diplom\client\src\http" />
@@ -100,6 +102,7 @@
       <workItem from="1727455807230" duration="14000" />
       <workItem from="1728046163388" duration="9289000" />
       <workItem from="1728567634862" duration="11607000" />
+      <workItem from="1728661028467" duration="8627000" />
     </task>
     <servers />
   </component>

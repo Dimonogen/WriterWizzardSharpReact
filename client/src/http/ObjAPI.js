@@ -6,6 +6,12 @@ export const GetAllOneTypeObjects = async (id) =>
     return data;
 }
 
+export const GetObjectsTreshCan = async () =>
+{
+    const {data} = await $authHost.get('obj/treshcan');
+    return data;
+}
+
 export const GetLinkedObj = async (id) =>
 {
     const {data} = await $authHost.get('obj/link/'+id);

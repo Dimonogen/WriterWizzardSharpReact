@@ -19,6 +19,12 @@ namespace DiplomBackApi.Models
         public int Id { get; set; }
 
         /// <summary>
+        /// Для того, чтобы не привязываться к id или другим полям, код для кода
+        /// </summary>
+        [Column("code")]
+        public string Code { get; set; }
+
+        /// <summary>
         /// Название состояния
         /// </summary>
         [DisallowNull]

@@ -1,6 +1,6 @@
 import {useNavigate, useParams} from "react-router-dom";
 import {DataGrid, useGridApiRef} from "@mui/x-data-grid";
-import {DeleteObj, DeleteObjList, GetAllOneTypeObjects} from "../../http/ObjAPI";
+import {DeleteObj, DeleteObjList, GetAllOneTypeObjects, GetObjectsTreshCan} from "../../http/ObjAPI";
 import {GetOneType} from "../../http/ObjTypeApi"
 import React, {useContext, useEffect, useState} from "react";
 import Box from '@mui/material/Box';
@@ -18,7 +18,7 @@ import LoadingAnimComponent from "./LoadingAnimComponent";
 import GridTheme from "../../CSS/GridTheme";
 import {ThemeProvider} from "@mui/material";
 
-const GridObjComponent = () => {
+const GridObjTreshCanComponent = () => {
 
     const navigate = useNavigate();
     const {id} = useParams()
@@ -36,12 +36,9 @@ const GridObjComponent = () => {
     const [showOk, SetOkShow] = useState(false);
 
     useEffect(()=>{
-        if(id != null) {
-            //console.log(id);
+
             LoadData(id);
-        }
-        else
-            SetVisible(false);
+
     }, [id])
 
     const [objData, SetObjData] = useState([]);
@@ -54,39 +51,35 @@ const GridObjComponent = () => {
 
     const [selectionIds, SetSelectionIds] = useState([]);
 
-    const LoadData = (id) => {
+    const LoadData = () => {
         SetIsLoading(true);
         SetVisible(true);
-        GetAllOneTypeObjects(id).then(data => {SetObjData(data);
+        GetObjectsTreshCan().then(data => {SetObjData(data);
 
             let arr = [];
             data.forEach(e => {
                 let elem = {id: e.id, state:e.state, name: e.name};
-                e.attributes.forEach(a => elem["c"+a.number] = a.value)
                 //console.log(elem);
                 arr.push(elem);
             });
             SetRows(arr);
         });
-        GetOneType(id).then(data => {
-            //console.log(data);
-            SetTypeData(data);
-            let arr = [{field: 'id', headerName: 'Id', width: 50},
-                {field: 'state', headerName: 'Статус', width: 120},
-                {field: 'name', headerName: 'Название', width: 150}
-            ];
-            data.attributes.forEach(e => arr.push({field: 'c'+e.number, headerName: e.name,
-                width: 150
-            }));
-            SetColumns(arr);
-            getUserSettings("GridTypeId"+data.id).then(dataI => {
-                if (dataI != "")
-                    apiRef.current.restoreState(dataI);
-                SetIsLoading(false);
-            })
-            //console.log(rights)
-            //console.log(rights.includes(typeData.code + '.' + 'Edit'))
-        });
+
+        //console.log(data);
+        let arr = [{field: 'id', headerName: 'Id', width: 50},
+            {field: 'state', headerName: 'Статус', width: 120},
+            {field: 'name', headerName: 'Название', width: 150}
+        ];
+
+        SetColumns(arr);
+        getUserSettings("GridTreshCan").then(dataI => {
+            if (dataI != "")
+                apiRef.current.restoreState(dataI);
+            SetIsLoading(false);
+        })
+        //console.log(rights)
+        //console.log(rights.includes(typeData.code + '.' + 'Edit'))
+
     }
 
     const ObjDelMsg = () => {
@@ -172,4 +165,4 @@ const GridObjComponent = () => {
 }
 
 
-export default GridObjComponent
+export default GridObjTreshCanComponent

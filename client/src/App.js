@@ -14,6 +14,7 @@ import {authRoutes, noBarsRoutes, publicRoutes} from "./routes";
 import {BASE_ROUTE} from "./utils/consts";
 import AuthComponent from "./components/global/AuthComponent";
 import HistoryBar from "./components/global/HistoryBar";
+import LoadingAnimComponent from "./components/global/LoadingAnimComponent";
 
 const App = observer( () => {
   const {user} = useContext(Context)
@@ -44,16 +45,7 @@ const App = observer( () => {
 
 
   if(loading){
-    return <div className='MContent d-flex justify-content-center align-items-center'>
-        <div className='d-flex flex-column'>
-            <div className='d-flex justify-content-center'>
-                <Spinner style={{height:'64px', width:'64px'}} animation={'border'}/>
-            </div>
-
-            Загрузка...
-        </div>
-
-    </div>
+    return <LoadingAnimComponent/>
   }
 
   return (

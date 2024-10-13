@@ -79,6 +79,12 @@ public class ApplicationContext : DbContext
     public DbSet<LinkObj> LinkObjs { get; set; }
 
     /// <summary>
+    /// Настройки пользователей
+    /// </summary>
+    public DbSet<UserSettings> UserSettings { get; set; }
+
+
+    /// <summary>
     /// Конструктор контекста БД
     /// </summary>
     public ApplicationContext() => Database.EnsureCreated();
@@ -195,6 +201,7 @@ public class ApplicationContext : DbContext
     {
         string DataFolder = "SeedData";
 
+        await ClearData(UserSettings);
         await ClearData(MenuElements);
         await ClearData(ObjAttributes);
         await ClearData(Objs);
@@ -215,6 +222,7 @@ public class ApplicationContext : DbContext
         await SeedData(LinkObjs, DataFolder);
         await SeedData(ObjAttributes, DataFolder);
         await SeedData(MenuElements, DataFolder);
+        await SeedData(UserSettings, DataFolder);
     }
 
 

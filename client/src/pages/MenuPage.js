@@ -5,6 +5,7 @@ import {LOGIN_ROUTE, MENU_ROUTE, TRESHCAN_ROUTE} from "../utils/consts";
 import MenuComponent from "../components/global/MenuComponent";
 import GridObjComponent from "../components/global/GridObjComponent";
 import ObjCardComponent from "../components/global/ObjCardComponent";
+import GridObjTreshCanComponent from "../components/global/GridObjTreshCanComponent";
 
 const MenuPage = () => {
 
@@ -29,8 +30,8 @@ const MenuPage = () => {
                             }
                         </div>
                         :
-                        <div>
-                            корзина пока не реализована
+                        <div className="ms-3 d-flex W-80">
+                            <GridObjTreshCanComponent/>
                         </div>
                 }
             </div>

@@ -68,7 +68,7 @@ const MenuComponent = () => {
                             onClick={() => {
                                 SetIsAddNew(true)
                             }}>
-                        + Добавить тип (Не раб.)
+                        + Добавить тип
                     </Button>
                         :
                     <div className="W-100">
@@ -90,7 +90,7 @@ const MenuComponent = () => {
                         onClick={() => {
                             user.setPath(["Корзина"])
                             navigate(TRESHCAN_ROUTE)}} >
-                    Корзина (Не раб.)
+                    Корзина
                 </Button>
                 <Image className='m-1 ms-2 me-1' height='32px' width='32px' src={iconDelete}/>
             </div>

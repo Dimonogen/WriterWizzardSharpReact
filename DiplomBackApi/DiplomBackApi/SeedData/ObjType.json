@@ -40,5 +40,12 @@
     "Name": "Событие",
     "Code": "Event",
     "Description": "Событие"
+  },
+  {
+    "Id": 7,
+    "UserId": 1,
+    "Name": "Заклинания",
+    "Code": "Заклинания",
+    "Description": "Заклинания"
   }
 ]

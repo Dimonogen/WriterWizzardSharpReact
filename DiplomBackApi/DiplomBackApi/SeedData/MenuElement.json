@@ -52,5 +52,14 @@
     "ParentMenuId": null,
     "ObjTypeId": 3,
     "Filters": ""
+  },
+  {
+    "Id": 7,
+    "UserId": 1,
+    "Name": "Заклинания",
+    "Description": "Заклинания",
+    "ParentMenuId": null,
+    "ObjTypeId": 7,
+    "Filters": ""
   }
 ]

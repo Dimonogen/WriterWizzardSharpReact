@@ -1,44 +1,58 @@
 [
   {
-    "Id": 1,
-    "UserId": 0,
-    "Name": "Гарри Поттер",
-    "TypeId": 1,
-    "StateId": 3
-  },
-  {
-    "Id": 2,
-    "UserId": 0,
-    "Name": "Волан де Морт",
-    "TypeId": 1,
-    "StateId": 3
-  },
-  {
     "Id": 3,
     "UserId": 1,
     "Name": "Платформа 3/4",
     "TypeId": 2,
-    "StateId": 3
+    "StateId": 1
   },
   {
     "Id": 4,
     "UserId": 1,
     "Name": "Хогвартс",
     "TypeId": 2,
-    "StateId": 3
+    "StateId": 1
   },
   {
     "Id": 5,
     "UserId": 1,
     "Name": "Приход письма в хогвартс",
     "TypeId": 3,
-    "StateId": 3
+    "StateId": 1
   },
   {
     "Id": 6,
     "UserId": 1,
     "Name": "Распределительная шляпа",
     "TypeId": 3,
-    "StateId": 3
+    "StateId": 1
+  },
+  {
+    "Id": 7,
+    "UserId": 1,
+    "Name": "Миссис Дурсль",
+    "TypeId": 1,
+    "StateId": 1
+  },
+  {
+    "Id": 8,
+    "UserId": 1,
+    "Name": "Мистер Дурсль",
+    "TypeId": 1,
+    "StateId": 1
+  },
+  {
+    "Id": 9,
+    "UserId": 1,
+    "Name": "Гарри Поттер",
+    "TypeId": 1,
+    "StateId": 2
+  },
+  {
+    "Id": 10,
+    "UserId": 1,
+    "Name": "Волан Де Морт",
+    "TypeId": 1,
+    "StateId": 2
   }
 ]

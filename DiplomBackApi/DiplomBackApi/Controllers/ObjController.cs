@@ -11,7 +11,7 @@ namespace DiplomBackApi.Controllers
     /// </summary>
     [ApiController]
     [Route("api/obj")]
-    public class ObjController : ControllerBase
+    public class ObjController : MyBaseController
     {
 
 
@@ -86,7 +86,19 @@ namespace DiplomBackApi.Controllers
         {
             using (ApplicationContext db = new ApplicationContext())
             {
-                var objs = await db.Objs.Where(x => x.TypeId == typeId).ToArrayAsync();
+                var user = GetUserIdByAuth();
+                var stateDelete = await db.ObjStates.FirstOrDefaultAsync(x => x.Code == "deleted");
+                
+                if (stateDelete == null)
+                {
+                    throw new Exception("Not found deleted state in DB");
+                }
+
+                var objs = await db.Objs.Where(x => x.TypeId == typeId 
+                                            && x.StateId != stateDelete.Id 
+                                            && x.UserId == user.Id
+                            ).ToArrayAsync();
+                
                 List<ObjDto?> list = new List<ObjDto?>();
 
                 foreach (var obj in objs)
@@ -119,7 +131,34 @@ namespace DiplomBackApi.Controllers
         {
             using(ApplicationContext db = new ApplicationContext())
             {
-                var objs = await db.Objs.ToListAsync();
+                var stateDelete = await db.ObjStates.FirstOrDefaultAsync(x => x.Code == "deleted");
+                var objs = await db.Objs.Where(x => x.StateId != stateDelete.Id).ToListAsync();
+
+                List<ObjDto?> arr = new List<ObjDto?>();
+
+                foreach (var obj in objs)
+                {
+                    arr.Add(await db.GetObjDtoAsync(obj.Id));
+                }
+
+                return Ok(arr);
+            }
+        }
+
+
+        /// <summary>
+        /// Возвращает все Объекты с аттрибутами
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("treshCan")]
+        public async Task<ActionResult> GetTreshCan()
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                var user = GetUserIdByAuth();
+                var stateDelete = await db.ObjStates.FirstOrDefaultAsync(x => x.Code == "deleted");
+                var objs = await db.Objs.Where(x => x.StateId == stateDelete.Id
+                            && x.UserId == user.Id).ToListAsync();
 
                 List<ObjDto?> arr = new List<ObjDto?>();
 
@@ -142,11 +181,13 @@ namespace DiplomBackApi.Controllers
         {
             using (ApplicationContext db = new ApplicationContext())
             {
+                var user = GetUserIdByAuth();
                 Obj obj_n = new Models.Obj
                 {
                     StateId = 1,
                     Name = obj.name,
-                    TypeId = obj.TypeId
+                    TypeId = obj.TypeId,
+                    UserId = user.Id,
                 };
 
                 db.Objs.Add(obj_n);
@@ -237,7 +278,20 @@ namespace DiplomBackApi.Controllers
         {
             using (ApplicationContext db = new ApplicationContext())
             {
-                db.Objs.RemoveRange(db.Objs.Where(x => x.Id == id).ToArray());
+                //db.Objs.RemoveRange(db.Objs.Where(x => x.Id == id).ToArray());
+
+                var objs = await db.Objs.Where(x => x.Id == id).ToListAsync();
+                var state = await db.ObjStates.FirstOrDefaultAsync(x => x.Code == "deleted");
+
+                if(state == null)
+                {
+                    throw new Exception("Not found deleted state in DB");
+                }
+
+                foreach(var obj in objs)
+                {
+                    obj.StateId = state.Id;
+                }
 
                 await db.SaveChangesAsync();
 
@@ -255,7 +309,20 @@ namespace DiplomBackApi.Controllers
         {
             using (ApplicationContext db = new ApplicationContext())
             {
-                db.Objs.RemoveRange(db.Objs.Where(x => id.Contains(x.Id)).ToArray());
+                //db.Objs.RemoveRange(db.Objs.Where(x => id.Contains(x.Id)).ToArray());
+                
+                var objs = await db.Objs.Where(x => id.Contains(x.Id) ).ToListAsync();
+                var state = await db.ObjStates.FirstOrDefaultAsync(x => x.Code == "deleted");
+
+                if (state == null)
+                {
+                    throw new Exception("Not found deleted state in DB");
+                }
+
+                foreach (var obj in objs)
+                {
+                    obj.StateId = state.Id;
+                }
 
                 await db.SaveChangesAsync();
 
