@@ -1,6 +1,6 @@
 import {Button, Image, Spinner} from "react-bootstrap";
 import {useNavigate, useParams} from "react-router-dom";
-import {MENU_ROUTE} from "../../utils/consts";
+import {MENU_ROUTE, TRESHCAN_ROUTE} from "../../utils/consts";
 import React, {useContext, useEffect, useState} from "react";
 import {CreateObj, GetOneObj, UpdateObj, DeleteObj} from "../../http/ObjAPI";
 import {GetOneType} from "../../http/ObjTypeApi"
@@ -86,7 +86,11 @@ const ObjCardComponent = () => {
                 {//create obj
                     //console.log('create obj attributes', attributeEdits);
                 CreateObj({typeId: id, name: objName,
-                    attributes: attrTrans(attributeEdits)}).then(data => SetObj(data));
+                    attributes: attrTrans(attributeEdits)}).then(data =>
+                {
+                    SetObj(data);
+                    navigate(MENU_ROUTE + '/' + type.id + '/' + data.id);
+                });
                 }
             }
                 SetIsEdit(!isEdit);
@@ -116,7 +120,12 @@ const ObjCardComponent = () => {
             <div className='W-100 d-flex'>
                 <span>{objName + ' - ' + type.name}</span>
                 <Button className='ms-auto p-0 ps-2 pe-2' variant='outline-dark'
-                        onClick={()=> {navigate(MENU_ROUTE+'/'+id)}}>X</Button>
+                        onClick={()=> {
+                            if(id == undefined)
+                                navigate(TRESHCAN_ROUTE);
+                            else
+                                navigate(MENU_ROUTE+'/'+id)
+                        }}>X</Button>
             </div>
             <hr className='mt-1 mb-2'/>
             <div className='d-flex'>

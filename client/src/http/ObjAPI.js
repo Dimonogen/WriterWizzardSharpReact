@@ -46,6 +46,16 @@ export const DeleteObj = async (objId) => {
     return data;
 }
 
+export const RestoreObj = async (objId) => {
+    const {data} = await $authHost.get('obj/restore?id='+objId);
+    return data;
+}
+
+export const RestoreObjList = async (objList) => {
+    const {data} = await $authHost.post('obj/restoreList', objList);
+    return data;
+}
+
 export const DeleteObjList = async (objIdList) => {
     const {data} = await $authHost.post('obj/deleteList', objIdList);
     return data;

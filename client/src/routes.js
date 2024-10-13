@@ -55,6 +55,10 @@ export const authRoutes = [
     {
         path: TRESHCAN_ROUTE,
         Component: MenuPage
+    },
+    {
+        path: TRESHCAN_ROUTE + '/:objId',
+        Component: MenuPage
     }
 ]
 

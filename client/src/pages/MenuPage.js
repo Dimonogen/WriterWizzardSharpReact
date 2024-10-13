@@ -13,6 +13,11 @@ const MenuPage = () => {
 
     const {id, objId} = useParams()
 
+
+    const ReloadGrid = () => {
+
+    }
+
     return(
         <div className='MContent d-flex'>
             <div className='W-100 d-flex'>
@@ -21,7 +26,7 @@ const MenuPage = () => {
                     window.location.pathname.indexOf(TRESHCAN_ROUTE) == -1 ?
                         <div className="ms-3 d-flex W-80">
                             <div className={'d-flex ' + (objId != null ? "W-50" : "W-100")}>
-                                <GridObjComponent/>
+                                <GridObjComponent />
                             </div>
                             {objId != null ?
                             <div className='ms-3 d-flex W-50'>
@@ -31,7 +36,14 @@ const MenuPage = () => {
                         </div>
                         :
                         <div className="ms-3 d-flex W-80">
-                            <GridObjTreshCanComponent/>
+                            <div className={'d-flex ' + (objId != null ? "W-50" : "W-100")}>
+                                <GridObjTreshCanComponent/>
+                            </div>
+                            {objId != null ?
+                                <div className='ms-3 d-flex W-50'>
+                                    <ObjCardComponent/>
+                                </div> : null
+                            }
                         </div>
                 }
             </div>

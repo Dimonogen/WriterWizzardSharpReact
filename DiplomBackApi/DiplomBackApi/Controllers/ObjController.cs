@@ -300,6 +300,35 @@ namespace DiplomBackApi.Controllers
         }
 
         /// <summary>
+        /// Восстанавливает из корзины объект с заданным id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("restore")]
+        public async Task<ActionResult> RestoreItem(int id)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                var objs = await db.Objs.Where(x => x.Id == id).ToListAsync();
+                var state = await db.ObjStates.FirstOrDefaultAsync(x => x.Code == "use");
+
+                if (state == null)
+                {
+                    throw new Exception("Not found use state in DB");
+                }
+
+                foreach (var obj in objs)
+                {
+                    obj.StateId = state.Id;
+                }
+
+                await db.SaveChangesAsync();
+
+                return Ok();
+            }
+        }
+
+        /// <summary>
         /// Удаляет объекты с заданными id
         /// </summary>
         /// <param name="id"></param>
@@ -329,6 +358,37 @@ namespace DiplomBackApi.Controllers
                 return Ok();
             }
         }
+
+
+        /// <summary>
+        /// Восстанавливает из корзины объекты с заданными id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPost("restoreList")]
+        public async Task<ActionResult> RestoreArray(int[] id)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                var objs = await db.Objs.Where(x => id.Contains(x.Id)).ToListAsync();
+                var state = await db.ObjStates.FirstOrDefaultAsync(x => x.Code == "use");
+
+                if (state == null)
+                {
+                    throw new Exception("Not found use state in DB");
+                }
+
+                foreach (var obj in objs)
+                {
+                    obj.StateId = state.Id;
+                }
+
+                await db.SaveChangesAsync();
+
+                return Ok();
+            }
+        }
+
 
     }
 

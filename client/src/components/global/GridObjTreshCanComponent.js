@@ -1,11 +1,11 @@
 import {useNavigate, useParams} from "react-router-dom";
 import {DataGrid, useGridApiRef} from "@mui/x-data-grid";
-import {DeleteObj, DeleteObjList, GetAllOneTypeObjects, GetObjectsTreshCan} from "../../http/ObjAPI";
+import {DeleteObj, DeleteObjList, GetAllOneTypeObjects, GetObjectsTreshCan, RestoreObjList} from "../../http/ObjAPI";
 import {GetOneType} from "../../http/ObjTypeApi"
 import React, {useContext, useEffect, useState} from "react";
 import Box from '@mui/material/Box';
 import {Button, Image} from "react-bootstrap";
-import {MENU_ROUTE} from "../../utils/consts";
+import {MENU_ROUTE, TRESHCAN_ROUTE} from "../../utils/consts";
 import ModalYesNoMy from "../modals/ModalYesNoMy";
 import ModalOkMy from "../modals/ModalOkMy";
 import iconCreate from '../../assets/icons8-addFile.png'
@@ -92,7 +92,7 @@ const GridObjTreshCanComponent = () => {
         else
             end = ' объектов?';
 
-        return "Вы действительно хотите удалить "+ count + end;
+        return "Вы действительно хотите восстановить из карзины "+ count + end;
     }
 
     return (
@@ -100,18 +100,13 @@ const GridObjTreshCanComponent = () => {
        visible ?
            <div className='W-100'>
                <div className={'d-flex flex-row ' + (IsLoading ? "d-none" : "d-block")}>
-                   <div>
-                   <Image className='m-2 ms-1 me-0' height='32px' width='32px' src={iconCreate}/>
-                   <Button variant='dark' className='m-2'
-                   onClick={()=>{navigate(MENU_ROUTE+'/'+id+'/0')}}>{"Новый "+typeData.name}</Button>
-                   </div>
                    <Image className='m-2 ms-1 me-0' height='32px' width='32px' src={iconView}/>
                    <Button variant='outline-dark' className='m-2'
                            onClick={()=>{
                                if(selectionIds.length > 0)
                                    navigate(MENU_ROUTE+'/'+id+'/'+selectionIds[0])
                            }}
-                   >{"Открыть "+typeData.name}</Button>
+                   >{"Открыть объект"}</Button>
                    <Image className='m-2 ms-1 me-0' height='32px' width='32px' src={iconUpdate}/>
                    <Button variant='outline-dark' className='m-2'
                            onClick={()=>{LoadData(id)}}>Обновить грид</Button>
@@ -127,7 +122,7 @@ const GridObjTreshCanComponent = () => {
                            {
                                SetOkShow(true);
                            }
-                       }}>{"Удалить "+typeData.name}</Button>
+                       }}>{"Восстановить"}</Button>
                    </div>
 
                </div>
@@ -139,7 +134,7 @@ const GridObjTreshCanComponent = () => {
                          getRowClassName={(params) =>
                              params.indexRelativeToCurrentPage % 2 === 0 ? 'even' : 'odd'
                          }
-                         onRowDoubleClick={(params) => {navigate(MENU_ROUTE + '/' + id + '/' + params.id)} }
+                         onRowDoubleClick={(params) => {navigate(TRESHCAN_ROUTE + '/' + params.id)} }
                          onColumnWidthChange={(params) => {
                              let state = apiRef.current.exportState();
                              state = JSON.stringify(state);
@@ -151,9 +146,9 @@ const GridObjTreshCanComponent = () => {
            </Box>
                </ThemeProvider>
                { IsLoading ? <LoadingAnimComponent/> : null }
-               <ModalYesNoMy title={ObjDelMsg()} notitle="Отмена" yestitle="Удалить"
+               <ModalYesNoMy title={ObjDelMsg()} notitle="Отмена" yestitle="Восстановить"
                              show={show} onHide={() => SetShow(false)} final={() => {
-                   DeleteObjList(selectionIds).then(data => LoadData(id));
+                   RestoreObjList(selectionIds).then(data => LoadData());
                }}/>
                <ModalOkMy show={showOk} onHide={() => SetOkShow(false)}
                           title='Внимание! Не выбрано ни одно значение.' okTitle='Ок'/>
