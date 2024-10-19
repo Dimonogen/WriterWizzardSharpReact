@@ -38,8 +38,12 @@ const MenuComponent = () => {
     };
 
     const CreateTypeLocal = (typeName) => {
+        if(typeName == "")
+        {
+
+        }
         CreateType({name: typeName, description: typeName, code: typeName, attributes: [], createMenu: true})
-            .then(data => { ReloadMenu(); navigate(MENU_ROUTE + '/' + data.id) });
+            .then(data => { SetNewTypeName(""); ReloadMenu(); navigate(MENU_ROUTE + '/' + data.id) });
         SetIsAddNew(false);
     };
 
@@ -55,7 +59,7 @@ const MenuComponent = () => {
                     <div className='mt-2' key={e.id} >
                         <Button className='W-100 text-start' variant={id == e.objTypeId?'dark':'outline-dark'}
                                 onClick={() => {
-                                    user.setPath([e.name])
+                                    user.setPath(e.name, 0);
                                     navigate(MENU_ROUTE+'/'+e.objTypeId)}} >{e.name}
                         </Button>
                     </div>
@@ -76,10 +80,20 @@ const MenuComponent = () => {
                             CreateTypeLocal(NewTypeName);
                         }}>
                         <Form.Control className="" style={{background: '0', border: '0', borderBottom: '1px solid #ccc'}}
-                                      placeholder={"Название нового типа"} onChange={event => SetNewTypeName(event.target.value)}
+                                      placeholder={"Название нового типа"} onChange={
+                                            event => SetNewTypeName(event.target.value)}
                                       value={NewTypeName}
                         />
                         </Form>
+                        <div className="d-flex">
+                            <Button className="mt-2 me-auto" variant="outline-secondary" onClick={
+                                () => {SetIsAddNew(false)} }
+                                >Отмена</Button>
+                            <Button className="mt-2 ms-auto" variant="dark" onClick={
+                                () => {CreateTypeLocal(NewTypeName)} }
+                                >Добавить</Button>
+                        </div>
+
                         {//<Button className="W-100 text-start mt-2" variant="outline-dark">Добавить</Button>
                             }
                     </div>

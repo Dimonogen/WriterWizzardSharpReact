@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 const AttributeComponent = ({value, setValue, isEdit, attrTypes}) => {
 
     useEffect(()=>{
-        console.log(value)
+        //console.log(value)
         SetName(value.name);
         SetType(value.typeId);
         setValue({number: value.number, name: value.name, typeId: value.typeId}, value.number);
@@ -14,7 +14,7 @@ const AttributeComponent = ({value, setValue, isEdit, attrTypes}) => {
     const [type, SetType] = useState(value.type);
 
     const SendChange = (nameF, typeF) => {
-        console.log({name: nameF, type: typeF});
+        //console.log({name: nameF, type: typeF});
         setValue({number: value.number, name: nameF, typeId: typeF}, value.number)
     }
 

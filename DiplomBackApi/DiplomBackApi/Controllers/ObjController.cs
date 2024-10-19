@@ -189,10 +189,16 @@ namespace DiplomBackApi.Controllers
         [HttpPost("create")]
         public async Task<ActionResult> CreateObj(CreateObjModel obj)
         {
-            
             var user = GetUserIdByAuth();
+
+            int countObj = db.Objs.Where(x => x.UserId == user.Id).Count();
+            int maxIdObj = 0;
+            if (countObj > 0)
+                maxIdObj = db.Objs.Where(x => x.UserId == user.Id).Max(x => x.Id);
+            
             Obj obj_n = new Models.Obj
             {
+                Id = maxIdObj + 1,
                 StateId = 1,
                 Name = obj.name,
                 TypeId = obj.TypeId,
@@ -202,15 +208,22 @@ namespace DiplomBackApi.Controllers
             db.Objs.Add(obj_n);
             await db.SaveChangesAsync();
 
+            int count = db.ObjAttributes.Where(x => x.UserId == user.Id).Count();
+            int maxId = 0;
+            if (count > 0)
+                maxId = db.ObjAttributes.Where(x => x.UserId == user.Id).Max(x => x.Id);
+
             foreach (AttributeAddModel attr in obj.attributes)
             {
                 await db.ObjAttributes.AddAsync(new ObjAttribute
                 {
+                    Id = maxId + 1,
                     Number = attr.number,
                     ObjId = obj_n.Id,
                     Value = attr.value,
                     UserId = user.Id,
                 });
+                maxId++;
             }
 
             await db.SaveChangesAsync();
@@ -237,10 +250,15 @@ namespace DiplomBackApi.Controllers
 
             obj_n.Name = obj.name;
 
+            int count = db.ObjAttributes.Where(x => x.UserId == user.Id).Count();
+            int maxId = 0;
+            if (count > 0)
+                maxId = db.ObjAttributes.Where(x => x.UserId == user.Id).Max(x => x.Id);
+
             foreach (AttributeAddModel attr in obj.attributes)
             {
                 var attr_exist = db.ObjAttributes.FirstOrDefault(
-                    x => x.Number == attr.number && x.ObjId == obj.id);
+                    x => x.Number == attr.number && x.ObjId == obj.id && x.UserId == user.Id);
 
                 if (attr_exist != null)
                 {
@@ -250,16 +268,19 @@ namespace DiplomBackApi.Controllers
                 {
                     var attr_type = db.ObjTypeAttributes.FirstOrDefault(
                         x => x.TypeId == obj_n.TypeId && x.Number == attr.number
+                        && x.UserId == user.Id
                         );
                     if (attr_type != null)
                     {
                         await db.ObjAttributes.AddAsync(new ObjAttribute
                         {
+                            Id = maxId + 1,
                             Number = attr.number,
                             ObjId = obj_n.Id,
                             Value = attr.value,
                             UserId = user.Id
                         });
+                        maxId = maxId + 1;
                     }
                     else
                     {
@@ -395,6 +416,20 @@ namespace DiplomBackApi.Controllers
             
         }
 
+
+        /// <summary>
+        /// Получение всех состояний объектов
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("states")]
+        public async Task<ActionResult> GetAllStates()
+        {
+            var user = GetUserIdByAuth();
+            var elems = db.ObjStates.Where(x => x.UserId == user.Id).ToList();
+
+            return Ok(elems);
+
+        }
 
     }
 

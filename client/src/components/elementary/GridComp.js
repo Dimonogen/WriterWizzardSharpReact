@@ -7,6 +7,8 @@ import Box from "@mui/material/Box";
 import {DataGrid} from "@mui/x-data-grid";
 import React, {useEffect, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
+import {ThemeProvider} from "@mui/material";
+import GridTheme from "../../CSS/GridTheme";
 
 
 const GridComp = ({LoadData}) => {
@@ -16,15 +18,17 @@ const GridComp = ({LoadData}) => {
 
     const [visible, SetVisible] = useState(false);
 
-    useEffect(()=>{
-        if(id != null) {
-            //console.log(id);
-            const {row, column} = LoadData();
-            SetRows(row);
-            SetColumns(column);
+    useEffect(() => {
+        async function fentch() {
+            if (id != null) {
+                //console.log(id);
+                const {row, column} = await LoadData();
+                SetRows(row);
+                SetColumns(column);
+            } else
+                SetVisible(false);
         }
-        else
-            SetVisible(false);
+        fentch();
     }, [id])
 
     const [typesData, SetTypesData] = useState({});
@@ -52,12 +56,17 @@ const GridComp = ({LoadData}) => {
                 >Открыть</Button>
                 <Image className='m-2 ms-1 me-0' height='32px' width='32px' src={iconUpdate}/>
                 <Button variant='outline-dark' className='m-2'
-                        onClick={()=>{LoadData(id)}}>Обновить</Button>
+                        onClick={async ()=>{
+                            const {row, column} = await LoadData(id); SetRows(row); SetColumns(column); //console.log(123);
+                        }}>Обновить</Button>
             </div>
-            <Box sx={{height: window.innerHeight-150+'px', width: '100%'}}>
-                <DataGrid rows={rows} columns={columns}
-                          onRowSelectionModelChange={(ids) =>{SetSelectionIds(ids)}}/>
-            </Box>
+            <ThemeProvider theme={GridTheme}>
+                <Box sx={{height: window.innerHeight-215+'px', width: '100%'}}>
+                    <DataGrid rows={rows} columns={columns}
+                              onRowSelectionModelChange={(ids) =>{SetSelectionIds(ids)}}/>
+                </Box>
+            </ThemeProvider>
+
         </div>
     )
 }

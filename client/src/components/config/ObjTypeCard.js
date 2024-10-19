@@ -109,7 +109,7 @@ const ObjTypeCard = ({reloadGrid}) => {
             </div>
             <hr/>
 
-            <div className='ps-2 pe-2' style={{overflowY: 'auto', maxHeight: '500px'}}>
+            <div className='ps-2 pe-2' style={{overflowY: 'auto', maxHeight: window.innerHeight*0.7+'px'}}>
                 <FieldText setValue={SetTypeName} value={typeName} name="Название" minlen={1} maxlen={255} id={0}
                            placeholder="Название типа" nullable={false} key={-3} disabled={!isEdit} useProp={true}/>
                 <FieldText setValue={SetTypeCode} value={typeCode} name="Код" minlen={1} maxlen={255} id={0}

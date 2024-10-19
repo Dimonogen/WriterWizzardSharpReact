@@ -10,6 +10,8 @@ import {useNavigate, useParams} from "react-router-dom";
 import {GetAllAttrTypes, GetOneAttrType} from "../../http/AttrTypeApi"
 import ObjTypeCard from "./ObjTypeCard";
 import AttrTypeCard from "./AttrTypeCard";
+import GridTheme from "../../CSS/GridTheme";
+import {ThemeProvider} from "@mui/material";
 
 const ConfigAttrTypeComponent = () => {
 
@@ -69,10 +71,13 @@ const ConfigAttrTypeComponent = () => {
                     <Button variant='outline-dark' className='m-2'
                             onClick={()=>{LoadData(id)}}>Обновить</Button>
                 </div>
-                <Box sx={{height: '530px', width: '100%'}}>
+                <ThemeProvider theme={GridTheme}>
+                <Box sx={{height: window.innerHeight-215+'px', width: '100%'}}>
                     <DataGrid rows={rows} columns={columns}
                               onRowSelectionModelChange={(ids) =>{SetSelectionIds(ids)}}/>
                 </Box>
+                </ThemeProvider>
+
             </div>
             <div className='ms-2 W-50 Block'>
                 {

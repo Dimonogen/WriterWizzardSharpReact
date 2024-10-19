@@ -60,3 +60,8 @@ export const DeleteObjList = async (objIdList) => {
     const {data} = await $authHost.post('obj/deleteList', objIdList);
     return data;
 }
+
+export const GetAllObjStates = async () => {
+    const {data} = await $authHost.get('obj/states');
+    return data;
+}

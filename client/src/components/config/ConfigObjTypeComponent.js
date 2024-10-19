@@ -9,6 +9,8 @@ import iconUpdate from "../../assets/icons8-restart.svg";
 import {useNavigate, useParams} from "react-router-dom";
 import {GetAllObjTypes, GetOneType} from "../../http/ObjTypeApi"
 import ObjTypeCard from "./ObjTypeCard";
+import GridTheme from "../../CSS/GridTheme";
+import {ThemeProvider} from "@mui/material";
 
 const ConfigObjTypeComponent = () => {
 
@@ -69,10 +71,12 @@ const ConfigObjTypeComponent = () => {
                     <Button variant='outline-dark' className='m-2'
                             onClick={()=>{LoadData(id)}}>Обновить</Button>
                 </div>
-                <Box sx={{height: '530px', width: '100%'}}>
+                <ThemeProvider theme={GridTheme}>
+                <Box sx={{height: window.innerHeight-215+'px', width: '100%'}}>
                     <DataGrid rows={rows} columns={columns}
                               onRowSelectionModelChange={(ids) =>{SetSelectionIds(ids)}}/>
                 </Box>
+                </ThemeProvider>
             </div>
             <div className='ms-2 W-50 Block'>
                 {

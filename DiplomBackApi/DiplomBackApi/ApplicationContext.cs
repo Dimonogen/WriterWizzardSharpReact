@@ -217,7 +217,6 @@ public class ApplicationContext : DbContext
         await ClearData(ObjAttributes);
         await ClearData(Objs);
         await ClearData(LinkObjs);
-        //await ClearData(ObjStateTransitons);
         await ClearData(ObjStates);
         await ClearData(ObjTypeAttributes);
         await ClearData(AttributeTypes);

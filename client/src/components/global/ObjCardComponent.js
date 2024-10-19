@@ -32,21 +32,21 @@ const ObjCardComponent = () => {
     const [show, SetShow] = useState(false);
     const [MSelectD, SetMSelectD] = useState({show:false})
 
-    const attributeEdits = {};
+    const [attributeEdits, SetAttributeEdits] = useState({});
 
     const setHistory = (name) => {
-        let arr = user.path;
-        if(arr.length == 1)
-            arr.push(name);
-        else
-            arr[1] = name;
-        user.setPath(arr);
+        //let arr = user.path;
+        //if(arr.length == 1)
+        //    arr.push(name);
+        //else
+        //    arr[1] = name;
+        user.setPath(name, 1);
     }
 
     useEffect(() => {
         if(!isNewObj) {
             GetOneObj(objId).then(data => {
-                console.log(data)
+                //console.log(data)
                 SetObj(data);
                 SetObjName(data.name);
                 setHistory(data.name);
@@ -67,10 +67,12 @@ const ObjCardComponent = () => {
     }, [id, objId])
 
     const attrTrans = (attributes) => {
+        console.log(attributes)
         let list = []
         for (const [key, value] of Object.entries(attributes)) {
             list.push({number: key, value: value});
         }
+        console.log(list)
         return list;
     }
 
@@ -78,6 +80,7 @@ const ObjCardComponent = () => {
         {id:1, icon: iconEdit, name: isEdit?"Сохранить":"Изменить", action: () => {
             if(isEdit)
             {//сохранить
+                console.log(attrTrans(attributeEdits))
                 if(objId != 0)
                 UpdateObj({id: objId, typeId: id, name: objName,
                     attributes: attrTrans(attributeEdits)})
@@ -86,7 +89,8 @@ const ObjCardComponent = () => {
                 {//create obj
                     //console.log('create obj attributes', attributeEdits);
                 CreateObj({typeId: id, name: objName,
-                    attributes: attrTrans(attributeEdits)}).then(data =>
+                    attributes: attrTrans(attributeEdits)})
+                    .then(data =>
                 {
                     SetObj(data);
                     navigate(MENU_ROUTE + '/' + type.id + '/' + data.id);
@@ -101,8 +105,11 @@ const ObjCardComponent = () => {
     ]
 
     const setValue = (value, id) => {
-        attributeEdits[id] = value.toString();
-        //console.log("value = " + value + ' number = '+ id)
+        let edit = attributeEdits;
+        edit[id] = value.toString();
+        console.log("value = " + value + ' number = '+ id)
+        console.log("AE = ", edit);
+        SetAttributeEdits(edit);
     }
 
     return (

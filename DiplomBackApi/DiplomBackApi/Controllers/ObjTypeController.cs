@@ -26,8 +26,11 @@ public class ObjTypeController : MyBaseController
     {
         var user = GetUserIdByAuth();
 
+        int maxId = db.ObjTypes.Where(x => x.UserId == user.Id).Max(x => x.Id);
+
         ObjType type = new ObjType
         {
+            Id = maxId + 1,
             Name = typeModel.name,
             Code = typeModel.code,
             Description = typeModel.description,
@@ -52,8 +55,10 @@ public class ObjTypeController : MyBaseController
 
         if (typeModel.createMenu.HasValue && typeModel.createMenu.Value)
         {
+            int maxIdMenu = db.MenuElements.Where(x => x.UserId == user.Id).Max(x => x.Id);
             db.MenuElements.Add(new MenuElement
             {
+                Id = maxIdMenu + 1,
                 Name = typeModel.name,
                 Description = typeModel.name,
                 ObjTypeId = type.Id,
@@ -86,20 +91,28 @@ public class ObjTypeController : MyBaseController
         type.Description = typeModel.description;
         type.Code = typeModel.code;
 
+        int count = db.ObjTypeAttributes.Where(x => x.UserId == user.Id).Count();
+        int maxId = 0;
+        if (count > 0)
+            maxId = db.ObjTypeAttributes.Where(x => x.UserId == user.Id).Max(x => x.Id);
+
         foreach (var attr in typeModel.attributes)
         {
             var attr_exist = db.ObjTypeAttributes.FirstOrDefault(
-                x => x.Number == attr.number && x.TypeId == typeModel.id);
+                x => x.Number == attr.number && x.TypeId == typeModel.id && x.UserId == user.Id);
 
             if (attr_exist == null)
             {
                 db.ObjTypeAttributes.Add(new ObjTypeAttribute
                 {
+                    Id = maxId + 1,
                     Name = attr.name,
                     Number = attr.number,
                     TypeId = type.Id,
                     AttributeTypeId = attr.typeId,
+                    UserId = user.Id,
                 });
+                maxId = maxId + 1;
             }
             else
             {
@@ -212,6 +225,8 @@ public class ObjTypeController : MyBaseController
     public async Task<ActionResult> DeleteItem(int id)
     {
         var user = GetUserIdByAuth();
+        db.MenuElements.RemoveRange(db.MenuElements.Where(x => x.ObjTypeId == id && x.UserId == user.Id).ToList());
+
         db.ObjTypes.RemoveRange(db.ObjTypes.Where(x => x.Id == id && x.UserId == user.Id).ToArray());
 
         await db.SaveChangesAsync();

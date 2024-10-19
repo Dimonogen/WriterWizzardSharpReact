@@ -38,9 +38,9 @@ export default class UserStore {
         this._rights = arr
     }
 
-    setPath(path){
-        console.log(path)
-        this._path = path
+    setPath(path, index){
+        //console.log(path)
+        this._path[index] = path
     }
 
     get path(){

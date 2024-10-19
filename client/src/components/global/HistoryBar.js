@@ -31,7 +31,7 @@ const HistoryBar = observer(() => {
         else if (name == 'menu')
             res = 'Меню';
         else if (name == 'config')
-            res = 'Найстройки';
+            res = 'Настройки';
         else if (name == 'treshcan')
             res = "Корзина";
         else if ('objId' in params && countSlesh == 3)
@@ -71,7 +71,7 @@ const HistoryBar = observer(() => {
     }
 
     const elements = getElements(path)
-    console.log(elements)
+    //console.log(elements)
 
   return (
       <div className="ms-4 d-flex flex-row" style={{position:"relative", top:"90px"}}>

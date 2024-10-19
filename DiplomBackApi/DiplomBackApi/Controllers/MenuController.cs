@@ -101,7 +101,7 @@ public class MenuController : MyBaseController
     /// Получение всех пунктов меню
     /// </summary>
     /// <returns></returns>
-    [HttpPost("all")]
+    [HttpGet("all")]
     public async Task<ActionResult> GetAll()
     {
         var user = GetUserIdByAuth();
