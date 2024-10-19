@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DiplomBackApi.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20241019123030_V1")]
+    [Migration("20241019123856_V1")]
     partial class V1
     {
         /// <inheritdoc />
@@ -276,39 +276,6 @@ namespace DiplomBackApi.Migrations
                     b.ToTable("objstate", "Diplom");
                 });
 
-            modelBuilder.Entity("DiplomBackApi.Models.ObjStateTransiton", b =>
-                {
-                    b.Property<int>("StateFromId")
-                        .HasColumnType("integer")
-                        .HasColumnName("stateFromId")
-                        .HasColumnOrder(0);
-
-                    b.Property<int>("StateToId")
-                        .HasColumnType("integer")
-                        .HasColumnName("stateToId")
-                        .HasColumnOrder(1);
-
-                    b.Property<int?>("StateFromUserId")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("StateToUserId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer")
-                        .HasColumnName("userId");
-
-                    b.HasKey("StateFromId", "StateToId");
-
-                    b.HasIndex("UserId");
-
-                    b.HasIndex("StateFromId", "StateFromUserId");
-
-                    b.HasIndex("StateToId", "StateToUserId");
-
-                    b.ToTable("objstatetransition", "Diplom");
-                });
-
             modelBuilder.Entity("DiplomBackApi.Models.ObjType", b =>
                 {
                     b.Property<int>("Id")
@@ -555,21 +522,6 @@ namespace DiplomBackApi.Migrations
                         .IsRequired();
 
                     b.Navigation("Obj");
-                });
-
-            modelBuilder.Entity("DiplomBackApi.Models.ObjStateTransiton", b =>
-                {
-                    b.HasOne("DiplomBackApi.Models.ObjState", "StateFrom")
-                        .WithMany()
-                        .HasForeignKey("StateFromId", "StateFromUserId");
-
-                    b.HasOne("DiplomBackApi.Models.ObjState", "StateTo")
-                        .WithMany()
-                        .HasForeignKey("StateToId", "StateToUserId");
-
-                    b.Navigation("StateFrom");
-
-                    b.Navigation("StateTo");
                 });
 
             modelBuilder.Entity("DiplomBackApi.Models.ObjTypeAttribute", b =>

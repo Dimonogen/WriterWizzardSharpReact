@@ -101,34 +101,6 @@ namespace DiplomBackApi.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "objstatetransition",
-                schema: "Diplom",
-                columns: table => new
-                {
-                    stateFromId = table.Column<int>(type: "integer", nullable: false),
-                    stateToId = table.Column<int>(type: "integer", nullable: false),
-                    StateFromUserId = table.Column<int>(type: "integer", nullable: true),
-                    StateToUserId = table.Column<int>(type: "integer", nullable: true),
-                    userId = table.Column<int>(type: "integer", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_objstatetransition", x => new { x.stateFromId, x.stateToId });
-                    table.ForeignKey(
-                        name: "FK_objstatetransition_objstate_stateFromId_StateFromUserId",
-                        columns: x => new { x.stateFromId, x.StateFromUserId },
-                        principalSchema: "Diplom",
-                        principalTable: "objstate",
-                        principalColumns: new[] { "id", "userId" });
-                    table.ForeignKey(
-                        name: "FK_objstatetransition_objstate_stateToId_StateToUserId",
-                        columns: x => new { x.stateToId, x.StateToUserId },
-                        principalSchema: "Diplom",
-                        principalTable: "objstate",
-                        principalColumns: new[] { "id", "userId" });
-                });
-
-            migrationBuilder.CreateTable(
                 name: "menuelement",
                 schema: "Diplom",
                 columns: table => new
@@ -426,24 +398,6 @@ namespace DiplomBackApi.Migrations
                 column: "userId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_objstatetransition_stateFromId_StateFromUserId",
-                schema: "Diplom",
-                table: "objstatetransition",
-                columns: new[] { "stateFromId", "StateFromUserId" });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_objstatetransition_stateToId_StateToUserId",
-                schema: "Diplom",
-                table: "objstatetransition",
-                columns: new[] { "stateToId", "StateToUserId" });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_objstatetransition_userId",
-                schema: "Diplom",
-                table: "objstatetransition",
-                column: "userId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_objtype_userId",
                 schema: "Diplom",
                 table: "objtype",
@@ -495,10 +449,6 @@ namespace DiplomBackApi.Migrations
 
             migrationBuilder.DropTable(
                 name: "objattribute",
-                schema: "Diplom");
-
-            migrationBuilder.DropTable(
-                name: "objstatetransition",
                 schema: "Diplom");
 
             migrationBuilder.DropTable(

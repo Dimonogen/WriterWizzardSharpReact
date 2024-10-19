@@ -64,11 +64,6 @@ public class ApplicationContext : DbContext
     public DbSet<ObjState> ObjStates { get; set; }
 
     /// <summary>
-    /// Переходы между состояними объектов
-    /// </summary>
-    public DbSet<ObjStateTransiton> ObjStateTransitons { get; set; }
-
-    /// <summary>
     /// Пункты левого меню
     /// </summary>
     public DbSet<MenuElement> MenuElements { get; set; }
