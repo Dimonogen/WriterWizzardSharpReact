@@ -15,6 +15,7 @@ const Auth = observer( () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [name, setName] = useState('')
+    const [projectName, setProjectName] = useState('')
 
     const click = async () => {
       
@@ -31,7 +32,7 @@ const Auth = observer( () => {
           //console.log(user_l)
         }
         else{
-          user_l = await registration(email, name, password);
+          user_l = await registration({email, name, password, projectName});
         }
         user.setUser(user_l)
         user.setIsAuth(true)
@@ -60,12 +61,21 @@ const Auth = observer( () => {
             {isLogin ?
             ''
                 :
-            <Form.Control
-                className="mt-3"
-                placeholder="Введите имя пользователя"
-                value={name}
-                onChange={e => setName(e.target.value)}
-            />
+                <div>
+                    <Form.Control
+                        className="mt-3"
+                        placeholder="Введите имя пользователя"
+                        value={name}
+                        onChange={e => setName(e.target.value)}
+                    />
+                    <Form.Control
+                        className="mt-3"
+                        placeholder="Введите название проекта"
+                        value={projectName}
+                        onChange={e => setProjectName(e.target.value)}
+                    />
+                </div>
+
             }
             <Form.Control 
               className='mt-3'

@@ -4,303 +4,297 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
 
-namespace DiplomBackApi.Controllers
+namespace DiplomBackApi.Controllers;
+
+/// <summary>
+/// Контроллер api для объектов
+/// </summary>
+[ApiController]
+[Route("api/objType")]
+public class ObjTypeController : MyBaseController
 {
+
+    public ObjTypeController(ApplicationContext context) : base(context) { }
+
     /// <summary>
-    /// Контроллер api для объектов
+    /// End Point для создания типа объекта
     /// </summary>
-    [ApiController]
-    [Route("api/objType")]
-    public class ObjTypeController : MyBaseController
+    /// <param name="typeModel"></param>
+    /// <returns></returns>
+    [HttpPost("create")]
+    public async Task<ActionResult> CreateObjType(CreateTypeModel typeModel)
     {
+        var user = GetUserIdByAuth();
 
-
-        /// <summary>
-        /// End Point для создания типа объекта
-        /// </summary>
-        /// <param name="typeModel"></param>
-        /// <returns></returns>
-        [HttpPost("create")]
-        public async Task<ActionResult> CreateObjType(CreateTypeModel typeModel)
+        ObjType type = new ObjType
         {
-            var user = GetUserIdByAuth();
-            using (ApplicationContext db = new ApplicationContext())
+            Name = typeModel.name,
+            Code = typeModel.code,
+            Description = typeModel.description,
+            UserId = user.Id,
+        };
+
+        db.ObjTypes.Add(type);
+
+        await db.SaveChangesAsync();
+
+        foreach (var attr in typeModel.attributes)
+        {
+            db.ObjTypeAttributes.Add(new ObjTypeAttribute
             {
-                ObjType type = new ObjType
-                {
-                    Name = typeModel.name,
-                    Code = typeModel.code,
-                    Description = typeModel.description,
-                    UserId = user.Id,
-                };
-
-                db.ObjTypes.Add(type);
-
-                await db.SaveChangesAsync();
-
-                foreach(var attr in typeModel.attributes)
-                {
-                    db.ObjTypeAttributes.Add(new ObjTypeAttribute
-                    {
-                        Name = attr.name,
-                        Number = attr.number,
-                        TypeId = type.Id,
-                        AttributeTypeId = attr.typeId,
-                        UserId = user.Id,
-                    });
-                }
-
-                if (typeModel.createMenu.HasValue && typeModel.createMenu.Value)
-                {
-                    db.MenuElements.Add(new MenuElement
-                    {
-                        Name = typeModel.name,
-                        Description = typeModel.name,
-                        ObjTypeId = type.Id,
-                        UserId = user.Id,
-                        Filters = ""
-                    });
-                }
-
-                await db.SaveChangesAsync();
-
-                return Ok(type);
-            }
+                Name = attr.name,
+                Number = attr.number,
+                TypeId = type.Id,
+                AttributeTypeId = attr.typeId,
+                UserId = user.Id,
+            });
         }
 
-        /// <summary>
-        /// End Point для создания типа объекта
-        /// </summary>
-        /// <param name="typeModel"></param>
-        /// <returns></returns>
-        [HttpPost("edit")]
-        public async Task<ActionResult> EditObjType(EditTypeModel typeModel)
+        if (typeModel.createMenu.HasValue && typeModel.createMenu.Value)
         {
-            using (ApplicationContext db = new ApplicationContext())
+            db.MenuElements.Add(new MenuElement
             {
-                ObjType? type = db.ObjTypes.FirstOrDefault(x=> x.Id == typeModel.id);
+                Name = typeModel.name,
+                Description = typeModel.name,
+                ObjTypeId = type.Id,
+                UserId = user.Id,
+                Filters = ""
+            });
+        }
 
-                if (type == null)
-                    return BadRequest();
+        await db.SaveChangesAsync();
 
-                type.Name = typeModel.name;
-                type.Description = typeModel.description;
-                type.Code = typeModel.code;
+        return Ok(type);
 
-                foreach (var attr in typeModel.attributes)
+    }
+
+    /// <summary>
+    /// End Point для создания типа объекта
+    /// </summary>
+    /// <param name="typeModel"></param>
+    /// <returns></returns>
+    [HttpPost("edit")]
+    public async Task<ActionResult> EditObjType(EditTypeModel typeModel)
+    {
+        var user = GetUserIdByAuth();
+        ObjType? type = db.ObjTypes.FirstOrDefault(x => x.Id == typeModel.id && x.UserId == user.Id);
+
+        if (type == null)
+            return BadRequest();
+
+        type.Name = typeModel.name;
+        type.Description = typeModel.description;
+        type.Code = typeModel.code;
+
+        foreach (var attr in typeModel.attributes)
+        {
+            var attr_exist = db.ObjTypeAttributes.FirstOrDefault(
+                x => x.Number == attr.number && x.TypeId == typeModel.id);
+
+            if (attr_exist == null)
+            {
+                db.ObjTypeAttributes.Add(new ObjTypeAttribute
                 {
-                    var attr_exist = db.ObjTypeAttributes.FirstOrDefault(
-                        x => x.Number == attr.number && x.TypeId == typeModel.id);
-
-                    if (attr_exist == null)
-                    {
-                        db.ObjTypeAttributes.Add(new ObjTypeAttribute
-                        {
-                            Name = attr.name,
-                            Number = attr.number,
-                            TypeId = type.Id,
-                            AttributeTypeId = attr.typeId,
-                        });
-                    }
-                    else
-                    {
-                        attr_exist.Name = attr.name;
-                        attr_exist.AttributeTypeId = attr.typeId;
-                    }
-
-                    
-                }
-
-                await db.SaveChangesAsync();
-
-                var typeDto = new ObjTypeDto
-                {
-                    Id = type.Id,
-                    Name = type.Name,
-                    Description = type.Description,
-                    attributes = new List<ObjTypeAttributeDto>()
-                };
-
-                db.ObjTypeAttributes.Where(x => x.TypeId == type.Id).ToList().ForEach(a =>
-                {
-                    typeDto.attributes.Add(new ObjTypeAttributeDto
-                    {
-                        Id = a.Id,
-                        Name = a.Name,
-                        Number = a.Number,
-                        TypeId = a.AttributeTypeId,
-                    });
+                    Name = attr.name,
+                    Number = attr.number,
+                    TypeId = type.Id,
+                    AttributeTypeId = attr.typeId,
                 });
-
-                return Ok(typeDto);
             }
+            else
+            {
+                attr_exist.Name = attr.name;
+                attr_exist.AttributeTypeId = attr.typeId;
+            }
+
+
         }
 
-        /// <summary>
-        /// Возвращает список всех типов с атрибутами
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet("allInclude")]
-        public async Task<ActionResult> GetAllInclude()
+        await db.SaveChangesAsync();
+
+        var typeDto = new ObjTypeDto
         {
-            using (ApplicationContext db = new ApplicationContext())
+            Id = type.Id,
+            Name = type.Name,
+            Description = type.Description,
+            attributes = new List<ObjTypeAttributeDto>()
+        };
+
+        db.ObjTypeAttributes.Where(x => x.TypeId == type.Id).ToList().ForEach(a =>
+        {
+            typeDto.attributes.Add(new ObjTypeAttributeDto
             {
-                List<ObjTypeDto> list = new List<ObjTypeDto>();
-                db.ObjTypes.ToList().ForEach(type =>
+                Id = a.Id,
+                Name = a.Name,
+                Number = a.Number,
+                TypeId = a.AttributeTypeId,
+            });
+        });
+
+        return Ok(typeDto);
+
+    }
+
+    /// <summary>
+    /// Возвращает список всех типов с атрибутами
+    /// </summary>
+    /// <returns></returns>
+    [HttpGet("allInclude")]
+    public async Task<ActionResult> GetAllInclude()
+    {
+        var user = GetUserIdByAuth();
+        List<ObjTypeDto> list = new List<ObjTypeDto>();
+        db.ObjTypes.Where(x => x.UserId == user.Id).ToList().ForEach(type =>
+        {
+            var typeDto = new ObjTypeDto
+            {
+                Id = type.Id,
+                Name = type.Name,
+                Code = type.Code,
+                Description = type.Description,
+                attributes = new List<ObjTypeAttributeDto>()
+            };
+
+            db.ObjTypeAttributes.Where(x => x.TypeId == type.Id).ToList().ForEach(a =>
+            {
+                typeDto.attributes.Add(new ObjTypeAttributeDto
                 {
-                    var typeDto = new ObjTypeDto
-                    {
-                        Id = type.Id,
-                        Name = type.Name,
-                        Code = type.Code,
-                        Description = type.Description,
-                        attributes = new List<ObjTypeAttributeDto>()
-                    };
-
-                    db.ObjTypeAttributes.Where(x => x.TypeId == type.Id).ToList().ForEach(a =>
-                    {
-                        typeDto.attributes.Add(new ObjTypeAttributeDto
-                        {
-                            Id = a.Id,
-                            Name = a.Name,
-                            Number = a.Number,
-                            TypeId = a.AttributeTypeId,
-                        });
-                    });
-
-                    list.Add(typeDto);
+                    Id = a.Id,
+                    Name = a.Name,
+                    Number = a.Number,
+                    TypeId = a.AttributeTypeId,
                 });
+            });
 
-                return Ok(list);
-            }
-        }
+            list.Add(typeDto);
+        });
 
-        /// <summary>
-        /// Возвращает список всех типов без атрибутов
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet("all")]
-        public async Task<ActionResult> GetAll()
+        return Ok(list);
+
+    }
+
+    /// <summary>
+    /// Возвращает список всех типов без атрибутов
+    /// </summary>
+    /// <returns></returns>
+    [HttpGet("all")]
+    public async Task<ActionResult> GetAll()
+    {
+        var user = GetUserIdByAuth();
+
+        List<ObjTypeDto> list = new List<ObjTypeDto>();
+        db.ObjTypes.Where(x => x.UserId == user.Id).OrderBy(x => x.Id).ToList().ForEach(type =>
         {
-            var user = GetUserIdByAuth();
-            using (ApplicationContext db = new ApplicationContext())
-            {
-                List<ObjTypeDto> list = new List<ObjTypeDto>();
-                db.ObjTypes.Where(x=> x.UserId == user.Id).OrderBy(x => x.Id).ToList().ForEach(type =>
-                {
-                    list.Add(
-                        new ObjTypeDto
-                        {
-                            Id = type.Id,
-                            Name = type.Name,
-                            Code = type.Code,
-                            Description = type.Description
-                        } 
-                    );
-                });
-
-                //Console.WriteLine("GetAllTypes");
-
-                return Ok(list);
-            }
-        }
-
-
-        /// <summary>
-        /// Удаляет тип с заданным id
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteItem(int id)
-        {
-            using (ApplicationContext db = new ApplicationContext())
-            {
-                db.ObjTypes.RemoveRange(db.ObjTypes.Where(x => x.Id == id).ToArray());
-
-                await db.SaveChangesAsync();
-
-                return Ok();
-            }
-        }
-
-
-        /// <summary>
-        /// Возвращает информацию о типе с атрибутами
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        [HttpGet("{id}")]
-        public async Task<ActionResult> GetItem(int id)
-        {
-            using (ApplicationContext db = new ApplicationContext())
-            {
-                var type = await db.ObjTypes.FirstOrDefaultAsync(x => x.Id == id);
-
-                if (type == null)
-                    return Ok();
-
-                var typeDto = new ObjTypeDto
+            list.Add(
+                new ObjTypeDto
                 {
                     Id = type.Id,
                     Name = type.Name,
                     Code = type.Code,
-                    Description = type.Description,
-                    attributes = new List<ObjTypeAttributeDto>()
-                };
+                    Description = type.Description
+                }
+            );
+        });
 
-                db.ObjTypeAttributes.Where(x => x.TypeId == type.Id).ToList().ForEach(a =>
-                {
-                    var attrType = db.AttributeTypes.FirstOrDefault(x => x.Id == a.AttributeTypeId);
-                    typeDto.attributes.Add(new ObjTypeAttributeDto
-                    {
-                        Id = a.Id,
-                        Name = a.Name,
-                        Number = a.Number,
-                        TypeId = a.AttributeTypeId,
-                        RegEx = attrType.RegExValidation,
-                        Type = attrType.Type,
-                        IsComplex = attrType.IsComplex
-                    });
-                });
+        //Console.WriteLine("GetAllTypes");
 
-                return Ok(typeDto);
-            }
-        }
+        return Ok(list);
 
     }
 
 
-    public class CreateTypeModel
+    /// <summary>
+    /// Удаляет тип с заданным id
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    [HttpDelete("{id}")]
+    public async Task<ActionResult> DeleteItem(int id)
     {
-        public string name { get; set; }
+        var user = GetUserIdByAuth();
+        db.ObjTypes.RemoveRange(db.ObjTypes.Where(x => x.Id == id && x.UserId == user.Id).ToArray());
 
-        public string description { get; set; }
+        await db.SaveChangesAsync();
 
-        public string code { get; set; }
+        return Ok();
 
-        public List<CreateTypeAttributeModel> attributes {  get; set; }
-
-        public bool? createMenu { get; set; }
     }
 
-    public class EditTypeModel
+
+    /// <summary>
+    /// Возвращает информацию о типе с атрибутами
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    [HttpGet("{id}")]
+    public async Task<ActionResult> GetItem(int id)
     {
-        public int id { get; set; }
+        var user = GetUserIdByAuth();
+        var type = await db.ObjTypes.FirstOrDefaultAsync(x => x.Id == id && x.UserId == user.Id);
 
-        public string name { get; set; }
+        if (type == null)
+            return Ok();
 
-        public string description { get; set; }
+        var typeDto = new ObjTypeDto
+        {
+            Id = type.Id,
+            Name = type.Name,
+            Code = type.Code,
+            Description = type.Description,
+            attributes = new List<ObjTypeAttributeDto>()
+        };
 
-        public string code { get; set; }
+        db.ObjTypeAttributes.Where(x => x.TypeId == type.Id).ToList().ForEach(a =>
+        {
+            var attrType = db.AttributeTypes.FirstOrDefault(x => x.Id == a.AttributeTypeId);
+            typeDto.attributes.Add(new ObjTypeAttributeDto
+            {
+                Id = a.Id,
+                Name = a.Name,
+                Number = a.Number,
+                TypeId = a.AttributeTypeId,
+                RegEx = attrType.RegExValidation,
+                Type = attrType.Type,
+                IsComplex = attrType.IsComplex
+            });
+        });
 
-        public List<CreateTypeAttributeModel> attributes { get; set; }
+        return Ok(typeDto);
+
     }
 
-    public class CreateTypeAttributeModel
-    {
-        public string name {  set; get; }
-        public int number { get; set; }
-        public int typeId { get; set; }
-    }
+}
+
+
+public class CreateTypeModel
+{
+    public string name { get; set; }
+
+    public string description { get; set; }
+
+    public string code { get; set; }
+
+    public List<CreateTypeAttributeModel> attributes {  get; set; }
+
+    public bool? createMenu { get; set; }
+}
+
+public class EditTypeModel
+{
+    public int id { get; set; }
+
+    public string name { get; set; }
+
+    public string description { get; set; }
+
+    public string code { get; set; }
+
+    public List<CreateTypeAttributeModel> attributes { get; set; }
+}
+
+public class CreateTypeAttributeModel
+{
+    public string name {  set; get; }
+    public int number { get; set; }
+    public int typeId { get; set; }
 }

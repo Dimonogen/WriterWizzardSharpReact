@@ -13,10 +13,8 @@ const MenuPage = () => {
         {id:1, name:'Типы объектов', loadF: () => {return {row:[], column:[]} } },
         {id:2, name:'Типы атрибутов', loadF: () => {return {row:[], column:[]} } },
         {id:3, name:'Пункты меню', loadF: () => {return {row: [], column: []} } },
-        {id:4, name:'Права доступа', loadF: () => {return {row:[], column:[]} } },
-        {id:5, name:'Роли пользователей', loadF: () => {return {row:[], column:[]} } },
-        {id:6, name:'Состояния объектов', loadF: () => {return {row:[], column:[]} } },
-        {id:7, name:'Переходы состояний', loadF: () => {return {row:[], column:[]} } },
+        {id:4, name:'Состояния объектов', loadF: () => {return {row:[], column:[]} } },
+        {id:5, name:'Переходы состояний', loadF: () => {return {row:[], column:[]} } },
     ]
 
     const {id} = useParams()

@@ -13,6 +13,11 @@ namespace DiplomBackApi.Controllers;
 public class UserSettingsController : MyBaseController
 {
 
+    public UserSettingsController(ApplicationContext context) : base(context)
+    {
+
+    }
+
     /// <summary>
     /// Сохранить настройки
     /// </summary>
@@ -22,32 +27,31 @@ public class UserSettingsController : MyBaseController
     [HttpPut("save")]
     public async Task<ActionResult> Save(string gridCode, [FromBody] UserSettingModel settings)
     {
-        using (ApplicationContext db = new ApplicationContext())
+        
+        var user = GetUserIdByAuth();
+        var objs = await db.UserSettings.Where(s => s.UserId == user.Id && s.Code == gridCode).ToListAsync();
+
+        if (objs.Count == 0)
         {
-            var user = GetUserIdByAuth();
-            var objs = await db.UserSettings.Where(s => s.UserId == user.Id && s.Code == gridCode).ToListAsync();
-
-            if (objs.Count == 0)
+            db.UserSettings.Add(new Models.UserSettings
             {
-                db.UserSettings.Add(new Models.UserSettings
-                {
-                    Code = gridCode,
-                    UserId = user.Id,
-                    Value = settings.settings
-                });
-            }
-            else if (objs.Count == 1)
-            {
-                var obj = objs.First().Value = settings.settings;
-            }
-            else
-            {
-                throw new Exception("UserSettings вернул больше значений, критикал ошипка!");
-            }
-
-            await db.SaveChangesAsync();
-            return Ok("Ok");
+                Code = gridCode,
+                UserId = user.Id,
+                Value = settings.settings
+            });
         }
+        else if (objs.Count == 1)
+        {
+            var obj = objs.First().Value = settings.settings;
+        }
+        else
+        {
+            throw new Exception("UserSettings вернул больше значений, критикал ошипка!");
+        }
+
+        await db.SaveChangesAsync();
+        return Ok("Ok");
+        
     }
 
 
@@ -59,19 +63,18 @@ public class UserSettingsController : MyBaseController
     [HttpGet("")]
     public async Task<ActionResult> GetSettings(string gridCode)
     {
-        using (ApplicationContext db = new ApplicationContext())
+       
+        var user = GetUserIdByAuth();
+        var objs = await db.UserSettings.Where(s => s.UserId == user.Id && s.Code == gridCode).ToListAsync();
+        if(objs.Count == 1)
         {
-            var user = GetUserIdByAuth();
-            var objs = await db.UserSettings.Where(s => s.UserId == user.Id && s.Code == gridCode).ToListAsync();
-            if(objs.Count == 1)
-            {
-                return Ok(objs.First().Value);
-            }
-            else
-            {
-                return Ok("");
-            }
+            return Ok(objs.First().Value);
         }
+        else
+        {
+            return Ok("");
+        }
+        
     }
 }
 

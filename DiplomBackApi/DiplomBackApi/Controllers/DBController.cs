@@ -9,39 +9,41 @@ namespace DiplomBackApi.Controllers;
 public class DBController : MyBaseController
 {
 
+    public DBController(ApplicationContext context) : base(context)
+    {
+    }
+
     [HttpGet("ClearInit")]
     public async Task<ActionResult> ClearInitBd()
     {
-        using (ApplicationContext db = new ApplicationContext())
+        
+        try
         {
-            try
-            {
-                await db.ClearInit();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message + "\n\n" + ex.StackTrace);
-            }
-            return Ok("Успех");
+            await db.ClearInit();
         }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message + "\n\n" + ex.StackTrace);
+        }
+        return Ok("Успех");
+        
     }
 
 
     [HttpGet("SaveDb")]
     public async Task<ActionResult> SaveDbToJson()
     {
-        using(ApplicationContext db = new ApplicationContext())
+        
+        try
         {
-            try
-            {
-                await db.SaveDbToJson();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message + "\n\n" + ex.StackTrace);
-            }
-            return Ok("Успех");
+            await db.SaveDbToJson();
         }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message + "\n\n" + ex.StackTrace);
+        }
+        return Ok("Успех");
+        
     }
 
 

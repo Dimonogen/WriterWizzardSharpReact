@@ -1,0 +1,487 @@
+2024-10-19 10:24:43.862 +03:00 [DBG] [] (Td=) Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2024-10-19 10:24:44.059 +03:00 [DBG] [] (Td=) Hosting starting
+2024-10-19 10:24:44.111 +03:00 [INF] [] (Td=) User profile is available. Using 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-19 10:24:44.126 +03:00 [DBG] [] (Td=) Reading data from file 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys\key-2138e16a-d3d0-4c9d-8bb1-b268f954e92d.xml'.
+2024-10-19 10:24:44.143 +03:00 [DBG] [] (Td=) Reading data from file 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys\key-cc1bb958-e778-46b6-927a-0aa15b306f56.xml'.
+2024-10-19 10:24:44.146 +03:00 [DBG] [] (Td=) Reading data from file 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys\key-ed798581-1196-422f-8eed-85fc65f30147.xml'.
+2024-10-19 10:24:44.153 +03:00 [DBG] [] (Td=) Found key {2138e16a-d3d0-4c9d-8bb1-b268f954e92d}.
+2024-10-19 10:24:44.160 +03:00 [DBG] [] (Td=) Found key {cc1bb958-e778-46b6-927a-0aa15b306f56}.
+2024-10-19 10:24:44.162 +03:00 [DBG] [] (Td=) Found key {ed798581-1196-422f-8eed-85fc65f30147}.
+2024-10-19 10:24:44.170 +03:00 [DBG] [] (Td=) Considering key {2138e16a-d3d0-4c9d-8bb1-b268f954e92d} with expiration date 2024-11-07 09:01:22Z as default key.
+2024-10-19 10:24:44.175 +03:00 [DBG] [] (Td=) Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-10-19 10:24:44.179 +03:00 [DBG] [] (Td=) Decrypting secret element using Windows DPAPI.
+2024-10-19 10:24:44.191 +03:00 [DBG] [] (Td=) Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-10-19 10:24:44.197 +03:00 [DBG] [] (Td=) Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2024-10-19 10:24:44.200 +03:00 [DBG] [] (Td=) Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2024-10-19 10:24:44.203 +03:00 [DBG] [] (Td=) Using key {2138e16a-d3d0-4c9d-8bb1-b268f954e92d} as the default key.
+2024-10-19 10:24:44.206 +03:00 [DBG] [] (Td=) Key ring with default key {2138e16a-d3d0-4c9d-8bb1-b268f954e92d} was loaded during application startup.
+2024-10-19 10:24:44.404 +03:00 [INF] [] (Td=) Now listening on: http://localhost:5000
+2024-10-19 10:24:44.406 +03:00 [DBG] [] (Td=) Loaded hosting startup assembly DiplomBackApi
+2024-10-19 10:24:44.407 +03:00 [DBG] [] (Td=) Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2024-10-19 10:24:44.409 +03:00 [DBG] [] (Td=) Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2024-10-19 10:24:44.411 +03:00 [INF] [] (Td=) Application started. Press Ctrl+C to shut down.
+2024-10-19 10:24:44.412 +03:00 [INF] [] (Td=) Hosting environment: Development
+2024-10-19 10:24:44.414 +03:00 [INF] [] (Td=) Content root path: C:\_Files\WriterWizzardSharpReact\DiplomBackApi\DiplomBackApi
+2024-10-19 10:24:44.416 +03:00 [DBG] [] (Td=) Hosting started
+2024-10-19 10:24:44.568 +03:00 [DBG] [] (Td=) Connection id "0HN7G1SDDRF91" received FIN.
+2024-10-19 10:24:44.568 +03:00 [DBG] [] (Td=) Connection id "0HN7G1SDDRF90" received FIN.
+2024-10-19 10:24:44.575 +03:00 [DBG] [] (Td=) Connection id "0HN7G1SDDRF90" accepted.
+2024-10-19 10:24:44.575 +03:00 [DBG] [] (Td=) Connection id "0HN7G1SDDRF91" accepted.
+2024-10-19 10:24:44.581 +03:00 [DBG] [] (Td=) Connection id "0HN7G1SDDRF90" started.
+2024-10-19 10:24:44.581 +03:00 [DBG] [] (Td=) Connection id "0HN7G1SDDRF91" started.
+2024-10-19 10:24:44.591 +03:00 [DBG] [] (Td=) Connection id "0HN7G1SDDRF90" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-19 10:24:44.591 +03:00 [DBG] [] (Td=) Connection id "0HN7G1SDDRF91" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-19 10:24:44.599 +03:00 [DBG] [] (Td=) Connection id "0HN7G1SDDRF91" disconnecting.
+2024-10-19 10:24:44.599 +03:00 [DBG] [] (Td=) Connection id "0HN7G1SDDRF90" disconnecting.
+2024-10-19 10:24:44.610 +03:00 [DBG] [] (Td=) Connection id "0HN7G1SDDRF91" stopped.
+2024-10-19 10:24:44.610 +03:00 [DBG] [] (Td=) Connection id "0HN7G1SDDRF90" stopped.
+2024-10-19 10:24:44.798 +03:00 [DBG] [] (Td=) Connection id "0HN7G1SDDRF92" accepted.
+2024-10-19 10:24:44.800 +03:00 [DBG] [] (Td=) Connection id "0HN7G1SDDRF92" started.
+2024-10-19 10:24:44.839 +03:00 [INF] [] (Td=) Request starting HTTP/1.1 GET http://localhost:5000/swagger/index.html - null null
+2024-10-19 10:24:44.973 +03:00 [DBG] [] (Td=) Wildcard detected, all requests with hosts will be allowed.
+2024-10-19 10:24:45.088 +03:00 [DBG] [] (Td=) Response markup is scheduled to include Browser Link script injection.
+2024-10-19 10:24:45.092 +03:00 [DBG] [] (Td=) Response markup is scheduled to include browser refresh script injection.
+2024-10-19 10:24:45.116 +03:00 [DBG] [] (Td=) Response markup was updated to include Browser Link script injection.
+2024-10-19 10:24:45.118 +03:00 [DBG] [] (Td=) Response markup was updated to include browser refresh script injection.
+2024-10-19 10:24:45.124 +03:00 [DBG] [] (Td=) Connection id "0HN7G1SDDRF92" completed keep alive response.
+2024-10-19 10:24:45.130 +03:00 [INF] [] (Td=) Request finished HTTP/1.1 GET http://localhost:5000/swagger/index.html - 200 null text/html;charset=utf-8 297.8192ms
+2024-10-19 10:24:45.184 +03:00 [DBG] [] (Td=) Connection id "0HN7G1SDDRF93" accepted.
+2024-10-19 10:24:45.185 +03:00 [INF] [] (Td=) Request starting HTTP/1.1 GET http://localhost:5000/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-19 10:24:45.186 +03:00 [DBG] [] (Td=) Connection id "0HN7G1SDDRF93" started.
+2024-10-19 10:24:45.190 +03:00 [INF] [] (Td=) Request starting HTTP/1.1 GET http://localhost:5000/_vs/browserLink - null null
+2024-10-19 10:24:45.192 +03:00 [DBG] [] (Td=) Connection id "0HN7G1SDDRF92" completed keep alive response.
+2024-10-19 10:24:45.195 +03:00 [INF] [] (Td=) Request finished HTTP/1.1 GET http://localhost:5000/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 9.8421ms
+2024-10-19 10:24:45.302 +03:00 [DBG] [] (Td=) Connection id "0HN7G1SDDRF93" completed keep alive response.
+2024-10-19 10:24:45.307 +03:00 [INF] [] (Td=) Request finished HTTP/1.1 GET http://localhost:5000/_vs/browserLink - 200 null text/javascript; charset=UTF-8 117.5886ms
+2024-10-19 10:24:45.356 +03:00 [INF] [] (Td=) Request starting HTTP/1.1 GET http://localhost:5000/swagger/v1/swagger.json - null null
+2024-10-19 10:24:45.515 +03:00 [DBG] [] (Td=) Connection id "0HN7G1SDDRF93" completed keep alive response.
+2024-10-19 10:24:45.518 +03:00 [INF] [] (Td=) Request finished HTTP/1.1 GET http://localhost:5000/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 161.9971ms
+2024-10-19 10:25:00.597 +03:00 [INF] [] (Td=) Request starting HTTP/1.1 POST http://localhost:5000/api/user/registration - application/json 94
+2024-10-19 10:25:00.604 +03:00 [DBG] [] (Td=) POST requests are not supported
+2024-10-19 10:25:00.607 +03:00 [WRN] [] (Td=) Failed to determine the https port for redirect.
+2024-10-19 10:25:00.663 +03:00 [DBG] [] (Td=) 1 candidate(s) found for the request path '/api/user/registration'
+2024-10-19 10:25:00.668 +03:00 [DBG] [] (Td=) Endpoint 'DiplomBackApi.Controllers.UserController.Registration (DiplomBackApi)' with route pattern 'api/user/registration' is valid for the request path '/api/user/registration'
+2024-10-19 10:25:00.672 +03:00 [DBG] [] (Td=) Request matched endpoint 'DiplomBackApi.Controllers.UserController.Registration (DiplomBackApi)'
+2024-10-19 10:25:00.676 +03:00 [DBG] [] (Td=) The request has an origin header: 'http://localhost:5000'.
+2024-10-19 10:25:00.679 +03:00 [INF] [] (Td=) CORS policy execution successful.
+2024-10-19 10:25:00.683 +03:00 [DBG] [] (Td=) Static files was skipped as the request already matched an endpoint.
+2024-10-19 10:25:00.788 +03:00 [DBG] [] (Td=) AuthenticationScheme: Bearer was not authenticated.
+2024-10-19 10:25:00.793 +03:00 [INF] [] (Td=) Executing endpoint 'DiplomBackApi.Controllers.UserController.Registration (DiplomBackApi)'
+2024-10-19 10:25:00.822 +03:00 [INF] [] (Td=) Route matched with {action = "Registration", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Registration(DiplomBackApi.Controllers.RegistrationModel) on controller DiplomBackApi.Controllers.UserController (DiplomBackApi).
+2024-10-19 10:25:00.830 +03:00 [DBG] [] (Td=) Execution plan of authorization filters (in the following order): ["None"]
+2024-10-19 10:25:00.833 +03:00 [DBG] [] (Td=) Execution plan of resource filters (in the following order): ["None"]
+2024-10-19 10:25:00.834 +03:00 [DBG] [] (Td=) Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-10-19 10:25:00.835 +03:00 [DBG] [] (Td=) Execution plan of exception filters (in the following order): ["None"]
+2024-10-19 10:25:00.836 +03:00 [DBG] [] (Td=) Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-10-19 10:25:00.839 +03:00 [DBG] [] (Td=) Executing controller factory for controller DiplomBackApi.Controllers.UserController (DiplomBackApi)
+2024-10-19 10:25:02.278 +03:00 [DBG] [] (Td=) Executed controller factory for controller DiplomBackApi.Controllers.UserController (DiplomBackApi)
+2024-10-19 10:25:02.287 +03:00 [DBG] [] (Td=) Attempting to bind parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel' ...
+2024-10-19 10:25:02.292 +03:00 [DBG] [] (Td=) Attempting to bind parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel' using the name '' in request data ...
+2024-10-19 10:25:02.295 +03:00 [DBG] [] (Td=) Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2024-10-19 10:25:02.306 +03:00 [DBG] [] (Td=) Connection id "0HN7G1SDDRF93", Request id "0HN7G1SDDRF93:00000003": started reading request body.
+2024-10-19 10:25:02.309 +03:00 [DBG] [] (Td=) Connection id "0HN7G1SDDRF93", Request id "0HN7G1SDDRF93:00000003": done reading request body.
+2024-10-19 10:25:02.316 +03:00 [DBG] [] (Td=) JSON input formatter succeeded, deserializing to type 'DiplomBackApi.Controllers.RegistrationModel'
+2024-10-19 10:25:02.319 +03:00 [DBG] [] (Td=) Done attempting to bind parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel'.
+2024-10-19 10:25:02.320 +03:00 [DBG] [] (Td=) Done attempting to bind parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel'.
+2024-10-19 10:25:02.322 +03:00 [DBG] [] (Td=) Attempting to validate the bound parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel' ...
+2024-10-19 10:25:02.332 +03:00 [DBG] [] (Td=) Done attempting to validate the bound parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel'.
+2024-10-19 10:25:02.471 +03:00 [INF] [] (Td=) Executed action DiplomBackApi.Controllers.UserController.Registration (DiplomBackApi) in 1631.1233ms
+2024-10-19 10:25:02.476 +03:00 [INF] [] (Td=) Executed endpoint 'DiplomBackApi.Controllers.UserController.Registration (DiplomBackApi)'
+2024-10-19 10:25:02.480 +03:00 [ERR] [] (Td=) An unhandled exception has occurred while executing the request.
+System.PlatformNotSupportedException: Operation is not supported on this platform.
+   at System.Security.Cryptography.SHA3_512.Create()
+   at DiplomBackApi.Controllers.UserController.Registration(RegistrationModel model) in C:\_Files\WriterWizzardSharpReact\DiplomBackApi\DiplomBackApi\Controllers\UserController.cs:line 129
+   at lambda_method6(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-10-19 10:25:02.525 +03:00 [DBG] [] (Td=) Connection id "0HN7G1SDDRF93" completed keep alive response.
+2024-10-19 10:25:02.539 +03:00 [INF] [] (Td=) Request finished HTTP/1.1 POST http://localhost:5000/api/user/registration - 500 null text/plain; charset=utf-8 1941.7288ms
+2024-10-19 10:26:56.603 +03:00 [DBG] [] (Td=) Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2024-10-19 10:26:56.843 +03:00 [DBG] [] (Td=) Hosting starting
+2024-10-19 10:26:56.903 +03:00 [INF] [] (Td=) User profile is available. Using 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-19 10:26:56.915 +03:00 [DBG] [] (Td=) Reading data from file 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys\key-2138e16a-d3d0-4c9d-8bb1-b268f954e92d.xml'.
+2024-10-19 10:26:56.922 +03:00 [DBG] [] (Td=) Reading data from file 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys\key-cc1bb958-e778-46b6-927a-0aa15b306f56.xml'.
+2024-10-19 10:26:56.924 +03:00 [DBG] [] (Td=) Reading data from file 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys\key-ed798581-1196-422f-8eed-85fc65f30147.xml'.
+2024-10-19 10:26:56.929 +03:00 [DBG] [] (Td=) Found key {2138e16a-d3d0-4c9d-8bb1-b268f954e92d}.
+2024-10-19 10:26:56.934 +03:00 [DBG] [] (Td=) Found key {cc1bb958-e778-46b6-927a-0aa15b306f56}.
+2024-10-19 10:26:56.935 +03:00 [DBG] [] (Td=) Found key {ed798581-1196-422f-8eed-85fc65f30147}.
+2024-10-19 10:26:56.942 +03:00 [DBG] [] (Td=) Considering key {2138e16a-d3d0-4c9d-8bb1-b268f954e92d} with expiration date 2024-11-07 09:01:22Z as default key.
+2024-10-19 10:26:56.949 +03:00 [DBG] [] (Td=) Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-10-19 10:26:56.954 +03:00 [DBG] [] (Td=) Decrypting secret element using Windows DPAPI.
+2024-10-19 10:26:56.958 +03:00 [DBG] [] (Td=) Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-10-19 10:26:56.963 +03:00 [DBG] [] (Td=) Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2024-10-19 10:26:56.966 +03:00 [DBG] [] (Td=) Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2024-10-19 10:26:56.969 +03:00 [DBG] [] (Td=) Using key {2138e16a-d3d0-4c9d-8bb1-b268f954e92d} as the default key.
+2024-10-19 10:26:56.972 +03:00 [DBG] [] (Td=) Key ring with default key {2138e16a-d3d0-4c9d-8bb1-b268f954e92d} was loaded during application startup.
+2024-10-19 10:26:57.140 +03:00 [INF] [] (Td=) Now listening on: http://localhost:5000
+2024-10-19 10:26:57.141 +03:00 [DBG] [] (Td=) Loaded hosting startup assembly DiplomBackApi
+2024-10-19 10:26:57.143 +03:00 [DBG] [] (Td=) Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2024-10-19 10:26:57.144 +03:00 [DBG] [] (Td=) Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2024-10-19 10:26:57.146 +03:00 [INF] [] (Td=) Application started. Press Ctrl+C to shut down.
+2024-10-19 10:26:57.147 +03:00 [INF] [] (Td=) Hosting environment: Development
+2024-10-19 10:26:57.148 +03:00 [INF] [] (Td=) Content root path: C:\_Files\WriterWizzardSharpReact\DiplomBackApi\DiplomBackApi
+2024-10-19 10:26:57.149 +03:00 [DBG] [] (Td=) Hosting started
+2024-10-19 10:26:57.259 +03:00 [DBG] [] (Td=) Connection id "0HN7G1TKV9CK4" accepted.
+2024-10-19 10:26:57.262 +03:00 [DBG] [] (Td=) Connection id "0HN7G1TKV9CK4" started.
+2024-10-19 10:26:57.277 +03:00 [DBG] [] (Td=) Connection id "0HN7G1TKV9CK5" received FIN.
+2024-10-19 10:26:57.277 +03:00 [DBG] [] (Td=) Connection id "0HN7G1TKV9CK4" received FIN.
+2024-10-19 10:26:57.284 +03:00 [DBG] [] (Td=) Connection id "0HN7G1TKV9CK5" accepted.
+2024-10-19 10:26:57.290 +03:00 [DBG] [] (Td=) Connection id "0HN7G1TKV9CK4" disconnecting.
+2024-10-19 10:26:57.295 +03:00 [DBG] [] (Td=) Connection id "0HN7G1TKV9CK5" started.
+2024-10-19 10:26:57.297 +03:00 [DBG] [] (Td=) Connection id "0HN7G1TKV9CK4" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-19 10:26:57.298 +03:00 [DBG] [] (Td=) Connection id "0HN7G1TKV9CK5" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-19 10:26:57.301 +03:00 [DBG] [] (Td=) Connection id "0HN7G1TKV9CK5" disconnecting.
+2024-10-19 10:26:57.304 +03:00 [DBG] [] (Td=) Connection id "0HN7G1TKV9CK4" stopped.
+2024-10-19 10:26:57.304 +03:00 [DBG] [] (Td=) Connection id "0HN7G1TKV9CK5" stopped.
+2024-10-19 10:26:57.508 +03:00 [DBG] [] (Td=) Connection id "0HN7G1TKV9CK6" accepted.
+2024-10-19 10:26:57.510 +03:00 [DBG] [] (Td=) Connection id "0HN7G1TKV9CK6" started.
+2024-10-19 10:26:57.542 +03:00 [INF] [] (Td=) Request starting HTTP/1.1 GET http://localhost:5000/swagger/index.html - null null
+2024-10-19 10:26:57.667 +03:00 [DBG] [] (Td=) Wildcard detected, all requests with hosts will be allowed.
+2024-10-19 10:26:57.779 +03:00 [DBG] [] (Td=) Response markup is scheduled to include Browser Link script injection.
+2024-10-19 10:26:57.782 +03:00 [DBG] [] (Td=) Response markup is scheduled to include browser refresh script injection.
+2024-10-19 10:26:57.801 +03:00 [DBG] [] (Td=) Response markup was updated to include Browser Link script injection.
+2024-10-19 10:26:57.802 +03:00 [DBG] [] (Td=) Response markup was updated to include browser refresh script injection.
+2024-10-19 10:26:57.804 +03:00 [DBG] [] (Td=) Connection id "0HN7G1TKV9CK6" completed keep alive response.
+2024-10-19 10:26:57.809 +03:00 [INF] [] (Td=) Request finished HTTP/1.1 GET http://localhost:5000/swagger/index.html - 200 null text/html;charset=utf-8 272.1604ms
+2024-10-19 10:26:57.827 +03:00 [INF] [] (Td=) Request starting HTTP/1.1 GET http://localhost:5000/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-19 10:26:57.836 +03:00 [DBG] [] (Td=) Connection id "0HN7G1TKV9CK6" completed keep alive response.
+2024-10-19 10:26:57.838 +03:00 [INF] [] (Td=) Request finished HTTP/1.1 GET http://localhost:5000/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 11.0831ms
+2024-10-19 10:26:57.865 +03:00 [INF] [] (Td=) Request starting HTTP/1.1 GET http://localhost:5000/_vs/browserLink - null null
+2024-10-19 10:26:57.911 +03:00 [DBG] [] (Td=) Connection id "0HN7G1TKV9CK6" completed keep alive response.
+2024-10-19 10:26:57.912 +03:00 [INF] [] (Td=) Request finished HTTP/1.1 GET http://localhost:5000/_vs/browserLink - 200 null text/javascript; charset=UTF-8 47.7913ms
+2024-10-19 10:26:57.961 +03:00 [INF] [] (Td=) Request starting HTTP/1.1 GET http://localhost:5000/swagger/v1/swagger.json - null null
+2024-10-19 10:26:58.114 +03:00 [DBG] [] (Td=) Connection id "0HN7G1TKV9CK6" completed keep alive response.
+2024-10-19 10:26:58.117 +03:00 [INF] [] (Td=) Request finished HTTP/1.1 GET http://localhost:5000/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 155.349ms
+2024-10-19 10:27:08.169 +03:00 [INF] [] (Td=) Request starting HTTP/1.1 POST http://localhost:5000/api/user/registration - application/json 94
+2024-10-19 10:27:08.184 +03:00 [DBG] [] (Td=) POST requests are not supported
+2024-10-19 10:27:08.190 +03:00 [WRN] [] (Td=) Failed to determine the https port for redirect.
+2024-10-19 10:27:08.231 +03:00 [DBG] [] (Td=) 1 candidate(s) found for the request path '/api/user/registration'
+2024-10-19 10:27:08.240 +03:00 [DBG] [] (Td=) Endpoint 'DiplomBackApi.Controllers.UserController.Registration (DiplomBackApi)' with route pattern 'api/user/registration' is valid for the request path '/api/user/registration'
+2024-10-19 10:27:08.245 +03:00 [DBG] [] (Td=) Request matched endpoint 'DiplomBackApi.Controllers.UserController.Registration (DiplomBackApi)'
+2024-10-19 10:27:08.251 +03:00 [DBG] [] (Td=) The request has an origin header: 'http://localhost:5000'.
+2024-10-19 10:27:08.257 +03:00 [INF] [] (Td=) CORS policy execution successful.
+2024-10-19 10:27:08.262 +03:00 [DBG] [] (Td=) Static files was skipped as the request already matched an endpoint.
+2024-10-19 10:27:08.381 +03:00 [DBG] [] (Td=) AuthenticationScheme: Bearer was not authenticated.
+2024-10-19 10:27:08.397 +03:00 [INF] [] (Td=) Executing endpoint 'DiplomBackApi.Controllers.UserController.Registration (DiplomBackApi)'
+2024-10-19 10:27:08.473 +03:00 [INF] [] (Td=) Route matched with {action = "Registration", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Registration(DiplomBackApi.Controllers.RegistrationModel) on controller DiplomBackApi.Controllers.UserController (DiplomBackApi).
+2024-10-19 10:27:08.488 +03:00 [DBG] [] (Td=) Execution plan of authorization filters (in the following order): ["None"]
+2024-10-19 10:27:08.498 +03:00 [DBG] [] (Td=) Execution plan of resource filters (in the following order): ["None"]
+2024-10-19 10:27:08.509 +03:00 [DBG] [] (Td=) Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-10-19 10:27:08.526 +03:00 [DBG] [] (Td=) Execution plan of exception filters (in the following order): ["None"]
+2024-10-19 10:27:08.535 +03:00 [DBG] [] (Td=) Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-10-19 10:27:08.549 +03:00 [DBG] [] (Td=) Executing controller factory for controller DiplomBackApi.Controllers.UserController (DiplomBackApi)
+2024-10-19 10:27:10.900 +03:00 [DBG] [] (Td=) Executed controller factory for controller DiplomBackApi.Controllers.UserController (DiplomBackApi)
+2024-10-19 10:27:10.914 +03:00 [DBG] [] (Td=) Attempting to bind parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel' ...
+2024-10-19 10:27:10.923 +03:00 [DBG] [] (Td=) Attempting to bind parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel' using the name '' in request data ...
+2024-10-19 10:27:10.934 +03:00 [DBG] [] (Td=) Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2024-10-19 10:27:10.956 +03:00 [DBG] [] (Td=) Connection id "0HN7G1TKV9CK6", Request id "0HN7G1TKV9CK6:00000005": started reading request body.
+2024-10-19 10:27:10.962 +03:00 [DBG] [] (Td=) Connection id "0HN7G1TKV9CK6", Request id "0HN7G1TKV9CK6:00000005": done reading request body.
+2024-10-19 10:27:10.976 +03:00 [DBG] [] (Td=) JSON input formatter succeeded, deserializing to type 'DiplomBackApi.Controllers.RegistrationModel'
+2024-10-19 10:27:10.980 +03:00 [DBG] [] (Td=) Done attempting to bind parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel'.
+2024-10-19 10:27:10.982 +03:00 [DBG] [] (Td=) Done attempting to bind parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel'.
+2024-10-19 10:27:10.984 +03:00 [DBG] [] (Td=) Attempting to validate the bound parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel' ...
+2024-10-19 10:27:11.007 +03:00 [DBG] [] (Td=) Done attempting to validate the bound parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel'.
+2024-10-19 10:27:12.240 +03:00 [INF] [] (Td=) Executed action DiplomBackApi.Controllers.UserController.Registration (DiplomBackApi) in 3690.8713ms
+2024-10-19 10:27:12.245 +03:00 [INF] [] (Td=) Executed endpoint 'DiplomBackApi.Controllers.UserController.Registration (DiplomBackApi)'
+2024-10-19 10:27:12.253 +03:00 [ERR] [] (Td=) An unhandled exception has occurred while executing the request.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23502: null value in column "description" of relation "user" violates not-null constraint
+
+DETAIL: Failing row contains (3, string, 473287F8298DBA7163A897908958F7C0EAE733E25D2E027992EA2EDC9BED2FA8, 473287F8298DBA7163A897908958F7C0EAE733E25D2E027992EA2EDC9BED2FA8, null, null, null, null, -infinity, string).
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 23502
+    MessageText: null value in column "description" of relation "user" violates not-null constraint
+    Detail: Failing row contains (3, string, 473287F8298DBA7163A897908958F7C0EAE733E25D2E027992EA2EDC9BED2FA8, 473287F8298DBA7163A897908958F7C0EAE733E25D2E027992EA2EDC9BED2FA8, null, null, null, null, -infinity, string).
+    SchemaName: Diplom
+    TableName: user
+    ColumnName: description
+    File: execMain.c
+    Line: 2009
+    Routine: ExecConstraints
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at DiplomBackApi.Controllers.UserController.Registration(RegistrationModel model) in C:\_Files\WriterWizzardSharpReact\DiplomBackApi\DiplomBackApi\Controllers\UserController.cs:line 152
+   at lambda_method6(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-10-19 10:27:12.342 +03:00 [DBG] [] (Td=) Connection id "0HN7G1TKV9CK6" completed keep alive response.
+2024-10-19 10:27:12.356 +03:00 [INF] [] (Td=) Request finished HTTP/1.1 POST http://localhost:5000/api/user/registration - 500 null text/plain; charset=utf-8 4186.5713ms
+2024-10-19 10:28:52.069 +03:00 [DBG] [] (Td=) Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2024-10-19 10:28:52.346 +03:00 [DBG] [] (Td=) Hosting starting
+2024-10-19 10:28:52.406 +03:00 [INF] [] (Td=) User profile is available. Using 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-19 10:28:52.442 +03:00 [DBG] [] (Td=) Reading data from file 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys\key-2138e16a-d3d0-4c9d-8bb1-b268f954e92d.xml'.
+2024-10-19 10:28:52.458 +03:00 [DBG] [] (Td=) Reading data from file 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys\key-cc1bb958-e778-46b6-927a-0aa15b306f56.xml'.
+2024-10-19 10:28:52.469 +03:00 [DBG] [] (Td=) Reading data from file 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys\key-ed798581-1196-422f-8eed-85fc65f30147.xml'.
+2024-10-19 10:28:52.480 +03:00 [DBG] [] (Td=) Found key {2138e16a-d3d0-4c9d-8bb1-b268f954e92d}.
+2024-10-19 10:28:52.486 +03:00 [DBG] [] (Td=) Found key {cc1bb958-e778-46b6-927a-0aa15b306f56}.
+2024-10-19 10:28:52.488 +03:00 [DBG] [] (Td=) Found key {ed798581-1196-422f-8eed-85fc65f30147}.
+2024-10-19 10:28:52.499 +03:00 [DBG] [] (Td=) Considering key {2138e16a-d3d0-4c9d-8bb1-b268f954e92d} with expiration date 2024-11-07 09:01:22Z as default key.
+2024-10-19 10:28:52.506 +03:00 [DBG] [] (Td=) Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-10-19 10:28:52.511 +03:00 [DBG] [] (Td=) Decrypting secret element using Windows DPAPI.
+2024-10-19 10:28:52.514 +03:00 [DBG] [] (Td=) Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-10-19 10:28:52.520 +03:00 [DBG] [] (Td=) Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2024-10-19 10:28:52.523 +03:00 [DBG] [] (Td=) Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2024-10-19 10:28:52.527 +03:00 [DBG] [] (Td=) Using key {2138e16a-d3d0-4c9d-8bb1-b268f954e92d} as the default key.
+2024-10-19 10:28:52.529 +03:00 [DBG] [] (Td=) Key ring with default key {2138e16a-d3d0-4c9d-8bb1-b268f954e92d} was loaded during application startup.
+2024-10-19 10:28:52.699 +03:00 [INF] [] (Td=) Now listening on: http://localhost:5000
+2024-10-19 10:28:52.700 +03:00 [DBG] [] (Td=) Loaded hosting startup assembly DiplomBackApi
+2024-10-19 10:28:52.701 +03:00 [DBG] [] (Td=) Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2024-10-19 10:28:52.702 +03:00 [DBG] [] (Td=) Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2024-10-19 10:28:52.703 +03:00 [INF] [] (Td=) Application started. Press Ctrl+C to shut down.
+2024-10-19 10:28:52.704 +03:00 [INF] [] (Td=) Hosting environment: Development
+2024-10-19 10:28:52.705 +03:00 [INF] [] (Td=) Content root path: C:\_Files\WriterWizzardSharpReact\DiplomBackApi\DiplomBackApi
+2024-10-19 10:28:52.706 +03:00 [DBG] [] (Td=) Hosting started
+2024-10-19 10:28:52.783 +03:00 [DBG] [] (Td=) Connection id "0HN7G1UND0EM8" accepted.
+2024-10-19 10:28:52.785 +03:00 [DBG] [] (Td=) Connection id "0HN7G1UND0EM8" started.
+2024-10-19 10:28:52.789 +03:00 [DBG] [] (Td=) Connection id "0HN7G1UND0EM9" accepted.
+2024-10-19 10:28:52.791 +03:00 [DBG] [] (Td=) Connection id "0HN7G1UND0EM9" started.
+2024-10-19 10:28:52.815 +03:00 [DBG] [] (Td=) Connection id "0HN7G1UND0EM9" received FIN.
+2024-10-19 10:28:52.815 +03:00 [DBG] [] (Td=) Connection id "0HN7G1UND0EM8" received FIN.
+2024-10-19 10:28:52.823 +03:00 [DBG] [] (Td=) Connection id "0HN7G1UND0EM9" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-19 10:28:52.823 +03:00 [DBG] [] (Td=) Connection id "0HN7G1UND0EM8" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-19 10:28:52.831 +03:00 [DBG] [] (Td=) Connection id "0HN7G1UND0EM9" disconnecting.
+2024-10-19 10:28:52.836 +03:00 [DBG] [] (Td=) Connection id "0HN7G1UND0EM8" disconnecting.
+2024-10-19 10:28:52.847 +03:00 [DBG] [] (Td=) Connection id "0HN7G1UND0EM8" stopped.
+2024-10-19 10:28:52.847 +03:00 [DBG] [] (Td=) Connection id "0HN7G1UND0EM9" stopped.
+2024-10-19 10:28:53.120 +03:00 [DBG] [] (Td=) Connection id "0HN7G1UND0EMA" accepted.
+2024-10-19 10:28:53.123 +03:00 [DBG] [] (Td=) Connection id "0HN7G1UND0EMA" started.
+2024-10-19 10:28:53.161 +03:00 [INF] [] (Td=) Request starting HTTP/1.1 GET http://localhost:5000/swagger/index.html - null null
+2024-10-19 10:28:53.280 +03:00 [DBG] [] (Td=) Wildcard detected, all requests with hosts will be allowed.
+2024-10-19 10:28:53.385 +03:00 [DBG] [] (Td=) Response markup is scheduled to include Browser Link script injection.
+2024-10-19 10:28:53.387 +03:00 [DBG] [] (Td=) Response markup is scheduled to include browser refresh script injection.
+2024-10-19 10:28:53.488 +03:00 [DBG] [] (Td=) Response markup was updated to include Browser Link script injection.
+2024-10-19 10:28:53.495 +03:00 [DBG] [] (Td=) Response markup was updated to include browser refresh script injection.
+2024-10-19 10:28:53.498 +03:00 [DBG] [] (Td=) Connection id "0HN7G1UND0EMA" completed keep alive response.
+2024-10-19 10:28:53.503 +03:00 [INF] [] (Td=) Request finished HTTP/1.1 GET http://localhost:5000/swagger/index.html - 200 null text/html;charset=utf-8 348.8126ms
+2024-10-19 10:28:53.576 +03:00 [DBG] [] (Td=) Connection id "0HN7G1UND0EMB" accepted.
+2024-10-19 10:28:53.577 +03:00 [INF] [] (Td=) Request starting HTTP/1.1 GET http://localhost:5000/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-19 10:28:53.578 +03:00 [DBG] [] (Td=) Connection id "0HN7G1UND0EMB" started.
+2024-10-19 10:28:53.582 +03:00 [DBG] [] (Td=) Connection id "0HN7G1UND0EMA" completed keep alive response.
+2024-10-19 10:28:53.583 +03:00 [INF] [] (Td=) Request starting HTTP/1.1 GET http://localhost:5000/_vs/browserLink - null null
+2024-10-19 10:28:53.585 +03:00 [INF] [] (Td=) Request finished HTTP/1.1 GET http://localhost:5000/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 8.0588ms
+2024-10-19 10:28:53.635 +03:00 [DBG] [] (Td=) Connection id "0HN7G1UND0EMB" completed keep alive response.
+2024-10-19 10:28:53.637 +03:00 [INF] [] (Td=) Request finished HTTP/1.1 GET http://localhost:5000/_vs/browserLink - 200 null text/javascript; charset=UTF-8 54.2716ms
+2024-10-19 10:28:53.680 +03:00 [INF] [] (Td=) Request starting HTTP/1.1 GET http://localhost:5000/swagger/v1/swagger.json - null null
+2024-10-19 10:28:53.829 +03:00 [DBG] [] (Td=) Connection id "0HN7G1UND0EMB" completed keep alive response.
+2024-10-19 10:28:53.830 +03:00 [INF] [] (Td=) Request finished HTTP/1.1 GET http://localhost:5000/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 150.9176ms
+2024-10-19 10:30:04.715 +03:00 [INF] [] (Td=) Request starting HTTP/1.1 POST http://localhost:5000/api/user/registration - application/json 94
+2024-10-19 10:30:04.725 +03:00 [DBG] [] (Td=) POST requests are not supported
+2024-10-19 10:30:04.730 +03:00 [WRN] [] (Td=) Failed to determine the https port for redirect.
+2024-10-19 10:30:04.777 +03:00 [DBG] [] (Td=) 1 candidate(s) found for the request path '/api/user/registration'
+2024-10-19 10:30:04.785 +03:00 [DBG] [] (Td=) Endpoint 'DiplomBackApi.Controllers.UserController.Registration (DiplomBackApi)' with route pattern 'api/user/registration' is valid for the request path '/api/user/registration'
+2024-10-19 10:30:04.792 +03:00 [DBG] [] (Td=) Request matched endpoint 'DiplomBackApi.Controllers.UserController.Registration (DiplomBackApi)'
+2024-10-19 10:30:04.795 +03:00 [DBG] [] (Td=) The request has an origin header: 'http://localhost:5000'.
+2024-10-19 10:30:04.797 +03:00 [INF] [] (Td=) CORS policy execution successful.
+2024-10-19 10:30:04.800 +03:00 [DBG] [] (Td=) Static files was skipped as the request already matched an endpoint.
+2024-10-19 10:30:04.896 +03:00 [DBG] [] (Td=) AuthenticationScheme: Bearer was not authenticated.
+2024-10-19 10:30:04.902 +03:00 [INF] [] (Td=) Executing endpoint 'DiplomBackApi.Controllers.UserController.Registration (DiplomBackApi)'
+2024-10-19 10:30:04.961 +03:00 [INF] [] (Td=) Route matched with {action = "Registration", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Registration(DiplomBackApi.Controllers.RegistrationModel) on controller DiplomBackApi.Controllers.UserController (DiplomBackApi).
+2024-10-19 10:30:04.970 +03:00 [DBG] [] (Td=) Execution plan of authorization filters (in the following order): ["None"]
+2024-10-19 10:30:04.977 +03:00 [DBG] [] (Td=) Execution plan of resource filters (in the following order): ["None"]
+2024-10-19 10:30:04.981 +03:00 [DBG] [] (Td=) Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-10-19 10:30:04.984 +03:00 [DBG] [] (Td=) Execution plan of exception filters (in the following order): ["None"]
+2024-10-19 10:30:04.986 +03:00 [DBG] [] (Td=) Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-10-19 10:30:04.990 +03:00 [DBG] [] (Td=) Executing controller factory for controller DiplomBackApi.Controllers.UserController (DiplomBackApi)
+2024-10-19 10:30:06.697 +03:00 [DBG] [] (Td=) Executed controller factory for controller DiplomBackApi.Controllers.UserController (DiplomBackApi)
+2024-10-19 10:30:06.712 +03:00 [DBG] [] (Td=) Attempting to bind parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel' ...
+2024-10-19 10:30:06.719 +03:00 [DBG] [] (Td=) Attempting to bind parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel' using the name '' in request data ...
+2024-10-19 10:30:06.723 +03:00 [DBG] [] (Td=) Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2024-10-19 10:30:06.735 +03:00 [DBG] [] (Td=) Connection id "0HN7G1UND0EMB", Request id "0HN7G1UND0EMB:00000003": started reading request body.
+2024-10-19 10:30:06.739 +03:00 [DBG] [] (Td=) Connection id "0HN7G1UND0EMB", Request id "0HN7G1UND0EMB:00000003": done reading request body.
+2024-10-19 10:30:06.754 +03:00 [DBG] [] (Td=) JSON input formatter succeeded, deserializing to type 'DiplomBackApi.Controllers.RegistrationModel'
+2024-10-19 10:30:06.757 +03:00 [DBG] [] (Td=) Done attempting to bind parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel'.
+2024-10-19 10:30:06.760 +03:00 [DBG] [] (Td=) Done attempting to bind parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel'.
+2024-10-19 10:30:06.763 +03:00 [DBG] [] (Td=) Attempting to validate the bound parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel' ...
+2024-10-19 10:30:06.778 +03:00 [DBG] [] (Td=) Done attempting to validate the bound parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel'.
+2024-10-19 10:30:07.641 +03:00 [INF] [] (Td=) Executed action DiplomBackApi.Controllers.UserController.Registration (DiplomBackApi) in 2648.4857ms
+2024-10-19 10:30:07.649 +03:00 [INF] [] (Td=) Executed endpoint 'DiplomBackApi.Controllers.UserController.Registration (DiplomBackApi)'
+2024-10-19 10:30:07.656 +03:00 [ERR] [] (Td=) An unhandled exception has occurred while executing the request.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> System.ArgumentException: Cannot write DateTime with Kind=Local to PostgreSQL type 'timestamp with time zone', only UTC is supported. Note that it's not possible to mix DateTimes with different Kinds in an array, range, or multirange. (Parameter 'value')
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(DateTime value, Nullable`1 expectedPgTypeId, Boolean validateOnly)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver.<>c.<CreateResolver>b__0_0(DateTimeConverterResolver`1 resolver, DateTime value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.Converters.DateTimeConverterResolver`1.Get(T value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgConverterResolver`1.GetAsObjectInternal(PgTypeInfo typeInfo, Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgResolverTypeInfo.GetResolutionAsObject(Object value, Nullable`1 expectedPgTypeId)
+   at Npgsql.Internal.PgTypeInfo.GetObjectResolution(Object value)
+   at Npgsql.NpgsqlParameter.ResolveConverter(PgTypeInfo typeInfo)
+   at Npgsql.NpgsqlParameter.ResolveTypeInfo(PgSerializerOptions options)
+   at Npgsql.NpgsqlParameterCollection.ProcessParameters(PgSerializerOptions options, Boolean validateValues, CommandType commandType)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at DiplomBackApi.Controllers.UserController.Registration(RegistrationModel model) in C:\_Files\WriterWizzardSharpReact\DiplomBackApi\DiplomBackApi\Controllers\UserController.cs:line 157
+   at lambda_method6(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-10-19 10:30:07.727 +03:00 [DBG] [] (Td=) Connection id "0HN7G1UND0EMB" completed keep alive response.
+2024-10-19 10:30:07.742 +03:00 [INF] [] (Td=) Request finished HTTP/1.1 POST http://localhost:5000/api/user/registration - 500 null text/plain; charset=utf-8 3027.312ms
+2024-10-19 10:31:21.824 +03:00 [DBG] [] (Td=) Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2024-10-19 10:31:21.992 +03:00 [DBG] [] (Td=) Hosting starting
+2024-10-19 10:31:22.035 +03:00 [INF] [] (Td=) User profile is available. Using 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-19 10:31:22.050 +03:00 [DBG] [] (Td=) Reading data from file 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys\key-2138e16a-d3d0-4c9d-8bb1-b268f954e92d.xml'.
+2024-10-19 10:31:22.058 +03:00 [DBG] [] (Td=) Reading data from file 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys\key-cc1bb958-e778-46b6-927a-0aa15b306f56.xml'.
+2024-10-19 10:31:22.061 +03:00 [DBG] [] (Td=) Reading data from file 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys\key-ed798581-1196-422f-8eed-85fc65f30147.xml'.
+2024-10-19 10:31:22.069 +03:00 [DBG] [] (Td=) Found key {2138e16a-d3d0-4c9d-8bb1-b268f954e92d}.
+2024-10-19 10:31:22.079 +03:00 [DBG] [] (Td=) Found key {cc1bb958-e778-46b6-927a-0aa15b306f56}.
+2024-10-19 10:31:22.081 +03:00 [DBG] [] (Td=) Found key {ed798581-1196-422f-8eed-85fc65f30147}.
+2024-10-19 10:31:22.095 +03:00 [DBG] [] (Td=) Considering key {2138e16a-d3d0-4c9d-8bb1-b268f954e92d} with expiration date 2024-11-07 09:01:22Z as default key.
+2024-10-19 10:31:22.101 +03:00 [DBG] [] (Td=) Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-10-19 10:31:22.113 +03:00 [DBG] [] (Td=) Decrypting secret element using Windows DPAPI.
+2024-10-19 10:31:22.116 +03:00 [DBG] [] (Td=) Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-10-19 10:31:22.125 +03:00 [DBG] [] (Td=) Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2024-10-19 10:31:22.133 +03:00 [DBG] [] (Td=) Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2024-10-19 10:31:22.144 +03:00 [DBG] [] (Td=) Using key {2138e16a-d3d0-4c9d-8bb1-b268f954e92d} as the default key.
+2024-10-19 10:31:22.147 +03:00 [DBG] [] (Td=) Key ring with default key {2138e16a-d3d0-4c9d-8bb1-b268f954e92d} was loaded during application startup.
+2024-10-19 10:31:22.303 +03:00 [INF] [] (Td=) Now listening on: http://localhost:5000
+2024-10-19 10:31:22.305 +03:00 [DBG] [] (Td=) Loaded hosting startup assembly DiplomBackApi
+2024-10-19 10:31:22.306 +03:00 [DBG] [] (Td=) Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2024-10-19 10:31:22.306 +03:00 [DBG] [] (Td=) Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2024-10-19 10:31:22.307 +03:00 [INF] [] (Td=) Application started. Press Ctrl+C to shut down.
+2024-10-19 10:31:22.308 +03:00 [INF] [] (Td=) Hosting environment: Development
+2024-10-19 10:31:22.309 +03:00 [INF] [] (Td=) Content root path: C:\_Files\WriterWizzardSharpReact\DiplomBackApi\DiplomBackApi
+2024-10-19 10:31:22.310 +03:00 [DBG] [] (Td=) Hosting started
+2024-10-19 10:31:22.497 +03:00 [DBG] [] (Td=) Connection id "0HN7G2040PJT1" accepted.
+2024-10-19 10:31:22.497 +03:00 [DBG] [] (Td=) Connection id "0HN7G2040PJT0" accepted.
+2024-10-19 10:31:22.499 +03:00 [DBG] [] (Td=) Connection id "0HN7G2040PJT1" started.
+2024-10-19 10:31:22.499 +03:00 [DBG] [] (Td=) Connection id "0HN7G2040PJT0" started.
+2024-10-19 10:31:22.522 +03:00 [DBG] [] (Td=) Connection id "0HN7G2040PJT1" received FIN.
+2024-10-19 10:31:22.522 +03:00 [DBG] [] (Td=) Connection id "0HN7G2040PJT0" received FIN.
+2024-10-19 10:31:22.537 +03:00 [DBG] [] (Td=) Connection id "0HN7G2040PJT1" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-19 10:31:22.539 +03:00 [DBG] [] (Td=) Connection id "0HN7G2040PJT0" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-19 10:31:22.541 +03:00 [DBG] [] (Td=) Connection id "0HN7G2040PJT1" disconnecting.
+2024-10-19 10:31:22.547 +03:00 [DBG] [] (Td=) Connection id "0HN7G2040PJT0" disconnecting.
+2024-10-19 10:31:22.554 +03:00 [DBG] [] (Td=) Connection id "0HN7G2040PJT0" stopped.
+2024-10-19 10:31:22.554 +03:00 [DBG] [] (Td=) Connection id "0HN7G2040PJT1" stopped.
+2024-10-19 10:31:22.815 +03:00 [DBG] [] (Td=) Connection id "0HN7G2040PJT2" accepted.
+2024-10-19 10:31:22.816 +03:00 [DBG] [] (Td=) Connection id "0HN7G2040PJT2" started.
+2024-10-19 10:31:22.856 +03:00 [INF] [] (Td=) Request starting HTTP/1.1 GET http://localhost:5000/swagger/index.html - null null
+2024-10-19 10:31:22.968 +03:00 [DBG] [] (Td=) Wildcard detected, all requests with hosts will be allowed.
+2024-10-19 10:31:23.082 +03:00 [DBG] [] (Td=) Response markup is scheduled to include Browser Link script injection.
+2024-10-19 10:31:23.087 +03:00 [DBG] [] (Td=) Response markup is scheduled to include browser refresh script injection.
+2024-10-19 10:31:23.108 +03:00 [DBG] [] (Td=) Response markup was updated to include Browser Link script injection.
+2024-10-19 10:31:23.112 +03:00 [DBG] [] (Td=) Response markup was updated to include browser refresh script injection.
+2024-10-19 10:31:23.114 +03:00 [DBG] [] (Td=) Connection id "0HN7G2040PJT2" completed keep alive response.
+2024-10-19 10:31:23.117 +03:00 [INF] [] (Td=) Request finished HTTP/1.1 GET http://localhost:5000/swagger/index.html - 200 null text/html;charset=utf-8 267.8699ms
+2024-10-19 10:31:23.177 +03:00 [DBG] [] (Td=) Connection id "0HN7G2040PJT3" accepted.
+2024-10-19 10:31:23.178 +03:00 [INF] [] (Td=) Request starting HTTP/1.1 GET http://localhost:5000/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-19 10:31:23.178 +03:00 [DBG] [] (Td=) Connection id "0HN7G2040PJT3" started.
+2024-10-19 10:31:23.183 +03:00 [INF] [] (Td=) Request starting HTTP/1.1 GET http://localhost:5000/_vs/browserLink - null null
+2024-10-19 10:31:23.184 +03:00 [DBG] [] (Td=) Connection id "0HN7G2040PJT2" completed keep alive response.
+2024-10-19 10:31:23.187 +03:00 [INF] [] (Td=) Request finished HTTP/1.1 GET http://localhost:5000/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 8.8799ms
+2024-10-19 10:31:23.241 +03:00 [DBG] [] (Td=) Connection id "0HN7G2040PJT3" completed keep alive response.
+2024-10-19 10:31:23.243 +03:00 [INF] [] (Td=) Request finished HTTP/1.1 GET http://localhost:5000/_vs/browserLink - 200 null text/javascript; charset=UTF-8 60.5488ms
+2024-10-19 10:31:23.279 +03:00 [INF] [] (Td=) Request starting HTTP/1.1 GET http://localhost:5000/swagger/v1/swagger.json - null null
+2024-10-19 10:31:23.428 +03:00 [DBG] [] (Td=) Connection id "0HN7G2040PJT3" completed keep alive response.
+2024-10-19 10:31:23.429 +03:00 [INF] [] (Td=) Request finished HTTP/1.1 GET http://localhost:5000/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 149.8574ms
+2024-10-19 10:31:29.190 +03:00 [INF] [] (Td=) Request starting HTTP/1.1 POST http://localhost:5000/api/user/registration - application/json 94
+2024-10-19 10:31:29.199 +03:00 [DBG] [] (Td=) POST requests are not supported
+2024-10-19 10:31:29.203 +03:00 [WRN] [] (Td=) Failed to determine the https port for redirect.
+2024-10-19 10:31:29.250 +03:00 [DBG] [] (Td=) 1 candidate(s) found for the request path '/api/user/registration'
+2024-10-19 10:31:29.257 +03:00 [DBG] [] (Td=) Endpoint 'DiplomBackApi.Controllers.UserController.Registration (DiplomBackApi)' with route pattern 'api/user/registration' is valid for the request path '/api/user/registration'
+2024-10-19 10:31:29.263 +03:00 [DBG] [] (Td=) Request matched endpoint 'DiplomBackApi.Controllers.UserController.Registration (DiplomBackApi)'
+2024-10-19 10:31:29.268 +03:00 [DBG] [] (Td=) The request has an origin header: 'http://localhost:5000'.
+2024-10-19 10:31:29.273 +03:00 [INF] [] (Td=) CORS policy execution successful.
+2024-10-19 10:31:29.279 +03:00 [DBG] [] (Td=) Static files was skipped as the request already matched an endpoint.
+2024-10-19 10:31:29.419 +03:00 [DBG] [] (Td=) AuthenticationScheme: Bearer was not authenticated.
+2024-10-19 10:31:29.426 +03:00 [INF] [] (Td=) Executing endpoint 'DiplomBackApi.Controllers.UserController.Registration (DiplomBackApi)'
+2024-10-19 10:31:29.480 +03:00 [INF] [] (Td=) Route matched with {action = "Registration", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Registration(DiplomBackApi.Controllers.RegistrationModel) on controller DiplomBackApi.Controllers.UserController (DiplomBackApi).
+2024-10-19 10:31:29.488 +03:00 [DBG] [] (Td=) Execution plan of authorization filters (in the following order): ["None"]
+2024-10-19 10:31:29.492 +03:00 [DBG] [] (Td=) Execution plan of resource filters (in the following order): ["None"]
+2024-10-19 10:31:29.498 +03:00 [DBG] [] (Td=) Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-10-19 10:31:29.506 +03:00 [DBG] [] (Td=) Execution plan of exception filters (in the following order): ["None"]
+2024-10-19 10:31:29.509 +03:00 [DBG] [] (Td=) Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-10-19 10:31:29.516 +03:00 [DBG] [] (Td=) Executing controller factory for controller DiplomBackApi.Controllers.UserController (DiplomBackApi)
+2024-10-19 10:31:31.834 +03:00 [DBG] [] (Td=) Executed controller factory for controller DiplomBackApi.Controllers.UserController (DiplomBackApi)
+2024-10-19 10:31:31.848 +03:00 [DBG] [] (Td=) Attempting to bind parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel' ...
+2024-10-19 10:31:31.854 +03:00 [DBG] [] (Td=) Attempting to bind parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel' using the name '' in request data ...
+2024-10-19 10:31:31.861 +03:00 [DBG] [] (Td=) Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2024-10-19 10:31:31.878 +03:00 [DBG] [] (Td=) Connection id "0HN7G2040PJT3", Request id "0HN7G2040PJT3:00000003": started reading request body.
+2024-10-19 10:31:31.884 +03:00 [DBG] [] (Td=) Connection id "0HN7G2040PJT3", Request id "0HN7G2040PJT3:00000003": done reading request body.
+2024-10-19 10:31:31.898 +03:00 [DBG] [] (Td=) JSON input formatter succeeded, deserializing to type 'DiplomBackApi.Controllers.RegistrationModel'
+2024-10-19 10:31:31.902 +03:00 [DBG] [] (Td=) Done attempting to bind parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel'.
+2024-10-19 10:31:31.906 +03:00 [DBG] [] (Td=) Done attempting to bind parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel'.
+2024-10-19 10:31:31.909 +03:00 [DBG] [] (Td=) Attempting to validate the bound parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel' ...
+2024-10-19 10:31:31.925 +03:00 [DBG] [] (Td=) Done attempting to validate the bound parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel'.
+2024-10-19 10:31:32.996 +03:00 [DBG] [] (Td=) List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-10-19 10:31:33.006 +03:00 [DBG] [] (Td=) No information found on request to perform content negotiation.
+2024-10-19 10:31:33.009 +03:00 [DBG] [] (Td=) Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2024-10-19 10:31:33.010 +03:00 [DBG] [] (Td=) Attempting to select the first formatter in the output formatters list which can write the result.
+2024-10-19 10:31:33.012 +03:00 [DBG] [] (Td=) Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter' and content type 'text/plain' to write the response.
+2024-10-19 10:31:33.015 +03:00 [INF] [] (Td=) Executing OkObjectResult, writing value of type 'System.String'.
+2024-10-19 10:31:33.025 +03:00 [INF] [] (Td=) Executed action DiplomBackApi.Controllers.UserController.Registration (DiplomBackApi) in 3508.0031ms
+2024-10-19 10:31:33.030 +03:00 [INF] [] (Td=) Executed endpoint 'DiplomBackApi.Controllers.UserController.Registration (DiplomBackApi)'
+2024-10-19 10:31:33.034 +03:00 [DBG] [] (Td=) Connection id "0HN7G2040PJT3" completed keep alive response.
+2024-10-19 10:31:33.049 +03:00 [INF] [] (Td=) Request finished HTTP/1.1 POST http://localhost:5000/api/user/registration - 200 null text/plain; charset=utf-8 3858.4816ms

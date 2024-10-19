@@ -6,6 +6,8 @@ using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using System.Reflection;
 using System.Text;
+using Serilog;
+using Serilog.Core;
 
 namespace DiplomBackApi
 {
@@ -26,6 +28,7 @@ namespace DiplomBackApi
 
             // Add services to the container.
 
+            builder.Services.AddScoped<ApplicationContext, ApplicationContext>();
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -70,6 +73,10 @@ namespace DiplomBackApi
                 };
             });
 
+            
+            builder.Host.UseSerilog((context, configuration) =>
+                configuration.ReadFrom.Configuration(context.Configuration));
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -109,7 +116,7 @@ namespace DiplomBackApi
         public const string ISSUER = "MyAuthServer"; // издатель токена
         public const string AUDIENCE = "MyAuthClient"; // потребитель токена
         const string KEY = "mysupersecret_secretsecretsecretkey!123";   // ключ для шифрации
-        public static TimeSpan time = TimeSpan.FromDays(1);
+        public static TimeSpan time = TimeSpan.FromDays(7);
         public static SymmetricSecurityKey GetSymmetricSecurityKey() =>
             new SymmetricSecurityKey(Encoding.UTF8.GetBytes(KEY));
     }

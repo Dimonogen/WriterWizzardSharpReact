@@ -6,6 +6,8 @@ using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
 using DiplomBackApi.DTO;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace DiplomBackApi.Controllers;
 
@@ -23,7 +25,7 @@ public class UserController : MyBaseController
     ///  онструктор класса
     /// </summary>
     /// <param name="logger"></param>
-    public UserController(ILogger<UserController> logger)
+    public UserController(ILogger<UserController> logger, ApplicationContext context) : base(context)
     {
         _logger = logger;
     }
@@ -83,74 +85,91 @@ public class UserController : MyBaseController
     [HttpPost("login")]
     public async Task<ActionResult> Login([FromBody] LoginModel loginModel)
     {
-        _logger.LogInformation($"email:{loginModel.email} password:{loginModel.password}");
-        using (ApplicationContext db = new ApplicationContext())
+        //_logger.LogInformation($"email:{loginModel.email} password:{loginModel.password}");
+
+        var sha = SHA256.Create();
+
+        string emailHash = Convert.ToHexString( sha.ComputeHash(Encoding.Default.GetBytes(loginModel.email)) );
+        string passwordHash = Convert.ToHexString( sha.ComputeHash(Encoding.Default.GetBytes(loginModel.password)));
+
+        var user = await db.Users.FirstOrDefaultAsync(
+            u => u.Email == emailHash 
+            && u.Password == passwordHash
+        );
+
+        if ( user == null )
         {
-            var user = await db.Users.FirstOrDefaultAsync(
-                u => u.Email == loginModel.email 
-                && u.Password == loginModel.password
-            );
-
-            if ( user == null )
-            {
-                return Ok("{\"error\":\"error\"}");
-            }
-
-            var claims = new List<Claim> {  new Claim("email", user.Email),
-                                            new Claim("id", user.Id.ToString()),
-                                            new Claim("role", user.Role)
-            };
-
-            // создаем JWT-токен
-            var jwt = new JwtSecurityToken(
-                    issuer: AuthOptions.ISSUER,
-                    audience: AuthOptions.AUDIENCE,
-                    claims: claims,
-                    expires: DateTime.UtcNow.Add(AuthOptions.time),
-                    signingCredentials: new SigningCredentials(AuthOptions.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256));
-
-            return Ok("{\"token\": \"" + new JwtSecurityTokenHandler().WriteToken(jwt) + "\"}");
+            return Ok("{\"error\":\"error\"}");
         }
+
+        var claims = new List<Claim> {  new Claim("email", user.Email),
+                                        new Claim("id", user.Id.ToString()),
+                                        new Claim("role", user.Role)
+        };
+
+        // создаем JWT-токен
+        var jwt = new JwtSecurityToken(
+                issuer: AuthOptions.ISSUER,
+                audience: AuthOptions.AUDIENCE,
+                claims: claims,
+                expires: DateTime.UtcNow.Add(AuthOptions.time),
+                signingCredentials: new SigningCredentials(AuthOptions.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256));
+
+        return Ok("{\"token\": \"" + new JwtSecurityTokenHandler().WriteToken(jwt) + "\"}");
+        
     }
 
     /// <summary>
-    /// “ипо end point дл€ регистрации
+    /// end point дл€ регистрации
     /// </summary>
     /// <returns></returns>
     [HttpPost("registration")]
-    public ActionResult Registration()
+    public async Task<ActionResult> Registration([FromBody] RegistrationModel model)
     {
-        return Ok("Registration");
-    }
+        var sha = SHA256.Create();
 
-    /// <summary>
-    /// »зменение описани€, имени пользовател€
-    /// </summary>
-    /// <returns></returns>
-    [HttpPost("editMyInfo")]
-    public string EditUserInfo()
-    {
-        return "";
-    }
+        string emailHash = Convert.ToHexString(sha.ComputeHash(Encoding.Default.GetBytes(model.email)));
+        string passwordHash = Convert.ToHexString(sha.ComputeHash(Encoding.Default.GetBytes(model.password)));
 
-    /// <summary>
-    /// «агрузка аватарки пользовател€
-    /// </summary>
-    /// <returns></returns>
-    [HttpPost("logo/update")]
-    public string LogoUpdate()
-    {
-        return "";
-    }
+        var users = await db.Users.Where(
+            u => u.Email == emailHash
+        ).ToListAsync();
 
-    /// <summary>
-    /// ”даление аватарки пользовател€
-    /// </summary>
-    /// <returns></returns>
-    [HttpPost("logo/delete")]
-    public string LogoDelete()
-    {
-        return "";
+        if (users.Count > 0)
+        {
+            return BadRequest("{\"error\":\"ѕользователь с таким email уже существует. –егистраци€ невозможна.\"}");
+        }
+
+        User user = new User
+        {
+            Email = emailHash,
+            Password = passwordHash,
+            Name = model.name,
+            ProjectName = model.projectName,
+            Description = "",
+            Icon = "",
+            Role = "",
+            Title = "",
+            LastAuth = DateTime.UtcNow,
+        };
+
+        await db.Users.AddAsync(user);
+        await db.SaveChangesAsync();
+
+        var claims = new List<Claim> {  new Claim("email", user.Email),
+                                        new Claim("id", user.Id.ToString()),
+                                        new Claim("role", user.Role)
+        };
+
+        // создаем JWT-токен
+        var jwt = new JwtSecurityToken(
+                issuer: AuthOptions.ISSUER,
+                audience: AuthOptions.AUDIENCE,
+                claims: claims,
+                expires: DateTime.UtcNow.Add(AuthOptions.time),
+                signingCredentials: new SigningCredentials(AuthOptions.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256));
+
+        return Ok("{\"token\": \"" + new JwtSecurityTokenHandler().WriteToken(jwt) + "\"}");
     }
 
     /// <summary>
@@ -163,32 +182,30 @@ public class UserController : MyBaseController
     {
         string userId = HttpContext.User.Claims.FirstOrDefault(u => u.Type == "id").Value;
         int id = int.Parse(userId);
-        Console.WriteLine($"id auth = {userId}");
+        //Console.WriteLine($"id auth = {userId}");
 
-        using (ApplicationContext db = new ApplicationContext())
+        var user = await db.Users.FirstOrDefaultAsync(u => u.Id == id);
+
+        if (user == null)
         {
-            var user = await db.Users.FirstOrDefaultAsync(u => u.Id == id);
-
-            if (user == null)
-            {
-                return Ok("error");
-            }
-
-            var claims = new List<Claim> {  new Claim("email", user.Email),
-                                            new Claim("id", user.Id.ToString()),
-                                            new Claim("role", user.Role)
-            };
-
-            // создаем JWT-токен
-            var jwt = new JwtSecurityToken(
-                    issuer: AuthOptions.ISSUER,
-                    audience: AuthOptions.AUDIENCE,
-                    claims: claims,
-                    expires: DateTime.UtcNow.Add(AuthOptions.time),
-                    signingCredentials: new SigningCredentials(AuthOptions.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256));
-
-            return Ok("{\"token\": \"" + new JwtSecurityTokenHandler().WriteToken(jwt) + "\"}");
+            return Ok("error");
         }
+
+        var claims = new List<Claim> {  new Claim("email", user.Email),
+                                        new Claim("id", user.Id.ToString()),
+                                        new Claim("role", user.Role)
+        };
+
+        // создаем JWT-токен
+        var jwt = new JwtSecurityToken(
+                issuer: AuthOptions.ISSUER,
+                audience: AuthOptions.AUDIENCE,
+                claims: claims,
+                expires: DateTime.UtcNow.Add(AuthOptions.time),
+                signingCredentials: new SigningCredentials(AuthOptions.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256));
+
+        return Ok("{\"token\": \"" + new JwtSecurityTokenHandler().WriteToken(jwt) + "\"}");
+        
     }
 
     /// <summary>
@@ -198,17 +215,14 @@ public class UserController : MyBaseController
     [HttpGet("{id}/info")]
     public async Task<ActionResult<User>> GetUserInfo(int id)
     {
-        Console.WriteLine($"GetUserInfo: id={id}");
+        //Console.WriteLine($"GetUserInfo: id={id}");
 
-        using (ApplicationContext db = new ApplicationContext())
-        {
-            var user = await db.Users.FirstOrDefaultAsync(x => x.Id == id);
+        var user = await db.Users.FirstOrDefaultAsync(x => x.Id == id);
 
-            if (user != null)
-                return Ok(user);
-            else
-                return BadRequest($"user with id={id} not found");
-        }   
+        if (user != null)
+            return Ok(user);
+        else
+            return BadRequest($"user with id={id} not found"); 
     }
 
     /// <summary>
@@ -226,6 +240,15 @@ public class UserController : MyBaseController
 
 public class LoginModel
 {
+    public string email { get; set; }
+    public string password { get; set; }
+}
+
+
+public class RegistrationModel
+{
+    public string projectName { get; set; }
+    public string name { get; set; }
     public string email { get; set; }
     public string password { get; set; }
 }

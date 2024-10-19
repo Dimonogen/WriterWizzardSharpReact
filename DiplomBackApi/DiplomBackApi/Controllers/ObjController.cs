@@ -14,6 +14,9 @@ namespace DiplomBackApi.Controllers
     public class ObjController : MyBaseController
     {
 
+        public ObjController(ApplicationContext context) : base (context)
+        {
+        }
 
         /// <summary>
         /// End Point для получения объекта с аттрибутами по его ID
@@ -23,25 +26,27 @@ namespace DiplomBackApi.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult> GetObj(int id)
         {
-            using (ApplicationContext db = new ApplicationContext())
-            {
-                ObjDto? obj = await db.GetObjDtoAsync(id);
+            var user = GetUserIdByAuth();
+            ObjDto? obj = await db.GetObjDtoAsync(id, user);
 
-                string jsonString = JsonSerializer.Serialize(obj);
+            string jsonString = JsonSerializer.Serialize(obj);
 
-                return Ok(obj);
-            }
+            return Ok(obj);
+            
         }
 
         [HttpGet("link/{id}")]
         public async Task<ActionResult> GetLinkObj(int id)
         {
-            using (ApplicationContext db = new ApplicationContext())
+            var user = GetUserIdByAuth();
+            var list = new List<ObjDto>();
+            db.LinkObjs.Where(x => x.ObjParentId == id && x.UserId == user.Id).ToList().ForEach(e =>
             {
-                var list = new List<ObjDto>();
-                db.LinkObjs.Where(x => x.ObjParentId == id).ToList().ForEach(e =>
+                var res = db.GetObjDtoAsync(e.ObjChildId, user).Result;
+                if (res != null)
                 {
-                    list.Add(db.GetObjDtoAsync(e.ObjChildId).Result);
+                    list.Add(res);
+
                     foreach (var attr in list.Last().attributes)
                     {
                         if (attr.IsComplexType && attr.Value != null)
@@ -52,27 +57,28 @@ namespace DiplomBackApi.Controllers
                             attr.Value = db.Objs.First(x => x.Id == id).Name;
                         }
                     }
-                });
+                }
+            });
 
-                return Ok(list);
-            }
+            return Ok(list);
+            
         }
 
         [HttpPost("link/")]
         public async Task<ActionResult> CreateLinkObj(int parentId, int childId)
         {
-            using (ApplicationContext db = new ApplicationContext())
+            var user = GetUserIdByAuth();
+            db.LinkObjs.Add(new LinkObj
             {
-                db.LinkObjs.Add(new LinkObj
-                {
-                    ObjParentId = parentId,
-                    ObjChildId = childId
-                });
+                ObjParentId = parentId,
+                ObjChildId = childId,
+                UserId = user.Id
+            });
 
-                db.SaveChanges();
+            db.SaveChanges();
 
-                return Ok("Ok");
-            }
+            return Ok("Ok");
+            
         }
 
 
@@ -84,42 +90,41 @@ namespace DiplomBackApi.Controllers
         [HttpGet("type/{typeId}")]
         public async Task<ActionResult> GetObjTypeList(int typeId)
         {
-            using (ApplicationContext db = new ApplicationContext())
+            
+            var user = GetUserIdByAuth();
+            var stateDelete = await db.ObjStates.FirstOrDefaultAsync(x => x.Code == "deleted");
+                
+            if (stateDelete == null)
             {
-                var user = GetUserIdByAuth();
-                var stateDelete = await db.ObjStates.FirstOrDefaultAsync(x => x.Code == "deleted");
-                
-                if (stateDelete == null)
-                {
-                    throw new Exception("Not found deleted state in DB");
-                }
+                throw new Exception("Not found deleted state in DB");
+            }
 
-                var objs = await db.Objs.Where(x => x.TypeId == typeId 
-                                            && x.StateId != stateDelete.Id 
-                                            && x.UserId == user.Id
-                            ).ToArrayAsync();
+            var objs = await db.Objs.Where(x => x.TypeId == typeId 
+                                        && x.StateId != stateDelete.Id 
+                                        && x.UserId == user.Id
+                        ).ToArrayAsync();
                 
-                List<ObjDto?> list = new List<ObjDto?>();
+            List<ObjDto?> list = new List<ObjDto?>();
 
-                foreach (var obj in objs)
+            foreach (var obj in objs)
+            {
+                list.Add(
+                    await db.GetObjDtoAsync(obj.Id)
+                );
+                foreach(var attr in list.Last().attributes)
                 {
-                    list.Add(
-                        await db.GetObjDtoAsync(obj.Id)
-                    );
-                    foreach(var attr in list.Last().attributes)
+                    if(attr.IsComplexType && attr.Value != null)
                     {
-                        if(attr.IsComplexType && attr.Value != null)
-                        {
-                            int id;
-                            try { id = int.Parse(attr.Value); }
-                            catch (Exception e) { continue; }
-                            attr.Value = db.Objs.First(x => x.Id == id ).Name;
-                        }
+                        int id;
+                        try { id = int.Parse(attr.Value); }
+                        catch (Exception e) { continue; }
+                        attr.Value = db.Objs.First(x => x.Id == id ).Name;
                     }
                 }
-
-                return Ok(list);
             }
+
+            return Ok(list);
+            
         }
 
         /// <summary>
@@ -129,20 +134,23 @@ namespace DiplomBackApi.Controllers
         [HttpGet("all")]
         public async Task<ActionResult> GetAll()
         {
-            using(ApplicationContext db = new ApplicationContext())
+            var user = GetUserIdByAuth();
+            var stateDelete = await db.ObjStates.FirstOrDefaultAsync(x => x.Code == "deleted");
+            if (stateDelete == null)
+                return BadRequest("state deleted not found");
+
+            var objs = await db.Objs.Where(x => x.StateId != stateDelete.Id
+                                           && x.UserId == user.Id).ToListAsync();
+
+            List<ObjDto?> arr = new List<ObjDto?>();
+
+            foreach (var obj in objs)
             {
-                var stateDelete = await db.ObjStates.FirstOrDefaultAsync(x => x.Code == "deleted");
-                var objs = await db.Objs.Where(x => x.StateId != stateDelete.Id).ToListAsync();
-
-                List<ObjDto?> arr = new List<ObjDto?>();
-
-                foreach (var obj in objs)
-                {
-                    arr.Add(await db.GetObjDtoAsync(obj.Id));
-                }
-
-                return Ok(arr);
+                arr.Add(await db.GetObjDtoAsync(obj.Id));
             }
+
+            return Ok(arr);
+            
         }
 
 
@@ -153,22 +161,24 @@ namespace DiplomBackApi.Controllers
         [HttpGet("treshCan")]
         public async Task<ActionResult> GetTreshCan()
         {
-            using (ApplicationContext db = new ApplicationContext())
+            
+            var user = GetUserIdByAuth();
+            var stateDelete = await db.ObjStates.FirstOrDefaultAsync(x => x.Code == "deleted");
+            if (stateDelete == null)
+                return BadRequest("state deleted not found");
+
+            var objs = await db.Objs.Where(x => x.StateId == stateDelete.Id
+                        && x.UserId == user.Id).ToListAsync();
+
+            List<ObjDto?> arr = new List<ObjDto?>();
+
+            foreach (var obj in objs)
             {
-                var user = GetUserIdByAuth();
-                var stateDelete = await db.ObjStates.FirstOrDefaultAsync(x => x.Code == "deleted");
-                var objs = await db.Objs.Where(x => x.StateId == stateDelete.Id
-                            && x.UserId == user.Id).ToListAsync();
-
-                List<ObjDto?> arr = new List<ObjDto?>();
-
-                foreach (var obj in objs)
-                {
-                    arr.Add(await db.GetObjDtoAsync(obj.Id));
-                }
-
-                return Ok(arr);
+                arr.Add(await db.GetObjDtoAsync(obj.Id));
             }
+
+            return Ok(arr);
+            
         }
 
         /// <summary>
@@ -179,36 +189,36 @@ namespace DiplomBackApi.Controllers
         [HttpPost("create")]
         public async Task<ActionResult> CreateObj(CreateObjModel obj)
         {
-            using (ApplicationContext db = new ApplicationContext())
+            
+            var user = GetUserIdByAuth();
+            Obj obj_n = new Models.Obj
             {
-                var user = GetUserIdByAuth();
-                Obj obj_n = new Models.Obj
+                StateId = 1,
+                Name = obj.name,
+                TypeId = obj.TypeId,
+                UserId = user.Id,
+            };
+
+            db.Objs.Add(obj_n);
+            await db.SaveChangesAsync();
+
+            foreach (AttributeAddModel attr in obj.attributes)
+            {
+                await db.ObjAttributes.AddAsync(new ObjAttribute
                 {
-                    StateId = 1,
-                    Name = obj.name,
-                    TypeId = obj.TypeId,
+                    Number = attr.number,
+                    ObjId = obj_n.Id,
+                    Value = attr.value,
                     UserId = user.Id,
-                };
-
-                db.Objs.Add(obj_n);
-                await db.SaveChangesAsync();
-
-                foreach (AttributeAddModel attr in obj.attributes)
-                {
-                    await db.ObjAttributes.AddAsync(new ObjAttribute
-                    {
-                        Number = attr.number,
-                        ObjId = obj_n.Id,
-                        Value = attr.value
-                    });
-                }
-
-                await db.SaveChangesAsync();
-
-                ObjDto? obj_db = await db.GetObjDtoAsync(obj_n.Id);
-
-                return Ok(obj_db);
+                });
             }
+
+            await db.SaveChangesAsync();
+
+            ObjDto? obj_db = await db.GetObjDtoAsync(obj_n.Id);
+
+            return Ok(obj_db);
+            
         }
 
         /// <summary>
@@ -219,52 +229,52 @@ namespace DiplomBackApi.Controllers
         [HttpPost("edit")]
         public async Task<ActionResult> EditObj(EditObjModel obj)
         {
-            using (ApplicationContext db = new ApplicationContext())
+            var user = GetUserIdByAuth();
+            Obj? obj_n = db.Objs.FirstOrDefault(x => x.Id == obj.id && x.UserId == user.Id);
+
+            if (obj_n == null)
+                return BadRequest();
+
+            obj_n.Name = obj.name;
+
+            foreach (AttributeAddModel attr in obj.attributes)
             {
-                Obj? obj_n = db.Objs.FirstOrDefault(x => x.Id == obj.id);
+                var attr_exist = db.ObjAttributes.FirstOrDefault(
+                    x => x.Number == attr.number && x.ObjId == obj.id);
 
-                if (obj_n == null)
-                    return BadRequest();
-
-                obj_n.Name = obj.name;
-
-                foreach (AttributeAddModel attr in obj.attributes)
+                if (attr_exist != null)
                 {
-                    var attr_exist = db.ObjAttributes.FirstOrDefault(
-                        x => x.Number == attr.number && x.ObjId == obj.id);
-
-                    if (attr_exist != null)
+                    attr_exist.Value = attr.value;
+                }
+                else
+                {
+                    var attr_type = db.ObjTypeAttributes.FirstOrDefault(
+                        x => x.TypeId == obj_n.TypeId && x.Number == attr.number
+                        );
+                    if (attr_type != null)
                     {
-                        attr_exist.Value = attr.value;
+                        await db.ObjAttributes.AddAsync(new ObjAttribute
+                        {
+                            Number = attr.number,
+                            ObjId = obj_n.Id,
+                            Value = attr.value,
+                            UserId = user.Id
+                        });
                     }
                     else
                     {
-                        var attr_type = db.ObjTypeAttributes.FirstOrDefault(
-                            x => x.TypeId == obj_n.TypeId && x.Number == attr.number
-                            );
-                        if (attr_type != null)
-                        {
-                            await db.ObjAttributes.AddAsync(new ObjAttribute
-                            {
-                                Number = attr.number,
-                                ObjId = obj_n.Id,
-                                Value = attr.value
-                            });
-                        }
-                        else
-                        {
-                            //additional attribute to do
-                        }
+                        //additional attribute to do
                     }
-                    
                 }
-
-                await db.SaveChangesAsync();
-
-                ObjDto? obj_db = await db.GetObjDtoAsync(obj_n.Id);
-
-                return Ok(obj_db);
+                    
             }
+
+            await db.SaveChangesAsync();
+
+            ObjDto? obj_db = await db.GetObjDtoAsync(obj_n.Id);
+
+            return Ok(obj_db);
+            
         }
 
 
@@ -276,27 +286,26 @@ namespace DiplomBackApi.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteItem(int id)
         {
-            using (ApplicationContext db = new ApplicationContext())
+
+            //db.Objs.RemoveRange(db.Objs.Where(x => x.Id == id).ToArray());
+            var user = GetUserIdByAuth();
+            var objs = await db.Objs.Where(x => x.Id == id && x.UserId == user.Id).ToListAsync();
+            var state = await db.ObjStates.FirstOrDefaultAsync(x => x.Code == "deleted");
+
+            if(state == null)
             {
-                //db.Objs.RemoveRange(db.Objs.Where(x => x.Id == id).ToArray());
-
-                var objs = await db.Objs.Where(x => x.Id == id).ToListAsync();
-                var state = await db.ObjStates.FirstOrDefaultAsync(x => x.Code == "deleted");
-
-                if(state == null)
-                {
-                    throw new Exception("Not found deleted state in DB");
-                }
-
-                foreach(var obj in objs)
-                {
-                    obj.StateId = state.Id;
-                }
-
-                await db.SaveChangesAsync();
-
-                return Ok();
+                throw new Exception("Not found deleted state in DB");
             }
+
+            foreach(var obj in objs)
+            {
+                obj.StateId = state.Id;
+            }
+
+            await db.SaveChangesAsync();
+
+            return Ok();
+            
         }
 
         /// <summary>
@@ -307,25 +316,24 @@ namespace DiplomBackApi.Controllers
         [HttpGet("restore")]
         public async Task<ActionResult> RestoreItem(int id)
         {
-            using (ApplicationContext db = new ApplicationContext())
+            var user = GetUserIdByAuth();
+            var objs = await db.Objs.Where(x => x.Id == id && x.UserId == user.Id).ToListAsync();
+            var state = await db.ObjStates.FirstOrDefaultAsync(x => x.Code == "use");
+
+            if (state == null)
             {
-                var objs = await db.Objs.Where(x => x.Id == id).ToListAsync();
-                var state = await db.ObjStates.FirstOrDefaultAsync(x => x.Code == "use");
-
-                if (state == null)
-                {
-                    throw new Exception("Not found use state in DB");
-                }
-
-                foreach (var obj in objs)
-                {
-                    obj.StateId = state.Id;
-                }
-
-                await db.SaveChangesAsync();
-
-                return Ok();
+                throw new Exception("Not found use state in DB");
             }
+
+            foreach (var obj in objs)
+            {
+                obj.StateId = state.Id;
+            }
+
+            await db.SaveChangesAsync();
+
+            return Ok();
+            
         }
 
         /// <summary>
@@ -336,27 +344,26 @@ namespace DiplomBackApi.Controllers
         [HttpPost("deleteList")]
         public async Task<ActionResult> DeleteArray(int[] id)
         {
-            using (ApplicationContext db = new ApplicationContext())
+
+            //db.Objs.RemoveRange(db.Objs.Where(x => id.Contains(x.Id)).ToArray());
+            var user = GetUserIdByAuth();
+            var objs = await db.Objs.Where(x => id.Contains(x.Id) && x.UserId == user.Id ).ToListAsync();
+            var state = await db.ObjStates.FirstOrDefaultAsync(x => x.Code == "deleted");
+
+            if (state == null)
             {
-                //db.Objs.RemoveRange(db.Objs.Where(x => id.Contains(x.Id)).ToArray());
-                
-                var objs = await db.Objs.Where(x => id.Contains(x.Id) ).ToListAsync();
-                var state = await db.ObjStates.FirstOrDefaultAsync(x => x.Code == "deleted");
-
-                if (state == null)
-                {
-                    throw new Exception("Not found deleted state in DB");
-                }
-
-                foreach (var obj in objs)
-                {
-                    obj.StateId = state.Id;
-                }
-
-                await db.SaveChangesAsync();
-
-                return Ok();
+                throw new Exception("Not found deleted state in DB");
             }
+
+            foreach (var obj in objs)
+            {
+                obj.StateId = state.Id;
+            }
+
+            await db.SaveChangesAsync();
+
+            return Ok();
+            
         }
 
 
@@ -368,25 +375,24 @@ namespace DiplomBackApi.Controllers
         [HttpPost("restoreList")]
         public async Task<ActionResult> RestoreArray(int[] id)
         {
-            using (ApplicationContext db = new ApplicationContext())
+            var user = GetUserIdByAuth();
+            var objs = await db.Objs.Where(x => id.Contains(x.Id) && x.UserId == user.Id).ToListAsync();
+            var state = await db.ObjStates.FirstOrDefaultAsync(x => x.Code == "use");
+
+            if (state == null)
             {
-                var objs = await db.Objs.Where(x => id.Contains(x.Id)).ToListAsync();
-                var state = await db.ObjStates.FirstOrDefaultAsync(x => x.Code == "use");
-
-                if (state == null)
-                {
-                    throw new Exception("Not found use state in DB");
-                }
-
-                foreach (var obj in objs)
-                {
-                    obj.StateId = state.Id;
-                }
-
-                await db.SaveChangesAsync();
-
-                return Ok();
+                throw new Exception("Not found use state in DB");
             }
+
+            foreach (var obj in objs)
+            {
+                obj.StateId = state.Id;
+            }
+
+            await db.SaveChangesAsync();
+
+            return Ok();
+            
         }
 
 

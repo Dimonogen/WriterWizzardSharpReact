@@ -5,6 +5,8 @@ using DiplomBackApi.DTO;
 using System.Text.Json.Serialization;
 using Newtonsoft.Json;
 using System.Security.Claims;
+using Microsoft.Extensions.Logging;
+using Serilog.Core;
 
 namespace DiplomBackApi;
 
@@ -83,11 +85,19 @@ public class ApplicationContext : DbContext
     /// </summary>
     public DbSet<UserSettings> UserSettings { get; set; }
 
+    private IConfiguration _configuration;
+
+    private ILogger _logger;
 
     /// <summary>
     /// Конструктор контекста БД
     /// </summary>
-    public ApplicationContext() => Database.EnsureCreated();
+    public ApplicationContext(IConfiguration configuration, ILogger<ApplicationContext> logger)
+    {
+        _configuration = configuration;
+        _logger = logger;
+        Database.EnsureCreated();
+    }
 
     /// <summary>
     /// Вызываемая при конфигурации функция, здесь настройки подключения к БД
@@ -95,7 +105,8 @@ public class ApplicationContext : DbContext
     /// <param name="optionsBuilder"></param>
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=postgres;Username=postgres;Password=postgres;IncludeErrorDetail=true;");
+        var connectionString = _configuration.GetSection("ConnectionString");
+        optionsBuilder.UseNpgsql(connectionString.Value);
 
         
         //base.OnConfiguring(optionsBuilder);
@@ -116,11 +127,18 @@ public class ApplicationContext : DbContext
     /// <summary>
     /// Функция возвращает объект по его ID, обогащая сущность атрибутами
     /// </summary>
-    /// <param name="id"></param>
+    /// <param name="id">айди объекта</param>
+    /// <param name="user">пользователь</param>
     /// <returns></returns>
-    public async Task<ObjDto?> GetObjDtoAsync(int id) 
+    public async Task<ObjDto?> GetObjDtoAsync(int id, User? user = null) 
     {
-        Obj? obj = await Objs.FirstOrDefaultAsync(x => x.Id == id);
+        Obj? obj;
+        
+        if(user == null)
+            obj = await Objs.FirstOrDefaultAsync(x => x.Id == id);
+        else
+            obj = await Objs.FirstOrDefaultAsync(x => x.Id == id && x.UserId == user.Id);
+
         if (obj == null) { return null; }
 
         ObjDto objDto = new ObjDto(obj);
@@ -248,7 +266,8 @@ public class ApplicationContext : DbContext
     private async Task SeedData<TEntity>(DbSet<TEntity> dbSet, string filePath) where TEntity : class
     {
         string name = typeof(TEntity).Name;
-        Console.WriteLine($"Start seeding: {name}");
+        //Console.WriteLine($"Start seeding: {name}");
+        _logger.LogDebug($"Start seeding: {name}");
 
         try
         {
@@ -265,17 +284,16 @@ public class ApplicationContext : DbContext
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error Seeding data entity: {name}, error msg:{ex.Message} \n\n {ex.StackTrace}");
+            //Console.WriteLine($"Error Seeding data entity: {name}, error msg:{ex.Message} \n\n {ex.StackTrace}");
+            _logger.LogError($"Error Seeding data entity: {name}, error msg:{ex.Message} \n\n {ex.StackTrace}");
         }
-
-        HashSet<string> another = new HashSet<string>
-        {
-            "ObjStateTransiton", "RightRole", "UserRole", "FavoriteObj", "LinkObj"
-        };
 
         try
         {
-            if (another.Contains(name))
+            var type = typeof(TEntity);
+            var id = type.GetProperty("Id");
+
+            if (id == null)
                 return;
 
             string q1 = $"select max(id) from \"Diplom\".{name.ToLower()};";
@@ -290,7 +308,8 @@ public class ApplicationContext : DbContext
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error fix DB sequence entity: {name}, error msg:{ex.Message} \n\n {ex.StackTrace}");
+            //Console.WriteLine($"Error fix DB sequence entity: {name}, error msg:{ex.Message} \n\n {ex.StackTrace}");
+            _logger.LogError($"Error fix DB sequence entity: {name}, error msg:{ex.Message} \n\n {ex.StackTrace}");
         }
         
     }

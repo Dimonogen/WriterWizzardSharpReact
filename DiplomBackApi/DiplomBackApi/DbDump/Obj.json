@@ -14,13 +14,6 @@
     "StateId": 1
   },
   {
-    "Id": 5,
-    "UserId": 1,
-    "Name": "Приход письма в хогвартс",
-    "TypeId": 3,
-    "StateId": 1
-  },
-  {
     "Id": 6,
     "UserId": 1,
     "Name": "Распределительная шляпа",
@@ -42,11 +35,25 @@
     "StateId": 1
   },
   {
+    "Id": 11,
+    "UserId": 1,
+    "Name": "Дадли Дурсль",
+    "TypeId": 1,
+    "StateId": 1
+  },
+  {
+    "Id": 12,
+    "UserId": 1,
+    "Name": "Миссис Поттер",
+    "TypeId": 1,
+    "StateId": 1
+  },
+  {
     "Id": 9,
     "UserId": 1,
     "Name": "Гарри Поттер",
     "TypeId": 1,
-    "StateId": 2
+    "StateId": 1
   },
   {
     "Id": 10,
@@ -54,5 +61,47 @@
     "Name": "Волан Де Морт",
     "TypeId": 1,
     "StateId": 2
+  },
+  {
+    "Id": 13,
+    "UserId": 1,
+    "Name": "Вы-Знаете-Кто",
+    "TypeId": 1,
+    "StateId": 1
+  },
+  {
+    "Id": 14,
+    "UserId": 1,
+    "Name": "Полосатая кошка",
+    "TypeId": 1,
+    "StateId": 1
+  },
+  {
+    "Id": 15,
+    "UserId": 1,
+    "Name": "Альбус Дамблдор",
+    "TypeId": 1,
+    "StateId": 1
+  },
+  {
+    "Id": 17,
+    "UserId": 1,
+    "Name": "Тисовая улица",
+    "TypeId": 2,
+    "StateId": 1
+  },
+  {
+    "Id": 16,
+    "UserId": 1,
+    "Name": "Тест объект",
+    "TypeId": 1,
+    "StateId": 2
+  },
+  {
+    "Id": 5,
+    "UserId": 1,
+    "Name": "День когда Сам-Знаете-Кто ушёл",
+    "TypeId": 3,
+    "StateId": 1
   }
 ]

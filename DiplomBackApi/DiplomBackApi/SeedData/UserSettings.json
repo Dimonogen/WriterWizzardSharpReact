@@ -1,8 +1,8 @@
 [
   {
     "UserId": 1,
-    "Code": "GridTypeId1",
-    "Value": "{\"columns\":{\"columnVisibilityModel\":{\"id\":false},\"orderedFields\":[\"__check__\",\"id\",\"state\",\"name\",\"c1\"],\"dimensions\":{\"id\":{\"maxWidth\":-1,\"minWidth\":50,\"width\":50},\"state\":{\"maxWidth\":-1,\"minWidth\":50,\"width\":120.61250305175781,\"flex\":0},\"name\":{\"maxWidth\":-1,\"minWidth\":50,\"width\":140.0250244140625,\"flex\":0},\"c1\":{\"maxWidth\":-1,\"minWidth\":50,\"width\":534.3250350952148,\"flex\":0}}},\"preferencePanel\":{\"open\":false},\"filter\":{\"filterModel\":{\"items\":[],\"logicOperator\":\"and\",\"quickFilterValues\":[],\"quickFilterLogicOperator\":\"and\"}},\"sorting\":{\"sortModel\":[]},\"density\":\"standard\",\"pagination\":{\"meta\":{},\"paginationModel\":{\"page\":0,\"pageSize\":100},\"rowCount\":4}}"
+    "Code": "GridTypeIdundefined",
+    "Value": "{\"columns\":{\"columnVisibilityModel\":{},\"orderedFields\":[\"__check__\",\"id\",\"state\",\"name\"],\"dimensions\":{\"id\":{\"maxWidth\":-1,\"minWidth\":50,\"width\":50},\"state\":{\"maxWidth\":-1,\"minWidth\":50,\"width\":120},\"name\":{\"maxWidth\":-1,\"minWidth\":50,\"width\":288.16253662109375,\"flex\":0}}},\"preferencePanel\":{\"open\":false},\"filter\":{\"filterModel\":{\"items\":[],\"logicOperator\":\"and\",\"quickFilterValues\":[],\"quickFilterLogicOperator\":\"and\"}},\"sorting\":{\"sortModel\":[]},\"density\":\"standard\",\"pagination\":{\"meta\":{},\"paginationModel\":{\"page\":0,\"pageSize\":100},\"rowCount\":3}}"
   },
   {
     "UserId": 1,
@@ -13,5 +13,10 @@
     "UserId": 1,
     "Code": "GridTypeId3",
     "Value": "{\"columns\":{\"columnVisibilityModel\":{\"id\":false},\"orderedFields\":[\"__check__\",\"id\",\"state\",\"name\"],\"dimensions\":{\"id\":{\"maxWidth\":-1,\"minWidth\":50,\"width\":50},\"state\":{\"maxWidth\":-1,\"minWidth\":50,\"width\":121.9375,\"flex\":0},\"name\":{\"maxWidth\":-1,\"minWidth\":50,\"width\":251,\"flex\":0}}},\"preferencePanel\":{\"open\":false},\"filter\":{\"filterModel\":{\"items\":[],\"logicOperator\":\"and\",\"quickFilterValues\":[],\"quickFilterLogicOperator\":\"and\"}},\"sorting\":{\"sortModel\":[]},\"density\":\"standard\",\"pagination\":{\"meta\":{},\"paginationModel\":{\"page\":0,\"pageSize\":100},\"rowCount\":2}}"
+  },
+  {
+    "UserId": 1,
+    "Code": "GridTypeId1",
+    "Value": "{\"columns\":{\"columnVisibilityModel\":{\"id\":false},\"orderedFields\":[\"__check__\",\"id\",\"state\",\"name\",\"c1\"],\"dimensions\":{\"id\":{\"maxWidth\":-1,\"minWidth\":50,\"width\":50},\"state\":{\"maxWidth\":-1,\"minWidth\":50,\"width\":120.61250305175781,\"flex\":0},\"name\":{\"maxWidth\":-1,\"minWidth\":50,\"width\":195.02500915527344,\"flex\":0},\"c1\":{\"maxWidth\":-1,\"minWidth\":50,\"width\":534.3250350952148,\"flex\":0}}},\"preferencePanel\":{\"open\":false},\"filter\":{\"filterModel\":{\"items\":[],\"logicOperator\":\"and\",\"quickFilterValues\":[],\"quickFilterLogicOperator\":\"and\"}},\"sorting\":{\"sortModel\":[]},\"density\":\"standard\",\"pagination\":{\"meta\":{},\"paginationModel\":{\"page\":0,\"pageSize\":100},\"rowCount\":8}}"
   }
 ]
