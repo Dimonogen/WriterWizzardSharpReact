@@ -1,0 +1,119 @@
+{
+  "ObjType": [
+    {
+      "Id": 1,
+      "UserId": 0,
+      "Name": "Персонаж",
+      "Code": "Character",
+      "Description": "Персонаж"
+    },
+    {
+      "Id": 2,
+      "UserId": 0,
+      "Name": "Локация",
+      "Code": "Location",
+      "Description": "Локация"
+    },
+    {
+      "Id": 3,
+      "UserId": 0,
+      "Name": "Событие",
+      "Code": "Event",
+      "Description": "Событие"
+    }
+  ],
+  "Obj": [
+    {
+      "Id": 1,
+      "UserId": 1,
+      "Name": "Пример персонажа",
+      "TypeId": 1,
+      "StateId": 1
+    },
+    {
+      "Id": 2,
+      "UserId": 1,
+      "Name": "Пример локации",
+      "TypeId": 2,
+      "StateId": 1
+    },
+    {
+      "Id": 3,
+      "UserId": 1,
+      "Name": "Пример события",
+      "TypeId": 3,
+      "StateId": 1
+    }
+  ],
+  "AttributeType": [
+    {
+      "Id": 1,
+      "UserId": 1,
+      "Name": "Текст",
+      "IsComplex": false,
+      "Type": 0,
+      "RegExValidation": ""
+    },
+    {
+      "Id": 2,
+      "UserId": 1,
+      "Name": "Число",
+      "IsComplex": false,
+      "Type": 1,
+      "RegExValidation": ""
+    },
+    {
+      "Id": 3,
+      "UserId": 1,
+      "Name": "Дата",
+      "IsComplex": false,
+      "Type": 2,
+      "RegExValidation": ""
+    },
+    {
+      "Id": 4,
+      "UserId": 1,
+      "Name": "Объект персонаж",
+      "IsComplex": true,
+      "Type": 1,
+      "RegExValidation": ""
+    },
+    {
+      "Id": 5,
+      "UserId": 1,
+      "Name": "Объект",
+      "IsComplex": true,
+      "Type": 0,
+      "RegExValidation": ""
+    }
+  ],
+  "MenuElement": [
+    {
+      "Id": 1,
+      "UserId": 0,
+      "Name": "Персонажи",
+      "Description": "Персонажи",
+      "ParentMenuId": null,
+      "ObjTypeId": 1,
+      "Filters": ""
+    },
+    {
+      "Id": 2,
+      "UserId": 0,
+      "Name": "Локации",
+      "Description": "Локации",
+      "ParentMenuId": null,
+      "ObjTypeId": 2,
+      "Filters": ""
+    },
+    {
+      "Id": 3,
+      "UserId": 0,
+      "Name": "События",
+      "Description": "События",
+      "ParentMenuId": null,
+      "ObjTypeId": 3,
+      "Filters": ""
+    }
+  ]
+}

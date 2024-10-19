@@ -243,6 +243,16 @@ public class ApplicationContext : DbContext
         await SeedData(UserSettings, DataFolder);
     }
 
+    /// <summary>
+    /// Заполнение базы минимальными данными для пользователя нового
+    /// </summary>
+    /// <param name="user"></param>
+    /// <param name="templateId"></param>
+    /// <returns></returns>
+    public async Task UserInitDb(User user, int templateId)
+    {
+
+    }
 
     /// <summary>
     /// Функция очистки таблицы соответствующего DbSet'а.

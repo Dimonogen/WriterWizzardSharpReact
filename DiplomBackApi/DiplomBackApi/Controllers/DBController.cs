@@ -13,6 +13,23 @@ public class DBController : MyBaseController
     {
     }
 
+
+    [HttpGet("InitDb")]
+    public async Task<ActionResult> UserInitDb(int templateId)
+    {
+        try
+        {
+            var user = GetUserIdByAuth();
+            await db.UserInitDb(user, templateId);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message + "\n\n" + ex.StackTrace);
+        }
+        return Ok("Успех");
+    }
+
+
     [HttpGet("ClearInit")]
     public async Task<ActionResult> ClearInitBd()
     {
