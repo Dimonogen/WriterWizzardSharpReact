@@ -10,13 +10,12 @@ namespace DiplomBackApi.Models
     /// Модель аттрибута объекта
     /// </summary>
     [Table("objattribute", Schema = "Diplom")]
-    [Index(nameof(UserId))]
+    [Index(nameof(UserId)), PrimaryKey(nameof(Id), nameof(UserId))]
     public class ObjAttribute
     {
         /// <summary>
         /// Идентификатор уникальный
         /// </summary>
-        [Key]
         [Column("id")]
         public int Id { get; set; }
 
@@ -29,10 +28,9 @@ namespace DiplomBackApi.Models
         /// <summary>
         /// ID объекта
         /// </summary>
-        [ForeignKey("Obj")]
         public int ObjId { get; set; }
-        [JsonIgnore]
-        public Obj Obj { get; set; }
+        [JsonIgnore, ForeignKey("ObjId, UserId")]
+        public virtual Obj Obj { get; set; }
 
         /// <summary>
         /// Номер аттрибута

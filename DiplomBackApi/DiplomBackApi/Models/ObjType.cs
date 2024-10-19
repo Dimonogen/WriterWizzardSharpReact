@@ -10,21 +10,15 @@ namespace DiplomBackApi.Models
     /// Модель сущности тип объекта
     /// </summary>
     [Table("objtype", Schema = "Diplom")]
+    [PrimaryKey(nameof(Id), nameof(UserId))]
     [Index(nameof(UserId))]
-    public class ObjType
+    public class ObjType : BaseEntity
     {
         /// <summary>
-        /// Идентификатор уникальный
+        /// Идентификатор уникальный в рамках пользователя
         /// </summary>
-        [Key]
         [Column("id")]
         public int Id { get; set; }
-
-        /// <summary>
-        /// Id пользователя, чтобы для каждого юзера был "своя" БД
-        /// </summary>
-        [Column("userId")]
-        public int UserId { get; set; }
 
         /// <summary>
         /// Название типа

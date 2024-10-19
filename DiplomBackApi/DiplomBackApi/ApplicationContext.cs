@@ -7,6 +7,9 @@ using Newtonsoft.Json;
 using System.Security.Claims;
 using Microsoft.Extensions.Logging;
 using Serilog.Core;
+using System.Xml.Linq;
+using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
 
 namespace DiplomBackApi;
 
@@ -54,11 +57,6 @@ public class ApplicationContext : DbContext
     /// Таблица избранных объектов
     /// </summary>
     public DbSet<FavoriteObj> FavoriteObjs { get; set; }
-
-    /// <summary>
-    /// Уведомления
-    /// </summary>
-    public DbSet<Notification> Notifications { get; set; }
 
     /// <summary>
     /// Состояния объектов
@@ -251,8 +249,63 @@ public class ApplicationContext : DbContext
     /// <returns></returns>
     public async Task UserInitDb(User user, int templateId)
     {
+        string fileJson = File.ReadAllText(Path.Combine("Templates", $"Template_{templateId}.json"));
 
+        JObject jo = JObject.Parse(fileJson);
+
+        foreach (var item in jo)
+        {
+            string value = item.Value.ToString();
+            switch (item.Key)
+            {
+                case "ObjType":
+                    await UserInitTable<ObjType>(user, value, ObjTypes);
+                    break;
+                case "ObjState":
+                    await UserInitTable<ObjState>(user, value, ObjStates);
+                    break;
+                case "Obj":
+                    await UserInitTable<Obj>(user, value, Objs);
+                    break;
+                case "AttributeType":
+                    await UserInitTable<AttributeType>(user, value, AttributeTypes);
+                    break;
+                case "MenuElement":
+                    await UserInitTable<MenuElement>(user, value, MenuElements);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
+
+
+    private async Task UserInitTable<TEntity>(User user, string data, DbSet<TEntity> dbSet) where TEntity : BaseEntity
+    {
+        string name = typeof(TEntity).Name;
+        try
+        {
+            var objs = JsonConvert.DeserializeObject<List<TEntity>>(data);
+
+            if (objs == null)
+                return;
+
+            for (int i = 0; i < objs.Count; i++)
+            {
+                objs[i].UserId = user.Id;
+            }
+
+            await dbSet.AddRangeAsync(objs);
+            await this.SaveChangesAsync();
+        }
+        catch (Exception ex)
+        {
+            //Console.WriteLine($"Error Seeding data entity: {name}, error msg:{ex.Message} \n\n {ex.StackTrace}");
+            _logger.LogError($"Error init data entity: {name}, error msg:{ex.Message} \n\n {ex.StackTrace}");
+        }
+    }
+
+    
 
     /// <summary>
     /// Функция очистки таблицы соответствующего DbSet'а.

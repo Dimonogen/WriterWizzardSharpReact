@@ -10,21 +10,14 @@ namespace DiplomBackApi.Models
     /// Пункт меню, к которому что-то привязано
     /// </summary>
     [Table("menuelement", Schema = "Diplom")]
-    [Index(nameof(UserId))]
-    public class MenuElement
+    [Index(nameof(UserId)), PrimaryKey(nameof(Id), nameof(UserId))]
+    public class MenuElement : BaseEntity
     {
         /// <summary>
         /// Идентификатор уникальный
         /// </summary>
-        [Key]
         [Column("id")]
         public int Id { get; set; }
-
-        /// <summary>
-        /// Id пользователя, чтобы для каждого юзера был "своя" БД
-        /// </summary>
-        [Column("userId")]
-        public int UserId { get; set; }
 
         /// <summary>
         /// Отображаемое название пункта меню
@@ -41,17 +34,17 @@ namespace DiplomBackApi.Models
         /// <summary>
         /// Родительский пункт меню
         /// </summary>
-        [AllowNull, ForeignKey("MenuElement"), Column("parentMenuId")]
+        [AllowNull, Column("parentMenuId")]
         public int? ParentMenuId { get; set; }
-        [JsonIgnore]
+        [JsonIgnore, ForeignKey($"{nameof(ParentMenuId)}, {nameof(UserId)}")]
         public MenuElement? ParentMenu { get; set; }
 
         /// <summary>
         /// Тип объект, который отображается в гриде на пункте меню
         /// </summary>
-        [ForeignKey("ObjType"), Column("objTypeId")]
+        [Column("objTypeId")]
         public int? ObjTypeId {  get; set; }
-        [JsonIgnore]
+        [JsonIgnore, ForeignKey("ObjTypeId, UserId")]
         public ObjType? ObjType { get; set; }
 
         /// <summary>

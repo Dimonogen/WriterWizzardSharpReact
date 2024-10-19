@@ -9,7 +9,7 @@ namespace DiplomBackApi.Models
     /// Таблица избранных объектов
     /// </summary>
     [Table("favoriteobj", Schema = "Diplom")]
-    [PrimaryKey(nameof(UserId), nameof(ObjId))]
+    [PrimaryKey(nameof(ObjId), nameof(UserId))]
     [Index(nameof(UserId))]
     public class FavoriteObj
     {
@@ -24,9 +24,8 @@ namespace DiplomBackApi.Models
         /// <summary>
         /// Объект добавленный в избранное
         /// </summary>
-        [ForeignKey("Obj")]
         public int ObjId { get; set; }
-        [JsonIgnore]
-        public Obj Obj { get; set; }
+        [JsonIgnore, ForeignKey($"{nameof(ObjId)}, {nameof(UserId)}")]
+        public virtual Obj Obj { get; set; }
     }
 }

@@ -10,21 +10,14 @@ namespace DiplomBackApi.Models
     /// Модель сущности объект, универсальная штука
     /// </summary>
     [Table("obj", Schema = "Diplom")]
-    [Index(nameof(UserId))]
-    public class Obj
+    [Index(nameof(UserId)), PrimaryKey(nameof(Id), nameof(UserId))]
+    public class Obj : BaseEntity
     {
-        /// <summary>
-        /// Идентификатор уникальный
+        /// <summary> 
+        /// Идентификатор уникальный в рамках пользователя
         /// </summary>
-        [Key]
         [Column("id")]
         public int Id { get; set; }
-
-        /// <summary>
-        /// Id пользователя, чтобы для каждого юзера был "своя" БД
-        /// </summary>
-        [Column("userId")]
-        public int UserId { get; set; }
 
         /// <summary>
         /// Название объекта
@@ -36,17 +29,16 @@ namespace DiplomBackApi.Models
         /// <summary>
         /// Тип объекта
         /// </summary>
-        [ForeignKey("ObjType")]
         public int TypeId {  get; set; }
-        [JsonIgnore]
-        public ObjType ObjType { get; set; }
+        [JsonIgnore, ForeignKey("TypeId, UserId")]
+        public virtual ObjType ObjType { get; set; }
 
         /// <summary>
         /// Состояние объекта
         /// </summary>
-        [Column("stateId", Order = 0), ForeignKey("ObjState")]
+        [Column("stateId")]
         public int StateId { get; set; }
-        [JsonIgnore]
-        public ObjState State { get; set; }
+        [JsonIgnore, ForeignKey("StateId, UserId")]
+        public virtual ObjState State { get; set; }
     }
 }

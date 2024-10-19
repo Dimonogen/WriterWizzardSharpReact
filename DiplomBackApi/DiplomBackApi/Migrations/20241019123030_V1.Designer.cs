@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DiplomBackApi.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20241011113324_V6")]
-    partial class V6
+    [Migration("20241019123030_V1")]
+    partial class V1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,11 +29,12 @@ namespace DiplomBackApi.Migrations
             modelBuilder.Entity("DiplomBackApi.Models.AttributeType", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasColumnName("id");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer")
+                        .HasColumnName("userId");
 
                     b.Property<bool>("IsComplex")
                         .HasColumnType("boolean")
@@ -53,11 +54,7 @@ namespace DiplomBackApi.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("type");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer")
-                        .HasColumnName("userId");
-
-                    b.HasKey("Id");
+                    b.HasKey("Id", "UserId");
 
                     b.HasIndex("UserId");
 
@@ -66,15 +63,13 @@ namespace DiplomBackApi.Migrations
 
             modelBuilder.Entity("DiplomBackApi.Models.FavoriteObj", b =>
                 {
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
-
                     b.Property<int>("ObjId")
                         .HasColumnType("integer");
 
-                    b.HasKey("UserId", "ObjId");
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
 
-                    b.HasIndex("ObjId");
+                    b.HasKey("ObjId", "UserId");
 
                     b.HasIndex("UserId");
 
@@ -86,18 +81,18 @@ namespace DiplomBackApi.Migrations
                     b.Property<int>("ObjParentId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("ObjChildId")
-                        .HasColumnType("integer");
-
                     b.Property<int>("UserId")
                         .HasColumnType("integer")
                         .HasColumnName("userId");
 
-                    b.HasKey("ObjParentId", "ObjChildId");
+                    b.Property<int>("ObjChildId")
+                        .HasColumnType("integer");
 
-                    b.HasIndex("ObjChildId");
+                    b.HasKey("ObjParentId", "UserId");
 
                     b.HasIndex("UserId");
+
+                    b.HasIndex("ObjChildId", "UserId");
 
                     b.ToTable("linkobj", "Diplom");
                 });
@@ -105,11 +100,12 @@ namespace DiplomBackApi.Migrations
             modelBuilder.Entity("DiplomBackApi.Models.MenuElement", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasColumnName("id");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer")
+                        .HasColumnName("userId");
 
                     b.Property<string>("Description")
                         .HasColumnType("text")
@@ -133,64 +129,26 @@ namespace DiplomBackApi.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("parentMenuId");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer")
-                        .HasColumnName("userId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ObjTypeId");
-
-                    b.HasIndex("ParentMenuId");
+                    b.HasKey("Id", "UserId");
 
                     b.HasIndex("UserId");
+
+                    b.HasIndex("ObjTypeId", "UserId");
+
+                    b.HasIndex("ParentMenuId", "UserId");
 
                     b.ToTable("menuelement", "Diplom");
-                });
-
-            modelBuilder.Entity("DiplomBackApi.Models.Notification", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasColumnName("id");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<bool>("IsRead")
-                        .HasColumnType("boolean")
-                        .HasColumnName("isRead");
-
-                    b.Property<string>("Message")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("message");
-
-                    b.Property<int>("ObjId")
-                        .HasColumnType("integer")
-                        .HasColumnName("objId");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer")
-                        .HasColumnName("userId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ObjId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("notification", "Diplom");
                 });
 
             modelBuilder.Entity("DiplomBackApi.Models.Obj", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasColumnName("id");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer")
+                        .HasColumnName("userId");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -199,23 +157,18 @@ namespace DiplomBackApi.Migrations
 
                     b.Property<int>("StateId")
                         .HasColumnType("integer")
-                        .HasColumnName("stateId")
-                        .HasColumnOrder(0);
+                        .HasColumnName("stateId");
 
                     b.Property<int>("TypeId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer")
-                        .HasColumnName("userId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("StateId");
-
-                    b.HasIndex("TypeId");
+                    b.HasKey("Id", "UserId");
 
                     b.HasIndex("UserId");
+
+                    b.HasIndex("StateId", "UserId");
+
+                    b.HasIndex("TypeId", "UserId");
 
                     b.ToTable("obj", "Diplom");
                 });
@@ -223,11 +176,12 @@ namespace DiplomBackApi.Migrations
             modelBuilder.Entity("DiplomBackApi.Models.ObjAdditionalAttribute", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasColumnName("id");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer")
+                        .HasColumnName("userId");
 
                     b.Property<int>("AttributeTypeId")
                         .HasColumnType("integer");
@@ -244,22 +198,18 @@ namespace DiplomBackApi.Migrations
                     b.Property<int>("ObjId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer")
-                        .HasColumnName("userId");
-
                     b.Property<string>("Value")
                         .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("value");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("AttributeTypeId");
-
-                    b.HasIndex("ObjId");
+                    b.HasKey("Id", "UserId");
 
                     b.HasIndex("UserId");
+
+                    b.HasIndex("AttributeTypeId", "UserId");
+
+                    b.HasIndex("ObjId", "UserId");
 
                     b.ToTable("objadditionalattribute", "Diplom");
                 });
@@ -267,11 +217,12 @@ namespace DiplomBackApi.Migrations
             modelBuilder.Entity("DiplomBackApi.Models.ObjAttribute", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasColumnName("id");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer")
+                        .HasColumnName("userId");
 
                     b.Property<int>("Number")
                         .HasColumnType("integer")
@@ -280,20 +231,16 @@ namespace DiplomBackApi.Migrations
                     b.Property<int>("ObjId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer")
-                        .HasColumnName("userId");
-
                     b.Property<string>("Value")
                         .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("value");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("ObjId");
+                    b.HasKey("Id", "UserId");
 
                     b.HasIndex("UserId");
+
+                    b.HasIndex("ObjId", "UserId");
 
                     b.ToTable("objattribute", "Diplom");
                 });
@@ -301,11 +248,17 @@ namespace DiplomBackApi.Migrations
             modelBuilder.Entity("DiplomBackApi.Models.ObjState", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasColumnName("id");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer")
+                        .HasColumnName("userId");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("code");
 
                     b.Property<string>("Description")
                         .HasColumnType("text")
@@ -316,7 +269,9 @@ namespace DiplomBackApi.Migrations
                         .HasColumnType("text")
                         .HasColumnName("name");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id", "UserId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("objstate", "Diplom");
                 });
@@ -333,15 +288,23 @@ namespace DiplomBackApi.Migrations
                         .HasColumnName("stateToId")
                         .HasColumnOrder(1);
 
+                    b.Property<int?>("StateFromUserId")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("StateToUserId")
+                        .HasColumnType("integer");
+
                     b.Property<int>("UserId")
                         .HasColumnType("integer")
                         .HasColumnName("userId");
 
                     b.HasKey("StateFromId", "StateToId");
 
-                    b.HasIndex("StateToId");
-
                     b.HasIndex("UserId");
+
+                    b.HasIndex("StateFromId", "StateFromUserId");
+
+                    b.HasIndex("StateToId", "StateToUserId");
 
                     b.ToTable("objstatetransition", "Diplom");
                 });
@@ -349,11 +312,12 @@ namespace DiplomBackApi.Migrations
             modelBuilder.Entity("DiplomBackApi.Models.ObjType", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasColumnName("id");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer")
+                        .HasColumnName("userId");
 
                     b.Property<string>("Code")
                         .IsRequired()
@@ -369,11 +333,7 @@ namespace DiplomBackApi.Migrations
                         .HasColumnType("text")
                         .HasColumnName("name");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer")
-                        .HasColumnName("userId");
-
-                    b.HasKey("Id");
+                    b.HasKey("Id", "UserId");
 
                     b.HasIndex("UserId");
 
@@ -383,11 +343,12 @@ namespace DiplomBackApi.Migrations
             modelBuilder.Entity("DiplomBackApi.Models.ObjTypeAttribute", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasColumnName("id");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer")
+                        .HasColumnName("userId");
 
                     b.Property<int>("AttributeTypeId")
                         .HasColumnType("integer");
@@ -404,17 +365,13 @@ namespace DiplomBackApi.Migrations
                     b.Property<int>("TypeId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer")
-                        .HasColumnName("userId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AttributeTypeId");
-
-                    b.HasIndex("TypeId");
+                    b.HasKey("Id", "UserId");
 
                     b.HasIndex("UserId");
+
+                    b.HasIndex("AttributeTypeId", "UserId");
+
+                    b.HasIndex("TypeId", "UserId");
 
                     b.ToTable("objtypeattribute", "Diplom");
                 });
@@ -477,17 +434,38 @@ namespace DiplomBackApi.Migrations
                     b.ToTable("user", "Diplom");
                 });
 
+            modelBuilder.Entity("DiplomBackApi.Models.UserSettings", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer")
+                        .HasColumnName("userId");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("text")
+                        .HasColumnName("code");
+
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("UserId", "Code");
+
+                    b.HasIndex("UserId", "Code");
+
+                    b.ToTable("userSettings", "Diplom");
+                });
+
             modelBuilder.Entity("DiplomBackApi.Models.FavoriteObj", b =>
                 {
-                    b.HasOne("DiplomBackApi.Models.Obj", "Obj")
-                        .WithMany()
-                        .HasForeignKey("ObjId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("DiplomBackApi.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DiplomBackApi.Models.Obj", "Obj")
+                        .WithMany()
+                        .HasForeignKey("ObjId", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -500,13 +478,13 @@ namespace DiplomBackApi.Migrations
                 {
                     b.HasOne("DiplomBackApi.Models.Obj", "ObjChild")
                         .WithMany()
-                        .HasForeignKey("ObjChildId")
+                        .HasForeignKey("ObjChildId", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("DiplomBackApi.Models.Obj", "ObjParent")
                         .WithMany()
-                        .HasForeignKey("ObjParentId")
+                        .HasForeignKey("ObjParentId", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -519,47 +497,28 @@ namespace DiplomBackApi.Migrations
                 {
                     b.HasOne("DiplomBackApi.Models.ObjType", "ObjType")
                         .WithMany()
-                        .HasForeignKey("ObjTypeId");
+                        .HasForeignKey("ObjTypeId", "UserId");
 
                     b.HasOne("DiplomBackApi.Models.MenuElement", "ParentMenu")
                         .WithMany()
-                        .HasForeignKey("ParentMenuId");
+                        .HasForeignKey("ParentMenuId", "UserId");
 
                     b.Navigation("ObjType");
 
                     b.Navigation("ParentMenu");
                 });
 
-            modelBuilder.Entity("DiplomBackApi.Models.Notification", b =>
-                {
-                    b.HasOne("DiplomBackApi.Models.Obj", "Obj")
-                        .WithMany()
-                        .HasForeignKey("ObjId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("DiplomBackApi.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Obj");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("DiplomBackApi.Models.Obj", b =>
                 {
                     b.HasOne("DiplomBackApi.Models.ObjState", "State")
                         .WithMany()
-                        .HasForeignKey("StateId")
+                        .HasForeignKey("StateId", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("DiplomBackApi.Models.ObjType", "ObjType")
                         .WithMany()
-                        .HasForeignKey("TypeId")
+                        .HasForeignKey("TypeId", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -572,13 +531,13 @@ namespace DiplomBackApi.Migrations
                 {
                     b.HasOne("DiplomBackApi.Models.AttributeType", "AttributeType")
                         .WithMany()
-                        .HasForeignKey("AttributeTypeId")
+                        .HasForeignKey("AttributeTypeId", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("DiplomBackApi.Models.Obj", "Obj")
                         .WithMany()
-                        .HasForeignKey("ObjId")
+                        .HasForeignKey("ObjId", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -591,7 +550,7 @@ namespace DiplomBackApi.Migrations
                 {
                     b.HasOne("DiplomBackApi.Models.Obj", "Obj")
                         .WithMany()
-                        .HasForeignKey("ObjId")
+                        .HasForeignKey("ObjId", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -602,15 +561,11 @@ namespace DiplomBackApi.Migrations
                 {
                     b.HasOne("DiplomBackApi.Models.ObjState", "StateFrom")
                         .WithMany()
-                        .HasForeignKey("StateFromId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("StateFromId", "StateFromUserId");
 
                     b.HasOne("DiplomBackApi.Models.ObjState", "StateTo")
                         .WithMany()
-                        .HasForeignKey("StateToId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("StateToId", "StateToUserId");
 
                     b.Navigation("StateFrom");
 
@@ -621,13 +576,13 @@ namespace DiplomBackApi.Migrations
                 {
                     b.HasOne("DiplomBackApi.Models.AttributeType", "AttributeType")
                         .WithMany()
-                        .HasForeignKey("AttributeTypeId")
+                        .HasForeignKey("AttributeTypeId", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("DiplomBackApi.Models.ObjType", "ObjType")
                         .WithMany()
-                        .HasForeignKey("TypeId")
+                        .HasForeignKey("TypeId", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

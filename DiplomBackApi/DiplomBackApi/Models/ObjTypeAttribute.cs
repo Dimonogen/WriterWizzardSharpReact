@@ -10,13 +10,12 @@ namespace DiplomBackApi.Models
     /// Модель типа аттрибута объекта
     /// </summary>
     [Table("objtypeattribute", Schema = "Diplom")]
-    [Index(nameof(UserId))]
+    [Index(nameof(UserId)), PrimaryKey(nameof(Id), nameof(UserId))]
     public class ObjTypeAttribute
     {
         /// <summary>
         /// Идентификатор уникальный
         /// </summary>
-        [Key]
         [Column("id")]
         public int Id { get; set; }
 
@@ -29,9 +28,8 @@ namespace DiplomBackApi.Models
         /// <summary>
         /// Тип объекта
         /// </summary>
-        [ForeignKey("ObjType")]
         public int TypeId { get; set; }
-        [JsonIgnore]
+        [JsonIgnore, ForeignKey("TypeId, UserId")]
         public virtual ObjType ObjType { get; set; }
 
         /// <summary>
@@ -51,9 +49,8 @@ namespace DiplomBackApi.Models
         /// <summary>
         /// Тип атрибута
         /// </summary>
-        [ForeignKey("AttributeType")]
         public int AttributeTypeId { get; set; }
-        [JsonIgnore]
+        [JsonIgnore, ForeignKey("AttributeTypeId, UserId")]
         public virtual AttributeType AttributeType { get; set; }
     }
 }

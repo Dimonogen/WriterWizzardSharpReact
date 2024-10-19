@@ -156,6 +156,9 @@ public class UserController : MyBaseController
         await db.Users.AddAsync(user);
         await db.SaveChangesAsync();
 
+        //dfefault template now is id = 0
+        await db.UserInitDb(user, 0);
+
         var claims = new List<Claim> {  new Claim("email", user.Email),
                                         new Claim("id", user.Id.ToString()),
                                         new Claim("role", user.Role)

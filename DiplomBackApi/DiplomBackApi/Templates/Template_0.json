@@ -22,24 +22,44 @@
       "Description": "Событие"
     }
   ],
+  "ObjState": [
+    {
+      "Id": 1,
+      "Code": "use",
+      "Name": "Используется",
+      "Description": "Объект используется в системе."
+    },
+    {
+      "Id": 2,
+      "Code": "deleted",
+      "Name": "Удалён",
+      "Description": "Объект помещён в корзину."
+    },
+    {
+      "Id": 3,
+      "Code": "block",
+      "Name": "Недоступен",
+      "Description": "Объект недоступен."
+    }
+  ],
   "Obj": [
     {
       "Id": 1,
-      "UserId": 1,
+      "UserId": 0,
       "Name": "Пример персонажа",
       "TypeId": 1,
       "StateId": 1
     },
     {
       "Id": 2,
-      "UserId": 1,
+      "UserId": 0,
       "Name": "Пример локации",
       "TypeId": 2,
       "StateId": 1
     },
     {
       "Id": 3,
-      "UserId": 1,
+      "UserId": 0,
       "Name": "Пример события",
       "TypeId": 3,
       "StateId": 1
@@ -48,7 +68,7 @@
   "AttributeType": [
     {
       "Id": 1,
-      "UserId": 1,
+      "UserId": 0,
       "Name": "Текст",
       "IsComplex": false,
       "Type": 0,
@@ -56,7 +76,7 @@
     },
     {
       "Id": 2,
-      "UserId": 1,
+      "UserId": 0,
       "Name": "Число",
       "IsComplex": false,
       "Type": 1,
@@ -64,7 +84,7 @@
     },
     {
       "Id": 3,
-      "UserId": 1,
+      "UserId": 0,
       "Name": "Дата",
       "IsComplex": false,
       "Type": 2,
@@ -72,7 +92,7 @@
     },
     {
       "Id": 4,
-      "UserId": 1,
+      "UserId": 0,
       "Name": "Объект персонаж",
       "IsComplex": true,
       "Type": 1,
@@ -80,7 +100,7 @@
     },
     {
       "Id": 5,
-      "UserId": 1,
+      "UserId": 0,
       "Name": "Объект",
       "IsComplex": true,
       "Type": 0,

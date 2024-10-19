@@ -9,21 +9,16 @@ namespace DiplomBackApi.Models
     /// Тип атрибута, примитив число, текст или объект, или даже один из перечня объектов
     /// </summary>
     [Table("attributetype", Schema = "Diplom")]
+    [PrimaryKey(nameof(Id), nameof(UserId))]
     [Index(nameof(UserId))]
-    public class AttributeType
+    public class AttributeType : BaseEntity
     {
         /// <summary>
-        /// Идентификатор уникальный
+        /// Идентификатор уникальный в рамках пользователя
         /// </summary>
-        [Key]
+        
         [Column("id")]
         public int Id { get; set; }
-
-        /// <summary>
-        /// Id пользователя, чтобы для каждого юзера был "своя" БД
-        /// </summary>
-        [Column("userId")]
-        public int UserId { get; set; }
 
         /// <summary>
         /// Название объекта

@@ -8,13 +8,12 @@ namespace DiplomBackApi.Models
     /// <summary>
     /// Состояние объекта
     /// </summary>
-    [Table("objstate", Schema = "Diplom")]
-    public class ObjState
+    [Table("objstate", Schema = "Diplom"), PrimaryKey(nameof(Id), nameof(UserId))]
+    public class ObjState : BaseEntity
     {
         /// <summary>
         /// Идентификатор уникальный
         /// </summary>
-        [Key]
         [Column("id")]
         public int Id { get; set; }
 

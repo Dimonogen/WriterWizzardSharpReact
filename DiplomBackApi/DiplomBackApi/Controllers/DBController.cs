@@ -5,7 +5,7 @@ namespace DiplomBackApi.Controllers;
 /// <summary>
 /// Контроллер БД и сидинга
 /// </summary>
-[Route("api/menu")]
+[Route("api/db")]
 public class DBController : MyBaseController
 {
 

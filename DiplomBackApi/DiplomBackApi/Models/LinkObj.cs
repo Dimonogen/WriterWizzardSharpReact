@@ -9,24 +9,22 @@ namespace DiplomBackApi.Models
     /// Таблица связи объектов
     /// </summary>
     [Table("linkobj", Schema = "Diplom")]
-    [PrimaryKey(nameof(ObjParentId), nameof(ObjChildId))]
+    [PrimaryKey(nameof(ObjParentId), nameof(UserId))]
     [Index(nameof(UserId))]
     public class LinkObj
     {
         /// <summary>
         /// Объект к которому привязывается другой объект
         /// </summary>
-        [ForeignKey("Obj")]
         public int ObjParentId { get; set; }
-        [JsonIgnore]
+        [JsonIgnore, ForeignKey($"{nameof(ObjParentId)}, {nameof(UserId)}")]
         public Obj ObjParent { get; set; }
 
         /// <summary>
         /// Объект, который привязываем
         /// </summary>
-        [ForeignKey("Obj")]
         public int ObjChildId { get; set; }
-        [JsonIgnore]
+        [JsonIgnore, ForeignKey($"{nameof(ObjChildId)}, {nameof(UserId)}")]
         public Obj ObjChild { get; set; }
 
 
