@@ -9,7 +9,7 @@ const FieldObj = ({type, setValue, value, name, disable, number, SetModalD}) => 
 
 
     useEffect(() => {
-        if(value != null)
+        if(value != null && value != "")
             GetOneObj(value).then(data => {SetObj(data); //console.log(data)
                  })
     }, [value, name])
