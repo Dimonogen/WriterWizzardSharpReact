@@ -109,7 +109,7 @@ namespace DiplomBackApi.Controllers
             foreach (var obj in objs)
             {
                 list.Add(
-                    await db.GetObjDtoAsync(obj.Id)
+                    await db.GetObjDtoAsync(obj.Id, user)
                 );
                 foreach(var attr in list.Last().attributes)
                 {
@@ -146,7 +146,7 @@ namespace DiplomBackApi.Controllers
 
             foreach (var obj in objs)
             {
-                arr.Add(await db.GetObjDtoAsync(obj.Id));
+                arr.Add(await db.GetObjDtoAsync(obj.Id, user));
             }
 
             return Ok(arr);
@@ -174,7 +174,7 @@ namespace DiplomBackApi.Controllers
 
             foreach (var obj in objs)
             {
-                arr.Add(await db.GetObjDtoAsync(obj.Id));
+                arr.Add(await db.GetObjDtoAsync(obj.Id, user));
             }
 
             return Ok(arr);
@@ -228,7 +228,7 @@ namespace DiplomBackApi.Controllers
 
             await db.SaveChangesAsync();
 
-            ObjDto? obj_db = await db.GetObjDtoAsync(obj_n.Id);
+            ObjDto? obj_db = await db.GetObjDtoAsync(obj_n.Id, user);
 
             return Ok(obj_db);
             
@@ -292,7 +292,7 @@ namespace DiplomBackApi.Controllers
 
             await db.SaveChangesAsync();
 
-            ObjDto? obj_db = await db.GetObjDtoAsync(obj_n.Id);
+            ObjDto? obj_db = await db.GetObjDtoAsync(obj_n.Id, user);
 
             return Ok(obj_db);
             

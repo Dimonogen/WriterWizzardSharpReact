@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Context } from '../index'
-import {Container, Form, Card, Button} from 'react-bootstrap';
+import {Container, Form, Card, Button, InputGroup} from 'react-bootstrap';
 import {NavLink, useLocation, useNavigate} from 'react-router-dom'
 import {getInfo, getRights, login, registration} from '../http/userAPI';
 import {LOGIN_ROUTE, REGISTRATION_ROUTE, BASE_ROUTE, MENU_ROUTE} from '../utils/consts'
@@ -54,7 +54,7 @@ const Auth = observer( () => {
           <Form className='d-flex flex-column'>
             <Form.Control 
               className='mt-3'
-              placeholder='Введите ваш email...'
+              placeholder='Введите ваш login...'
               value={email}
               onChange={e => setEmail(e.target.value)}
             />
@@ -82,7 +82,7 @@ const Auth = observer( () => {
               placeholder='Введите ваш пароль...'
               value={password}
               onChange={e => setPassword(e.target.value)}
-              type='password'
+              type={isLogin ? 'password' :''}
             />
             <div className='d-flex justify-content-between mt-3 pl-3 pr-3'>
               {isLogin ?

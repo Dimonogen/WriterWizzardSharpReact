@@ -112,13 +112,13 @@ const GridObjComponent = () => {
                    <Button variant='dark' className='m-2'
                    onClick={()=>{navigate(MENU_ROUTE+'/'+id+'/0')}}>{"Новый "+typeData.name}</Button>
                    </div>
-                   {/*<Image className='m-2 ms-1 me-0' height='32px' width='32px' src={iconView}/>
+                   <Image className='m-2 ms-1 me-0' height='32px' width='32px' src={iconView}/>
                    <Button variant='outline-dark' className='m-2'
                            onClick={()=>{
                                if(selectionIds.length > 0)
                                    navigate(MENU_ROUTE+'/'+id+'/'+selectionIds[0])
                            }}
-                   >{"Открыть "+typeData.name}</Button>*/}
+                   >{"Открыть "+typeData.name}</Button>
                    <Image className='m-2 ms-1 me-0' height='32px' width='32px' src={iconUpdate}/>
                    <Button variant='outline-dark' className='m-2'
                            onClick={()=>{LoadData(id)}}>Обновить</Button>

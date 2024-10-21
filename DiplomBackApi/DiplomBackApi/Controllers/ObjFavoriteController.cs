@@ -30,7 +30,7 @@ public class ObjFavoriteController : MyBaseController
 
         foreach (var obj in objs)
         {
-            list.Add(await db.GetObjDtoAsync(obj.ObjId));
+            list.Add(await db.GetObjDtoAsync(obj.ObjId, user));
         }
 
         return Ok(list);

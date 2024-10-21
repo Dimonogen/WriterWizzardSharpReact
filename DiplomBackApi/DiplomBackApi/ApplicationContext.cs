@@ -126,20 +126,20 @@ public class ApplicationContext : DbContext
     public async Task<ObjDto?> GetObjDtoAsync(int id, User? user = null) 
     {
         Obj? obj;
-        
-        if(user == null)
-            obj = await Objs.FirstOrDefaultAsync(x => x.Id == id);
+
+        if (user == null)
+            return null;//obj = await Objs.FirstOrDefaultAsync(x => x.Id == id);
         else
             obj = await Objs.FirstOrDefaultAsync(x => x.Id == id && x.UserId == user.Id);
 
         if (obj == null) { return null; }
 
         ObjDto objDto = new ObjDto(obj);
-        var State = ObjStates.FirstOrDefault(x => obj.StateId == x.Id);
+        var State = ObjStates.FirstOrDefault(x => obj.StateId == x.Id && x.UserId == user.Id);
         objDto.State = State?.Name ?? "Состояние";
 
-        var attributes = await ObjAttributes.Where(x => x.ObjId == objDto.Id).ToListAsync();
-        var typeAttributes = await ObjTypeAttributes.Where(x => x.TypeId == objDto.TypeId).ToListAsync();
+        var attributes = await ObjAttributes.Where(x => x.ObjId == objDto.Id && x.UserId == user.Id).ToListAsync();
+        var typeAttributes = await ObjTypeAttributes.Where(x => x.TypeId == objDto.TypeId && x.UserId == user.Id).ToListAsync();
 
         if(typeAttributes == null)
         {
@@ -183,7 +183,7 @@ public class ApplicationContext : DbContext
             }
         }
 
-        var addAttr = await ObjAdditionalAttributes.Where(x => x.ObjId == id).ToListAsync();
+        var addAttr = await ObjAdditionalAttributes.Where(x => x.ObjId == id && x.UserId == user.Id).ToListAsync();
 
         foreach(var attr in addAttr)
         {
