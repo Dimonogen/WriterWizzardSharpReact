@@ -72,10 +72,10 @@ const ConfigObjTypeComponent = () => {
                             onClick={()=>{LoadData(id)}}>Обновить</Button>
                 </div>
                 <ThemeProvider theme={GridTheme}>
-                <Box sx={{height: window.innerHeight-215+'px', width: '100%'}}>
-                    <DataGrid rows={rows} columns={columns}
+                    <Box sx={{height: Math.max(window.innerHeight-215,400)+'px', width: '100%'}}>
+                        <DataGrid rows={rows} columns={columns}
                               onRowSelectionModelChange={(ids) =>{SetSelectionIds(ids)}}/>
-                </Box>
+                    </Box>
                 </ThemeProvider>
             </div>
             <div className='ms-2 W-50 Block'>

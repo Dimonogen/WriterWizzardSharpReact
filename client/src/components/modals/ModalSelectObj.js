@@ -69,7 +69,7 @@ const ModalSelectObj = ({show, onHide, final, title, objType}) => {
                 <div className="modal-body-my">
                     {
                         show ?
-                        <Box sx={{height: window.innerHeight * 0.5 + 'px', width: '100%'}}>
+                        <Box sx={{height: Math.max(window.innerHeight * 0.5, 300) + 'px', width: '100%'}}>
                             <DataGrid rows={rows} columns={columns}
                                       onRowSelectionModelChange={(ids) => {
                                           SetSelectionIds(ids)

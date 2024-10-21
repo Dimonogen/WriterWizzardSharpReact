@@ -145,7 +145,7 @@ const GridObjComponent = () => {
 
                </div>
                <ThemeProvider theme={GridTheme}>
-           <Box className={(IsLoading ? "d-none" : "d-block")} sx={{height: window.innerHeight-215+'px', width: '100%'}}>
+           <Box className={(IsLoading ? "d-none" : "d-block")} sx={{height: Math.max(window.innerHeight-215, 500)+'px', width: '100%'}}>
                <DataGrid rows={rows} columns={columns} checkboxSelection
                          prop
                          onRowSelectionModelChange={(ids) =>{SetSelectionIds(ids)}}
