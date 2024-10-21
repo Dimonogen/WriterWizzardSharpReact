@@ -130,10 +130,10 @@ public class ObjTypeController : MyBaseController
             Id = type.Id,
             Name = type.Name,
             Description = type.Description,
-            attributes = new List<ObjTypeAttributeDto>()
+            attributes = new List<ObjTypeAttributeDto>(),
         };
 
-        db.ObjTypeAttributes.Where(x => x.TypeId == type.Id).ToList().ForEach(a =>
+        db.ObjTypeAttributes.Where(x => x.TypeId == type.Id && x.UserId == user.Id).ToList().ForEach(a =>
         {
             typeDto.attributes.Add(new ObjTypeAttributeDto
             {
@@ -168,7 +168,7 @@ public class ObjTypeController : MyBaseController
                 attributes = new List<ObjTypeAttributeDto>()
             };
 
-            db.ObjTypeAttributes.Where(x => x.TypeId == type.Id).ToList().ForEach(a =>
+            db.ObjTypeAttributes.Where(x => x.TypeId == type.Id && x.UserId == user.Id).ToList().ForEach(a =>
             {
                 typeDto.attributes.Add(new ObjTypeAttributeDto
                 {
@@ -259,7 +259,7 @@ public class ObjTypeController : MyBaseController
             attributes = new List<ObjTypeAttributeDto>()
         };
 
-        db.ObjTypeAttributes.Where(x => x.TypeId == type.Id).ToList().ForEach(a =>
+        db.ObjTypeAttributes.Where(x => x.TypeId == type.Id && x.UserId == user.Id).ToList().ForEach(a =>
         {
             var attrType = db.AttributeTypes.FirstOrDefault(x => x.Id == a.AttributeTypeId);
             typeDto.attributes.Add(new ObjTypeAttributeDto

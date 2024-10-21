@@ -90,9 +90,8 @@ namespace DiplomBackApi.Controllers
         [HttpGet("type/{typeId}")]
         public async Task<ActionResult> GetObjTypeList(int typeId)
         {
-            
             var user = GetUserIdByAuth();
-            var stateDelete = await db.ObjStates.FirstOrDefaultAsync(x => x.Code == "deleted");
+            var stateDelete = await db.ObjStates.FirstOrDefaultAsync(x => x.Code == "deleted" && x.UserId == user.Id);
                 
             if (stateDelete == null)
             {
@@ -118,7 +117,7 @@ namespace DiplomBackApi.Controllers
                         int id;
                         try { id = int.Parse(attr.Value); }
                         catch (Exception e) { continue; }
-                        attr.Value = db.Objs.First(x => x.Id == id ).Name;
+                        attr.Value = db.Objs.First(x => x.Id == id && x.UserId == user.Id ).Name;
                     }
                 }
             }

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Context } from '../index'
-import {Container, Form, Card, Button, InputGroup} from 'react-bootstrap';
+import {Container, Form, Card, Button} from 'react-bootstrap';
 import {NavLink, useLocation, useNavigate} from 'react-router-dom'
 import {getInfo, getRights, login, registration} from '../http/userAPI';
 import {LOGIN_ROUTE, REGISTRATION_ROUTE, BASE_ROUTE, MENU_ROUTE} from '../utils/consts'
