@@ -76,7 +76,13 @@ const NavBar = observer(() => {
               <ModalLeftMenuMobile onHide={() => setshowMenu(false)} show={showMenu}/>
               <div className='NavBarLeftDiv flex-row'>
                   <div className='ms-5 me-4'></div>
-                  <span className='fs-4 me-2 text-light'>{ user.info.projectName == null ? 'База знаний' : 'База знаний - ' + user.info.projectName}</span>
+                  {
+                      user.isAuth && user.info ?
+                          <span className='fs-4 me-2 text-light'>{ user.info.projectName == null ? 'База знаний' : 'База знаний - ' + user.info.projectName}</span>
+                          :
+                          <span className='fs-4 me-2 text-light'>{'База знаний'}</span>
+                  }
+
                   {
                       user.isAuth ?
                       <div>
