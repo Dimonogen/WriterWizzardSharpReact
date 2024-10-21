@@ -72,7 +72,7 @@ const MenuComponent = () => {
                             onClick={() => {
                                 SetIsAddNew(true)
                             }}>
-                        + Добавить тип
+                        + Добавить пункт меню
                     </Button>
                         :
                     <div className="W-100">
@@ -80,7 +80,7 @@ const MenuComponent = () => {
                             CreateTypeLocal(NewTypeName);
                         }}>
                         <Form.Control className="" style={{background: '0', border: '0', borderBottom: '1px solid #ccc'}}
-                                      placeholder={"Название нового типа"} onChange={
+                                      placeholder={"Введите название"} onChange={
                                             event => SetNewTypeName(event.target.value)}
                                       value={NewTypeName}
                         />

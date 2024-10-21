@@ -11,20 +11,8 @@ namespace DiplomBackApi.Models
     /// </summary>
     [Table("objadditionalattribute", Schema = "Diplom")]
     [Index(nameof(UserId)), PrimaryKey(nameof(Id), nameof(UserId))]
-    public class ObjAdditionalAttribute
+    public class ObjAdditionalAttribute : BaseEntity
     {
-        /// <summary>
-        /// Идентификатор уникальный
-        /// </summary>
-        [Column("id")]
-        public int Id { get; set; }
-
-        /// <summary>
-        /// Id пользователя, чтобы для каждого юзера был "своя" БД
-        /// </summary>
-        [Column("userId")]
-        public int UserId { get; set; }
-
         /// <summary>
         /// ID объекта
         /// </summary>

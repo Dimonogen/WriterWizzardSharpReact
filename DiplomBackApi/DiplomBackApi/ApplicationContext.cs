@@ -92,6 +92,17 @@ public class ApplicationContext : DbContext
         Database.EnsureCreated();
     }
 
+
+    public int GetCurId<TEntity>(int userId, DbSet<TEntity> dbSet) where TEntity : BaseEntity
+    {
+        int count = dbSet.Where(x => x.UserId == userId).Count();
+        int maxId = 0;
+        if (count > 0)
+            maxId = dbSet.Where(x => x.UserId == userId).Max(x => x.Id);
+        return maxId;
+    }
+
+
     /// <summary>
     /// Вызываемая при конфигурации функция, здесь настройки подключения к БД
     /// </summary>
@@ -140,8 +151,9 @@ public class ApplicationContext : DbContext
 
         var attributes = await ObjAttributes.Where(x => x.ObjId == objDto.Id && x.UserId == user.Id).ToListAsync();
         var typeAttributes = await ObjTypeAttributes.Where(x => x.TypeId == objDto.TypeId && x.UserId == user.Id).ToListAsync();
+        var attribTypes = await AttributeTypes.Where(x => x.UserId == user.Id).ToListAsync();
 
-        if(typeAttributes == null)
+        if (typeAttributes == null)
         {
             return objDto;
         }
@@ -149,7 +161,7 @@ public class ApplicationContext : DbContext
         foreach (var tAttribute in typeAttributes)
         {
             var attribute = attributes.FirstOrDefault(x => x.Number == tAttribute.Number);
-            var attrib_type = AttributeTypes.FirstOrDefault(x => x.Id == tAttribute.AttributeTypeId && x.UserId == user.Id);
+            var attrib_type = attribTypes.FirstOrDefault(x => x.Id == tAttribute.AttributeTypeId);
 
             if (attribute != null)
             {
@@ -184,16 +196,21 @@ public class ApplicationContext : DbContext
         }
 
         var addAttr = await ObjAdditionalAttributes.Where(x => x.ObjId == id && x.UserId == user.Id).ToListAsync();
+        
 
         foreach(var attr in addAttr)
         {
-            objDto.attributes.Add(new ObjAttributeDto
+            var attrType = attribTypes.FirstOrDefault(x => x.Id == attr.AttributeTypeId);
+            objDto.extAttributes.Add(new ObjAttributeDto
             {
                 Name = attr.Name,
                 Number = attr.Number,
                 Id = attr.Id,
                 Value = attr.Value,
-                Type = attr.AttributeTypeId,
+                Type = attrType.Type,
+                IsComplexType = attrType.IsComplex,
+                RegEx = attrType.RegExValidation,
+                TypeId = attr.AttributeTypeId,
                 IsAdditional = true,
             }
             );

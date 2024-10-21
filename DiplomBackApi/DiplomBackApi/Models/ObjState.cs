@@ -12,12 +12,6 @@ namespace DiplomBackApi.Models
     public class ObjState : BaseEntity
     {
         /// <summary>
-        /// Идентификатор уникальный
-        /// </summary>
-        [Column("id")]
-        public int Id { get; set; }
-
-        /// <summary>
         /// Для того, чтобы не привязываться к id или другим полям, код для кода
         /// </summary>
         [Column("code")]

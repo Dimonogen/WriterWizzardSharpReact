@@ -14,13 +14,6 @@ namespace DiplomBackApi.Models
     public class AttributeType : BaseEntity
     {
         /// <summary>
-        /// Идентификатор уникальный в рамках пользователя
-        /// </summary>
-        
-        [Column("id")]
-        public int Id { get; set; }
-
-        /// <summary>
         /// Название объекта
         /// </summary>
         [DisallowNull]

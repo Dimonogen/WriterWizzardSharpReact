@@ -16,7 +16,7 @@ const Field = ({type, objId, isComplex, regex, setValue, value, name, minlen, ma
         <FieldFile setValue={setValue} value={value} name={name} disabled={disabled}/>
             :
         <FieldText setValue={setValue} value={value} name={name} id={id} minlen={minlen} maxlen={maxlen}
-                   placeholder={placeholder} nullable={nullable} disabled={disabled}/>
+                   placeholder={placeholder} nullable={nullable} disabled={disabled} rows={1} />
     )
 }
 

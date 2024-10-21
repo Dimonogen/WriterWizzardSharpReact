@@ -93,17 +93,33 @@
     {
       "Id": 4,
       "UserId": 0,
-      "Name": "Объект персонаж",
+      "Name": "Любой объект",
       "IsComplex": true,
-      "Type": 1,
+      "Type": 0,
       "RegExValidation": ""
     },
     {
       "Id": 5,
       "UserId": 0,
-      "Name": "Объект",
+      "Name": "Объект Персонаж",
       "IsComplex": true,
-      "Type": 0,
+      "Type": 1,
+      "RegExValidation": ""
+    },
+    {
+      "Id": 6,
+      "UserId": 0,
+      "Name": "Объект Локация",
+      "IsComplex": true,
+      "Type": 2,
+      "RegExValidation": ""
+    },
+    {
+      "Id": 7,
+      "UserId": 0,
+      "Name": "Объект Событие",
+      "IsComplex": true,
+      "Type": 3,
       "RegExValidation": ""
     }
   ],

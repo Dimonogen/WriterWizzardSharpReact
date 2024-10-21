@@ -10,6 +10,7 @@ const ModalSelectObj = ({show, onHide, final, title, objType}) => {
     let classModal = 'modal-my ';
 
     useEffect(() => {
+        //console.log(objType)
         if (objType != null) {
             if (objType == 0)
             {

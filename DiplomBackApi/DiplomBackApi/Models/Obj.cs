@@ -13,12 +13,6 @@ namespace DiplomBackApi.Models
     [Index(nameof(UserId)), PrimaryKey(nameof(Id), nameof(UserId))]
     public class Obj : BaseEntity
     {
-        /// <summary> 
-        /// Идентификатор уникальный в рамках пользователя
-        /// </summary>
-        [Column("id")]
-        public int Id { get; set; }
-
         /// <summary>
         /// Название объекта
         /// </summary>

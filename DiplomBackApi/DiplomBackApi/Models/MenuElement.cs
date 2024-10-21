@@ -14,12 +14,6 @@ namespace DiplomBackApi.Models
     public class MenuElement : BaseEntity
     {
         /// <summary>
-        /// Идентификатор уникальный
-        /// </summary>
-        [Column("id")]
-        public int Id { get; set; }
-
-        /// <summary>
         /// Отображаемое название пункта меню
         /// </summary>
         [Column("name"), DisallowNull]

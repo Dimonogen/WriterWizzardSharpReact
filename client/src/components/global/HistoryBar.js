@@ -34,7 +34,7 @@ const HistoryBar = observer(() => {
             res = 'Настройки';
         else if (name == 'treshcan')
             res = "Корзина";
-        else if ('objId' in params && countSlesh == 3)
+        else if (('objId' in params || 'typeId' in params) && countSlesh == 3)
             res = user.path[1]
         else if ('id' in params && countSlesh == 2)
             res = user.path[0]

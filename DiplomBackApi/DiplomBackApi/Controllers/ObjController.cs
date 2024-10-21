@@ -191,11 +191,8 @@ namespace DiplomBackApi.Controllers
         {
             var user = GetUserIdByAuth();
 
-            int countObj = db.Objs.Where(x => x.UserId == user.Id).Count();
-            int maxIdObj = 0;
-            if (countObj > 0)
-                maxIdObj = db.Objs.Where(x => x.UserId == user.Id).Max(x => x.Id);
-            
+            int maxIdObj = db.GetCurId<Obj>(user.Id, db.Objs);
+
             Obj obj_n = new Models.Obj
             {
                 Id = maxIdObj + 1,
@@ -208,10 +205,7 @@ namespace DiplomBackApi.Controllers
             db.Objs.Add(obj_n);
             await db.SaveChangesAsync();
 
-            int count = db.ObjAttributes.Where(x => x.UserId == user.Id).Count();
-            int maxId = 0;
-            if (count > 0)
-                maxId = db.ObjAttributes.Where(x => x.UserId == user.Id).Max(x => x.Id);
+            int maxId = db.GetCurId<ObjAttribute>(user.Id, db.ObjAttributes);
 
             foreach (AttributeAddModel attr in obj.attributes)
             {
@@ -224,6 +218,23 @@ namespace DiplomBackApi.Controllers
                     UserId = user.Id,
                 });
                 maxId++;
+            }
+
+            int maxAddAttrId = db.GetCurId<ObjAdditionalAttribute>(user.Id, db.ObjAdditionalAttributes);
+
+            foreach (var attr in obj.extAttributes)
+            {
+                await db.ObjAdditionalAttributes.AddAsync(new ObjAdditionalAttribute
+                {
+                    Id = maxAddAttrId + 1,
+                    AttributeTypeId = attr.typeId,
+                    Name = attr.name,
+                    Number = attr.number,
+                    Value = attr.value,
+                    ObjId = obj_n.Id,
+                    UserId= user.Id,
+                });
+                maxAddAttrId++;
             }
 
             await db.SaveChangesAsync();
@@ -250,10 +261,7 @@ namespace DiplomBackApi.Controllers
 
             obj_n.Name = obj.name;
 
-            int count = db.ObjAttributes.Where(x => x.UserId == user.Id).Count();
-            int maxId = 0;
-            if (count > 0)
-                maxId = db.ObjAttributes.Where(x => x.UserId == user.Id).Max(x => x.Id);
+            int maxId = db.GetCurId<ObjAttribute>(user.Id, db.ObjAttributes);
 
             foreach (AttributeAddModel attr in obj.attributes)
             {
@@ -284,10 +292,37 @@ namespace DiplomBackApi.Controllers
                     }
                     else
                     {
-                        //additional attribute to do
+                        //i am doesn know what is it
                     }
                 }
                     
+            }
+
+            int maxAddAttrId = db.GetCurId<ObjAdditionalAttribute>(user.Id, db.ObjAdditionalAttributes);
+
+            foreach (var attr in obj.extAttributes)
+            {
+                var exAttr = db.ObjAdditionalAttributes.Where(x => x.Number == attr.number && x.ObjId == obj.id && x.UserId == user.Id).FirstOrDefault();
+                if (exAttr != null)
+                {
+                    exAttr.Name = attr.name;
+                    exAttr.Value = attr.value;
+                    exAttr.AttributeTypeId = attr.typeId;
+                }
+                else
+                {
+                    await db.ObjAdditionalAttributes.AddAsync(new ObjAdditionalAttribute
+                    {
+                        Id = maxAddAttrId + 1,
+                        AttributeTypeId = attr.typeId,
+                        Name = attr.name,
+                        Number = attr.number,
+                        Value = attr.value,
+                        ObjId = obj_n.Id,
+                        UserId = user.Id,
+                    });
+                    maxAddAttrId++;
+                }
             }
 
             await db.SaveChangesAsync();
@@ -438,8 +473,21 @@ namespace DiplomBackApi.Controllers
     {
         public string value { get; set; }
         public int number { get; set; }
+
+        public int? typeId { get; set; }
+
+        public string? name { get; set; }
     }
 
+    public class ExtAttributeAddModel
+    {
+        public string value { get; set; }
+        public int number { get; set; }
+
+        public int typeId { get; set; }
+
+        public string name { get; set; }
+    }
 
     public class CreateObjModel
     {
@@ -447,6 +495,7 @@ namespace DiplomBackApi.Controllers
         public int TypeId { get; set; }
 
         public List<AttributeAddModel> attributes { get; set; }
+        public List<ExtAttributeAddModel> extAttributes { get; set; }
     }
 
     public class EditObjModel
@@ -455,5 +504,6 @@ namespace DiplomBackApi.Controllers
         public string name { get; set; }
 
         public List<AttributeAddModel> attributes { get; set; }
+        public List<ExtAttributeAddModel> extAttributes { get; set; }
     }
 }

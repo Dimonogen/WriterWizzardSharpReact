@@ -1,18 +1,21 @@
 import {useNavigate, useParams} from "react-router-dom";
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {CreateType, DeleteType, GetAllObjTypes, GetOneType, UpdateObjType} from "../../http/ObjTypeApi";
 import {Button} from "react-bootstrap";
 import {CONFIG_ROUTE, MENU_ROUTE} from "../../utils/consts";
 import FieldText from "../elementary/FieldText";
 import ModalYesNoMy from "../modals/ModalYesNoMy";
 import AttributeComponent from "../elementary/AttributeComponent";
-import {CreateAttrType, GetOneAttrType, UpdateAttrType} from "../../http/AttrTypeApi";
+import {CreateAttrType, DeleteAttrType, GetOneAttrType, UpdateAttrType} from "../../http/AttrTypeApi";
 import {Form} from "react-bootstrap";
+import {Context} from "../../index";
 
 const AttrTypeCard = ({reloadGrid}) => {
 
     const navigate = useNavigate()
     const {id, typeId} = useParams()
+
+    const {user} = useContext(Context)
 
     let isNewType = typeId == 0;
 
@@ -38,6 +41,7 @@ const AttrTypeCard = ({reloadGrid}) => {
         GetAllObjTypes().then(data =>{ data.push({id: 0, name: 'Все типы'}); SetObjTypes(data)});
         if(!isNewType)
             GetOneAttrType(typeId).then(data=>{
+                user.setPath(data.name, 1);
                 SetTypeData(data);
                 console.log(data);
                 SetIsEdit(false);
@@ -47,6 +51,7 @@ const AttrTypeCard = ({reloadGrid}) => {
                 SetTypeVariant(data.type);
             });
         else {
+            user.setPath("Новый атрибут", 1);
             SetTypeName("");
             SetIsEdit(true);
         }
@@ -111,7 +116,7 @@ const AttrTypeCard = ({reloadGrid}) => {
             }}/>
             <ModalYesNoMy title="Внимание! Данное действие не обратимо! Вы действительно хотите удалить тип?" notitle="Отмена" yestitle="Удалить"
                           show={showDel2} onHide={() => SetShowDel2(false)} final={() => {
-
+                DeleteAttrType(typeId).then(data => {reloadGrid(); navigate(CONFIG_ROUTE+'/'+id)})
             }}/>
         </div>
     )

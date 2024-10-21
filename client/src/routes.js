@@ -81,7 +81,7 @@ export const publicRoutes = [
     }
 ]
 
-export const noBarsRoutes = [
+/*export const noBarsRoutes = [
     {
     }
-]
+]*/

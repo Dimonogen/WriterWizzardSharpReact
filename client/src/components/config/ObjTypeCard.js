@@ -1,5 +1,5 @@
 import {useNavigate, useParams} from "react-router-dom";
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {CreateType, DeleteType, GetOneType, UpdateObjType} from "../../http/ObjTypeApi";
 import {Button} from "react-bootstrap";
 import {CONFIG_ROUTE, MENU_ROUTE} from "../../utils/consts";
@@ -7,11 +7,14 @@ import FieldText from "../elementary/FieldText";
 import ModalYesNoMy from "../modals/ModalYesNoMy";
 import AttributeComponent from "../elementary/AttributeComponent";
 import {GetAllAttrTypes} from "../../http/AttrTypeApi";
+import {Context} from "../../index";
 
 const ObjTypeCard = ({reloadGrid}) => {
 
     const navigate = useNavigate()
     const {id, typeId} = useParams()
+
+    const {user} = useContext(Context)
 
     let isNewType = typeId == 0;
 
@@ -34,6 +37,7 @@ const ObjTypeCard = ({reloadGrid}) => {
         GetAllAttrTypes().then(data => SetAttibTypes(data));
         if(!isNewType)
         GetOneType(typeId).then(data=>{
+            user.setPath(data.name, 1);
             SetAttrValues({});
             SetIsEdit(false);
             SetTypeData(data);
@@ -43,6 +47,7 @@ const ObjTypeCard = ({reloadGrid}) => {
             SetAttributesMap(data.attributes);
         });
         else {
+            user.setPath("Новый тип", 1);
             SetTypeName("");
             SetTypeDescr("");
             SetTypeData({name: "Новый тип"});
@@ -133,7 +138,7 @@ const ObjTypeCard = ({reloadGrid}) => {
                             }
                             SetAttributesMap(attributesMap.concat([{number:new_num, name:"", typeId:1}]))
                         }}>
-                            Добавить атрибут
+                            Добавить поле
                         </Button>
                     </div>:null
                 }

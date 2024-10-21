@@ -13,6 +13,10 @@ import ModalYesNoMy from "../modals/ModalYesNoMy";
 import Field from "../elementary/Field";
 import ModalSelectObj from "../modals/ModalSelectObj";
 import {Context} from "../../index";
+import AttributeComponent from "../elementary/AttributeComponent";
+import {GetAllAttrTypes} from "../../http/AttrTypeApi";
+import AttributeValAndConfComponent from "../elementary/AttributeValAndConfComponent";
+import {wait} from "@testing-library/user-event/dist/utils";
 
 const ObjCardComponent = () => {
 
@@ -33,6 +37,15 @@ const ObjCardComponent = () => {
     const [MSelectD, SetMSelectD] = useState({show:false})
 
     const [attributeEdits, SetAttributeEdits] = useState({});
+    const [attributeExt, SetAttributeExt] = useState({});
+
+    const [newAttrib, SetNewAttrib] = useState([]);
+    const [LastId, SetLastId] = useState(1);
+    const [attrValues, SetAttrValues] = useState({});
+
+    const [attribTypes, SetAttibTypes] = useState([])
+
+    const [stateUpdate, SetStateUpdate] = useState(0);
 
     const setHistory = (name) => {
         //let arr = user.path;
@@ -44,12 +57,37 @@ const ObjCardComponent = () => {
     }
 
     useEffect(() => {
+        LoadData();
+    }, [id, objId])
+
+
+
+    const LoadExtAttrib = (data) => {
+        let ids = []
+        let lastid = 1;
+        let obj = attrValues;
+        data.extAttributes.forEach(e => {
+            ids.push({id:e.id, value: e.value})
+            obj[e.number] = {isComplex: e.isComplex, value: e.value, number: e.number, name:e.name, typeId: e.typeId};
+            if(e.id > lastid)
+                lastid = e.id;
+        })
+        SetAttrValues(obj);
+        SetNewAttrib(ids);
+        SetLastId(lastid + 1);
+    }
+
+    const LoadData = () => {
+        GetAllAttrTypes().then(data => SetAttibTypes(data));
         if(!isNewObj) {
             GetOneObj(objId).then(data => {
                 //console.log(data)
                 SetObj(data);
                 SetObjName(data.name);
                 setHistory(data.name);
+
+                LoadExtAttrib(data);
+
                 GetOneType(data.typeId).then(data => {SetType(data); SetIsLoading(false) });
             });
         }
@@ -64,13 +102,23 @@ const ObjCardComponent = () => {
             });
 
         }
-    }, [id, objId])
+    }
 
     const attrTrans = (attributes) => {
         //console.log(attributes)
         let list = []
         for (const [key, value] of Object.entries(attributes)) {
             list.push({number: key, value: value});
+        }
+        //console.log(list)
+        return list;
+    }
+
+    const attrTransExt = (attributes) => {
+        //console.log(attributes)
+        let list = []
+        for (const [key, value] of Object.entries(attributes)) {
+            list.push({number: key, value: value.value, name: value.name, typeId: value.typeId});
         }
         //console.log(list)
         return list;
@@ -83,13 +131,13 @@ const ObjCardComponent = () => {
                 //console.log(attrTrans(attributeEdits))
                 if(objId != 0)
                 UpdateObj({id: objId, typeId: id, name: objName,
-                    attributes: attrTrans(attributeEdits)})
-                    .then(data => SetObj(data)).catch(e => console.log(e));
+                    attributes: attrTrans(attributeEdits), extAttributes: attrTransExt(attributeExt)})
+                    .then(data => {SetObj(data); LoadExtAttrib(data)}).catch(e => console.log(e));
                 else
                 {//create obj
                     //console.log('create obj attributes', attributeEdits);
                 CreateObj({typeId: id, name: objName,
-                    attributes: attrTrans(attributeEdits)})
+                    attributes: attrTrans(attributeEdits), extAttributes: attrTransExt(attributeExt)})
                     .then(data =>
                 {
                     SetObj(data);
@@ -99,17 +147,31 @@ const ObjCardComponent = () => {
             }
                 SetIsEdit(!isEdit);
             }},
-        {id:2, icon: iconState, name: "Состояние", action: () => {}},
-        {id:3, icon: iconDelete, name: "Удалить", action: () => {SetShow(true)}},
-        {id:4, icon: iconUpdate, name: "Обновить", action: () => {}},
+        //{id:2, icon: iconState, name: "Состояние", action: () => {}},
+
+        {id:3, icon: iconUpdate, name: "Обновить", action: () => {LoadData()}},
+        {id:4, icon: iconDelete, name: "Удалить", action: () => {SetShow(true)}},
     ]
 
     const setValue = (value, id) => {
         let edit = attributeEdits;
         edit[id] = value.toString();
-        console.log("value = " + value + ' number = '+ id)
-        console.log("AE = ", edit);
+        //console.log("value = " + value + ' number = '+ id)
+        //console.log("AE = ", edit);
         SetAttributeEdits(edit);
+    }
+
+    const setValueExt = (value, id) => {
+        let edit = attributeExt;
+        edit[id] = value;
+        //console.log("value = " + value + ' number = '+ id)
+        //console.log("AE = ", edit);
+        let obj = attrValues;
+        obj[id].name = value.name;
+        obj[id].value = value.value;
+        obj[id].typeId = value.typeId;
+        SetAttrValues(obj);
+        SetAttributeExt(edit);
     }
 
     return (
@@ -156,7 +218,7 @@ const ObjCardComponent = () => {
                 {
                     !isNewObj?
                     obj.attributes.map(e =>
-                        <Field isComplex={e.isComplex} SetModalD={(data) => SetMSelectD(data)} type={e.type} setValue={setValue}
+                        <Field isComplex={e.isComplexType} SetModalD={(data) => SetMSelectD(data)} type={e.type} setValue={setValue}
                                value={e.value} name={e.name} minlen={1} maxlen={255} id={e.number} regex={e.regEx} objId={objId}
                                    placeholder="Не заполнено" nullable={false} key={e.number} disabled={!isEdit} />
                     )
@@ -167,6 +229,26 @@ const ObjCardComponent = () => {
                                    placeholder="Не заполнено" nullable={false} key={e.number} disabled={!isEdit}/>
                     )
                 }
+                {
+                    newAttrib.map(e =>
+                        <AttributeValAndConfComponent key={e.id} e={e} value={attrValues[e.id]} global={{isEdit: isEdit,
+                            attribTypes: attribTypes, SetModal: (data) => SetMSelectD(data), setValue: setValueExt}}/>
+                    )
+                }
+                <div className="d-flex mt-3">
+                    <Button className="ms-auto me-auto" variant="outline-dark" onClick={() => {
+                        SetIsEdit(true);
+                        let arr = newAttrib;
+                        arr.push({id: LastId});
+                        let obj = attrValues;
+                        obj[LastId] = {isComplex: false, number: LastId, name:"", typeId: 1, value: ""};
+                        SetAttrValues(obj);
+                        SetLastId(LastId + 1);
+                        SetNewAttrib(arr);
+
+                    }}>Добавить поле</Button>
+                </div>
+
             </div>
             <ModalYesNoMy title="Вы действительно хотите удалить объект?" notitle="Отмена" yestitle="Удалить"
                           show={show} onHide={() => SetShow(false)} final={() => {

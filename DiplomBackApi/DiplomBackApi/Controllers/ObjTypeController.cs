@@ -53,6 +53,7 @@ public class ObjTypeController : MyBaseController
             });
         }
 
+        //Это когда мы из меню создаём новый пункт меню
         if (typeModel.createMenu.HasValue && typeModel.createMenu.Value)
         {
             int maxIdMenu = db.MenuElements.Where(x => x.UserId == user.Id).Max(x => x.Id);
@@ -64,6 +65,17 @@ public class ObjTypeController : MyBaseController
                 ObjTypeId = type.Id,
                 UserId = user.Id,
                 Filters = ""
+            });
+
+            int maxIdTypeAttr = db.AttributeTypes.Where(x => x.UserId == user.Id).Max(x => x.Id);
+            db.AttributeTypes.Add(new AttributeType
+            {
+                Id = maxIdTypeAttr + 1,
+                Name = "Объект " + typeModel.name,
+                IsComplex = true,
+                RegExValidation = "",
+                Type = type.Id,
+                UserId = user.Id,
             });
         }
 

@@ -57,9 +57,9 @@ const App = observer( () => {
             {publicRoutes.map(({path, Component}) =>
                 <Route key = {path} path = {path} element = {<div><NavBar/><Component/><UnderBar/></div>} exact/>
             )}
-            {noBarsRoutes.map( ({path, Component}) =>
+            {/*noBarsRoutes.map( ({path, Component}) =>
                 <Route key = {path} path={path} element={<Component/>} exact/>
-            )}
+            )*/}
             <Route path='*' element={<Navigate to={BASE_ROUTE}/>}/>
         </Routes>
     </BrowserRouter>

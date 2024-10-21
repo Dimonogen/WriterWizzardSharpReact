@@ -7,7 +7,7 @@ const AttributeComponent = ({value, setValue, isEdit, attrTypes}) => {
         //console.log(value)
         SetName(value.name);
         SetType(value.typeId);
-        setValue({number: value.number, name: value.name, typeId: value.typeId}, value.number);
+        //setValue({number: value.number, name: value.name, typeId: value.typeId}, value.number);
     }, [value])
 
     const [name, SetName] = useState(value.name);
@@ -27,7 +27,7 @@ const AttributeComponent = ({value, setValue, isEdit, attrTypes}) => {
                     as={"input"}
                     className={""}
                     onChange={e => {SetName(e.target.value); SendChange(e.target.value, type)}}
-                    placeholder={"Название атрибута"}
+                    placeholder={"Название поля"}
                     disabled={!isEdit}
                 />
 

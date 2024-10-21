@@ -18,6 +18,7 @@ namespace DiplomBackApi.DTO
         public string Name { get; set; }
 
         public ICollection<ObjAttributeDto> attributes { get; set; }
+        public ICollection<ObjAttributeDto> extAttributes { get; set; }
 
         public ObjDto() { }
         public ObjDto(Obj obj)
@@ -26,6 +27,7 @@ namespace DiplomBackApi.DTO
             TypeId = obj.TypeId;
             Name = obj.Name;
             attributes = new List<ObjAttributeDto>();
+            extAttributes = new List<ObjAttributeDto>();
         }
     }
 }

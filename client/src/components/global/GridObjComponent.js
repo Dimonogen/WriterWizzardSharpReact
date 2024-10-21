@@ -106,24 +106,27 @@ const GridObjComponent = () => {
 
        visible ?
            <div className='W-100'>
-               <div className={'d-flex flex-row ' + (IsLoading ? "d-none" : "d-block")}>
-                   <div>
-                   <Image className='m-2 ms-1 me-0' height='32px' width='32px' src={iconCreate}/>
-                   <Button variant='dark' className='m-2'
-                   onClick={()=>{navigate(MENU_ROUTE+'/'+id+'/0')}}>{"Новый "+typeData.name}</Button>
+               <div style={{overflowX: "auto", overflowY: "clip"}} className={'d-flex flex-row  ' + (IsLoading ? "d-none" : "d-block")}>
+                   <div className="d-flex flex-row">
+                       <Image className='m-2 ms-1 me-0' height='32px' width='32px' src={iconCreate}/>
+                       <Button variant='dark' className='m-2'
+                       onClick={()=>{navigate(MENU_ROUTE+'/'+id+'/0')}}>{"Новый "+typeData.name}</Button>
                    </div>
-                   <Image className='m-2 ms-1 me-0' height='32px' width='32px' src={iconView}/>
-                   <Button variant='outline-dark' className='m-2'
-                           onClick={()=>{
-                               if(selectionIds.length > 0)
-                                   navigate(MENU_ROUTE+'/'+id+'/'+selectionIds[0])
-                           }}
-                   >{"Открыть "+typeData.name}</Button>
-                   <Image className='m-2 ms-1 me-0' height='32px' width='32px' src={iconUpdate}/>
-                   <Button variant='outline-dark' className='m-2'
-                           onClick={()=>{LoadData(id)}}>Обновить</Button>
-
-                   <div>
+                   <div className="d-flex flex-row">
+                       <Image className='m-2 ms-1 me-0' height='32px' width='32px' src={iconView}/>
+                       <Button variant='outline-dark' className='m-2'
+                               onClick={()=>{
+                                   if(selectionIds.length > 0)
+                                       navigate(MENU_ROUTE+'/'+id+'/'+selectionIds[0])
+                               }}
+                       >{"Открыть "+typeData.name}</Button>
+                   </div>
+                   <div className="d-flex flex-row">
+                       <Image className='m-2 ms-1 me-0' height='32px' width='32px' src={iconUpdate}/>
+                       <Button variant='outline-dark' className='m-2'
+                               onClick={()=>{LoadData(id)}}>Обновить</Button>
+                   </div>
+                   <div className="d-flex flex-row">
                        <Image className='m-2 ms-1 me-0' height='32px' width='32px' src={iconDelete}/>
                        <Button variant='outline-dark' className='m-2' onClick={() => {
                            if(selectionIds.length > 0)
