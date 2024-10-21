@@ -7,7 +7,7 @@ import eyeClose from '../../assets/EyeClose.svg';
 
 const AttributeValAndConfComponent = ({e, value, global}) => {
 
-    console.log(e, value, global);
+    //console.log(e, value, global);
     const [attribValue, SetAttribValue] = useState(value)
 
     const [custom, SetCustom] = useState({})

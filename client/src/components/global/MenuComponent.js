@@ -8,7 +8,7 @@ import {CreateType} from "../../http/ObjTypeApi";
 import {Context} from "../../index";
 import iconDelete from "../../assets/icons8-delete.svg";
 
-const MenuComponent = () => {
+const MenuComponent = ({onHide}) => {
 
     const navigate = useNavigate();
     const {id, objId} = useParams()
@@ -49,7 +49,7 @@ const MenuComponent = () => {
 
 
     return (
-        <div className='Block W-20'>
+        <div className=''>
             <div className='d-flex justify-content-center fs-4'>
                 <span>Меню</span>
             </div>
@@ -60,7 +60,10 @@ const MenuComponent = () => {
                         <Button className='W-100 text-start' variant={id == e.objTypeId?'dark':'outline-dark'}
                                 onClick={() => {
                                     user.setPath(e.name, 0);
-                                    navigate(MENU_ROUTE+'/'+e.objTypeId)}} >{e.name}
+                                    navigate(MENU_ROUTE+'/'+e.objTypeId)
+                                    if(onHide != undefined)
+                                        onHide();
+                                }} >{e.name}
                         </Button>
                     </div>
                 )

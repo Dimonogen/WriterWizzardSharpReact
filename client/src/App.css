@@ -32,6 +32,12 @@ body {
   background-color: var(--c-ligh-darken);
 }
 
+.FieldLeft{
+  width: 30%;
+  max-width: 30%;
+  min-width: 30%;
+}
+
 @media (min-width:0px)    { .MobileHide{display: none} .MobileShow{display: block} .NavBarLeftDiv{display: none} .NavBarLeftIcon{display: none}}
 @media (min-width:320px)  { .MobileHide{display: none} .MobileShow{display: block} .NavBarLeftIcon{display: none} /* smartphones, iPhone, portrait 480x320 phones */ }
 @media (min-width:481px)  { .MobileHide{display: none} .MobileShow{display: block} .NavBarLeftDiv{display: none} .NavBarLeftIcon{display: none} /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }
@@ -47,23 +53,17 @@ body {
 }
 
 @media (min-width: 0px) {
-  .BookLeft{width: 100%}
-  .BookAuthorRight{width: 0%}
   .MContent{margin: 120px 5px 10px 5px !important;}
-  .ReaderSettings{width: 70%}
-  .ReaderPartList{width: 70%}
-  .BookItemImage{width: 150px; height: 214px}
-  .BookItemCard{width: 150px}
+  .LeftMenuSize{width: 100%}
+  .ObjCard{width: 100%; left: 0%; position: relative; }
+  .GridObj{width: 0%; display: none}
 }
 
 @media (min-width: 800px) {
-  .BookLeft{width: 70%}
-  .BookAuthorRight{width: 30%}
   .MContent{margin: 120px 20px 10px 20px !important;}
-  .ReaderSettings{width: 33%}
-  .ReaderPartList{width: 33%}
-  .BookItemImage{width: 200px; height: 285px}
-  .BookItemCard{width:200px}
+  .LeftMenuSize{width: 20%}
+  .ObjCard{width: 50%; position: relative; left: 0%; margin-left: 15px;}
+  .GridObj{width: 50%; display: block}
 }
 
 .BookAccountItemImage {

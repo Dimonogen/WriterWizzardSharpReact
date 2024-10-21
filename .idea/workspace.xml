@@ -3,8 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="3d525cd8-4ca4-4c02-af18-e14ea1633f2a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/logs/log-development20241021_001.txt" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/logs/log-development20241021_001.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/elementary/AttributeComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/elementary/AttributeComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/elementary/AttributeValAndConfComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/elementary/AttributeValAndConfComponent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/elementary/FieldObj.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/elementary/FieldObj.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/elementary/FieldText.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/elementary/FieldText.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/global/GridObjComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/global/GridObjComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/global/MenuComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/global/MenuComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/global/ObjCardComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/global/ObjCardComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/modals/ModalLeftMenuMobile.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/modals/ModalLeftMenuMobile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/MenuPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/MenuPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +98,8 @@
       <workItem from="1729177695388" duration="1987000" />
       <workItem from="1729271113327" duration="2649000" />
       <workItem from="1729341709153" duration="10169000" />
-      <workItem from="1729491119634" duration="33782000" />
+      <workItem from="1729491119634" duration="34378000" />
+      <workItem from="1729541593575" duration="9478000" />
     </task>
     <servers />
   </component>

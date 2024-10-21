@@ -1,8 +1,9 @@
 import {Button, Image} from "react-bootstrap";
 import React from "react";
 import {NavLink, useNavigate} from "react-router-dom";
-import {BASE_ROUTE} from "../../utils/consts";
+import {BASE_ROUTE, MENU_ROUTE} from "../../utils/consts";
 import logo from '../../assets/DS_logo_light_E.svg'
+import MenuComponent from "../global/MenuComponent";
 
 
 const ModalLeftMenuMobile = ({show, onHide}) => {
@@ -11,9 +12,9 @@ const ModalLeftMenuMobile = ({show, onHide}) => {
     const navigate = useNavigate()
 
     const links = [
-        /*{text:'Книги', link:SHOP_ROUTE},
-        {text:'Поиск', link: SEARCH_ROUTE},
-        {text:'Writer Wizzard', link: WW_PAGE}*/
+        {text:'Книги', link:MENU_ROUTE},
+        {text:'Поиск', link: MENU_ROUTE},
+        {text:'Writer Wizzard', link: MENU_ROUTE}
     ]
 
     const idMenu = 'leftmenulink';
@@ -28,17 +29,11 @@ const ModalLeftMenuMobile = ({show, onHide}) => {
             >
                 <Image id={idMenu} width={64} height={64} src={logo}/>
                 <div  className='ms-2 mt-3'>
-                    <h2 id={idMenu}>Dimonogen.ru</h2>
+                    <h2 id={idMenu}>Litbase.ru</h2>
                 </div>
             </div>
-            <div className='flex-column ms-2'>
-            {
-                links.map(e =>
-                    <div className='mt-4 mb-4' key={e.link}>
-                        <NavLink id={idMenu} className='ms-2 mt-1 fs-3 alter' to={e.link}>{e.text}</NavLink>
-                    </div>
-                )
-            }
+            <div className='flex-column m-3 '>
+                <MenuComponent onHide={() => onHide()}/>
             </div>
         </div>
       </div>

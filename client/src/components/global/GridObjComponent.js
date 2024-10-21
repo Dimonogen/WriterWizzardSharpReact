@@ -4,7 +4,7 @@ import {DeleteObj, DeleteObjList, GetAllOneTypeObjects} from "../../http/ObjAPI"
 import {GetOneType} from "../../http/ObjTypeApi"
 import React, {useContext, useEffect, useState} from "react";
 import Box from '@mui/material/Box';
-import {Button, Image} from "react-bootstrap";
+import {Button, Image, OverlayTrigger, Tooltip} from "react-bootstrap";
 import {MENU_ROUTE} from "../../utils/consts";
 import ModalYesNoMy from "../modals/ModalYesNoMy";
 import ModalOkMy from "../modals/ModalOkMy";
@@ -17,6 +17,7 @@ import {getUserSettings, saveUserSettings} from "../../http/UserSettingsAPI";
 import LoadingAnimComponent from "./LoadingAnimComponent";
 import GridTheme from "../../CSS/GridTheme";
 import {ThemeProvider} from "@mui/material";
+import iconEdit from "../../assets/icons8-edit.svg";
 
 const GridObjComponent = () => {
 
@@ -102,43 +103,45 @@ const GridObjComponent = () => {
         return "Вы действительно хотите удалить "+ count + end;
     }
 
+
+    let ActionList = [
+        {id:1, icon: iconCreate, name: "Новый "+typeData.name, action: () => {
+                navigate(MENU_ROUTE+'/'+id+'/0')
+            } },
+        {id:2, icon: iconView, name: "Открыть "+typeData.name, action: () => {
+                if(selectionIds.length > 0)
+                    navigate(MENU_ROUTE+'/'+id+'/'+selectionIds[0])
+            } },
+        {id:3, icon: iconUpdate, name: "Обновить "+typeData.name, action: () => {
+                LoadData(id)
+            } },
+        {id:4, icon: iconDelete, name: "Удалить "+typeData.name, action: () => {
+                if(selectionIds.length > 0)
+                {
+                    SetShow(true);
+                }
+                else
+                {
+                    SetOkShow(true);
+                }
+            } }
+    ]
+
+
     return (
 
        visible ?
            <div className='W-100'>
-               <div style={{overflowX: "auto", overflowY: "clip"}} className={'d-flex flex-row  ' + (IsLoading ? "d-none" : "d-block")}>
-                   <div className="d-flex flex-row">
-                       <Image className='m-2 ms-1 me-0' height='32px' width='32px' src={iconCreate}/>
-                       <Button variant='dark' className='m-2'
-                       onClick={()=>{navigate(MENU_ROUTE+'/'+id+'/0')}}>{"Новый "+typeData.name}</Button>
-                   </div>
-                   <div className="d-flex flex-row">
-                       <Image className='m-2 ms-1 me-0' height='32px' width='32px' src={iconView}/>
-                       <Button variant='outline-dark' className='m-2'
-                               onClick={()=>{
-                                   if(selectionIds.length > 0)
-                                       navigate(MENU_ROUTE+'/'+id+'/'+selectionIds[0])
-                               }}
-                       >{"Открыть "+typeData.name}</Button>
-                   </div>
-                   <div className="d-flex flex-row">
-                       <Image className='m-2 ms-1 me-0' height='32px' width='32px' src={iconUpdate}/>
-                       <Button variant='outline-dark' className='m-2'
-                               onClick={()=>{LoadData(id)}}>Обновить</Button>
-                   </div>
-                   <div className="d-flex flex-row">
-                       <Image className='m-2 ms-1 me-0' height='32px' width='32px' src={iconDelete}/>
-                       <Button variant='outline-dark' className='m-2' onClick={() => {
-                           if(selectionIds.length > 0)
-                           {
-                               SetShow(true);
-                           }
-                           else
-                           {
-                               SetOkShow(true);
-                           }
-                       }}>{"Удалить "+typeData.name}</Button>
-                   </div>
+               <div style={{overflowX: "auto", overflowY: "clip"}} className={'d-flex flex-row mb-3 ' + (IsLoading ? "d-none" : "d-block")}>
+
+                   {
+                       ActionList.map(e =>
+                       <OverlayTrigger key={e.id} overlay={<Tooltip className="fs-6">{e.name}</Tooltip>} placement="top">
+                           <Button onClick={e.action} className='p-2 ms-1 me-1'
+                                   variant='outline-dark'><Image height='32px' width='32px' src={e.icon}/></Button>
+                       </OverlayTrigger>
+                       )
+                   }
 
                </div>
                <ThemeProvider theme={GridTheme}>

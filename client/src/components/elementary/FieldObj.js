@@ -25,11 +25,11 @@ const FieldObj = ({type, setValue, value, name, disable, number, SetModalD}) => 
     return (
         <div>
             <Form.Group className="mb-1 mt-1 w-100 d-flex">
-                <div className={"W-30 d-flex text-end"}>
+                <div className={"FieldLeft d-flex text-end"}>
                     <Form.Label className="ms-auto me-3 mt-2" style={{textTransform: "capitalize"}}>{name}</Form.Label>
                 </div>
                 <div className='border rounded d-flex p-1 W-100'>
-                    <NavLink className='ms-2 mt-1 alter' to={MENU_ROUTE+'/'+obj.typeId+'/'+obj.id}>{obj.name}</NavLink>
+                    <NavLink className='ms-2 mt-auto mb-auto alter' to={MENU_ROUTE+'/'+obj.typeId+'/'+obj.id}>{obj.name}</NavLink>
                     <Button className='ms-auto p-1' variant='outline-dark' disabled={disable}
                             onClick={() => SetModalD({show:true, objType:type, title:'Выберите ' + name, final: (id) => LoadData(id)})}
                         >Выбрать</Button>

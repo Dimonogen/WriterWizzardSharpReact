@@ -20,8 +20,11 @@ const AttributeComponent = ({value, setValue, isEdit, attrTypes}) => {
 
     return (
         <div>
-            <Form.Group className='mb-3 W-100'>
-
+            <Form.Group className='mb-2 mt-3 W-100 '>
+            <div className="W-100 d-flex">
+                <div className="FieldLeft d-flex">
+                    <span className="me-3 ms-auto mb-auto mt-auto">Название поля</span>
+                </div>
                 <Form.Control
                     value={name}
                     as={"input"}
@@ -30,11 +33,14 @@ const AttributeComponent = ({value, setValue, isEdit, attrTypes}) => {
                     placeholder={"Название поля"}
                     disabled={!isEdit}
                 />
-
+            </div>
                 <div className='d-flex W-100 mt-2'>
-                    <Form.Label className='mt-auto ms-2 me-3'>
-                        Тип
-                    </Form.Label>
+                    <div className="FieldLeft d-flex">
+                        <Form.Label className='mt-auto ms-auto me-3'>
+                            Тип
+                        </Form.Label>
+                    </div>
+
                     <Form.Select value={type} onChange={(e)=>{SetType(Number(e.target.value));
                         SendChange(name, Number(e.target.value))}}>
                         {

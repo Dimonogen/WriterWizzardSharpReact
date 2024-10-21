@@ -1,4 +1,4 @@
-import {Button, Image, Spinner} from "react-bootstrap";
+import {Button, Image, OverlayTrigger, Spinner, Tooltip} from "react-bootstrap";
 import {useNavigate, useParams} from "react-router-dom";
 import {MENU_ROUTE, TRESHCAN_ROUTE} from "../../utils/consts";
 import React, {useContext, useEffect, useState} from "react";
@@ -68,10 +68,10 @@ const ObjCardComponent = () => {
         data.extAttributes.forEach(e => {
             ids.push({id:e.number, value: e.value})
             obj[e.number] = {isComplex: e.isComplexType, value: e.value, number: e.number, name:e.name, typeId: e.typeId};
-            if(e.id > lastid)
-                lastid = e.id;
+            if(e.number > lastid)
+                lastid = e.number;
         })
-        console.log(obj);
+        //console.log(obj, lastid);
         SetAttrValues(obj);
         SetNewAttrib(ids);
         SetLastId(lastid + 1);
@@ -190,29 +190,37 @@ const ObjCardComponent = () => {
         <div className='Block W-100'>
             <ModalSelectObj show={MSelectD.show} onHide={() => SetMSelectD({show:false})} title={MSelectD.title}
                             objType={MSelectD.objType} final={(data) => MSelectD.final(data)} />
-            <div className='W-100 d-flex'>
+            <div className='W-100 d-flex fs-4'>
                 <span>{objName + ' - ' + type.name}</span>
-                <Button className='ms-auto p-0 ps-2 pe-2' variant='outline-dark'
-                        onClick={()=> {
-                            if(id == undefined)
-                                navigate(TRESHCAN_ROUTE);
-                            else
-                                navigate(MENU_ROUTE+'/'+id)
-                        }}>X</Button>
+                <div className='d-flex ms-auto me-auto'>
+                    {ActionList.map(e =>
+                        //(e.id == 1 || e.id == 3) && user.rights.includes(type.code + '.' + 'Edit') || e.id == 2 || e.id == 4 ?
+                        <div key={e.id}>
+
+                            <OverlayTrigger overlay={<Tooltip className="fs-6">{e.name}</Tooltip>} placement="top">
+                                <Button onClick={e.action} className='p-1 ms-1 me-1 '
+                                        variant='outline-dark'><Image height='25px' width='25px' src={e.icon}/></Button>
+                            </OverlayTrigger>
+
+                        </div> //: null
+                    )}
+                </div>
+                <div className="ms-3">
+                    <OverlayTrigger overlay={<Tooltip className="fs-6">Закрыть окно</Tooltip>} placement="top">
+                        <Button className='pt-1 fs-5 p-0 ps-2 pb-1 pe-2' variant='outline-dark'
+                                onClick={()=> {
+                                    if(id == undefined)
+                                        navigate(TRESHCAN_ROUTE);
+                                    else
+                                        navigate(MENU_ROUTE+'/'+id)
+                                }}><span className="ms-1 me-1">X</span></Button>
+                    </OverlayTrigger>
+                </div>
+
             </div>
-            <hr className='mt-1 mb-2'/>
-            <div className='d-flex'>
-                {ActionList.map(e =>
-                    //(e.id == 1 || e.id == 3) && user.rights.includes(type.code + '.' + 'Edit') || e.id == 2 || e.id == 4 ?
-                    <div key={e.id}>
-                        <Image height='25px' width='25px' src={e.icon}/>
-                        <Button onClick={e.action} className='p-1 ms-1 me-1'
-                                variant='outline-dark'>{e.name}</Button>
-                    </div> //: null
-                )}
-            </div>
-            <hr className='mt-2 mb-1'/>
+            <hr className='mt-3 mb-4'/>
             <div>
+                <div style={{marginRight: "42px"}}>
                 {
                     type.id?
                     <FieldText setValue={SetObjName} value={objName} name="Название" minlen={1} maxlen={255} id={0}
@@ -233,6 +241,7 @@ const ObjCardComponent = () => {
                                    placeholder="Не заполнено" nullable={false} key={e.number} disabled={!isEdit}/>
                     )
                 }
+                </div>
                 {
                     newAttrib.map(e =>
                         <AttributeValAndConfComponent key={e.id} e={e} value={attrValues[e.id]} global={{isEdit: isEdit,
