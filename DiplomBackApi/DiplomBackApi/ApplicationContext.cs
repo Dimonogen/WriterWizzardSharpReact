@@ -149,7 +149,7 @@ public class ApplicationContext : DbContext
         foreach (var tAttribute in typeAttributes)
         {
             var attribute = attributes.FirstOrDefault(x => x.Number == tAttribute.Number);
-            var attrib_type = AttributeTypes.FirstOrDefault(x => x.Id == tAttribute.AttributeTypeId);
+            var attrib_type = AttributeTypes.FirstOrDefault(x => x.Id == tAttribute.AttributeTypeId && x.UserId == user.Id);
 
             if (attribute != null)
             {

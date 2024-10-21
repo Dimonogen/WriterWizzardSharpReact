@@ -67,12 +67,12 @@ const ObjCardComponent = () => {
     }, [id, objId])
 
     const attrTrans = (attributes) => {
-        console.log(attributes)
+        //console.log(attributes)
         let list = []
         for (const [key, value] of Object.entries(attributes)) {
             list.push({number: key, value: value});
         }
-        console.log(list)
+        //console.log(list)
         return list;
     }
 
@@ -80,7 +80,7 @@ const ObjCardComponent = () => {
         {id:1, icon: iconEdit, name: isEdit?"Сохранить":"Изменить", action: () => {
             if(isEdit)
             {//сохранить
-                console.log(attrTrans(attributeEdits))
+                //console.log(attrTrans(attributeEdits))
                 if(objId != 0)
                 UpdateObj({id: objId, typeId: id, name: objName,
                     attributes: attrTrans(attributeEdits)})
@@ -156,7 +156,7 @@ const ObjCardComponent = () => {
                 {
                     !isNewObj?
                     obj.attributes.map(e =>
-                        <Field isComplex={e.isComplexType} SetModalD={(data) => SetMSelectD(data)} type={e.type} setValue={setValue}
+                        <Field isComplex={e.isComplex} SetModalD={(data) => SetMSelectD(data)} type={e.type} setValue={setValue}
                                value={e.value} name={e.name} minlen={1} maxlen={255} id={e.number} regex={e.regEx} objId={objId}
                                    placeholder="Не заполнено" nullable={false} key={e.number} disabled={!isEdit} />
                     )
