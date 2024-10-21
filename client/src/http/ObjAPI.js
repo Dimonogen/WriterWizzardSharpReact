@@ -1,5 +1,11 @@
 import {$authHost} from "./index";
 
+export const GetAllObjects = async () =>
+{
+    const {data} = await $authHost.get('obj/all');
+    return data;
+}
+
 export const GetAllOneTypeObjects = async (id) =>
 {
     const {data} = await $authHost.get('obj/type/'+id);

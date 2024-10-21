@@ -127,7 +127,7 @@ namespace DiplomBackApi.Controllers
         }
 
         /// <summary>
-        /// Возвращает все Объекты с аттрибутами
+        /// Возвращает все Объекты для общего грида
         /// </summary>
         /// <returns></returns>
         [HttpGet("all")]
@@ -139,16 +139,16 @@ namespace DiplomBackApi.Controllers
                 return BadRequest("state deleted not found");
 
             var objs = await db.Objs.Where(x => x.StateId != stateDelete.Id
-                                           && x.UserId == user.Id).ToListAsync();
+                                           && x.UserId == user.Id)
+                .Select(x => new ObjDto{ 
+                    Id = x.Id,
+                    Name = x.Name,
+                    State = x.State.Name,
+                    TypeName = x.ObjType.Name,
+                })
+                .ToListAsync();
 
-            List<ObjDto?> arr = new List<ObjDto?>();
-
-            foreach (var obj in objs)
-            {
-                arr.Add(await db.GetObjDtoAsync(obj.Id, user));
-            }
-
-            return Ok(arr);
+            return Ok(objs);
             
         }
 
@@ -167,16 +167,17 @@ namespace DiplomBackApi.Controllers
                 return BadRequest("state deleted not found");
 
             var objs = await db.Objs.Where(x => x.StateId == stateDelete.Id
-                        && x.UserId == user.Id).ToListAsync();
+                                           && x.UserId == user.Id)
+                .Select(x => new ObjDto
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    State = x.State.Name,
+                    TypeName = x.ObjType.Name,
+                })
+                .ToListAsync();
 
-            List<ObjDto?> arr = new List<ObjDto?>();
-
-            foreach (var obj in objs)
-            {
-                arr.Add(await db.GetObjDtoAsync(obj.Id, user));
-            }
-
-            return Ok(arr);
+            return Ok(objs);
             
         }
 

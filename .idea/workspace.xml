@@ -3,8 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="3d525cd8-4ca4-4c02-af18-e14ea1633f2a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Properties/PublishProfiles/FolderProfile.pubxml.user" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Properties/PublishProfiles/FolderProfile.pubxml.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/global/NavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/global/NavBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Controllers/AttributeTypeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Controllers/AttributeTypeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Controllers/ObjController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Controllers/ObjController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/DTO/ObjDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/DTO/ObjDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/logs/log-development20241021.txt" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/logs/log-development20241021.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/config/AttrTypeCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/config/AttrTypeCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/global/GridObjTreshCanComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/global/GridObjTreshCanComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/modals/ModalSelectObj.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/modals/ModalSelectObj.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/http/ObjAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/http/ObjAPI.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +95,7 @@
       <workItem from="1729177695388" duration="1987000" />
       <workItem from="1729271113327" duration="2649000" />
       <workItem from="1729341709153" duration="10169000" />
-      <workItem from="1729491119634" duration="2847000" />
+      <workItem from="1729491119634" duration="5970000" />
     </task>
     <servers />
   </component>

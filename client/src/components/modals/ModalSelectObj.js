@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Button} from "react-bootstrap";
 import {DataGrid} from "@mui/x-data-grid";
 import Box from "@mui/material/Box";
-import {GetAllOneTypeObjects} from "../../http/ObjAPI";
+import {GetAllObjects, GetAllOneTypeObjects} from "../../http/ObjAPI";
 import {GetOneType} from "../../http/ObjTypeApi";
 
 const ModalSelectObj = ({show, onHide, final, title, objType}) => {
@@ -11,26 +11,46 @@ const ModalSelectObj = ({show, onHide, final, title, objType}) => {
 
     useEffect(() => {
         if (objType != null) {
-            GetAllOneTypeObjects(objType).then(data => {
-                let arr = [];
-                data.forEach(e => {
-                    let elem = {id: e.id, name: e.name};
-                    e.attributes.forEach(a => elem["c" + a.number] = a.value)
-                    //console.log(elem);
-                    arr.push(elem);
+            if (objType == 0)
+            {
+                GetAllObjects().then(data => {
+                    let arr = [];
+                    data.forEach(e => {
+                        let elem = {id: e.id, name: e.name, type: e.typeName};
+
+                        //console.log(elem);
+                        arr.push(elem);
+                    });
+                    SetRows(arr);
+                    let arrC = [{field: 'id', headerName: 'Id', width: 50},
+                        {field: 'name', headerName: 'Название', width: 150},
+                        {field: 'type', headerName: 'Тип', width: 150}
+                    ];
+                    SetColumns(arrC);
                 });
-                SetRows(arr);
-            });
-            GetOneType(objType).then(data => {
-                let arr = [{field: 'id', headerName: 'Id', width: 50},
-                    {field: 'name', headerName: 'Название', width: 150}
-                ];
-                data.attributes.forEach(e => arr.push({
-                    field: 'c' + e.number, headerName: e.name,
-                    width: 150
-                }));
-                SetColumns(arr);
-            });
+            }
+            else {
+                GetAllOneTypeObjects(objType).then(data => {
+                    let arr = [];
+                    data.forEach(e => {
+                        let elem = {id: e.id, name: e.name};
+                        e.attributes.forEach(a => elem["c" + a.number] = a.value)
+                        //console.log(elem);
+                        arr.push(elem);
+                    });
+                    SetRows(arr);
+                });
+                GetOneType(objType).then(data => {
+                    let arr = [{field: 'id', headerName: 'Id', width: 50},
+                        {field: 'name', headerName: 'Название', width: 150}
+                    ];
+                    data.attributes.forEach(e => arr.push({
+                        field: 'c' + e.number, headerName: e.name,
+                        width: 150
+                    }));
+                    SetColumns(arr);
+                });
+            }
         }
     }, [objType])
 

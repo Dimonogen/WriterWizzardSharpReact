@@ -1,5 +1,6 @@
 ﻿using DiplomBackApi.DTO;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace DiplomBackApi.Controllers;
 
@@ -20,11 +21,18 @@ public class AttributeTypeController : MyBaseController
     /// </summary>
     /// <returns></returns>
     [HttpPost("create")]
-    public async Task<ActionResult> Create(CreateAttrTypeModel typeModel)
+    public async Task<ActionResult> Create([FromBody] CreateAttrTypeModel typeModel)
     {
-        var user = GetUserIdByAuth();   
+        var user = GetUserIdByAuth();
+
+        int count = db.AttributeTypes.Where(x => x.UserId == user.Id).Count();
+        int maxId = 0;
+        if (count > 0)
+            maxId = db.AttributeTypes.Where(x => x.UserId == user.Id).Max(x => x.Id);
+
         var type = new Models.AttributeType
         {
+            Id = maxId + 1,
             Name = typeModel.name,
             Type = typeModel.type,
             IsComplex = typeModel.isComplex,
@@ -53,7 +61,7 @@ public class AttributeTypeController : MyBaseController
     public async Task<ActionResult> GetItem(int id)
     {
         var user = GetUserIdByAuth();
-        var type = db.AttributeTypes.FirstOrDefault(x=>x.Id== id && x.UserId == user.Id);
+        var type = await db.AttributeTypes.FirstOrDefaultAsync(x=>x.Id == id && x.UserId == user.Id);
 
         if (type == null)
             return BadRequest();
@@ -67,7 +75,7 @@ public class AttributeTypeController : MyBaseController
 
     
     [HttpPost("edit")]
-    public async Task<ActionResult> EditItem(EditAttrTypeModel typeModel)
+    public async Task<ActionResult> EditItem([FromBody] EditAttrTypeModel typeModel)
     {
         var user = GetUserIdByAuth();
         var type_e = db.AttributeTypes.FirstOrDefault(x=>x.Id == typeModel.id && x.UserId == user.Id);
@@ -76,8 +84,8 @@ public class AttributeTypeController : MyBaseController
             return BadRequest();
 
         type_e.Name = typeModel.name;
-        type_e.IsComplex = typeModel.is_complex;
-        type_e.RegExValidation = typeModel.reg_ex;
+        type_e.IsComplex = typeModel.isComplex;
+        type_e.RegExValidation = typeModel.regEx;
         type_e.Type = typeModel.type;
 
         await db.SaveChangesAsync();
@@ -138,9 +146,9 @@ public class EditAttrTypeModel
 {
     public int id { get; set; }
     public string name { get; set; }
-    public bool is_complex { get; set; }
+    public bool isComplex { get; set; }
 
     public int type { get; set; }
 
-    public string reg_ex { get; set; }
+    public string regEx { get; set; }
 }

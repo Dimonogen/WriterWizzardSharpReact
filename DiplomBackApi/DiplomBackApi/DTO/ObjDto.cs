@@ -13,11 +13,13 @@ namespace DiplomBackApi.DTO
 
         public int TypeId { get; set; }
 
+        public string TypeName { get; set; }
+
         public string Name { get; set; }
 
         public ICollection<ObjAttributeDto> attributes { get; set; }
 
-
+        public ObjDto() { }
         public ObjDto(Obj obj)
         {
             Id = obj.Id;

@@ -22,6 +22,7 @@ const AttrTypeCard = ({reloadGrid}) => {
     const [showDel1, SetShowDel1] = useState(false);
     const [showDel2, SetShowDel2] = useState(false);
 
+    const [typeData, SetTypeData] = useState({})
     const [typeName, SetTypeName] = useState("");
     const [isComplex, SetIsComplex] = useState(false);
     const [typeVariant, SetTypeVariant] = useState(0);
@@ -29,14 +30,15 @@ const AttrTypeCard = ({reloadGrid}) => {
 
 
     const getData = () => {
-      return {name: typeName, isComplex: isComplex, type: typeVariant, regEx: typeRegEx}
+      return {id: typeData.id, name: typeName, isComplex: isComplex, type: typeVariant, regEx: typeRegEx}
     }
 
     useEffect(()=>{
         isNewType = typeId == 0;
-        GetAllObjTypes().then(data => SetObjTypes(data));
+        GetAllObjTypes().then(data =>{ data.push({id: 0, name: 'Все типы'}); SetObjTypes(data)});
         if(!isNewType)
             GetOneAttrType(typeId).then(data=>{
+                SetTypeData(data);
                 console.log(data);
                 SetIsEdit(false);
                 SetTypeName(data.name);
@@ -79,8 +81,8 @@ const AttrTypeCard = ({reloadGrid}) => {
                 </Form.Group>
                 {
                     isComplex?
-                        <Form.Group>
-                            <Form.Select disabled={!isEdit} onChange={(e)=>{SetTypeVariant(Number(e.target.value));} } >
+                        <Form.Group className="mb-3">
+                            <Form.Select disabled={!isEdit} value={typeVariant} onChange={(e)=>{SetTypeVariant(Number(e.target.value));} } >
                                 {
                                     objTypes.map(e =>
                                         <option key={e.id} value={e.id}>{e.name}</option>
@@ -89,18 +91,19 @@ const AttrTypeCard = ({reloadGrid}) => {
                             </Form.Select>
                         </Form.Group>
                         :
-                        <Form.Group>
-                            <Form.Select disabled={!isEdit} onChange={(e) => {SetTypeVariant(Number(e.target.value))}}>
-                                <option>Текст</option>
-                                <option>Число</option>
-                                <option>Дата</option>
+                        <Form.Group className="mb-3">
+                            <Form.Select disabled={!isEdit} value={typeVariant} onChange={(e) => {SetTypeVariant(Number(e.target.value))}}>
+                                <option value={0}>Текст</option>
+                                <option value={1}>Число</option>
+                                <option value={2}>Дата</option>
                             </Form.Select>
 
 
 
                         </Form.Group>
                 }
-
+                <FieldText setValue={SetTypeRegEx} value={typeRegEx} name="Регулярное выражение" minlen={1} maxlen={255} id={0}
+                           placeholder="Регулярное выражение для типа" nullable={true} key={1} disabled={!isEdit} useProp={true}/>
             </div>
             <ModalYesNoMy title="Внимание! Все объекты удаляемого типа будут удалены! Вы действительно хотите удалить тип?" notitle="Отмена" yestitle="Удалить"
                           show={showDel1} onHide={() => SetShowDel1(false)} final={() => {

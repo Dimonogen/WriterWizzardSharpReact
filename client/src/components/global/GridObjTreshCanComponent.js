@@ -58,7 +58,7 @@ const GridObjTreshCanComponent = () => {
 
             let arr = [];
             data.forEach(e => {
-                let elem = {id: e.id, state:e.state, name: e.name};
+                let elem = {id: e.id, state:e.state, name: e.name, type: e.typeName};
                 //console.log(elem);
                 arr.push(elem);
             });
@@ -68,6 +68,7 @@ const GridObjTreshCanComponent = () => {
         //console.log(data);
         let arr = [{field: 'id', headerName: 'Id', width: 50},
             {field: 'state', headerName: 'Статус', width: 120},
+            {field: 'type', headerName: 'Тип', width: 150},
             {field: 'name', headerName: 'Название', width: 150}
         ];
 
