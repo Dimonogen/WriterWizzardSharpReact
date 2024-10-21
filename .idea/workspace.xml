@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3d525cd8-4ca4-4c02-af18-e14ea1633f2a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/elementary/AttributeValAndConfComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/elementary/AttributeValAndConfComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/global/ObjCardComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/global/ObjCardComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/elementary/FieldObj.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/elementary/FieldObj.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/elementary/FieldText.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/elementary/FieldText.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +89,7 @@
       <workItem from="1729177695388" duration="1987000" />
       <workItem from="1729271113327" duration="2649000" />
       <workItem from="1729341709153" duration="10169000" />
-      <workItem from="1729491119634" duration="33296000" />
+      <workItem from="1729491119634" duration="33782000" />
     </task>
     <servers />
   </component>

@@ -25,7 +25,7 @@ const FieldObj = ({type, setValue, value, name, disable, number, SetModalD}) => 
     return (
         <div>
             <Form.Group className="mb-1 mt-1 w-100 d-flex">
-                <div className={"W-30 d-flex"}>
+                <div className={"W-30 d-flex text-end"}>
                     <Form.Label className="ms-auto me-3 mt-2" style={{textTransform: "capitalize"}}>{name}</Form.Label>
                 </div>
                 <div className='border rounded d-flex p-1 W-100'>

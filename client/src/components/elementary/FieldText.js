@@ -38,7 +38,7 @@ class FieldText extends Component {
         return (
             <div>
                 <Form.Group className={"mb-1 mt-1 w-100 d-flex"}>
-                    <div className={"W-30 d-flex"}>
+                    <div className={"W-30 d-flex text-end"}>
                         <Form.Label className="ms-auto me-3 mt-2" style={{textTransform: "capitalize"}}>{this.props.name}</Form.Label>
                     </div>
 
