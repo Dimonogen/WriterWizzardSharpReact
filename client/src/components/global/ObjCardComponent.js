@@ -45,8 +45,6 @@ const ObjCardComponent = () => {
 
     const [attribTypes, SetAttibTypes] = useState([])
 
-    const [stateUpdate, SetStateUpdate] = useState(0);
-
     const setHistory = (name) => {
         //let arr = user.path;
         //if(arr.length == 1)
@@ -66,18 +64,24 @@ const ObjCardComponent = () => {
         let ids = []
         let lastid = 1;
         let obj = attrValues;
+        //console.log(data);
         data.extAttributes.forEach(e => {
-            ids.push({id:e.id, value: e.value})
-            obj[e.number] = {isComplex: e.isComplex, value: e.value, number: e.number, name:e.name, typeId: e.typeId};
+            ids.push({id:e.number, value: e.value})
+            obj[e.number] = {isComplex: e.isComplexType, value: e.value, number: e.number, name:e.name, typeId: e.typeId};
             if(e.id > lastid)
                 lastid = e.id;
         })
+        console.log(obj);
         SetAttrValues(obj);
         SetNewAttrib(ids);
         SetLastId(lastid + 1);
     }
 
     const LoadData = () => {
+        SetObj({attributes:[]});
+        SetType({attributes:[]});
+        SetAttrValues({});
+        SetNewAttrib([]);
         GetAllAttrTypes().then(data => SetAttibTypes(data));
         if(!isNewObj) {
             GetOneObj(objId).then(data => {
