@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d525cd8-4ca4-4c02-af18-e14ea1633f2a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/config/ConfigAttrTypeComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/config/ConfigAttrTypeComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/config/ConfigObjTypeComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/config/ConfigObjTypeComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/elementary/GridComp.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/elementary/GridComp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/global/GridObjComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/global/GridObjComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/modals/ModalSelectObj.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/modals/ModalSelectObj.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/logs/log-development20241022.txt" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/logs/log-development20241022.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +88,7 @@
       <workItem from="1729271113327" duration="2649000" />
       <workItem from="1729341709153" duration="10169000" />
       <workItem from="1729491119634" duration="34378000" />
-      <workItem from="1729541593575" duration="10388000" />
+      <workItem from="1729541593575" duration="11013000" />
     </task>
     <servers />
   </component>
