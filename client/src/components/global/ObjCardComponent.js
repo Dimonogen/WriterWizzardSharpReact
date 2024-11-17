@@ -4,11 +4,11 @@ import {MENU_ROUTE, TRESHCAN_ROUTE} from "../../utils/consts";
 import React, {useContext, useEffect, useState} from "react";
 import {CreateObj, GetOneObj, UpdateObj, DeleteObj} from "../../http/ObjAPI";
 import {GetOneType} from "../../http/ObjTypeApi"
-import iconEdit from '../../assets/icons8-edit.svg'
+import iconEdit_B from '../../assets/Edit_B.svg'
+import iconEdit_W from '../../assets/Edit_W.svg'
 import iconSave from '../../assets/SaveIcon.svg'
-import iconState from '../../assets/icons8-network.png'
-import iconDelete from '../../assets/icons8-delete.svg'
-import iconUpdate from '../../assets/icons8-restart.svg'
+import iconDelete_W from '../../assets/Delete_W.svg'
+import iconDelete_B from '../../assets/Delete_B.svg'
 import iconReload_B from '../../assets/Reload_B.svg'
 import iconReload_W from '../../assets/Reload_W.svg'
 import FieldText from "../elementary/FieldText";
@@ -133,7 +133,7 @@ const ObjCardComponent = () => {
     }
 
     let ActionList = [
-        {id:1, iconB: isEdit? iconSave:iconEdit, name: isEdit?"Есть несохранённые изменения":"Изменить", action: () =>
+        {id:1, iconB: isEdit? iconSave:iconEdit_B, iconW: isEdit? iconSave:iconEdit_W, name: isEdit?"Есть несохранённые изменения":"Изменить", action: () =>
             {
                 if(isEdit)
                 {//сохранить
@@ -154,17 +154,21 @@ const ObjCardComponent = () => {
                     });
                     }
                 }
+                if(isEdit)
+                    SetHaveEdits(false);
                 SetIsEdit(!isEdit);
             },
-            style: isEdit ?{backgroundColor: haveEdits ?"var(--c-danger)":"var(--c-alter)"}:{}, text: isEdit?"Сохранить":null },
+            style: isEdit ?{borderColor: haveEdits ?"var(--c-danger)":"var(--c-alter)", borderWidth: "5px"}:{}, text: isEdit?"Сохранить":null },
         //{id:2, icon: iconState, name: "Состояние", action: () => {}},
 
         {id:3, iconB: iconReload_B, iconW: iconReload_W, name: "Обновить", action: () => {LoadData()}, style: {}},
-        {id:4, iconB: iconDelete, name: "Удалить", action: () => {SetShow(true)}, style:{} },
+        {id:4, iconB: iconDelete_B, iconW: iconDelete_W, name: "Удалить", action: () => {SetShow(true)}, style:{} },
     ]
 
     const setValue = (value, id) => {
-        SetHaveEdits(true);
+        if(isEdit)
+            SetHaveEdits(true);
+
         let edit = attributeEdits;
         edit[id] = value.toString();
         console.log("value = " + value + ' number = '+ id)
@@ -173,7 +177,9 @@ const ObjCardComponent = () => {
     }
 
     const setValueExt = (value, id) => {
-        SetHaveEdits(true);
+        if(isEdit)
+            SetHaveEdits(true);
+
         let edit = attributeExt;
         edit[id] = value;
         //console.log("value = " + value + ' number = '+ id)
@@ -206,11 +212,11 @@ const ObjCardComponent = () => {
                         <div key={e.id}>
 
                             <OverlayTrigger overlay={<Tooltip className="fs-6">{e.name}</Tooltip>} placement="top">
-                                <Button onClick={e.action} style={e.style} className={'p-0 ms-1 me-1 '+ (e.text != null ? "pe-1":"")}
+                                <Button onClick={e.action} style={e.style} className={'p-0 d-flex ms-1 me-1 '+ (e.text != null ? "pe-1":"")}
                                         variant='outline-dark'>
                                     <Image className={"m-1 Black"} height='32px' width='32px' src={e.iconB}/>
                                     <Image className={"m-1 White"} height='32px' width='32px' src={e.iconW}/>
-                                    {e.text}</Button>
+                                    <div className='mt-auto mb-auto'>{e.text}</div></Button>
                             </OverlayTrigger>
 
                         </div> //: null

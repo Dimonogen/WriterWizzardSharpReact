@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="32"
+   height="32"
+   viewBox="0 0 32 32"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs
+     id="defs1" />
+  <g
+     id="layer1">
+    <rect
+       style="fill:none;stroke:#ffffff;stroke-width:1.41741;stroke-miterlimit:10.7;stroke-dasharray:none;stroke-opacity:1"
+       id="rect1"
+       width="28.842596"
+       height="3.6812258"
+       x="-13.013971"
+       y="20.85585"
+       transform="matrix(0.70227006,-0.71191064,0.70227006,0.71191064,0,0)" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:1.5;stroke-miterlimit:10.7;stroke-dasharray:none;stroke-opacity:1"
+       d="m 7.0458717,27.266055 -3.853211,1.577981 1.6513761,-3.59633 z"
+       id="path1" />
+    <path
+       d="M 26.265822,3.2696388 28.6584,5.7715919 A 1.7247707,1.7431192 0 0 0 29.174025,4.5313575 1.7247707,1.7431192 0 0 0 27.449416,2.7891701 1.7247707,1.7431192 0 0 0 26.265822,3.2696388 Z"
+       style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:1.5;stroke-miterlimit:10.7;stroke-opacity:1"
+       id="path4" />
+  </g>
+</svg>

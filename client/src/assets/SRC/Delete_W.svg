@@ -8,8 +8,8 @@
    version="1.1"
    id="svg1"
    inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
-   sodipodi:docname="Reload_B.svg"
-   inkscape:export-filename="..\Reload_B_E.svg"
+   sodipodi:docname="Delete_W.svg"
+   inkscape:export-filename="..\Delete_W.svg"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -42,14 +42,22 @@
      inkscape:groupmode="layer"
      id="layer1">
     <path
-       id="path1"
-       style="display:inline;fill:none;stroke:#000000;stroke-miterlimit:10.7;stroke-width:1.5;stroke-dasharray:none"
-       d="m 15.743119,2.6422024 c 7.43811,-3e-7 13.46789,6.0297795 13.46789,13.4678896 0,7.43811 -6.02978,13.46789 -13.46789,13.46789 -7.4381101,0 -13.4678897,-6.02978 -13.4678895,-13.46789 10e-8,-3.719055 1.507445,-7.0860273 3.9446536,-9.5232359"
-       sodipodi:nodetypes="csssc" />
+       style="fill:none;stroke:#ffffff;stroke-width:2;stroke-miterlimit:10.7;stroke-dasharray:none"
+       d="M 2.8623853,6.0183486 H 28.623853 m -22.4954126,0 0,22.0917434 18.3486236,0 0,-22.0550461 H 19.706422 V 2.6055046 h -8.183486 v 3.3027523"
+       id="path1" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:1.5;stroke-miterlimit:10.7;stroke-dasharray:none"
-       d="M 1.027523,7.706422 6.2752294,6.4954128 6.5688073,11.816514"
-       id="path2"
-       sodipodi:nodetypes="ccc" />
+       style="fill:none;stroke:#ffffff;stroke-width:2;stroke-miterlimit:10.7;stroke-dasharray:none"
+       d="M 9.9082573,10.93578 V 22.53211"
+       id="path2" />
+    <path
+       style="fill:none;stroke:#ffffff;stroke-width:2;stroke-miterlimit:10.7;stroke-dasharray:none"
+       d="M 20.770641,10.899083 V 22.642202"
+       id="path3"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#ffffff;stroke-width:2;stroke-miterlimit:10.7;stroke-dasharray:none"
+       d="M 15.412844,10.972477 V 22.532111"
+       id="path4"
+       sodipodi:nodetypes="cc" />
   </g>
 </svg>

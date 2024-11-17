@@ -3,24 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="3d525cd8-4ca4-4c02-af18-e14ea1633f2a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Controllers/ObjTypeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Controllers/ObjTypeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/DiplomBackApi.csproj.user" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/DiplomBackApi.csproj.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Properties/PublishProfiles/FolderProfile.pubxml" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Properties/PublishProfiles/FolderProfile.pubxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Properties/PublishProfiles/FolderProfile.pubxml.user" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Properties/PublishProfiles/FolderProfile.pubxml.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Templates/Template_0.json" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Templates/Template_0.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.env" beforeDir="false" afterPath="$PROJECT_DIR$/client/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/BuildClient.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/client/BuildClient.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/build.env" beforeDir="false" afterPath="$PROJECT_DIR$/client/build.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/logs/log-development20241117.txt" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/logs/log-development20241117.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/CSS/Book.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/CSS/Book.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/elementary/FieldFile.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/elementary/FieldFile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/elementary/FieldObj.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/elementary/FieldObj.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/elementary/FieldText.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/elementary/FieldText.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/global/AuthComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/global/AuthComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/global/MenuComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/global/MenuComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/assets/SRC/Reload_ W.svg" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/assets/SRC/Reload_ W.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/assets/SRC/Reload_B.svg" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/assets/SRC/Reload_B.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/elementary/AttributeComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/elementary/AttributeComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/global/GridObjComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/global/GridObjComponent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/global/ObjCardComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/global/ObjCardComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/Auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Auth.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +99,7 @@
       <workItem from="1730009562510" duration="5759000" />
       <workItem from="1730376418949" duration="580000" />
       <workItem from="1730461563129" duration="2538000" />
-      <workItem from="1731431541010" duration="3642000" />
+      <workItem from="1731431541010" duration="6322000" />
     </task>
     <servers />
   </component>

@@ -10,8 +10,10 @@ import ModalYesNoMy from "../modals/ModalYesNoMy";
 import ModalOkMy from "../modals/ModalOkMy";
 import iconCreate from '../../assets/icons8-addFile.png'
 import iconView from '../../assets/icons8-viewFile.png'
-import iconDelete from '../../assets/icons8-delete.svg'
-import iconUpdate from '../../assets/icons8-restart.svg'
+import iconReload_B from '../../assets/Reload_B.svg'
+import iconReload_W from '../../assets/Reload_W.svg'
+import iconDelete_W from '../../assets/Delete_W.svg'
+import iconDelete_B from '../../assets/Delete_B.svg'
 import {Context} from "../../index";
 import {getUserSettings, saveUserSettings} from "../../http/UserSettingsAPI";
 import LoadingAnimComponent from "./LoadingAnimComponent";
@@ -105,17 +107,17 @@ const GridObjComponent = () => {
 
 
     let ActionList = [
-        {id:1, icon: iconCreate, name: "Новый "+typeData.name, action: () => {
+        {id:1, iconB: iconCreate, iconW: iconCreate, name: "Новый "+typeData.name, action: () => {
                 navigate(MENU_ROUTE+'/'+id+'/0')
             } },
-        {id:2, icon: iconView, name: "Открыть "+typeData.name, action: () => {
+        {id:2, iconB: iconView, iconW: iconView, name: "Открыть "+typeData.name, action: () => {
                 if(selectionIds.length > 0)
                     navigate(MENU_ROUTE+'/'+id+'/'+selectionIds[0])
             } },
-        {id:3, icon: iconUpdate, name: "Обновить "+typeData.name, action: () => {
+        {id:3, iconB: iconReload_B, iconW: iconReload_W, name: "Обновить "+typeData.name, action: () => {
                 LoadData(id)
             } },
-        {id:4, icon: iconDelete, name: "Удалить "+typeData.name, action: () => {
+        {id:4, iconB: iconDelete_B, iconW: iconDelete_W, name: "Удалить "+typeData.name, action: () => {
                 if(selectionIds.length > 0)
                 {
                     SetShow(true);
@@ -138,7 +140,10 @@ const GridObjComponent = () => {
                        ActionList.map(e =>
                        <OverlayTrigger key={e.id} overlay={<Tooltip className="fs-6">{e.name}</Tooltip>} placement="top">
                            <Button onClick={e.action} className='p-2 ms-1 me-1'
-                                   variant='outline-dark'><Image height='32px' width='32px' src={e.icon}/></Button>
+                                   variant='outline-dark'>
+                               <Image className='Black' height='32px' width='32px' src={e.iconB}/>
+                               <Image className='White' height='32px' width='32px' src={e.iconW}/>
+                           </Button>
                        </OverlayTrigger>
                        )
                    }

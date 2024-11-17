@@ -22,7 +22,7 @@ const AttributeComponent = ({value, setValue, isEdit, attrTypes}) => {
         <div>
             <Form.Group className='mb-2 mt-3 W-100 '>
             <div className="W-100 d-flex">
-                <div className="FieldLeft d-flex">
+                <div className="FieldLeft d-flex text-end">
                     <span className="me-3 ms-auto mb-auto mt-auto">Название поля</span>
                 </div>
                 <Form.Control
