@@ -71,7 +71,7 @@ public class ObjTypeController : MyBaseController
             db.AttributeTypes.Add(new AttributeType
             {
                 Id = maxIdTypeAttr + 1,
-                Name = "Объект " + typeModel.name,
+                Name = "Ссылка " + typeModel.name,
                 IsComplex = true,
                 RegExValidation = "",
                 Type = type.Id,

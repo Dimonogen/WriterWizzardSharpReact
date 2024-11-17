@@ -75,6 +75,27 @@ p {
     border-color: #ff1c21;
 }
 
+.btn img.White{
+    display: none;
+}
+
+.btn:hover img.White{
+    display: block;
+}
+
+.btn img.Black{
+    display: block;
+}
+
+.btn:hover img.Black{
+    display: none;
+}
+
+/*.btn:hover img {
+    background-color: red;
+    filter: grayscale(100%) invert(100%);
+}*/
+
 .btn-outline-alter {
     --bs-btn-border-color: var(--c-alter);
     --bs-btn-color: var(--c-alter);

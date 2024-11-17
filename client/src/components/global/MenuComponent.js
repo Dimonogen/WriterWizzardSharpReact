@@ -29,12 +29,16 @@ const MenuComponent = ({onHide}) => {
     }, [])
 
     const ReloadMenu = () => {
-        GetMenuForUser().then(data => {
-            SetMenuElements(data);
-            //console.log(data)
-            if(id != undefined && objId == undefined)
-                user.setPath( [data.filter(obj => {return obj.objTypeId.toString() == id})[0].name] )
-        });
+        if(user.isAuth) {
+            GetMenuForUser().then(data => {
+                SetMenuElements(data);
+                //console.log(data)
+                if (id != undefined && objId == undefined)
+                    user.setPath([data.filter(obj => {
+                        return obj.objTypeId.toString() == id
+                    })[0].name])
+            });
+        }
     };
 
     const CreateTypeLocal = (typeName) => {

@@ -5,21 +5,21 @@
       "UserId": 0,
       "Name": "Персонаж",
       "Code": "Character",
-      "Description": "Персонаж"
+      "Description": "Персонаж, герой книги"
     },
     {
       "Id": 2,
       "UserId": 0,
-      "Name": "Локация",
+      "Name": "Место действия",
       "Code": "Location",
-      "Description": "Локация"
+      "Description": "Определённое место, где происходят действия части книги"
     },
     {
       "Id": 3,
       "UserId": 0,
       "Name": "Событие",
       "Code": "Event",
-      "Description": "Событие"
+      "Description": "Событие в книге"
     }
   ],
   "ObjState": [
@@ -27,19 +27,19 @@
       "Id": 1,
       "Code": "use",
       "Name": "Используется",
-      "Description": "Объект используется в системе."
+      "Description": "Используется в системе."
     },
     {
       "Id": 2,
       "Code": "deleted",
       "Name": "Удалён",
-      "Description": "Объект помещён в корзину."
+      "Description": "Помещён в корзину."
     },
     {
       "Id": 3,
       "Code": "block",
       "Name": "Недоступен",
-      "Description": "Объект недоступен."
+      "Description": "Недоступен."
     }
   ],
   "Obj": [
@@ -53,7 +53,7 @@
     {
       "Id": 2,
       "UserId": 0,
-      "Name": "Пример локации",
+      "Name": "Пример места действия",
       "TypeId": 2,
       "StateId": 1
     },
@@ -101,7 +101,7 @@
     {
       "Id": 5,
       "UserId": 0,
-      "Name": "Объект Персонаж",
+      "Name": "Ссылка на Персонаж",
       "IsComplex": true,
       "Type": 1,
       "RegExValidation": ""
@@ -109,7 +109,7 @@
     {
       "Id": 6,
       "UserId": 0,
-      "Name": "Объект Локация",
+      "Name": "Ссылка на Место действия",
       "IsComplex": true,
       "Type": 2,
       "RegExValidation": ""
@@ -117,7 +117,7 @@
     {
       "Id": 7,
       "UserId": 0,
-      "Name": "Объект Событие",
+      "Name": "Ссылка на Событие",
       "IsComplex": true,
       "Type": 3,
       "RegExValidation": ""
@@ -136,8 +136,8 @@
     {
       "Id": 2,
       "UserId": 0,
-      "Name": "Локации",
-      "Description": "Локации",
+      "Name": "Места действия",
+      "Description": "Места действия",
       "ParentMenuId": null,
       "ObjTypeId": 2,
       "Filters": ""

@@ -9,6 +9,7 @@ rename %build% %dev%
 
 timeout 1 > NUL
 
+call npx update-browserslist-db@latest
 call npm run build
 
 ::ping dimonogen.ru

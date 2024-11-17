@@ -8,13 +8,14 @@ const AuthComponent = ({child}) => {
 
     const {user} = useContext(Context);
     const navigate = useNavigate();
+    const path = window.location.pathname;
 
     if(user.isAuth)
         return child;
     else
         return <div className='MContent'>
             <div className=' fs-5'>Эта страница доступна только авторизованным пользователям.
-                <Button className='ms-3 fs-6' onClick={() => {navigate(LOGIN_ROUTE)} } variant='alter-dark'>Авторизация</Button>
+                <Button className='ms-3 fs-6' onClick={() => {navigate(LOGIN_ROUTE+"?path="+encodeURIComponent(path) )} } variant='alter-dark'>Авторизация</Button>
             </div>
     </div>
 

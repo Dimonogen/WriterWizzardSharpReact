@@ -5,9 +5,12 @@ import React, {useContext, useEffect, useState} from "react";
 import {CreateObj, GetOneObj, UpdateObj, DeleteObj} from "../../http/ObjAPI";
 import {GetOneType} from "../../http/ObjTypeApi"
 import iconEdit from '../../assets/icons8-edit.svg'
+import iconSave from '../../assets/SaveIcon.svg'
 import iconState from '../../assets/icons8-network.png'
 import iconDelete from '../../assets/icons8-delete.svg'
 import iconUpdate from '../../assets/icons8-restart.svg'
+import iconReload_B from '../../assets/Reload_B.svg'
+import iconReload_W from '../../assets/Reload_W.svg'
 import FieldText from "../elementary/FieldText";
 import ModalYesNoMy from "../modals/ModalYesNoMy";
 import Field from "../elementary/Field";
@@ -31,6 +34,7 @@ const ObjCardComponent = () => {
     const [obj, SetObj] = useState({attributes:[]});
     const [type, SetType] = useState({attributes:[]});
     const [isEdit, SetIsEdit] = useState(false);
+    const [haveEdits, SetHaveEdits] = useState(false);
     const [objName, SetObjName] = useState("");
 
     const [show, SetShow] = useState(false);
@@ -129,43 +133,47 @@ const ObjCardComponent = () => {
     }
 
     let ActionList = [
-        {id:1, icon: iconEdit, name: isEdit?"Сохранить":"Изменить", action: () => {
-            if(isEdit)
-            {//сохранить
-                //console.log(attrTrans(attributeEdits))
-                if(objId != 0)
-                UpdateObj({id: objId, typeId: id, name: objName,
-                    attributes: attrTrans(attributeEdits), extAttributes: attrTransExt(attributeExt)})
-                    .then(data => {SetObj(data); LoadExtAttrib(data)}).catch(e => console.log(e));
-                else
-                {//create obj
-                    //console.log('create obj attributes', attributeEdits);
-                CreateObj({typeId: id, name: objName,
-                    attributes: attrTrans(attributeEdits), extAttributes: attrTransExt(attributeExt)})
-                    .then(data =>
-                {
-                    SetObj(data);
-                    navigate(MENU_ROUTE + '/' + type.id + '/' + data.id);
-                });
+        {id:1, iconB: isEdit? iconSave:iconEdit, name: isEdit?"Есть несохранённые изменения":"Изменить", action: () =>
+            {
+                if(isEdit)
+                {//сохранить
+                    //console.log(attrTrans(attributeEdits))
+                    if(objId != 0)
+                    UpdateObj({id: objId, typeId: id, name: objName,
+                        attributes: attrTrans(attributeEdits), extAttributes: attrTransExt(attributeExt)})
+                        .then(data => {SetObj(data); LoadExtAttrib(data)}).catch(e => console.log(e));
+                    else
+                    {//create obj
+                        //console.log('create obj attributes', attributeEdits);
+                    CreateObj({typeId: id, name: objName,
+                        attributes: attrTrans(attributeEdits), extAttributes: attrTransExt(attributeExt)})
+                        .then(data =>
+                    {
+                        SetObj(data);
+                        navigate(MENU_ROUTE + '/' + type.id + '/' + data.id);
+                    });
+                    }
                 }
-            }
                 SetIsEdit(!isEdit);
-            }},
+            },
+            style: isEdit ?{backgroundColor: haveEdits ?"var(--c-danger)":"var(--c-alter)"}:{}, text: isEdit?"Сохранить":null },
         //{id:2, icon: iconState, name: "Состояние", action: () => {}},
 
-        {id:3, icon: iconUpdate, name: "Обновить", action: () => {LoadData()}},
-        {id:4, icon: iconDelete, name: "Удалить", action: () => {SetShow(true)}},
+        {id:3, iconB: iconReload_B, iconW: iconReload_W, name: "Обновить", action: () => {LoadData()}, style: {}},
+        {id:4, iconB: iconDelete, name: "Удалить", action: () => {SetShow(true)}, style:{} },
     ]
 
     const setValue = (value, id) => {
+        SetHaveEdits(true);
         let edit = attributeEdits;
         edit[id] = value.toString();
-        //console.log("value = " + value + ' number = '+ id)
+        console.log("value = " + value + ' number = '+ id)
         //console.log("AE = ", edit);
         SetAttributeEdits(edit);
     }
 
     const setValueExt = (value, id) => {
+        SetHaveEdits(true);
         let edit = attributeExt;
         edit[id] = value;
         //console.log("value = " + value + ' number = '+ id)
@@ -190,16 +198,19 @@ const ObjCardComponent = () => {
         <div className='Block W-100'>
             <ModalSelectObj show={MSelectD.show} onHide={() => SetMSelectD({show:false})} title={MSelectD.title}
                             objType={MSelectD.objType} final={(data) => MSelectD.final(data)} />
-            <div className='W-100 d-flex fs-4'>
-                <span>{objName + ' - ' + type.name}</span>
+            <div className='W-100 d-flex fs-5'>
+                <span>{type.name}</span>
                 <div className='d-flex ms-auto me-auto'>
                     {ActionList.map(e =>
                         //(e.id == 1 || e.id == 3) && user.rights.includes(type.code + '.' + 'Edit') || e.id == 2 || e.id == 4 ?
                         <div key={e.id}>
 
                             <OverlayTrigger overlay={<Tooltip className="fs-6">{e.name}</Tooltip>} placement="top">
-                                <Button onClick={e.action} className='p-1 ms-1 me-1 '
-                                        variant='outline-dark'><Image height='25px' width='25px' src={e.icon}/></Button>
+                                <Button onClick={e.action} style={e.style} className={'p-0 ms-1 me-1 '+ (e.text != null ? "pe-1":"")}
+                                        variant='outline-dark'>
+                                    <Image className={"m-1 Black"} height='32px' width='32px' src={e.iconB}/>
+                                    <Image className={"m-1 White"} height='32px' width='32px' src={e.iconW}/>
+                                    {e.text}</Button>
                             </OverlayTrigger>
 
                         </div> //: null
@@ -217,6 +228,9 @@ const ObjCardComponent = () => {
                     </OverlayTrigger>
                 </div>
 
+            </div>
+            <div className="fs-4">
+                <span>{objName}</span>
             </div>
             <hr className='mt-3 mb-4'/>
             <div>

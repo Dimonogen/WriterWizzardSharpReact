@@ -39,7 +39,7 @@ class FieldText extends Component {
             <div>
                 <Form.Group className={"mb-1 mt-1 w-100 d-flex"}>
                     <div className={"FieldLeft d-flex text-end"}>
-                        <Form.Label className="ms-auto me-3 mt-2" style={{textTransform: "capitalize"}}>{this.props.name}</Form.Label>
+                        <Form.Label className="ms-auto me-3 mt-2" style={{textTransform: ""}}>{this.props.name}</Form.Label>
                     </div>
 
                     <div className="W-100 me-0">
@@ -51,9 +51,10 @@ class FieldText extends Component {
                             //style={{height : this.height + "px"}}
                             //onLoad={e => this.height = e.target.}
                             //onInput={e => e.target.style.height = (e.target.scrollHeight + "px")}
-                            onFocus={e => e.target.style.height = (e.target.scrollHeight + "px")}
+                            //onFocus={e => e.target.style.height = (e.target.scrollHeight + "px")}
                             className={this.props.value == null? "": this.props.value.length > this.props.maxlen?"text-danger":""}
-                            onChange={e => {this.handleChange(e.target.value);e.target.style.height = (e.target.scrollHeight + "px")} }
+                            onChange={e => {this.handleChange(e.target.value);if(this.props.rows != null)
+                                e.target.style.height = (e.target.scrollHeight + "px");} }
                             placeholder={this.props.placeholder}
                             disabled={this.props.disabled}
                         />

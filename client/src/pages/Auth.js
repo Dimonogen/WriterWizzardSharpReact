@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Context } from '../index'
 import {Container, Form, Card, Button} from 'react-bootstrap';
-import {NavLink, useLocation, useNavigate} from 'react-router-dom'
+import {NavLink, useLocation, useNavigate, useParams, useSearchParams} from 'react-router-dom'
 import {getInfo, getRights, login, registration} from '../http/userAPI';
 import {LOGIN_ROUTE, REGISTRATION_ROUTE, BASE_ROUTE, MENU_ROUTE} from '../utils/consts'
 import {observer} from 'mobx-react-lite'
@@ -17,8 +17,12 @@ const Auth = observer( () => {
     const [name, setName] = useState('')
     const [projectName, setProjectName] = useState('')
 
+    const params = new URLSearchParams( window.location.search);
+    const path = params.get("path");
+//console.log(params, path);
+
     const click = async () => {
-      
+
       try{
         let user_l;
 
@@ -37,7 +41,15 @@ const Auth = observer( () => {
         user.setUser(user_l)
         user.setIsAuth(true)
         //console.log(user.user.id)
-        getInfo(user.user.id).then(data => {user.setInfo(data); navigate(MENU_ROUTE)})
+        getInfo(user.user.id).then(data => {
+            user.setInfo(data);
+            if (path == undefined)
+                navigate(MENU_ROUTE)
+            else {
+                //console.log(path, decodeURIComponent((path)))
+                navigate(path)
+            }
+        })
         //getRights().then(data => {user.setRights(data);navigate(MENU_ROUTE)})
       } catch(e){
         console.log(e);

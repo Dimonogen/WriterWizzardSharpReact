@@ -20,7 +20,7 @@ const FieldFile = ({setValue, value, name, disabled}) => {
     return (
         <div>
             <Form.Group className="mb-3 w-100">
-                <Form.Label style={{textTransform: "capitalize"}}>{name}</Form.Label>
+                <Form.Label style={{textTransform: ""}}>{name}</Form.Label>
                 <Form.Control
                     className=""
                     type="file"
