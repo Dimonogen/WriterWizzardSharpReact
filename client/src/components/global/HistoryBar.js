@@ -82,8 +82,8 @@ const HistoryBar = observer(() => {
                   {e.name}
               </NavLink>
                 :
-              <span className="fs-5" key={e.id}>
-                  {e.name}
+              <span className="fs-5 fw-bold" key={e.id}>
+                  {"< "+e.name+" >"}
               </span>
               )
           }

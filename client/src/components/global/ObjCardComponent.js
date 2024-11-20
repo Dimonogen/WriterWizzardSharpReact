@@ -6,7 +6,8 @@ import {CreateObj, GetOneObj, UpdateObj, DeleteObj} from "../../http/ObjAPI";
 import {GetOneType} from "../../http/ObjTypeApi"
 import iconEdit_B from '../../assets/Edit_B.svg'
 import iconEdit_W from '../../assets/Edit_W.svg'
-import iconSave from '../../assets/SaveIcon.svg'
+import iconSave_B from '../../assets/Save_B.svg'
+import iconSave_W from '../../assets/Save_W.svg'
 import iconDelete_W from '../../assets/Delete_W.svg'
 import iconDelete_B from '../../assets/Delete_B.svg'
 import iconReload_B from '../../assets/Reload_B.svg'
@@ -133,7 +134,7 @@ const ObjCardComponent = () => {
     }
 
     let ActionList = [
-        {id:1, iconB: isEdit? iconSave:iconEdit_B, iconW: isEdit? iconSave:iconEdit_W, name: isEdit?"Есть несохранённые изменения":"Изменить", action: () =>
+        {id:1, iconB: isEdit? iconSave_B:iconEdit_B, iconW: isEdit? iconSave_W:iconEdit_W, name: isEdit?"Есть несохранённые изменения":"Изменить", action: () =>
             {
                 if(isEdit)
                 {//сохранить

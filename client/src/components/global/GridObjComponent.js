@@ -8,8 +8,11 @@ import {Button, Image, OverlayTrigger, Tooltip} from "react-bootstrap";
 import {MENU_ROUTE} from "../../utils/consts";
 import ModalYesNoMy from "../modals/ModalYesNoMy";
 import ModalOkMy from "../modals/ModalOkMy";
-import iconCreate from '../../assets/icons8-addFile.png'
+import iconCreate_B from '../../assets/Create_B.svg'
+import iconCreate_W from '../../assets/Create_W.svg'
 import iconView from '../../assets/icons8-viewFile.png'
+import iconOpen_B from '../../assets/Open_B.svg'
+import iconOpen_W from '../../assets/Open_W.svg'
 import iconReload_B from '../../assets/Reload_B.svg'
 import iconReload_W from '../../assets/Reload_W.svg'
 import iconDelete_W from '../../assets/Delete_W.svg'
@@ -107,10 +110,10 @@ const GridObjComponent = () => {
 
 
     let ActionList = [
-        {id:1, iconB: iconCreate, iconW: iconCreate, name: "Новый "+typeData.name, action: () => {
+        {id:1, iconB: iconCreate_B, iconW: iconCreate_W, name: "Новый "+typeData.name, action: () => {
                 navigate(MENU_ROUTE+'/'+id+'/0')
             } },
-        {id:2, iconB: iconView, iconW: iconView, name: "Открыть "+typeData.name, action: () => {
+        {id:2, iconB: iconOpen_B, iconW: iconOpen_W, name: "Открыть "+typeData.name, action: () => {
                 if(selectionIds.length > 0)
                     navigate(MENU_ROUTE+'/'+id+'/'+selectionIds[0])
             } },
