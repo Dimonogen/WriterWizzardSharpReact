@@ -4,7 +4,7 @@ import {DeleteObj, DeleteObjList, GetAllOneTypeObjects} from "../../http/ObjAPI"
 import {GetOneType} from "../../http/ObjTypeApi"
 import React, {useContext, useEffect, useState} from "react";
 import Box from '@mui/material/Box';
-import {Button, Image, OverlayTrigger, Tooltip} from "react-bootstrap";
+import {Button, Form, Image, OverlayTrigger, Tooltip} from "react-bootstrap";
 import {MENU_ROUTE} from "../../utils/consts";
 import ModalYesNoMy from "../modals/ModalYesNoMy";
 import ModalOkMy from "../modals/ModalOkMy";
@@ -21,7 +21,7 @@ import {Context} from "../../index";
 import {getUserSettings, saveUserSettings} from "../../http/UserSettingsAPI";
 import LoadingAnimComponent from "./LoadingAnimComponent";
 import GridTheme from "../../CSS/GridTheme";
-import {ThemeProvider} from "@mui/material";
+import {Input, ThemeProvider} from "@mui/material";
 import iconEdit from "../../assets/icons8-edit.svg";
 
 const GridObjComponent = () => {
@@ -40,6 +40,11 @@ const GridObjComponent = () => {
     const [IsLoading, SetIsLoading] = useState(false);
     const [show, SetShow] = useState(false);
     const [showOk, SetOkShow] = useState(false);
+
+    //Поиск и связанное с ним
+    const [showSearch, SetShowSearch] = useState(false)
+    const [searchText, SetSearchText] = useState("")
+    const [filtretedRows, SetFiltretedRows] = useState([])
 
     useEffect(()=>{
         if(id != null) {
@@ -68,11 +73,16 @@ const GridObjComponent = () => {
             let arr = [];
             data.forEach(e => {
                 let elem = {id: e.id, state:e.state, name: e.name};
-                e.attributes.forEach(a => elem["c"+a.number] = a.value)
+                e.attributes.forEach(a => elem["c"+a.number] = a.value);
+                e.extAttributes.forEach(a => elem["ea"+a.number] = a.value);
                 //console.log(elem);
                 arr.push(elem);
             });
             SetRows(arr);
+            if(showSearch)
+            {
+                SearchFun(searchText);
+            }
         });
         GetOneType(id).then(data => {
             //console.log(data);
@@ -108,15 +118,35 @@ const GridObjComponent = () => {
         return "Вы действительно хотите удалить "+ count + end;
     }
 
+    const SearchFun = (text) => {
+        let arr = rows;
+        arr = arr.filter((e) => {
+            let find = false;
+            for (const elem in e)
+            {
+                //console.log(elem, e[elem])
+                if (typeof e[elem] == 'string' && e[elem].includes(text) && elem != 'state')
+                {
+                    find = true;
+                    break;
+                }
+            }
+            return find;});
+
+        SetFiltretedRows(arr);
+    }
+
 
     let ActionList = [
         {id:1, iconB: iconCreate_B, iconW: iconCreate_W, name: "Новый "+typeData.name, action: () => {
                 navigate(MENU_ROUTE+'/'+id+'/0')
             } },
-        {id:2, iconB: iconOpen_B, iconW: iconOpen_W, name: "Открыть "+typeData.name, action: () => {
-                if(selectionIds.length > 0)
-                    navigate(MENU_ROUTE+'/'+id+'/'+selectionIds[0])
-            } },
+        /*{id:2, iconB: iconOpen_B, iconW: iconOpen_W, name: "Открыть "+typeData.name, action: () => {
+                if(selectionIds.length > 0) {
+                    user.setPath(objData.find((x) => x.id == selectionIds[0]).name, 1);
+                    navigate(MENU_ROUTE + '/' + id + '/' + selectionIds[0])
+                }
+            } },*/
         {id:3, iconB: iconReload_B, iconW: iconReload_W, name: "Обновить "+typeData.name, action: () => {
                 LoadData(id)
             } },
@@ -129,7 +159,14 @@ const GridObjComponent = () => {
                 {
                     SetOkShow(true);
                 }
-            } }
+            } },
+        {
+            id:5, name: "Поиск", iconB: iconView, iconW: iconView, action: () => {
+                SearchFun(searchText);
+                SetShowSearch(!showSearch);
+            },
+            variant: showSearch? 'dark' : 'outline-dark'
+        }
     ]
 
 
@@ -137,30 +174,49 @@ const GridObjComponent = () => {
 
        visible ?
            <div className='W-100'>
-               <div style={{overflowX: "auto", overflowY: "clip"}} className={'d-flex flex-row mb-3 ' + (IsLoading ? "d-none" : "d-block")}>
+               <div style={{overflowX: "auto", overflowY: "clip"}} className={'d-flex  mb-3 ' + (IsLoading ? "d-none" : "d-block")}>
 
                    {
                        ActionList.map(e =>
                        <OverlayTrigger key={e.id} overlay={<Tooltip className="fs-6">{e.name}</Tooltip>} placement="top">
                            <Button onClick={e.action} className='p-2 ms-1 me-1'
-                                   variant='outline-dark'>
-                               <Image className='Black' height='32px' width='32px' src={e.iconB}/>
-                               <Image className='White' height='32px' width='32px' src={e.iconW}/>
+                                   variant={e.variant ? e.variant : 'outline-dark'}>
+                               <Image className='Black' height='28px' width='28px' src={e.iconB}/>
+                               <Image className='White' height='28px' width='28px' src={e.iconW}/>
                            </Button>
                        </OverlayTrigger>
                        )
                    }
+                   {
+                       showSearch ?
+                           <div className='d-flex'>
+                           <Form className='ms-2 mt-1 mb-1 fs-2' onSubmit={event => {event.preventDefault();
+                                SearchFun(searchText);
+                           }}>
+                               <Form.Control value={searchText} onChange={(e) => {SetSearchText(e.target.value)}}
+                                   style={{color: 'var(--color-dark)', background: '0', border: '0', borderBottom: '1px solid #ccc'}}
+                                             placeholder={"Поиск"}
+                               />
 
+                           </Form>
+                               <Button className='ms-2' variant='outline-dark' onClick={() => SearchFun(searchText)}>Поиск</Button>
+                           </div>
+                           :
+                           null
+                   }
                </div>
                <ThemeProvider theme={GridTheme}>
            <Box className={(IsLoading ? "d-none" : "d-block")} sx={{height: Math.max(window.innerHeight-215, 500)+'px', width: '100%'}}>
-               <DataGrid rows={rows} columns={columns} checkboxSelection
+               <DataGrid rows={showSearch? filtretedRows : rows} columns={columns} checkboxSelection
                          prop
                          onRowSelectionModelChange={(ids) =>{SetSelectionIds(ids)}}
                          getRowClassName={(params) =>
                              params.indexRelativeToCurrentPage % 2 === 0 ? 'even' : 'odd'
                          }
-                         onRowDoubleClick={(params) => {navigate(MENU_ROUTE + '/' + id + '/' + params.id)} }
+                         onRowDoubleClick={(params) => {
+                             //console.log(objData.find((x) => x.id == params.id));
+                             user.setPath(objData.find((x) => x.id == params.id).name, 1);
+                             navigate(MENU_ROUTE + '/' + id + '/' + params.id)} }
                          onColumnWidthChange={(params) => {
                              let state = apiRef.current.exportState();
                              state = JSON.stringify(state);

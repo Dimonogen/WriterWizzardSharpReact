@@ -2,7 +2,7 @@ import {
     ACCOUNT_ROUTE,
     ADMIN_ROUTE, BASE_ROUTE, CONFIG_ROUTE, HOME_ROUTE,
     LOGIN_ROUTE, MENU_ROUTE,
-    REGISTRATION_ROUTE, TRESHCAN_ROUTE,
+    REGISTRATION_ROUTE, SEARCH_ROUTE, TRESHCAN_ROUTE,
     USER_ROUTE
 } from "./utils/consts"
 import Admin from "./pages/Admin"
@@ -14,6 +14,7 @@ import StartPage from "./pages/StartPage";
 import MenuPage from "./pages/MenuPage";
 import ConfigPage from "./pages/ConfigPage";
 import HomePage from "./pages/HomePage";
+import SearchPage from "./pages/SearchPage";
 
 export const authRoutes = [
     {
@@ -59,6 +60,10 @@ export const authRoutes = [
     {
         path: TRESHCAN_ROUTE + '/:objId',
         Component: MenuPage
+    },
+    {
+        path: SEARCH_ROUTE,
+        Component: SearchPage
     }
 ]
 

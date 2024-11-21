@@ -1,11 +1,14 @@
-import {NavLink, useNavigate, useParams} from "react-router-dom";
-import {useContext} from "react";
+import {NavLink, useLocation, useNavigate, useParams} from "react-router-dom";
+import {useContext, useEffect, useState} from "react";
 import {Context} from "../../index";
 import {observer} from "mobx-react-lite";
+import {saveUserSettings} from "../../http/UserSettingsAPI";
 
 const HistoryBar = observer(() => {
     const navigate = useNavigate()
     const path = window.location.pathname
+
+    const location = useLocation()
 
     const {user} = useContext(Context)
 
@@ -34,6 +37,8 @@ const HistoryBar = observer(() => {
             res = 'Настройки';
         else if (name == 'treshcan')
             res = "Корзина";
+        else if (name == 'search')
+            res = "Страница поиска";
         else if (('objId' in params || 'typeId' in params) && countSlesh == 3)
             res = user.path[1]
         else if ('id' in params && countSlesh == 2)
@@ -70,8 +75,19 @@ const HistoryBar = observer(() => {
         return arr;
     }
 
-    const elements = getElements(path)
+    const [elements, SetElements] = useState(getElements(path))
     //console.log(elements)
+
+    useEffect(() => {
+        let arr = getElements(path);
+        let lastE = arr[arr.length-1];
+        //console.log(lastE, arr);
+        SetElements(arr);
+
+        let str = JSON.stringify({name: lastE.name, path: lastE.path});
+        if(lastE.path != '/')
+            saveUserSettings("LastLocation",{settings: str}).then();
+    }, [location])
 
   return (
       <div className="ms-4 d-flex flex-row" style={{position:"relative", top:"90px"}}>

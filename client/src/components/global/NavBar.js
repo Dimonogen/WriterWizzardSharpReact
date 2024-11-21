@@ -7,7 +7,7 @@ import {
     LOGIN_ROUTE,
     USER_ROUTE,
     ACCOUNT_ROUTE,
-    BASE_ROUTE, MENU_ROUTE, CONFIG_ROUTE
+    BASE_ROUTE, MENU_ROUTE, CONFIG_ROUTE, SEARCH_ROUTE
 } from '../../utils/consts'
 
 import logo from '../../assets/DS_logo_dark_E.svg'
@@ -49,6 +49,12 @@ const NavBar = observer(() => {
     }
 
     const [showMenu, setshowMenu] = useState(false)
+
+    const [searchText, SetSearchText] = useState("");
+
+    const SearchFun = (text) => {
+        navigate(SEARCH_ROUTE + '?searchText='+encodeURIComponent(searchText));
+    }
 
     useEffect(()=>{
         //console.log(user.info)
@@ -96,12 +102,16 @@ const NavBar = observer(() => {
 
 
           </div>
-
-            {/*<Form className='ms-auto me-auto'>
-            <Form.Control style={{color: '#ccc', background: '0', border: '0', borderBottom: '1px solid #ccc'}}
+            <Form className='ms-auto mt-auto mb-auto' onSubmit={event => {event.preventDefault();
+                SearchFun(searchText);
+            }}>
+            <Form.Control style={{color: '#ccc', background: '0', border: '0', borderBottom: '1px solid #ccc', minWidth:'300px'}}
               placeholder={"Поиск"}
+                          value={searchText} onChange={(e) => {SetSearchText(e.target.value)} }
             />
-          </Form>*/}
+          </Form>
+                <Button className='ms-2 mt-auto mb-auto h-50' variant='outline-light' onClick={() => SearchFun(searchText)}>Поиск</Button>
+
           {user.info && user.isAuth ?
             <Nav className="ms-auto me-3">
               <span className='m-2 text-white d-flex align-items-center'>{user.info.name}</span>
