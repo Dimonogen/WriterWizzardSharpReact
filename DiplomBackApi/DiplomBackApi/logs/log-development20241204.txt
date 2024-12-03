@@ -1,0 +1,565 @@
+2024-12-04 00:38:57.026 +03:00 [DBG] [] (Td=) Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2024-12-04 00:38:57.142 +03:00 [DBG] [] (Td=) Hosting starting
+2024-12-04 00:38:57.173 +03:00 [INF] [] (Td=) User profile is available. Using 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-12-04 00:38:57.178 +03:00 [DBG] [] (Td=) Reading data from file 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys\key-47730e9c-a58c-422f-8e0f-885a1ad70b8a.xml'.
+2024-12-04 00:38:57.188 +03:00 [DBG] [] (Td=) Reading data from file 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys\key-566666a8-a010-433d-bc18-53f98b622012.xml'.
+2024-12-04 00:38:57.189 +03:00 [DBG] [] (Td=) Reading data from file 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys\key-8665b46e-0bc7-418a-b40a-143c7b66283e.xml'.
+2024-12-04 00:38:57.190 +03:00 [DBG] [] (Td=) Reading data from file 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys\key-a72c0d40-8864-4eb2-8e3a-1f41b23257fd.xml'.
+2024-12-04 00:38:57.194 +03:00 [DBG] [] (Td=) Found key {47730e9c-a58c-422f-8e0f-885a1ad70b8a}.
+2024-12-04 00:38:57.198 +03:00 [DBG] [] (Td=) Found key {566666a8-a010-433d-bc18-53f98b622012}.
+2024-12-04 00:38:57.199 +03:00 [DBG] [] (Td=) Found key {8665b46e-0bc7-418a-b40a-143c7b66283e}.
+2024-12-04 00:38:57.199 +03:00 [DBG] [] (Td=) Found key {a72c0d40-8864-4eb2-8e3a-1f41b23257fd}.
+2024-12-04 00:38:57.203 +03:00 [DBG] [] (Td=) Considering key {8665b46e-0bc7-418a-b40a-143c7b66283e} with expiration date 2025-02-13 13:25:40Z as default key.
+2024-12-04 00:38:57.206 +03:00 [DBG] [] (Td=) Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-12-04 00:38:57.208 +03:00 [DBG] [] (Td=) Decrypting secret element using Windows DPAPI.
+2024-12-04 00:38:57.209 +03:00 [DBG] [] (Td=) Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-12-04 00:38:57.212 +03:00 [DBG] [] (Td=) Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2024-12-04 00:38:57.213 +03:00 [DBG] [] (Td=) Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2024-12-04 00:38:57.215 +03:00 [DBG] [] (Td=) Using key {8665b46e-0bc7-418a-b40a-143c7b66283e} as the default key.
+2024-12-04 00:38:57.216 +03:00 [DBG] [] (Td=) Key ring with default key {8665b46e-0bc7-418a-b40a-143c7b66283e} was loaded during application startup.
+2024-12-04 00:38:57.424 +03:00 [INF] [] (Td=) Now listening on: https://localhost:5000
+2024-12-04 00:38:57.425 +03:00 [INF] [] (Td=) Now listening on: http://localhost:5169
+2024-12-04 00:38:57.426 +03:00 [DBG] [] (Td=) Loaded hosting startup assembly DiplomBackApi
+2024-12-04 00:38:57.427 +03:00 [DBG] [] (Td=) Loaded hosting startup assembly Microsoft.WebTools.ApiEndpointDiscovery
+2024-12-04 00:38:57.428 +03:00 [DBG] [] (Td=) Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2024-12-04 00:38:57.428 +03:00 [DBG] [] (Td=) Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2024-12-04 00:38:57.465 +03:00 [INF] [] (Td=) Application started. Press Ctrl+C to shut down.
+2024-12-04 00:38:57.467 +03:00 [INF] [] (Td=) Hosting environment: Development
+2024-12-04 00:38:57.468 +03:00 [INF] [] (Td=) Content root path: G:\_Projects\WriterWizzardSharpReact\DiplomBackApi\DiplomBackApi
+2024-12-04 00:38:57.473 +03:00 [DBG] [] (Td=) Hosting started
+2024-12-04 00:39:02.740 +03:00 [DBG] [] (Td=) Connection id "0HN8JSBJR9J7V" accepted.
+2024-12-04 00:39:02.741 +03:00 [DBG] [] (Td=) Connection id "0HN8JSBJR9J7V" started.
+2024-12-04 00:39:02.755 +03:00 [DBG] [] (Td=) Failed to authenticate HTTPS connection.
+System.Security.Authentication.AuthenticationException: Cannot determine the frame size or a corrupted frame was received.
+   at System.Net.Security.SslStream.GetFrameSize(ReadOnlySpan`1 buffer)
+   at System.Net.Security.SslStream.EnsureFullTlsFrameAsync[TIOAdapter](CancellationToken cancellationToken, Int32 estimatedSize)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2024-12-04 00:39:02.767 +03:00 [DBG] [] (Td=) Connection id "0HN8JSBJR9J7V" stopped.
+2024-12-04 00:39:02.769 +03:00 [DBG] [] (Td=) Connection id "0HN8JSBJR9J7V" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-12-04 00:39:03.786 +03:00 [DBG] [] (Td=) Connection id "0HN8JSBJR9J80" accepted.
+2024-12-04 00:39:03.787 +03:00 [DBG] [] (Td=) Connection id "0HN8JSBJR9J80" started.
+2024-12-04 00:39:03.791 +03:00 [DBG] [] (Td=) Failed to authenticate HTTPS connection.
+System.Security.Authentication.AuthenticationException: Cannot determine the frame size or a corrupted frame was received.
+   at System.Net.Security.SslStream.GetFrameSize(ReadOnlySpan`1 buffer)
+   at System.Net.Security.SslStream.EnsureFullTlsFrameAsync[TIOAdapter](CancellationToken cancellationToken, Int32 estimatedSize)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2024-12-04 00:39:03.795 +03:00 [DBG] [] (Td=) Connection id "0HN8JSBJR9J80" stopped.
+2024-12-04 00:39:03.796 +03:00 [DBG] [] (Td=) Connection id "0HN8JSBJR9J80" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-12-04 00:39:08.812 +03:00 [DBG] [] (Td=) Connection id "0HN8JSBJR9J81" accepted.
+2024-12-04 00:39:08.813 +03:00 [DBG] [] (Td=) Connection id "0HN8JSBJR9J81" started.
+2024-12-04 00:39:08.814 +03:00 [DBG] [] (Td=) Failed to authenticate HTTPS connection.
+System.Security.Authentication.AuthenticationException: Cannot determine the frame size or a corrupted frame was received.
+   at System.Net.Security.SslStream.GetFrameSize(ReadOnlySpan`1 buffer)
+   at System.Net.Security.SslStream.EnsureFullTlsFrameAsync[TIOAdapter](CancellationToken cancellationToken, Int32 estimatedSize)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2024-12-04 00:39:08.818 +03:00 [DBG] [] (Td=) Connection id "0HN8JSBJR9J81" stopped.
+2024-12-04 00:39:08.819 +03:00 [DBG] [] (Td=) Connection id "0HN8JSBJR9J81" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-12-04 00:39:10.282 +03:00 [DBG] [] (Td=) Connection id "0HN8JSBJR9J82" accepted.
+2024-12-04 00:39:10.282 +03:00 [DBG] [] (Td=) Connection id "0HN8JSBJR9J82" started.
+2024-12-04 00:39:10.303 +03:00 [DBG] [] (Td=) Connection 0HN8JSBJR9J82 established using the following protocol: "Tls12"
+2024-12-04 00:39:10.334 +03:00 [INF] [] (Td=) Request starting HTTP/2 GET https://localhost:5000/swagger/index.html - null null
+2024-12-04 00:39:10.384 +03:00 [DBG] [] (Td=) Wildcard detected, all requests with hosts will be allowed.
+2024-12-04 00:39:10.409 +03:00 [DBG] [] (Td=) Response markup is scheduled to include Browser Link script injection.
+2024-12-04 00:39:10.410 +03:00 [DBG] [] (Td=) Response markup is scheduled to include browser refresh script injection.
+2024-12-04 00:39:10.420 +03:00 [DBG] [] (Td=) Response markup was updated to include Browser Link script injection.
+2024-12-04 00:39:10.420 +03:00 [DBG] [] (Td=) Response markup was updated to include browser refresh script injection.
+2024-12-04 00:39:10.422 +03:00 [INF] [] (Td=) Request finished HTTP/2 GET https://localhost:5000/swagger/index.html - 200 null text/html;charset=utf-8 90.6093ms
+2024-12-04 00:39:10.433 +03:00 [INF] [] (Td=) Request starting HTTP/2 GET https://localhost:5000/swagger/swagger-ui-standalone-preset.js - null null
+2024-12-04 00:39:10.433 +03:00 [INF] [] (Td=) Request starting HTTP/2 GET https://localhost:5000/swagger/swagger-ui-bundle.js - null null
+2024-12-04 00:39:10.433 +03:00 [INF] [] (Td=) Request starting HTTP/2 GET https://localhost:5000/_framework/aspnetcore-browser-refresh.js - null null
+2024-12-04 00:39:10.433 +03:00 [INF] [] (Td=) Request starting HTTP/2 GET https://localhost:5000/swagger/swagger-ui.css - null null
+2024-12-04 00:39:10.447 +03:00 [INF] [] (Td=) Request finished HTTP/2 GET https://localhost:5000/_framework/aspnetcore-browser-refresh.js - 200 13778 application/javascript; charset=utf-8 12.2747ms
+2024-12-04 00:39:10.448 +03:00 [INF] [] (Td=) Request starting HTTP/2 GET https://localhost:5000/_vs/browserLink - null null
+2024-12-04 00:39:10.467 +03:00 [INF] [] (Td=) Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2024-12-04 00:39:10.467 +03:00 [INF] [] (Td=) Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2024-12-04 00:39:10.471 +03:00 [INF] [] (Td=) Request finished HTTP/2 GET https://localhost:5000/swagger/swagger-ui-standalone-preset.js - 200 339486 text/javascript 37.6706ms
+2024-12-04 00:39:10.471 +03:00 [INF] [] (Td=) Request finished HTTP/2 GET https://localhost:5000/swagger/swagger-ui.css - 200 143943 text/css 38.0981ms
+2024-12-04 00:39:10.476 +03:00 [INF] [] (Td=) Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2024-12-04 00:39:10.478 +03:00 [INF] [] (Td=) Request finished HTTP/2 GET https://localhost:5000/swagger/swagger-ui-bundle.js - 200 1096145 text/javascript 44.7526ms
+2024-12-04 00:39:10.489 +03:00 [INF] [] (Td=) Request finished HTTP/2 GET https://localhost:5000/_vs/browserLink - 200 null text/javascript; charset=UTF-8 41.4279ms
+2024-12-04 00:39:10.648 +03:00 [INF] [] (Td=) Request starting HTTP/2 GET https://localhost:5000/swagger/v1/swagger.json - null null
+2024-12-04 00:39:10.659 +03:00 [INF] [] (Td=) Request starting HTTP/2 GET https://localhost:5000/swagger/favicon-32x32.png - null null
+2024-12-04 00:39:10.661 +03:00 [INF] [] (Td=) Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2024-12-04 00:39:10.662 +03:00 [INF] [] (Td=) Request finished HTTP/2 GET https://localhost:5000/swagger/favicon-32x32.png - 200 628 image/png 3.4479ms
+2024-12-04 00:39:10.669 +03:00 [INF] [] (Td=) Request finished HTTP/2 GET https://localhost:5000/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 21.1912ms
+2024-12-04 00:39:50.540 +03:00 [DBG] [] (Td=) Connection id "0HN8JSBJR9J83" accepted.
+2024-12-04 00:39:50.542 +03:00 [DBG] [] (Td=) Connection id "0HN8JSBJR9J83" started.
+2024-12-04 00:39:50.543 +03:00 [DBG] [] (Td=) Failed to authenticate HTTPS connection.
+System.Security.Authentication.AuthenticationException: Cannot determine the frame size or a corrupted frame was received.
+   at System.Net.Security.SslStream.GetFrameSize(ReadOnlySpan`1 buffer)
+   at System.Net.Security.SslStream.EnsureFullTlsFrameAsync[TIOAdapter](CancellationToken cancellationToken, Int32 estimatedSize)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2024-12-04 00:39:50.546 +03:00 [DBG] [] (Td=) Connection id "0HN8JSBJR9J83" stopped.
+2024-12-04 00:39:50.546 +03:00 [DBG] [] (Td=) Connection id "0HN8JSBJR9J83" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-12-04 00:39:54.014 +03:00 [DBG] [] (Td=) Connection id "0HN8JSBJR9J84" accepted.
+2024-12-04 00:39:54.015 +03:00 [DBG] [] (Td=) Connection id "0HN8JSBJR9J84" started.
+2024-12-04 00:39:54.016 +03:00 [DBG] [] (Td=) Failed to authenticate HTTPS connection.
+System.Security.Authentication.AuthenticationException: Cannot determine the frame size or a corrupted frame was received.
+   at System.Net.Security.SslStream.GetFrameSize(ReadOnlySpan`1 buffer)
+   at System.Net.Security.SslStream.EnsureFullTlsFrameAsync[TIOAdapter](CancellationToken cancellationToken, Int32 estimatedSize)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2024-12-04 00:39:54.019 +03:00 [DBG] [] (Td=) Connection id "0HN8JSBJR9J84" stopped.
+2024-12-04 00:39:54.020 +03:00 [DBG] [] (Td=) Connection id "0HN8JSBJR9J84" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-12-04 00:40:00.878 +03:00 [DBG] [] (Td=) Connection id "0HN8JSBJR9J85" accepted.
+2024-12-04 00:40:00.879 +03:00 [DBG] [] (Td=) Connection id "0HN8JSBJR9J85" started.
+2024-12-04 00:40:00.880 +03:00 [DBG] [] (Td=) Failed to authenticate HTTPS connection.
+System.Security.Authentication.AuthenticationException: Cannot determine the frame size or a corrupted frame was received.
+   at System.Net.Security.SslStream.GetFrameSize(ReadOnlySpan`1 buffer)
+   at System.Net.Security.SslStream.EnsureFullTlsFrameAsync[TIOAdapter](CancellationToken cancellationToken, Int32 estimatedSize)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2024-12-04 00:40:00.883 +03:00 [DBG] [] (Td=) Connection id "0HN8JSBJR9J85" stopped.
+2024-12-04 00:40:00.884 +03:00 [DBG] [] (Td=) Connection id "0HN8JSBJR9J85" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-12-04 00:40:32.697 +03:00 [DBG] [] (Td=) Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2024-12-04 00:40:32.812 +03:00 [DBG] [] (Td=) Hosting starting
+2024-12-04 00:40:32.854 +03:00 [INF] [] (Td=) User profile is available. Using 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-12-04 00:40:32.859 +03:00 [DBG] [] (Td=) Reading data from file 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys\key-47730e9c-a58c-422f-8e0f-885a1ad70b8a.xml'.
+2024-12-04 00:40:32.875 +03:00 [DBG] [] (Td=) Reading data from file 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys\key-566666a8-a010-433d-bc18-53f98b622012.xml'.
+2024-12-04 00:40:32.875 +03:00 [DBG] [] (Td=) Reading data from file 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys\key-8665b46e-0bc7-418a-b40a-143c7b66283e.xml'.
+2024-12-04 00:40:32.876 +03:00 [DBG] [] (Td=) Reading data from file 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys\key-a72c0d40-8864-4eb2-8e3a-1f41b23257fd.xml'.
+2024-12-04 00:40:32.879 +03:00 [DBG] [] (Td=) Found key {47730e9c-a58c-422f-8e0f-885a1ad70b8a}.
+2024-12-04 00:40:32.881 +03:00 [DBG] [] (Td=) Found key {566666a8-a010-433d-bc18-53f98b622012}.
+2024-12-04 00:40:32.883 +03:00 [DBG] [] (Td=) Found key {8665b46e-0bc7-418a-b40a-143c7b66283e}.
+2024-12-04 00:40:32.883 +03:00 [DBG] [] (Td=) Found key {a72c0d40-8864-4eb2-8e3a-1f41b23257fd}.
+2024-12-04 00:40:32.887 +03:00 [DBG] [] (Td=) Considering key {8665b46e-0bc7-418a-b40a-143c7b66283e} with expiration date 2025-02-13 13:25:40Z as default key.
+2024-12-04 00:40:32.889 +03:00 [DBG] [] (Td=) Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-12-04 00:40:32.891 +03:00 [DBG] [] (Td=) Decrypting secret element using Windows DPAPI.
+2024-12-04 00:40:32.892 +03:00 [DBG] [] (Td=) Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-12-04 00:40:32.895 +03:00 [DBG] [] (Td=) Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2024-12-04 00:40:32.896 +03:00 [DBG] [] (Td=) Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2024-12-04 00:40:32.897 +03:00 [DBG] [] (Td=) Using key {8665b46e-0bc7-418a-b40a-143c7b66283e} as the default key.
+2024-12-04 00:40:32.898 +03:00 [DBG] [] (Td=) Key ring with default key {8665b46e-0bc7-418a-b40a-143c7b66283e} was loaded during application startup.
+2024-12-04 00:40:33.047 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCEOH4EP" received FIN.
+2024-12-04 00:40:33.047 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCEOH4EO" received FIN.
+2024-12-04 00:40:33.051 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCEOH4EP" accepted.
+2024-12-04 00:40:33.051 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCEOH4EO" accepted.
+2024-12-04 00:40:33.052 +03:00 [INF] [] (Td=) Now listening on: https://localhost:5000
+2024-12-04 00:40:33.053 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCEOH4EP" started.
+2024-12-04 00:40:33.054 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCEOH4EO" started.
+2024-12-04 00:40:33.055 +03:00 [INF] [] (Td=) Now listening on: http://localhost:5169
+2024-12-04 00:40:33.057 +03:00 [DBG] [] (Td=) Loaded hosting startup assembly DiplomBackApi
+2024-12-04 00:40:33.060 +03:00 [DBG] [] (Td=) Loaded hosting startup assembly Microsoft.WebTools.ApiEndpointDiscovery
+2024-12-04 00:40:33.060 +03:00 [DBG] [] (Td=) Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2024-12-04 00:40:33.061 +03:00 [DBG] [] (Td=) Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2024-12-04 00:40:33.065 +03:00 [DBG] [] (Td=) Failed to authenticate HTTPS connection.
+System.IO.IOException: Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2024-12-04 00:40:33.065 +03:00 [DBG] [] (Td=) Failed to authenticate HTTPS connection.
+System.IO.IOException: Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2024-12-04 00:40:33.077 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCEOH4EO" stopped.
+2024-12-04 00:40:33.080 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCEOH4EP" stopped.
+2024-12-04 00:40:33.082 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCEOH4EP" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-12-04 00:40:33.082 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCEOH4EO" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-12-04 00:40:33.097 +03:00 [INF] [] (Td=) Application started. Press Ctrl+C to shut down.
+2024-12-04 00:40:33.105 +03:00 [INF] [] (Td=) Hosting environment: Development
+2024-12-04 00:40:33.106 +03:00 [INF] [] (Td=) Content root path: G:\_Projects\WriterWizzardSharpReact\DiplomBackApi\DiplomBackApi
+2024-12-04 00:40:33.107 +03:00 [DBG] [] (Td=) Hosting started
+2024-12-04 00:40:33.305 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCEOH4EQ" accepted.
+2024-12-04 00:40:33.306 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCEOH4EQ" started.
+2024-12-04 00:40:33.328 +03:00 [DBG] [] (Td=) Connection 0HN8JSCEOH4EQ established using the following protocol: "Tls12"
+2024-12-04 00:40:33.359 +03:00 [INF] [] (Td=) Request starting HTTP/2 GET https://localhost:5000/swagger - null null
+2024-12-04 00:40:33.411 +03:00 [DBG] [] (Td=) Wildcard detected, all requests with hosts will be allowed.
+2024-12-04 00:40:33.416 +03:00 [INF] [] (Td=) Request finished HTTP/2 GET https://localhost:5000/swagger - 301 0 null 59.1038ms
+2024-12-04 00:40:33.420 +03:00 [INF] [] (Td=) Request starting HTTP/2 GET https://localhost:5000/swagger/index.html - null null
+2024-12-04 00:40:33.447 +03:00 [DBG] [] (Td=) Response markup is scheduled to include Browser Link script injection.
+2024-12-04 00:40:33.448 +03:00 [DBG] [] (Td=) Response markup is scheduled to include browser refresh script injection.
+2024-12-04 00:40:33.459 +03:00 [DBG] [] (Td=) Response markup was updated to include Browser Link script injection.
+2024-12-04 00:40:33.461 +03:00 [DBG] [] (Td=) Response markup was updated to include browser refresh script injection.
+2024-12-04 00:40:33.468 +03:00 [INF] [] (Td=) Request finished HTTP/2 GET https://localhost:5000/swagger/index.html - 200 null text/html;charset=utf-8 48.2495ms
+2024-12-04 00:40:33.493 +03:00 [INF] [] (Td=) Request starting HTTP/2 GET https://localhost:5000/_vs/browserLink - null null
+2024-12-04 00:40:33.493 +03:00 [INF] [] (Td=) Request starting HTTP/2 GET https://localhost:5000/_framework/aspnetcore-browser-refresh.js - null null
+2024-12-04 00:40:33.511 +03:00 [INF] [] (Td=) Request finished HTTP/2 GET https://localhost:5000/_framework/aspnetcore-browser-refresh.js - 200 13778 application/javascript; charset=utf-8 18.5523ms
+2024-12-04 00:40:33.522 +03:00 [INF] [] (Td=) Request finished HTTP/2 GET https://localhost:5000/_vs/browserLink - 200 null text/javascript; charset=UTF-8 29.3162ms
+2024-12-04 00:40:33.669 +03:00 [INF] [] (Td=) Request starting HTTP/2 GET https://localhost:5000/swagger/v1/swagger.json - null null
+2024-12-04 00:40:33.692 +03:00 [INF] [] (Td=) Request finished HTTP/2 GET https://localhost:5000/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 23.139ms
+2024-12-04 00:40:48.474 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCEOH4ER" accepted.
+2024-12-04 00:40:48.475 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCEOH4ER" started.
+2024-12-04 00:40:48.477 +03:00 [DBG] [] (Td=) Failed to authenticate HTTPS connection.
+System.Security.Authentication.AuthenticationException: Cannot determine the frame size or a corrupted frame was received.
+   at System.Net.Security.SslStream.GetFrameSize(ReadOnlySpan`1 buffer)
+   at System.Net.Security.SslStream.EnsureFullTlsFrameAsync[TIOAdapter](CancellationToken cancellationToken, Int32 estimatedSize)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2024-12-04 00:40:48.482 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCEOH4ER" stopped.
+2024-12-04 00:40:48.483 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCEOH4ER" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-12-04 00:41:25.068 +03:00 [DBG] [] (Td=) Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2024-12-04 00:41:25.170 +03:00 [DBG] [] (Td=) Hosting starting
+2024-12-04 00:41:25.202 +03:00 [INF] [] (Td=) User profile is available. Using 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-12-04 00:41:25.207 +03:00 [DBG] [] (Td=) Reading data from file 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys\key-47730e9c-a58c-422f-8e0f-885a1ad70b8a.xml'.
+2024-12-04 00:41:25.210 +03:00 [DBG] [] (Td=) Reading data from file 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys\key-566666a8-a010-433d-bc18-53f98b622012.xml'.
+2024-12-04 00:41:25.211 +03:00 [DBG] [] (Td=) Reading data from file 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys\key-8665b46e-0bc7-418a-b40a-143c7b66283e.xml'.
+2024-12-04 00:41:25.212 +03:00 [DBG] [] (Td=) Reading data from file 'C:\Users\user\AppData\Local\ASP.NET\DataProtection-Keys\key-a72c0d40-8864-4eb2-8e3a-1f41b23257fd.xml'.
+2024-12-04 00:41:25.215 +03:00 [DBG] [] (Td=) Found key {47730e9c-a58c-422f-8e0f-885a1ad70b8a}.
+2024-12-04 00:41:25.218 +03:00 [DBG] [] (Td=) Found key {566666a8-a010-433d-bc18-53f98b622012}.
+2024-12-04 00:41:25.219 +03:00 [DBG] [] (Td=) Found key {8665b46e-0bc7-418a-b40a-143c7b66283e}.
+2024-12-04 00:41:25.219 +03:00 [DBG] [] (Td=) Found key {a72c0d40-8864-4eb2-8e3a-1f41b23257fd}.
+2024-12-04 00:41:25.223 +03:00 [DBG] [] (Td=) Considering key {8665b46e-0bc7-418a-b40a-143c7b66283e} with expiration date 2025-02-13 13:25:40Z as default key.
+2024-12-04 00:41:25.225 +03:00 [DBG] [] (Td=) Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-12-04 00:41:25.228 +03:00 [DBG] [] (Td=) Decrypting secret element using Windows DPAPI.
+2024-12-04 00:41:25.229 +03:00 [DBG] [] (Td=) Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-12-04 00:41:25.231 +03:00 [DBG] [] (Td=) Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2024-12-04 00:41:25.257 +03:00 [DBG] [] (Td=) Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2024-12-04 00:41:25.265 +03:00 [DBG] [] (Td=) Using key {8665b46e-0bc7-418a-b40a-143c7b66283e} as the default key.
+2024-12-04 00:41:25.266 +03:00 [DBG] [] (Td=) Key ring with default key {8665b46e-0bc7-418a-b40a-143c7b66283e} was loaded during application startup.
+2024-12-04 00:41:25.362 +03:00 [INF] [] (Td=) Now listening on: http://localhost:5000
+2024-12-04 00:41:25.363 +03:00 [DBG] [] (Td=) Loaded hosting startup assembly DiplomBackApi
+2024-12-04 00:41:25.364 +03:00 [DBG] [] (Td=) Loaded hosting startup assembly Microsoft.WebTools.ApiEndpointDiscovery
+2024-12-04 00:41:25.365 +03:00 [DBG] [] (Td=) Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2024-12-04 00:41:25.365 +03:00 [DBG] [] (Td=) Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2024-12-04 00:41:25.395 +03:00 [INF] [] (Td=) Application started. Press Ctrl+C to shut down.
+2024-12-04 00:41:25.396 +03:00 [INF] [] (Td=) Hosting environment: Development
+2024-12-04 00:41:25.397 +03:00 [INF] [] (Td=) Content root path: G:\_Projects\WriterWizzardSharpReact\DiplomBackApi\DiplomBackApi
+2024-12-04 00:41:25.397 +03:00 [DBG] [] (Td=) Hosting started
+2024-12-04 00:41:25.740 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NAV" received FIN.
+2024-12-04 00:41:25.740 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB0" received FIN.
+2024-12-04 00:41:25.744 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NAV" accepted.
+2024-12-04 00:41:25.744 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB0" accepted.
+2024-12-04 00:41:25.746 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NAV" started.
+2024-12-04 00:41:25.747 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB0" started.
+2024-12-04 00:41:25.752 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB0" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-12-04 00:41:25.752 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NAV" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-12-04 00:41:25.754 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB0" disconnecting.
+2024-12-04 00:41:25.755 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NAV" disconnecting.
+2024-12-04 00:41:25.758 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB0" stopped.
+2024-12-04 00:41:25.758 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NAV" stopped.
+2024-12-04 00:41:25.938 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB1" accepted.
+2024-12-04 00:41:25.939 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB1" started.
+2024-12-04 00:41:25.958 +03:00 [INF] [] (Td=) Request starting HTTP/1.1 GET http://localhost:5000/swagger - null null
+2024-12-04 00:41:26.013 +03:00 [DBG] [] (Td=) Wildcard detected, all requests with hosts will be allowed.
+2024-12-04 00:41:26.025 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB1" completed keep alive response.
+2024-12-04 00:41:26.027 +03:00 [INF] [] (Td=) Request finished HTTP/1.1 GET http://localhost:5000/swagger - 301 0 null 72.0373ms
+2024-12-04 00:41:26.030 +03:00 [INF] [] (Td=) Request starting HTTP/1.1 GET http://localhost:5000/swagger/index.html - null null
+2024-12-04 00:41:26.060 +03:00 [DBG] [] (Td=) Response markup is scheduled to include Browser Link script injection.
+2024-12-04 00:41:26.062 +03:00 [DBG] [] (Td=) Response markup is scheduled to include browser refresh script injection.
+2024-12-04 00:41:26.070 +03:00 [DBG] [] (Td=) Response markup was updated to include Browser Link script injection.
+2024-12-04 00:41:26.070 +03:00 [DBG] [] (Td=) Response markup was updated to include browser refresh script injection.
+2024-12-04 00:41:26.071 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB1" completed keep alive response.
+2024-12-04 00:41:26.072 +03:00 [INF] [] (Td=) Request finished HTTP/1.1 GET http://localhost:5000/swagger/index.html - 200 null text/html;charset=utf-8 41.9935ms
+2024-12-04 00:41:26.080 +03:00 [INF] [] (Td=) Request starting HTTP/1.1 GET http://localhost:5000/swagger/swagger-ui.css - null null
+2024-12-04 00:41:26.081 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB2" accepted.
+2024-12-04 00:41:26.086 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB2" started.
+2024-12-04 00:41:26.087 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB3" accepted.
+2024-12-04 00:41:26.091 +03:00 [INF] [] (Td=) Request starting HTTP/1.1 GET http://localhost:5000/swagger/swagger-ui-bundle.js - null null
+2024-12-04 00:41:26.092 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB4" accepted.
+2024-12-04 00:41:26.092 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB3" started.
+2024-12-04 00:41:26.104 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB4" started.
+2024-12-04 00:41:26.107 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB5" accepted.
+2024-12-04 00:41:26.115 +03:00 [INF] [] (Td=) Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2024-12-04 00:41:26.109 +03:00 [INF] [] (Td=) Request starting HTTP/1.1 GET http://localhost:5000/swagger/swagger-ui-standalone-preset.js - null null
+2024-12-04 00:41:26.109 +03:00 [INF] [] (Td=) Request starting HTTP/1.1 GET http://localhost:5000/_vs/browserLink - null null
+2024-12-04 00:41:26.120 +03:00 [INF] [] (Td=) Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2024-12-04 00:41:26.121 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB1" completed keep alive response.
+2024-12-04 00:41:26.124 +03:00 [INF] [] (Td=) Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2024-12-04 00:41:26.127 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB2" completed keep alive response.
+2024-12-04 00:41:26.131 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB3" completed keep alive response.
+2024-12-04 00:41:26.130 +03:00 [INF] [] (Td=) Request finished HTTP/1.1 GET http://localhost:5000/swagger/swagger-ui.css - 200 143943 text/css 49.7766ms
+2024-12-04 00:41:26.116 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB5" started.
+2024-12-04 00:41:26.132 +03:00 [INF] [] (Td=) Request finished HTTP/1.1 GET http://localhost:5000/swagger/swagger-ui-bundle.js - 200 1096145 text/javascript 41.265ms
+2024-12-04 00:41:26.133 +03:00 [INF] [] (Td=) Request finished HTTP/1.1 GET http://localhost:5000/swagger/swagger-ui-standalone-preset.js - 200 339486 text/javascript 24.4844ms
+2024-12-04 00:41:26.136 +03:00 [INF] [] (Td=) Request starting HTTP/1.1 GET http://localhost:5000/_framework/aspnetcore-browser-refresh.js - null null
+2024-12-04 00:41:26.143 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB4" completed keep alive response.
+2024-12-04 00:41:26.146 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB5" completed keep alive response.
+2024-12-04 00:41:26.146 +03:00 [INF] [] (Td=) Request finished HTTP/1.1 GET http://localhost:5000/_vs/browserLink - 200 null text/javascript; charset=UTF-8 37.273ms
+2024-12-04 00:41:26.147 +03:00 [INF] [] (Td=) Request finished HTTP/1.1 GET http://localhost:5000/_framework/aspnetcore-browser-refresh.js - 200 13778 application/javascript; charset=utf-8 11.2372ms
+2024-12-04 00:41:26.294 +03:00 [INF] [] (Td=) Request starting HTTP/1.1 GET http://localhost:5000/swagger/v1/swagger.json - null null
+2024-12-04 00:41:26.303 +03:00 [INF] [] (Td=) Request starting HTTP/1.1 GET http://localhost:5000/swagger/favicon-32x32.png - null null
+2024-12-04 00:41:26.305 +03:00 [INF] [] (Td=) Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2024-12-04 00:41:26.306 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB4" completed keep alive response.
+2024-12-04 00:41:26.307 +03:00 [INF] [] (Td=) Request finished HTTP/1.1 GET http://localhost:5000/swagger/favicon-32x32.png - 200 628 image/png 4.3932ms
+2024-12-04 00:41:26.316 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB5" completed keep alive response.
+2024-12-04 00:41:26.317 +03:00 [INF] [] (Td=) Request finished HTTP/1.1 GET http://localhost:5000/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 23.6687ms
+2024-12-04 00:41:33.403 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB6" accepted.
+2024-12-04 00:41:33.405 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB6" started.
+2024-12-04 00:41:33.406 +03:00 [INF] [] (Td=) Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/user/registration - null null
+2024-12-04 00:41:33.408 +03:00 [DBG] [] (Td=) OPTIONS requests are not supported
+2024-12-04 00:41:33.409 +03:00 [WRN] [] (Td=) Failed to determine the https port for redirect.
+2024-12-04 00:41:33.423 +03:00 [DBG] [] (Td=) 1 candidate(s) found for the request path '/api/user/registration'
+2024-12-04 00:41:33.424 +03:00 [DBG] [] (Td=) Request matched endpoint '405 HTTP Method Not Supported'
+2024-12-04 00:41:33.426 +03:00 [DBG] [] (Td=) The request has an origin header: 'http://localhost:3000'.
+2024-12-04 00:41:33.427 +03:00 [INF] [] (Td=) CORS policy execution successful.
+2024-12-04 00:41:33.428 +03:00 [DBG] [] (Td=) The request is a preflight request.
+2024-12-04 00:41:33.431 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB6" completed keep alive response.
+2024-12-04 00:41:33.432 +03:00 [INF] [] (Td=) Request finished HTTP/1.1 OPTIONS http://localhost:5000/api/user/registration - 204 null null 26.2773ms
+2024-12-04 00:41:33.436 +03:00 [INF] [] (Td=) Request starting HTTP/1.1 POST http://localhost:5000/api/user/registration - application/json 57
+2024-12-04 00:41:33.437 +03:00 [DBG] [] (Td=) POST requests are not supported
+2024-12-04 00:41:33.439 +03:00 [DBG] [] (Td=) 1 candidate(s) found for the request path '/api/user/registration'
+2024-12-04 00:41:33.441 +03:00 [DBG] [] (Td=) Endpoint 'DiplomBackApi.Controllers.UserController.Registration (DiplomBackApi)' with route pattern 'api/user/registration' is valid for the request path '/api/user/registration'
+2024-12-04 00:41:33.443 +03:00 [DBG] [] (Td=) Request matched endpoint 'DiplomBackApi.Controllers.UserController.Registration (DiplomBackApi)'
+2024-12-04 00:41:33.444 +03:00 [DBG] [] (Td=) The request has an origin header: 'http://localhost:3000'.
+2024-12-04 00:41:33.445 +03:00 [INF] [] (Td=) CORS policy execution successful.
+2024-12-04 00:41:33.451 +03:00 [DBG] [] (Td=) Static files was skipped as the request already matched an endpoint.
+2024-12-04 00:41:33.489 +03:00 [DBG] [] (Td=) AuthenticationScheme: Bearer was not authenticated.
+2024-12-04 00:41:33.491 +03:00 [INF] [] (Td=) Executing endpoint 'DiplomBackApi.Controllers.UserController.Registration (DiplomBackApi)'
+2024-12-04 00:41:33.504 +03:00 [INF] [] (Td=) Route matched with {action = "Registration", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Registration(DiplomBackApi.Controllers.RegistrationModel) on controller DiplomBackApi.Controllers.UserController (DiplomBackApi).
+2024-12-04 00:41:33.507 +03:00 [DBG] [] (Td=) Execution plan of authorization filters (in the following order): ["None"]
+2024-12-04 00:41:33.508 +03:00 [DBG] [] (Td=) Execution plan of resource filters (in the following order): ["None"]
+2024-12-04 00:41:33.510 +03:00 [DBG] [] (Td=) Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-12-04 00:41:33.514 +03:00 [DBG] [] (Td=) Execution plan of exception filters (in the following order): ["None"]
+2024-12-04 00:41:33.515 +03:00 [DBG] [] (Td=) Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-12-04 00:41:33.518 +03:00 [DBG] [] (Td=) Executing controller factory for controller DiplomBackApi.Controllers.UserController (DiplomBackApi)
+2024-12-04 00:41:34.164 +03:00 [DBG] [] (Td=) Executed controller factory for controller DiplomBackApi.Controllers.UserController (DiplomBackApi)
+2024-12-04 00:41:34.168 +03:00 [DBG] [] (Td=) Attempting to bind parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel' ...
+2024-12-04 00:41:34.170 +03:00 [DBG] [] (Td=) Attempting to bind parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel' using the name '' in request data ...
+2024-12-04 00:41:34.172 +03:00 [DBG] [] (Td=) Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2024-12-04 00:41:34.176 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB6", Request id "0HN8JSCUF1NB6:00000002": started reading request body.
+2024-12-04 00:41:34.178 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB6", Request id "0HN8JSCUF1NB6:00000002": done reading request body.
+2024-12-04 00:41:34.182 +03:00 [DBG] [] (Td=) JSON input formatter succeeded, deserializing to type 'DiplomBackApi.Controllers.RegistrationModel'
+2024-12-04 00:41:34.183 +03:00 [DBG] [] (Td=) Done attempting to bind parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel'.
+2024-12-04 00:41:34.184 +03:00 [DBG] [] (Td=) Done attempting to bind parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel'.
+2024-12-04 00:41:34.185 +03:00 [DBG] [] (Td=) Attempting to validate the bound parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel' ...
+2024-12-04 00:41:34.190 +03:00 [DBG] [] (Td=) Done attempting to validate the bound parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel'.
+2024-12-04 00:41:34.392 +03:00 [DBG] [] (Td=) List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-12-04 00:41:34.395 +03:00 [DBG] [] (Td=) No information found on request to perform content negotiation.
+2024-12-04 00:41:34.396 +03:00 [DBG] [] (Td=) Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2024-12-04 00:41:34.398 +03:00 [DBG] [] (Td=) Attempting to select the first formatter in the output formatters list which can write the result.
+2024-12-04 00:41:34.399 +03:00 [DBG] [] (Td=) Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter' and content type 'text/plain' to write the response.
+2024-12-04 00:41:34.402 +03:00 [INF] [] (Td=) Executing BadRequestObjectResult, writing value of type 'System.String'.
+2024-12-04 00:41:34.405 +03:00 [INF] [] (Td=) Executed action DiplomBackApi.Controllers.UserController.Registration (DiplomBackApi) in 887.0437ms
+2024-12-04 00:41:34.406 +03:00 [INF] [] (Td=) Executed endpoint 'DiplomBackApi.Controllers.UserController.Registration (DiplomBackApi)'
+2024-12-04 00:41:34.410 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB6" completed keep alive response.
+2024-12-04 00:41:34.415 +03:00 [INF] [] (Td=) Request finished HTTP/1.1 POST http://localhost:5000/api/user/registration - 400 null text/plain; charset=utf-8 979.4454ms
+2024-12-04 00:43:16.088 +03:00 [INF] [] (Td=) Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/user/login - null null
+2024-12-04 00:43:16.090 +03:00 [DBG] [] (Td=) OPTIONS requests are not supported
+2024-12-04 00:43:16.091 +03:00 [DBG] [] (Td=) 1 candidate(s) found for the request path '/api/user/login'
+2024-12-04 00:43:16.091 +03:00 [DBG] [] (Td=) Request matched endpoint '405 HTTP Method Not Supported'
+2024-12-04 00:43:16.092 +03:00 [DBG] [] (Td=) The request has an origin header: 'http://localhost:3000'.
+2024-12-04 00:43:16.093 +03:00 [INF] [] (Td=) CORS policy execution successful.
+2024-12-04 00:43:16.095 +03:00 [DBG] [] (Td=) The request is a preflight request.
+2024-12-04 00:43:16.096 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB6" completed keep alive response.
+2024-12-04 00:43:16.097 +03:00 [INF] [] (Td=) Request finished HTTP/1.1 OPTIONS http://localhost:5000/api/user/login - 204 null null 9.7613ms
+2024-12-04 00:43:16.101 +03:00 [INF] [] (Td=) Request starting HTTP/1.1 POST http://localhost:5000/api/user/login - application/json 30
+2024-12-04 00:43:16.103 +03:00 [DBG] [] (Td=) POST requests are not supported
+2024-12-04 00:43:16.103 +03:00 [DBG] [] (Td=) 1 candidate(s) found for the request path '/api/user/login'
+2024-12-04 00:43:16.104 +03:00 [DBG] [] (Td=) Endpoint 'DiplomBackApi.Controllers.UserController.Login (DiplomBackApi)' with route pattern 'api/user/login' is valid for the request path '/api/user/login'
+2024-12-04 00:43:16.106 +03:00 [DBG] [] (Td=) Request matched endpoint 'DiplomBackApi.Controllers.UserController.Login (DiplomBackApi)'
+2024-12-04 00:43:16.107 +03:00 [DBG] [] (Td=) The request has an origin header: 'http://localhost:3000'.
+2024-12-04 00:43:16.108 +03:00 [INF] [] (Td=) CORS policy execution successful.
+2024-12-04 00:43:16.108 +03:00 [DBG] [] (Td=) Static files was skipped as the request already matched an endpoint.
+2024-12-04 00:43:16.110 +03:00 [DBG] [] (Td=) AuthenticationScheme: Bearer was not authenticated.
+2024-12-04 00:43:16.113 +03:00 [INF] [] (Td=) Executing endpoint 'DiplomBackApi.Controllers.UserController.Login (DiplomBackApi)'
+2024-12-04 00:43:16.117 +03:00 [INF] [] (Td=) Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Login(DiplomBackApi.Controllers.LoginModel) on controller DiplomBackApi.Controllers.UserController (DiplomBackApi).
+2024-12-04 00:43:16.119 +03:00 [DBG] [] (Td=) Execution plan of authorization filters (in the following order): ["None"]
+2024-12-04 00:43:16.121 +03:00 [DBG] [] (Td=) Execution plan of resource filters (in the following order): ["None"]
+2024-12-04 00:43:16.122 +03:00 [DBG] [] (Td=) Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-12-04 00:43:16.124 +03:00 [DBG] [] (Td=) Execution plan of exception filters (in the following order): ["None"]
+2024-12-04 00:43:16.126 +03:00 [DBG] [] (Td=) Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-12-04 00:43:16.128 +03:00 [DBG] [] (Td=) Executing controller factory for controller DiplomBackApi.Controllers.UserController (DiplomBackApi)
+2024-12-04 00:43:16.168 +03:00 [DBG] [] (Td=) Executed controller factory for controller DiplomBackApi.Controllers.UserController (DiplomBackApi)
+2024-12-04 00:43:16.170 +03:00 [DBG] [] (Td=) Attempting to bind parameter 'loginModel' of type 'DiplomBackApi.Controllers.LoginModel' ...
+2024-12-04 00:43:16.170 +03:00 [DBG] [] (Td=) Attempting to bind parameter 'loginModel' of type 'DiplomBackApi.Controllers.LoginModel' using the name '' in request data ...
+2024-12-04 00:43:16.172 +03:00 [DBG] [] (Td=) Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2024-12-04 00:43:16.173 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB6", Request id "0HN8JSCUF1NB6:00000004": started reading request body.
+2024-12-04 00:43:16.174 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB6", Request id "0HN8JSCUF1NB6:00000004": done reading request body.
+2024-12-04 00:43:16.176 +03:00 [DBG] [] (Td=) JSON input formatter succeeded, deserializing to type 'DiplomBackApi.Controllers.LoginModel'
+2024-12-04 00:43:16.176 +03:00 [DBG] [] (Td=) Done attempting to bind parameter 'loginModel' of type 'DiplomBackApi.Controllers.LoginModel'.
+2024-12-04 00:43:16.177 +03:00 [DBG] [] (Td=) Done attempting to bind parameter 'loginModel' of type 'DiplomBackApi.Controllers.LoginModel'.
+2024-12-04 00:43:16.179 +03:00 [DBG] [] (Td=) Attempting to validate the bound parameter 'loginModel' of type 'DiplomBackApi.Controllers.LoginModel' ...
+2024-12-04 00:43:16.180 +03:00 [DBG] [] (Td=) Done attempting to validate the bound parameter 'loginModel' of type 'DiplomBackApi.Controllers.LoginModel'.
+2024-12-04 00:43:16.193 +03:00 [DBG] [] (Td=) List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-12-04 00:43:16.195 +03:00 [DBG] [] (Td=) No information found on request to perform content negotiation.
+2024-12-04 00:43:16.196 +03:00 [DBG] [] (Td=) Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2024-12-04 00:43:16.197 +03:00 [DBG] [] (Td=) Attempting to select the first formatter in the output formatters list which can write the result.
+2024-12-04 00:43:16.198 +03:00 [DBG] [] (Td=) Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter' and content type 'text/plain' to write the response.
+2024-12-04 00:43:16.199 +03:00 [INF] [] (Td=) Executing OkObjectResult, writing value of type 'System.String'.
+2024-12-04 00:43:16.202 +03:00 [INF] [] (Td=) Executed action DiplomBackApi.Controllers.UserController.Login (DiplomBackApi) in 74.0002ms
+2024-12-04 00:43:16.204 +03:00 [INF] [] (Td=) Executed endpoint 'DiplomBackApi.Controllers.UserController.Login (DiplomBackApi)'
+2024-12-04 00:43:16.205 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB6" completed keep alive response.
+2024-12-04 00:43:16.206 +03:00 [INF] [] (Td=) Request finished HTTP/1.1 POST http://localhost:5000/api/user/login - 200 null text/plain; charset=utf-8 105.3514ms
+2024-12-04 00:43:21.174 +03:00 [INF] [] (Td=) Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/user/login - null null
+2024-12-04 00:43:21.175 +03:00 [DBG] [] (Td=) OPTIONS requests are not supported
+2024-12-04 00:43:21.176 +03:00 [DBG] [] (Td=) 1 candidate(s) found for the request path '/api/user/login'
+2024-12-04 00:43:21.177 +03:00 [DBG] [] (Td=) Request matched endpoint '405 HTTP Method Not Supported'
+2024-12-04 00:43:21.178 +03:00 [DBG] [] (Td=) The request has an origin header: 'http://localhost:3000'.
+2024-12-04 00:43:21.179 +03:00 [INF] [] (Td=) CORS policy execution successful.
+2024-12-04 00:43:21.180 +03:00 [DBG] [] (Td=) The request is a preflight request.
+2024-12-04 00:43:21.181 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB6" completed keep alive response.
+2024-12-04 00:43:21.182 +03:00 [INF] [] (Td=) Request finished HTTP/1.1 OPTIONS http://localhost:5000/api/user/login - 204 null null 8.7956ms
+2024-12-04 00:43:21.184 +03:00 [INF] [] (Td=) Request starting HTTP/1.1 POST http://localhost:5000/api/user/login - application/json 30
+2024-12-04 00:43:21.186 +03:00 [DBG] [] (Td=) POST requests are not supported
+2024-12-04 00:43:21.187 +03:00 [DBG] [] (Td=) 1 candidate(s) found for the request path '/api/user/login'
+2024-12-04 00:43:21.191 +03:00 [DBG] [] (Td=) Endpoint 'DiplomBackApi.Controllers.UserController.Login (DiplomBackApi)' with route pattern 'api/user/login' is valid for the request path '/api/user/login'
+2024-12-04 00:43:21.193 +03:00 [DBG] [] (Td=) Request matched endpoint 'DiplomBackApi.Controllers.UserController.Login (DiplomBackApi)'
+2024-12-04 00:43:21.193 +03:00 [DBG] [] (Td=) The request has an origin header: 'http://localhost:3000'.
+2024-12-04 00:43:21.194 +03:00 [INF] [] (Td=) CORS policy execution successful.
+2024-12-04 00:43:21.200 +03:00 [DBG] [] (Td=) Static files was skipped as the request already matched an endpoint.
+2024-12-04 00:43:21.202 +03:00 [DBG] [] (Td=) AuthenticationScheme: Bearer was not authenticated.
+2024-12-04 00:43:21.202 +03:00 [INF] [] (Td=) Executing endpoint 'DiplomBackApi.Controllers.UserController.Login (DiplomBackApi)'
+2024-12-04 00:43:21.203 +03:00 [INF] [] (Td=) Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Login(DiplomBackApi.Controllers.LoginModel) on controller DiplomBackApi.Controllers.UserController (DiplomBackApi).
+2024-12-04 00:43:21.206 +03:00 [DBG] [] (Td=) Execution plan of authorization filters (in the following order): ["None"]
+2024-12-04 00:43:21.208 +03:00 [DBG] [] (Td=) Execution plan of resource filters (in the following order): ["None"]
+2024-12-04 00:43:21.209 +03:00 [DBG] [] (Td=) Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-12-04 00:43:21.211 +03:00 [DBG] [] (Td=) Execution plan of exception filters (in the following order): ["None"]
+2024-12-04 00:43:21.215 +03:00 [DBG] [] (Td=) Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-12-04 00:43:21.217 +03:00 [DBG] [] (Td=) Executing controller factory for controller DiplomBackApi.Controllers.UserController (DiplomBackApi)
+2024-12-04 00:43:21.278 +03:00 [DBG] [] (Td=) Executed controller factory for controller DiplomBackApi.Controllers.UserController (DiplomBackApi)
+2024-12-04 00:43:21.279 +03:00 [DBG] [] (Td=) Attempting to bind parameter 'loginModel' of type 'DiplomBackApi.Controllers.LoginModel' ...
+2024-12-04 00:43:21.280 +03:00 [DBG] [] (Td=) Attempting to bind parameter 'loginModel' of type 'DiplomBackApi.Controllers.LoginModel' using the name '' in request data ...
+2024-12-04 00:43:21.281 +03:00 [DBG] [] (Td=) Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2024-12-04 00:43:21.282 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB6", Request id "0HN8JSCUF1NB6:00000006": started reading request body.
+2024-12-04 00:43:21.284 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB6", Request id "0HN8JSCUF1NB6:00000006": done reading request body.
+2024-12-04 00:43:21.285 +03:00 [DBG] [] (Td=) JSON input formatter succeeded, deserializing to type 'DiplomBackApi.Controllers.LoginModel'
+2024-12-04 00:43:21.286 +03:00 [DBG] [] (Td=) Done attempting to bind parameter 'loginModel' of type 'DiplomBackApi.Controllers.LoginModel'.
+2024-12-04 00:43:21.287 +03:00 [DBG] [] (Td=) Done attempting to bind parameter 'loginModel' of type 'DiplomBackApi.Controllers.LoginModel'.
+2024-12-04 00:43:21.288 +03:00 [DBG] [] (Td=) Attempting to validate the bound parameter 'loginModel' of type 'DiplomBackApi.Controllers.LoginModel' ...
+2024-12-04 00:43:21.289 +03:00 [DBG] [] (Td=) Done attempting to validate the bound parameter 'loginModel' of type 'DiplomBackApi.Controllers.LoginModel'.
+2024-12-04 00:43:21.293 +03:00 [DBG] [] (Td=) List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-12-04 00:43:21.295 +03:00 [DBG] [] (Td=) No information found on request to perform content negotiation.
+2024-12-04 00:43:21.296 +03:00 [DBG] [] (Td=) Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2024-12-04 00:43:21.297 +03:00 [DBG] [] (Td=) Attempting to select the first formatter in the output formatters list which can write the result.
+2024-12-04 00:43:21.298 +03:00 [DBG] [] (Td=) Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter' and content type 'text/plain' to write the response.
+2024-12-04 00:43:21.303 +03:00 [INF] [] (Td=) Executing OkObjectResult, writing value of type 'System.String'.
+2024-12-04 00:43:21.304 +03:00 [INF] [] (Td=) Executed action DiplomBackApi.Controllers.UserController.Login (DiplomBackApi) in 87.5647ms
+2024-12-04 00:43:21.306 +03:00 [INF] [] (Td=) Executed endpoint 'DiplomBackApi.Controllers.UserController.Login (DiplomBackApi)'
+2024-12-04 00:43:21.307 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB6" completed keep alive response.
+2024-12-04 00:43:21.308 +03:00 [INF] [] (Td=) Request finished HTTP/1.1 POST http://localhost:5000/api/user/login - 200 null text/plain; charset=utf-8 123.1358ms
+2024-12-04 00:43:37.537 +03:00 [INF] [] (Td=) Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/user/registration - null null
+2024-12-04 00:43:37.539 +03:00 [DBG] [] (Td=) OPTIONS requests are not supported
+2024-12-04 00:43:37.540 +03:00 [DBG] [] (Td=) 1 candidate(s) found for the request path '/api/user/registration'
+2024-12-04 00:43:37.542 +03:00 [DBG] [] (Td=) Request matched endpoint '405 HTTP Method Not Supported'
+2024-12-04 00:43:37.543 +03:00 [DBG] [] (Td=) The request has an origin header: 'http://localhost:3000'.
+2024-12-04 00:43:37.545 +03:00 [INF] [] (Td=) CORS policy execution successful.
+2024-12-04 00:43:37.549 +03:00 [DBG] [] (Td=) The request is a preflight request.
+2024-12-04 00:43:37.550 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB6" completed keep alive response.
+2024-12-04 00:43:37.552 +03:00 [INF] [] (Td=) Request finished HTTP/1.1 OPTIONS http://localhost:5000/api/user/registration - 204 null null 14.5544ms
+2024-12-04 00:43:37.554 +03:00 [INF] [] (Td=) Request starting HTTP/1.1 POST http://localhost:5000/api/user/registration - application/json 57
+2024-12-04 00:43:37.555 +03:00 [DBG] [] (Td=) POST requests are not supported
+2024-12-04 00:43:37.556 +03:00 [DBG] [] (Td=) 1 candidate(s) found for the request path '/api/user/registration'
+2024-12-04 00:43:37.557 +03:00 [DBG] [] (Td=) Endpoint 'DiplomBackApi.Controllers.UserController.Registration (DiplomBackApi)' with route pattern 'api/user/registration' is valid for the request path '/api/user/registration'
+2024-12-04 00:43:37.558 +03:00 [DBG] [] (Td=) Request matched endpoint 'DiplomBackApi.Controllers.UserController.Registration (DiplomBackApi)'
+2024-12-04 00:43:37.559 +03:00 [DBG] [] (Td=) The request has an origin header: 'http://localhost:3000'.
+2024-12-04 00:43:37.560 +03:00 [INF] [] (Td=) CORS policy execution successful.
+2024-12-04 00:43:37.561 +03:00 [DBG] [] (Td=) Static files was skipped as the request already matched an endpoint.
+2024-12-04 00:43:37.561 +03:00 [DBG] [] (Td=) AuthenticationScheme: Bearer was not authenticated.
+2024-12-04 00:43:37.564 +03:00 [INF] [] (Td=) Executing endpoint 'DiplomBackApi.Controllers.UserController.Registration (DiplomBackApi)'
+2024-12-04 00:43:37.564 +03:00 [INF] [] (Td=) Route matched with {action = "Registration", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Registration(DiplomBackApi.Controllers.RegistrationModel) on controller DiplomBackApi.Controllers.UserController (DiplomBackApi).
+2024-12-04 00:43:37.570 +03:00 [DBG] [] (Td=) Execution plan of authorization filters (in the following order): ["None"]
+2024-12-04 00:43:37.574 +03:00 [DBG] [] (Td=) Execution plan of resource filters (in the following order): ["None"]
+2024-12-04 00:43:37.575 +03:00 [DBG] [] (Td=) Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-12-04 00:43:37.577 +03:00 [DBG] [] (Td=) Execution plan of exception filters (in the following order): ["None"]
+2024-12-04 00:43:37.578 +03:00 [DBG] [] (Td=) Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-12-04 00:43:37.584 +03:00 [DBG] [] (Td=) Executing controller factory for controller DiplomBackApi.Controllers.UserController (DiplomBackApi)
+2024-12-04 00:43:37.610 +03:00 [DBG] [] (Td=) Executed controller factory for controller DiplomBackApi.Controllers.UserController (DiplomBackApi)
+2024-12-04 00:43:37.611 +03:00 [DBG] [] (Td=) Attempting to bind parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel' ...
+2024-12-04 00:43:37.612 +03:00 [DBG] [] (Td=) Attempting to bind parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel' using the name '' in request data ...
+2024-12-04 00:43:37.614 +03:00 [DBG] [] (Td=) Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2024-12-04 00:43:37.615 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB6", Request id "0HN8JSCUF1NB6:00000008": started reading request body.
+2024-12-04 00:43:37.617 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB6", Request id "0HN8JSCUF1NB6:00000008": done reading request body.
+2024-12-04 00:43:37.618 +03:00 [DBG] [] (Td=) JSON input formatter succeeded, deserializing to type 'DiplomBackApi.Controllers.RegistrationModel'
+2024-12-04 00:43:37.619 +03:00 [DBG] [] (Td=) Done attempting to bind parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel'.
+2024-12-04 00:43:37.619 +03:00 [DBG] [] (Td=) Done attempting to bind parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel'.
+2024-12-04 00:43:37.620 +03:00 [DBG] [] (Td=) Attempting to validate the bound parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel' ...
+2024-12-04 00:43:37.622 +03:00 [DBG] [] (Td=) Done attempting to validate the bound parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel'.
+2024-12-04 00:43:37.625 +03:00 [DBG] [] (Td=) List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-12-04 00:43:37.628 +03:00 [DBG] [] (Td=) No information found on request to perform content negotiation.
+2024-12-04 00:43:37.628 +03:00 [DBG] [] (Td=) Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2024-12-04 00:43:37.630 +03:00 [DBG] [] (Td=) Attempting to select the first formatter in the output formatters list which can write the result.
+2024-12-04 00:43:37.631 +03:00 [DBG] [] (Td=) Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter' and content type 'text/plain' to write the response.
+2024-12-04 00:43:37.631 +03:00 [INF] [] (Td=) Executing BadRequestObjectResult, writing value of type 'System.String'.
+2024-12-04 00:43:37.632 +03:00 [INF] [] (Td=) Executed action DiplomBackApi.Controllers.UserController.Registration (DiplomBackApi) in 48.6014ms
+2024-12-04 00:43:37.633 +03:00 [INF] [] (Td=) Executed endpoint 'DiplomBackApi.Controllers.UserController.Registration (DiplomBackApi)'
+2024-12-04 00:43:37.634 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB6" completed keep alive response.
+2024-12-04 00:43:37.635 +03:00 [INF] [] (Td=) Request finished HTTP/1.1 POST http://localhost:5000/api/user/registration - 400 null text/plain; charset=utf-8 81.7855ms
+2024-12-04 00:43:43.703 +03:00 [INF] [] (Td=) Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/user/registration - null null
+2024-12-04 00:43:43.704 +03:00 [DBG] [] (Td=) OPTIONS requests are not supported
+2024-12-04 00:43:43.705 +03:00 [DBG] [] (Td=) 1 candidate(s) found for the request path '/api/user/registration'
+2024-12-04 00:43:43.706 +03:00 [DBG] [] (Td=) Request matched endpoint '405 HTTP Method Not Supported'
+2024-12-04 00:43:43.707 +03:00 [DBG] [] (Td=) The request has an origin header: 'http://localhost:3000'.
+2024-12-04 00:43:43.708 +03:00 [INF] [] (Td=) CORS policy execution successful.
+2024-12-04 00:43:43.709 +03:00 [DBG] [] (Td=) The request is a preflight request.
+2024-12-04 00:43:43.709 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB6" completed keep alive response.
+2024-12-04 00:43:43.710 +03:00 [INF] [] (Td=) Request finished HTTP/1.1 OPTIONS http://localhost:5000/api/user/registration - 204 null null 7.6808ms
+2024-12-04 00:43:43.712 +03:00 [INF] [] (Td=) Request starting HTTP/1.1 POST http://localhost:5000/api/user/registration - application/json 57
+2024-12-04 00:43:43.715 +03:00 [DBG] [] (Td=) POST requests are not supported
+2024-12-04 00:43:43.717 +03:00 [DBG] [] (Td=) 1 candidate(s) found for the request path '/api/user/registration'
+2024-12-04 00:43:43.721 +03:00 [DBG] [] (Td=) Endpoint 'DiplomBackApi.Controllers.UserController.Registration (DiplomBackApi)' with route pattern 'api/user/registration' is valid for the request path '/api/user/registration'
+2024-12-04 00:43:43.722 +03:00 [DBG] [] (Td=) Request matched endpoint 'DiplomBackApi.Controllers.UserController.Registration (DiplomBackApi)'
+2024-12-04 00:43:43.723 +03:00 [DBG] [] (Td=) The request has an origin header: 'http://localhost:3000'.
+2024-12-04 00:43:43.724 +03:00 [INF] [] (Td=) CORS policy execution successful.
+2024-12-04 00:43:43.725 +03:00 [DBG] [] (Td=) Static files was skipped as the request already matched an endpoint.
+2024-12-04 00:43:43.726 +03:00 [DBG] [] (Td=) AuthenticationScheme: Bearer was not authenticated.
+2024-12-04 00:43:43.727 +03:00 [INF] [] (Td=) Executing endpoint 'DiplomBackApi.Controllers.UserController.Registration (DiplomBackApi)'
+2024-12-04 00:43:43.728 +03:00 [INF] [] (Td=) Route matched with {action = "Registration", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Registration(DiplomBackApi.Controllers.RegistrationModel) on controller DiplomBackApi.Controllers.UserController (DiplomBackApi).
+2024-12-04 00:43:43.730 +03:00 [DBG] [] (Td=) Execution plan of authorization filters (in the following order): ["None"]
+2024-12-04 00:43:43.731 +03:00 [DBG] [] (Td=) Execution plan of resource filters (in the following order): ["None"]
+2024-12-04 00:43:43.732 +03:00 [DBG] [] (Td=) Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-12-04 00:43:43.734 +03:00 [DBG] [] (Td=) Execution plan of exception filters (in the following order): ["None"]
+2024-12-04 00:43:43.737 +03:00 [DBG] [] (Td=) Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-12-04 00:43:43.738 +03:00 [DBG] [] (Td=) Executing controller factory for controller DiplomBackApi.Controllers.UserController (DiplomBackApi)
+2024-12-04 00:43:43.764 +03:00 [DBG] [] (Td=) Executed controller factory for controller DiplomBackApi.Controllers.UserController (DiplomBackApi)
+2024-12-04 00:43:43.765 +03:00 [DBG] [] (Td=) Attempting to bind parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel' ...
+2024-12-04 00:43:43.766 +03:00 [DBG] [] (Td=) Attempting to bind parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel' using the name '' in request data ...
+2024-12-04 00:43:43.768 +03:00 [DBG] [] (Td=) Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2024-12-04 00:43:43.769 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB6", Request id "0HN8JSCUF1NB6:0000000A": started reading request body.
+2024-12-04 00:43:43.770 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB6", Request id "0HN8JSCUF1NB6:0000000A": done reading request body.
+2024-12-04 00:43:43.771 +03:00 [DBG] [] (Td=) JSON input formatter succeeded, deserializing to type 'DiplomBackApi.Controllers.RegistrationModel'
+2024-12-04 00:43:43.772 +03:00 [DBG] [] (Td=) Done attempting to bind parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel'.
+2024-12-04 00:43:43.774 +03:00 [DBG] [] (Td=) Done attempting to bind parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel'.
+2024-12-04 00:43:43.775 +03:00 [DBG] [] (Td=) Attempting to validate the bound parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel' ...
+2024-12-04 00:43:43.776 +03:00 [DBG] [] (Td=) Done attempting to validate the bound parameter 'model' of type 'DiplomBackApi.Controllers.RegistrationModel'.
+2024-12-04 00:43:43.779 +03:00 [DBG] [] (Td=) List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-12-04 00:43:43.780 +03:00 [DBG] [] (Td=) No information found on request to perform content negotiation.
+2024-12-04 00:43:43.781 +03:00 [DBG] [] (Td=) Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2024-12-04 00:43:43.784 +03:00 [DBG] [] (Td=) Attempting to select the first formatter in the output formatters list which can write the result.
+2024-12-04 00:43:43.785 +03:00 [DBG] [] (Td=) Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter' and content type 'text/plain' to write the response.
+2024-12-04 00:43:43.786 +03:00 [INF] [] (Td=) Executing BadRequestObjectResult, writing value of type 'System.String'.
+2024-12-04 00:43:43.787 +03:00 [INF] [] (Td=) Executed action DiplomBackApi.Controllers.UserController.Registration (DiplomBackApi) in 49.2128ms
+2024-12-04 00:43:43.788 +03:00 [INF] [] (Td=) Executed endpoint 'DiplomBackApi.Controllers.UserController.Registration (DiplomBackApi)'
+2024-12-04 00:43:43.789 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB6" completed keep alive response.
+2024-12-04 00:43:43.790 +03:00 [INF] [] (Td=) Request finished HTTP/1.1 POST http://localhost:5000/api/user/registration - 400 null text/plain; charset=utf-8 78.0215ms
+2024-12-04 00:46:26.906 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB1" received FIN.
+2024-12-04 00:46:26.906 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB2" received FIN.
+2024-12-04 00:46:26.912 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB5" received FIN.
+2024-12-04 00:46:26.918 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB2" disconnecting.
+2024-12-04 00:46:26.922 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB5" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-12-04 00:46:26.909 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB3" received FIN.
+2024-12-04 00:46:26.926 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB5" disconnecting.
+2024-12-04 00:46:26.911 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB4" received FIN.
+2024-12-04 00:46:26.917 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB1" disconnecting.
+2024-12-04 00:46:26.925 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB2" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-12-04 00:46:26.929 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB3" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-12-04 00:46:26.939 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB2" stopped.
+2024-12-04 00:46:26.934 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB4" disconnecting.
+2024-12-04 00:46:26.935 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB1" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-12-04 00:46:26.934 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB5" stopped.
+2024-12-04 00:46:26.940 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB3" disconnecting.
+2024-12-04 00:46:26.942 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB4" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-12-04 00:46:26.945 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB3" stopped.
+2024-12-04 00:46:26.950 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB4" stopped.
+2024-12-04 00:46:26.950 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB1" stopped.
+2024-12-04 00:48:43.917 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB6" received FIN.
+2024-12-04 00:48:43.923 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB6" disconnecting.
+2024-12-04 00:48:43.925 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB6" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-12-04 00:48:43.940 +03:00 [DBG] [] (Td=) Connection id "0HN8JSCUF1NB6" stopped.

@@ -3,6 +3,7 @@ import {useContext, useEffect, useState} from "react";
 import {Context} from "../../index";
 import {observer} from "mobx-react-lite";
 import {saveUserSettings} from "../../http/UserSettingsAPI";
+import {getHistoryNames} from "../../http/HistoryAPI";
 
 const HistoryBar = observer(() => {
     const navigate = useNavigate()
@@ -79,6 +80,14 @@ const HistoryBar = observer(() => {
     //console.log(elements)
 
     useEffect(() => {
+
+        if(('if' in params) && (user.path[0] == undefined))
+        {
+            getHistoryNames(path).then(data => {
+
+            });
+        }
+
         let arr = getElements(path);
         let lastE = arr[arr.length-1];
         //console.log(lastE, arr);
