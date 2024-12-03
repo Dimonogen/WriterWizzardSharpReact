@@ -50,7 +50,7 @@ export const authRoutes = [
         Component: ConfigPage
     },
     {
-        path: BASE_ROUTE,
+        path: HOME_ROUTE,
         Component: HomePage
     },
     {
@@ -68,6 +68,10 @@ export const authRoutes = [
 ]
 
 export const publicRoutes = [
+    {
+        path: BASE_ROUTE,
+        Component: StartPage
+    },
     {
         path: LOGIN_ROUTE,
         Component: Auth

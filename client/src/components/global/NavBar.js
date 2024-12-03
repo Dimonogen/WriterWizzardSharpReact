@@ -7,7 +7,7 @@ import {
     LOGIN_ROUTE,
     USER_ROUTE,
     ACCOUNT_ROUTE,
-    BASE_ROUTE, MENU_ROUTE, CONFIG_ROUTE, SEARCH_ROUTE
+    BASE_ROUTE, MENU_ROUTE, CONFIG_ROUTE, SEARCH_ROUTE, HOME_ROUTE
 } from '../../utils/consts'
 
 import logo from '../../assets/DS_logo_dark_E.svg'
@@ -71,7 +71,7 @@ const NavBar = observer(() => {
         <div className='d-flex W-100 flex-wrap '>
           <div className='d-flex flex-wrap ms-3 m-2 '>
               <div className='NavBarLeftIcon' style={{cursor:'pointer'}}
-                   onClick={() => navigate(BASE_ROUTE)}
+                   onClick={() => { user.isAuth ? navigate(HOME_ROUTE) : navigate(BASE_ROUTE) }}
               >
                   <Image width={64} height={64} src={logo} style={{position:'absolute', top:'3px', left:'20px'}}/>
               </div>

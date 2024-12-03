@@ -3,7 +3,7 @@ import { Context } from '../index'
 import {Container, Form, Card, Button} from 'react-bootstrap';
 import {NavLink, useLocation, useNavigate, useParams, useSearchParams} from 'react-router-dom'
 import {getInfo, getRights, login, registration} from '../http/userAPI';
-import {LOGIN_ROUTE, REGISTRATION_ROUTE, BASE_ROUTE, MENU_ROUTE} from '../utils/consts'
+import {LOGIN_ROUTE, REGISTRATION_ROUTE, BASE_ROUTE, MENU_ROUTE, HOME_ROUTE} from '../utils/consts'
 import {observer} from 'mobx-react-lite'
 import MenuPage from "./MenuPage";
 import ModalOkMy from "../components/modals/ModalOkMy";
@@ -52,7 +52,7 @@ const Auth = observer( () => {
         getInfo(user.user.id).then(data => {
             user.setInfo(data);
             if (path == undefined)
-                navigate(MENU_ROUTE)
+                navigate(HOME_ROUTE)
             else {
                 //console.log(path, decodeURIComponent((path)))
                 navigate(path)

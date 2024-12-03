@@ -1,15 +1,18 @@
 import {Button, Image} from "react-bootstrap";
-import React from "react";
+import React, {useContext} from "react";
 import {NavLink, useNavigate} from "react-router-dom";
-import {BASE_ROUTE, MENU_ROUTE} from "../../utils/consts";
+import {BASE_ROUTE, HOME_ROUTE, MENU_ROUTE} from "../../utils/consts";
 import logo from '../../assets/DS_logo_light_E.svg'
 import MenuComponent from "../global/MenuComponent";
+import {Context} from "../../index";
 
 
 const ModalLeftMenuMobile = ({show, onHide}) => {
     let classModal = 'modal-my  ';
 
     const navigate = useNavigate()
+
+    const {user} = useContext(Context)
 
     const links = [
         {text:'Книги', link:MENU_ROUTE},
@@ -25,7 +28,7 @@ const ModalLeftMenuMobile = ({show, onHide}) => {
         <div className='modal-content-my-left W-70'
         onClick={(e)=>{if(e.target.id === idMenu){onHide()}}}>
             <div id={idMenu} className='m-3 flex-row d-flex' style={{cursor:'pointer'}}
-                 onClick={() => navigate(BASE_ROUTE)}
+                 onClick={() => { user.isAuth ? navigate(HOME_ROUTE) : navigate(BASE_ROUTE) }}
             >
                 <Image id={idMenu} width={64} height={64} src={logo}/>
                 <div  className='ms-2 mt-3'>

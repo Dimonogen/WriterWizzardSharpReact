@@ -57,7 +57,7 @@ const App = observer( () => {
                 <Route key = {path} path = {path} element = {<div><NavBar/><HistoryBar/><AuthComponent child={<Component/>}/><UnderBar/></div>} exact/>
             )}
             {publicRoutes.map(({path, Component}) =>
-                <Route key = {path} path = {path} element = {<div><NavBar/><Component/><UnderBar/></div>} exact/>
+                <Route key = {path} path = {path} element = {<div><NavBar/><HistoryBar/><Component/><UnderBar/></div>} exact/>
             )}
             {/*noBarsRoutes.map( ({path, Component}) =>
                 <Route key = {path} path={path} element={<Component/>} exact/>

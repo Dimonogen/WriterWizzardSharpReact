@@ -40,6 +40,12 @@ const HistoryBar = observer(() => {
             res = "Корзина";
         else if (name == 'search')
             res = "Страница поиска";
+        else if (name == 'login')
+            res = "Страница входа";
+        else if (name == 'registration')
+            res = "Страница регистрации";
+        else if (name == 'home')
+            res = "Домашняя страница";
         else if (('objId' in params || 'typeId' in params) && countSlesh == 3)
             res = user.path[1]
         else if ('id' in params && countSlesh == 2)
@@ -86,7 +92,7 @@ const HistoryBar = observer(() => {
         SetElements(arr);
 
         let str = JSON.stringify({name: lastE.name, path: lastE.path});
-        if(lastE.path != '/')
+        if(lastE.path != '/' && lastE.path != '/home' && user.isAuth)
             saveUserSettings("LastLocation",{settings: str}).then();
     }
 
