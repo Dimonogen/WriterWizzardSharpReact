@@ -2,19 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d525cd8-4ca4-4c02-af18-e14ea1633f2a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/logs/log-development20241019.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/logs/log-development20241021.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/logs/log-development20241120.txt" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/logs/log-development20241120.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/elementary/AttributeComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/elementary/AttributeComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/global/GridObjComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/global/GridObjComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/global/HistoryBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/global/HistoryBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/global/NavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/global/NavBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/global/ObjCardComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/global/ObjCardComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/HomePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/utils/consts.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/utils/consts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Замечания от преподов.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Замечания от преподов.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/DiplomBackApi.csproj.user" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/DiplomBackApi.csproj.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Properties/PublishProfiles/FolderProfile.pubxml.user" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomBackApi/DiplomBackApi/Properties/PublishProfiles/FolderProfile.pubxml.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/.env" beforeDir="false" afterPath="$PROJECT_DIR$/client/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/global/UnderBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/global/UnderBar.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,17 +35,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/_Files/WriterWizzardSharpReact/client/src/pages",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/_Files/WriterWizzardSharpReact/client/src/pages&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\_Files\WriterWizzardSharpReact\client\src\pages" />
@@ -107,6 +100,7 @@
       <workItem from="1731431541010" duration="6322000" />
       <workItem from="1732118540865" duration="2389000" />
       <workItem from="1732179334074" duration="7181000" />
+      <workItem from="1733210684749" duration="776000" />
     </task>
     <servers />
   </component>

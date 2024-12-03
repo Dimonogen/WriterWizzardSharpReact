@@ -28,6 +28,8 @@ const App = observer( () => {
       //console.log(user.icon)
       //console.log(user.isAuth)
 
+	  document.title = 'База знаний писателя litbase.ru';
+
       if(localStorage.getItem('token') != null)
        check().then(data => {
        user.setUser(data)

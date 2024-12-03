@@ -9,7 +9,7 @@ const UnderBar = observer( () => {
     return (
         <div className="bg-dark mt-3 p-2 pt-3 pb-4">
             <Container>
-                <div className="text-center text-white">Систему разработал Дмитрий Толстиков в рамках дипломной работы © 2024</div>
+                <div className="text-center text-white">Систему разработал <a href="https://t.me/Dimonogen">Дмитрий Толстиков</a> 2024</div>
             </Container>
         </div>
     )
