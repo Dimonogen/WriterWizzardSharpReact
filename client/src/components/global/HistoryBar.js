@@ -18,14 +18,14 @@ const HistoryBar = observer(() => {
     const GetName = (p_str) => {
         let name = "";
         let pos = p_str.lastIndexOf('/')
-        if(pos == -1)
+        if (pos == -1)
             name = p_str;
         else
-            name = p_str.slice(pos+1, p_str.length)
+            name = p_str.slice(pos + 1, p_str.length)
 
         let countSlesh = 0
         for (let i = 0; i < p_str.length; i++)
-            if(p_str[i] == '/')
+            if (p_str[i] == '/')
                 countSlesh++;
         //console.log("params = ", params)
         //console.log("GetName name = "+name)
@@ -79,15 +79,7 @@ const HistoryBar = observer(() => {
     const [elements, SetElements] = useState(getElements(path))
     //console.log(elements)
 
-    useEffect(() => {
-
-        if(('if' in params) && (user.path[0] == undefined))
-        {
-            getHistoryNames(path).then(data => {
-
-            });
-        }
-
+    const funcE = () => {
         let arr = getElements(path);
         let lastE = arr[arr.length-1];
         //console.log(lastE, arr);
@@ -96,6 +88,32 @@ const HistoryBar = observer(() => {
         let str = JSON.stringify({name: lastE.name, path: lastE.path});
         if(lastE.path != '/')
             saveUserSettings("LastLocation",{settings: str}).then();
+    }
+
+    useEffect(() => {
+
+        if(('id' in params) && (user.path[0] == undefined))
+        {
+            getHistoryNames(path).then(data => {
+                if(data.length > 0)
+                {
+                    user.setPath(data[0], 0)
+                    console.log('SetPath[0]')
+                }
+                if(data.length > 1)
+                {
+                    user.setPath(data[1], 1)
+                    console.log('SetPath[1]')
+                }
+                //console.log(data);
+            }).finally(() => funcE());
+        }
+        else
+        {
+            funcE();
+        }
+
+
     }, [location])
 
   return (

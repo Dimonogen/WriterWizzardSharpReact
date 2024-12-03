@@ -99,7 +99,7 @@ public class UserController : MyBaseController
 
         if ( user == null )
         {
-            return Ok("{\"error\":\"error\"}");
+            return BadRequest("{\"error\":\"Ошибка, неверная комбинация логина и пароля.\"}");
         }
 
         var claims = new List<Claim> {  new Claim("email", user.Email),

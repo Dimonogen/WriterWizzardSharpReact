@@ -6,6 +6,7 @@ import {getInfo, getRights, login, registration} from '../http/userAPI';
 import {LOGIN_ROUTE, REGISTRATION_ROUTE, BASE_ROUTE, MENU_ROUTE} from '../utils/consts'
 import {observer} from 'mobx-react-lite'
 import MenuPage from "./MenuPage";
+import ModalOkMy from "../components/modals/ModalOkMy";
 
 const Auth = observer( () => {
     const {user} = useContext(Context)
@@ -21,6 +22,9 @@ const Auth = observer( () => {
     const path = params.get("path");
 //console.log(params, path);
 
+    const [messageText, SetMessageText] = useState('Ошибка.')
+    const [showError, SetShowError] = useState(false);
+
     const click = async () => {
 
       try{
@@ -29,16 +33,20 @@ const Auth = observer( () => {
         if (isLogin)
         {
           user_l = await login(email, password);
-          if(user_l == "error") {
-              alert("Неправильная комбинация логина и пароля");
-              return
-          }
           //console.log(user_l)
         }
         else{
           user_l = await registration({email, name, password, projectName});
         }
-        user.setUser(user_l)
+
+        if(user_l.haveError) {
+            SetMessageText(user_l.message)
+            SetShowError(true);
+            //alert("Неправильная комбинация логина и пароля");
+            return
+        }
+
+        user.setUser(user_l.token)
         user.setIsAuth(true)
         //console.log(user.user.id)
         getInfo(user.user.id).then(data => {
@@ -117,6 +125,7 @@ const Auth = observer( () => {
             </div>
           </Form>
         </Card>
+          <ModalOkMy show={showError} onHide={() => SetShowError(false)} title={messageText} okTitle='Ок' />
       </Container>
     );
   })

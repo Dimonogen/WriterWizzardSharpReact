@@ -102,16 +102,30 @@ const NavBar = observer(() => {
 
 
           </div>
-            <Form className='ms-auto mt-auto mb-auto' onSubmit={event => {event.preventDefault();
-                SearchFun(searchText);
-            }}>
-            <Form.Control style={{color: '#ccc', background: '0', border: '0', borderBottom: '1px solid #ccc', minWidth:'300px'}}
-              placeholder={"Поиск"}
-                          value={searchText} onChange={(e) => {SetSearchText(e.target.value)} }
-            />
-          </Form>
-                <Button className='ms-2 mt-auto mb-auto h-50' variant='outline-light' onClick={() => SearchFun(searchText)}>Поиск</Button>
-
+            {
+                user.isAuth ?
+                <div className='mt-auto mb-auto d-flex flex-wrap h-100'>
+                    <Form className='ms-auto mt-auto mb-auto' onSubmit={event => {
+                        event.preventDefault();
+                        SearchFun(searchText);
+                    }}>
+                        <Form.Control style={{
+                            color: '#ccc',
+                            background: '0',
+                            border: '0',
+                            borderBottom: '1px solid #ccc',
+                            minWidth: '300px'
+                        }}
+                                      placeholder={"Поиск"}
+                                      value={searchText} onChange={(e) => {
+                            SetSearchText(e.target.value)
+                        }}
+                        />
+                    </Form>
+                    <Button className='ms-2 mt-auto mb-auto h-50' variant='outline-light'
+                            onClick={() => SearchFun(searchText)}>Поиск</Button>
+                </div> : null
+            }
           {user.info && user.isAuth ?
             <Nav className="ms-auto me-3">
               <span className='m-2 text-white d-flex align-items-center'>{user.info.name}</span>

@@ -36,7 +36,7 @@ const MenuComponent = ({onHide}) => {
                 if (id != undefined && objId == undefined)
                     user.setPath([data.filter(obj => {
                         return obj.objTypeId.toString() == id
-                    })[0].name])
+                    })[0].name], 0)
             });
         }
     };
