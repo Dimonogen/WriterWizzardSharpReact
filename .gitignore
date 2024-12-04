@@ -2,6 +2,8 @@
 **/Debug/**
 **/obj/**
 **\obj\**
+**/logs/**
+**\logs\**
 **/bin/**
 **/~*
 **/node_modules/**
