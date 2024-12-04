@@ -20,6 +20,13 @@
       "Name": "Событие",
       "Code": "Event",
       "Description": "Событие в книге"
+    },
+    {
+      "Id": 4,
+      "UserId": 0,
+      "Name": "Предмет",
+      "Code": "Item",
+      "Description": "Предмет в книге"
     }
   ],
   "ObjState": [
@@ -62,6 +69,13 @@
       "UserId": 0,
       "Name": "Пример события",
       "TypeId": 3,
+      "StateId": 1
+    },
+    {
+      "Id": 4,
+      "UserId": 0,
+      "Name": "Пример предмета",
+      "TypeId": 4,
       "StateId": 1
     }
   ],
@@ -149,6 +163,15 @@
       "Description": "События",
       "ParentMenuId": null,
       "ObjTypeId": 3,
+      "Filters": ""
+    },
+    {
+      "Id": 4,
+      "UserId": 0,
+      "Name": "Предметы",
+      "Description": "Предметы",
+      "ParentMenuId": null,
+      "ObjTypeId": 4,
       "Filters": ""
     }
   ]
