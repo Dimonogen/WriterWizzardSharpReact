@@ -10,7 +10,8 @@ import ModalYesNoMy from "../modals/ModalYesNoMy";
 import ModalOkMy from "../modals/ModalOkMy";
 import iconCreate_B from '../../assets/Create_B.svg'
 import iconCreate_W from '../../assets/Create_W.svg'
-import iconView from '../../assets/icons8-viewFile.png'
+import iconSeacrch_B from '../../assets/Search_B.svg'
+import iconSeacrch_W from '../../assets/Search_W.svg'
 import iconOpen_B from '../../assets/Open_B.svg'
 import iconOpen_W from '../../assets/Open_W.svg'
 import iconReload_B from '../../assets/Reload_B.svg'
@@ -161,7 +162,7 @@ const GridObjComponent = () => {
                 }
             } },
         {
-            id:5, name: "Поиск", iconB: iconView, iconW: iconView, action: () => {
+            id:5, name: "Поиск", iconB: (showSearch ? iconSeacrch_W: iconSeacrch_B), iconW: iconSeacrch_W, action: () => {
                 SearchFun(searchText);
                 SetShowSearch(!showSearch);
             },
@@ -200,6 +201,10 @@ const GridObjComponent = () => {
 
                            </Form>
                                <Button className='ms-2' variant='outline-dark' onClick={() => SearchFun(searchText)}>Поиск</Button>
+                               <div className='d-flex ms-2'>
+                                   <label className='mt-auto mb-auto'>Найдено {filtretedRows.length} из {rows.length} значений</label>
+                               </div>
+
                            </div>
                            :
                            null

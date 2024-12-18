@@ -215,8 +215,8 @@ const ObjCardComponent = () => {
                             <OverlayTrigger overlay={<Tooltip className="fs-6">{e.name}</Tooltip>} placement="top">
                                 <Button onClick={e.action} style={e.style} className={'p-0 d-flex ms-1 me-1 '+ (e.text != null ? "pe-1":"")}
                                         variant='outline-dark'>
-                                    <Image className={"m-1 Black"} height='24px' width='24px' src={e.iconB}/>
-                                    <Image className={"m-1 White"} height='24px' width='24px' src={e.iconW}/>
+                                    <Image className={"m-1 Black"} height='32px' width='32px' src={e.iconB}/>
+                                    <Image className={"m-1 White"} height='32px' width='32px' src={e.iconW}/>
                                     <div className='mt-auto mb-auto'>{e.text}</div></Button>
                             </OverlayTrigger>
 
@@ -236,7 +236,7 @@ const ObjCardComponent = () => {
                 </div>
 
             </div>
-            <div className="fs-4">
+            <div className="fs-4 fw-bold">
                 <span>{objName}</span>
             </div>
             <hr className='mt-3 mb-4'/>

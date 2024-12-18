@@ -61,7 +61,7 @@ const MenuComponent = ({onHide}) => {
             {
                 menuElements.map(e =>
                     <div className='mt-2' key={e.id} >
-                        <Button className='W-100 text-start' variant={id == e.objTypeId?'dark':'outline-dark'}
+                        <Button className={'W-100 text-start '} variant={id == e.objTypeId?'dark':'outline-dark'}
                                 onClick={() => {
                                     user.setPath(e.name, 0);
                                     navigate(MENU_ROUTE+'/'+e.objTypeId)

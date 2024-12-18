@@ -65,7 +65,9 @@ const StartPage = () => {
                     <span>Интуитивный интерфейс с пиктограммами:</span>
                     {
                         ActionList.map(e =>
-                            <OverlayTrigger key={e.id} overlay={<Tooltip className="fs-6">{e.name}</Tooltip>} placement="top">
+                            <OverlayTrigger trigger={['hover','focus']} key={e.id} overlay={
+                                <Tooltip className="fs-6">{e.name}</Tooltip>
+                            } placement="top">
                                 <Button onClick={e.action} className='p-2 ms-1 me-1'
                                         variant={e.variant ? e.variant : 'outline-dark'}>
                                     <Image className='Black' height='28px' width='28px' src={e.iconB}/>

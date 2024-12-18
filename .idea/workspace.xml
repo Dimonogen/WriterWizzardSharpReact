@@ -3,13 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="3d525cd8-4ca4-4c02-af18-e14ea1633f2a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/global/HistoryBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/global/HistoryBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/global/NavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/global/NavBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/modals/ModalLeftMenuMobile.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/modals/ModalLeftMenuMobile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/Auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/elementary/FieldObj.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/elementary/FieldObj.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/elementary/FieldText.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/elementary/FieldText.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/global/GridObjComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/global/GridObjComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/global/MenuComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/global/MenuComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/global/ObjCardComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/global/ObjCardComponent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/StartPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/StartPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Замечания от преподов.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Замечания от преподов.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +42,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "G:/_Projects/WriterWizzardSharpReact/client/src/http",
+    "last_opened_file_path": "G:/_Projects/WriterWizzardSharpReact",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
@@ -104,6 +104,7 @@
       <workItem from="1732179334074" duration="7181000" />
       <workItem from="1733210684749" duration="788000" />
       <workItem from="1733261499618" duration="8273000" />
+      <workItem from="1734527049415" duration="4768000" />
     </task>
     <servers />
   </component>
