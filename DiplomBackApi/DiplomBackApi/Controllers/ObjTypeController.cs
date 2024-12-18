@@ -1,5 +1,6 @@
 ﻿using DiplomBackApi.DTO;
 using DiplomBackApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
@@ -10,6 +11,7 @@ namespace DiplomBackApi.Controllers;
 /// Контроллер api для объектов
 /// </summary>
 [ApiController]
+[Authorize]
 [Route("api/objType")]
 public class ObjTypeController : MyBaseController
 {
@@ -21,6 +23,7 @@ public class ObjTypeController : MyBaseController
     /// </summary>
     /// <param name="typeModel"></param>
     /// <returns></returns>
+    
     [HttpPost("create")]
     public async Task<ActionResult> CreateObjType(CreateTypeModel typeModel)
     {

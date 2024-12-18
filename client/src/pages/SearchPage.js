@@ -5,6 +5,9 @@ import logo from '../assets/DS_logo_light_E.svg'
 import React, {useContext, useEffect, useState} from "react";
 import {Context} from "../index";
 import {getUserSettings} from "../http/UserSettingsAPI";
+import {getSearchObjects} from "../http/SearchAPI";
+import ModalOkMy from "../components/modals/ModalOkMy";
+import SearchLabel from "../components/elementary/SearchLabel";
 
 
 const SearchPage = () => {
@@ -13,15 +16,28 @@ const SearchPage = () => {
     const {user} = useContext(Context)
 
     const [searchText, SetSearchText] = useState("");
+    const [Results, SetResults] = useState([]);
+    const [Stats, SetStats] = useState({all:-1, find: -1})
+
+    const [ShowMessage, SetShowMessage] = useState(false);
+    const [Message, SetMessage] = useState('');
 
     useEffect(() => {
         const params = new URLSearchParams( window.location.search);
-        SetSearchText( params.get("searchText") );
+        const text = params.get("searchText");
+        SetSearchText( text );
+        SearchFun(text);
     }, [])
 
 
     const SearchFun = (text) => {
-
+        if(text == '')
+        {
+            SetMessage("Поиск не возможен. Задайте текст поиска.");
+            SetShowMessage(true);
+            return;
+        }
+        getSearchObjects(text).then(data => {SetResults(data.results);SetStats({all: data.all, find: data.find});console.log(data)});
     }
 
     return(
@@ -34,7 +50,7 @@ const SearchPage = () => {
                 </div>
 
                 <div className='d-flex'>
-                    <Form className='ms-2 W-100 mt-auto mb-auto' onSubmit={event => {event.preventDefault();
+                    <Form className='ms-2 ms-auto mt-auto mb-auto ' onSubmit={event => {event.preventDefault();
                         SearchFun(searchText);
                     }}>
                         <Form.Control style={{color: 'var(--color-dark)', background: '0', border: '0', borderBottom: '1px solid #ccc', minWidth:'300px'}}
@@ -42,11 +58,56 @@ const SearchPage = () => {
                                       value={searchText} onChange={(e) => {SetSearchText(e.target.value)} }
                         />
                     </Form>
-                    <Button className='ms-2 mt-auto mb-auto h-50' variant='outline-dark' onClick={() => SearchFun(searchText)}>Поиск</Button>
+                    <Button className='ms-2 mt-auto mb-auto me-auto h-50' variant='outline-dark' onClick={() => SearchFun(searchText)}>Поиск</Button>
                 </div>
+
+
 
             </div>
 
+            <div className='mt-3 ms-3'>
+                {
+                    Stats.all == -1 ?
+                    <label>Поиск не производился</label>
+                        :
+                    <label>{'Найдено в результате поиска: ' + Stats.find + ' Всего в системе: ' + Stats.all}</label>
+                }
+            </div>
+
+            <div className=''>
+                {
+                    Results.map((e) =>
+                        <div className='Block mt-3 d-flex'>
+                            <div className='d-flex'>
+                                <div className='d-flex flex-column'>
+                                    <label className='fw-semibold me-2'>Тип:</label>
+                                    <label className='fw-semibold me-2'>Название:</label>
+                                    <label className='fw-semibold me-2'>Статус:</label>
+                                </div>
+                                <div className='d-flex flex-column'>
+                                    <label>{e.type.name}</label>
+                                    <SearchLabel text={e.object.name} searchText={searchText}/>
+                                    <label>{e.object.state}</label>
+                                </div>
+                            </div>
+                            <div className='ms-5'>
+                            {
+                                e.inAttributes.map(a =>
+                                <div className='d-flex'>
+                                    <label className='fw-semibold me-2'>{a.name+':'}</label>
+                                    <SearchLabel text={a.value} searchText={searchText} />
+                                </div>
+                                )
+                            }
+                            </div>
+                            <div className='ms-auto mt-auto mb-auto'>
+                                <Button variant='outline-dark' onClick={() => navigate(MENU_ROUTE+'/'+e.type.id+'/'+e.object.id)} >Открыть</Button>
+                            </div>
+                        </div>
+                    )
+                }
+            </div>
+            <ModalOkMy show={ShowMessage} onHide={() => SetShowMessage(false)} okTitle={'Ок'} title={Message} />
         </div>
     )
 }

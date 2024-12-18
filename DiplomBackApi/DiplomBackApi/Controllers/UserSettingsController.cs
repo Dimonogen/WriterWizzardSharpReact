@@ -1,4 +1,5 @@
 ﻿using DiplomBackApi.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
@@ -24,6 +25,7 @@ public class UserSettingsController : MyBaseController
     /// <param name="gridCode">код настроект</param>
     /// <param name="settings">сами настройки</param>
     /// <returns></returns>
+    [Authorize]
     [HttpPut("save")]
     public async Task<ActionResult> Save(string gridCode, [FromBody] UserSettingModel settings)
     {
@@ -60,6 +62,7 @@ public class UserSettingsController : MyBaseController
     /// </summary>
     /// <param name="gridCode"></param>
     /// <returns>строка с настрйоками</returns>
+    [Authorize]
     [HttpGet("")]
     public async Task<ActionResult> GetSettings(string gridCode)
     {

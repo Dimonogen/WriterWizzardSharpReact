@@ -80,10 +80,6 @@ const GridObjComponent = () => {
                 arr.push(elem);
             });
             SetRows(arr);
-            if(showSearch)
-            {
-                SearchFun(searchText);
-            }
         });
         GetOneType(id).then(data => {
             //console.log(data);
@@ -105,6 +101,13 @@ const GridObjComponent = () => {
             //console.log(rights.includes(typeData.code + '.' + 'Edit'))
         });
     }
+
+    useEffect(() => {
+        if(showSearch)
+        {
+            SearchFun(searchText);
+        }
+    }, [rows])
 
     const ObjDelMsg = () => {
         let end;
