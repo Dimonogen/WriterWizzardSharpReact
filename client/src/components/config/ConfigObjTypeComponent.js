@@ -1,6 +1,6 @@
 import {DataGrid} from "@mui/x-data-grid";
 import Box from "@mui/material/Box";
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {Button, Image} from "react-bootstrap";
 import iconCreate from "../../assets/icons8-addFile.png";
 import {CONFIG_ROUTE, MENU_ROUTE} from "../../utils/consts";
@@ -11,6 +11,7 @@ import {GetAllObjTypes, GetOneType} from "../../http/ObjTypeApi"
 import ObjTypeCard from "./ObjTypeCard";
 import GridTheme from "../../CSS/GridTheme";
 import {ThemeProvider} from "@mui/material";
+import {Context} from "../../index";
 
 const ConfigObjTypeComponent = () => {
 
@@ -18,6 +19,8 @@ const ConfigObjTypeComponent = () => {
     const {id, typeId} = useParams()
 
     const [visible, SetVisible] = useState(false);
+
+    const {user} = useContext(Context);
 
     useEffect(()=>{
         if(id != null) {
@@ -74,6 +77,10 @@ const ConfigObjTypeComponent = () => {
                 <ThemeProvider theme={GridTheme}>
                     <Box sx={{height: Math.max(window.innerHeight-215,400)+'px', width: '100%'}}>
                         <DataGrid rows={rows} columns={columns}
+                                  onRowDoubleClick={(params) => {
+                                      //console.log(objData.find((x) => x.id == params.id));
+                                      user.setPath(typesData.find((x) => x.id == params.id).name, 1);
+                                      navigate(CONFIG_ROUTE + '/' + id + '/' + params.id)} }
                               onRowSelectionModelChange={(ids) =>{SetSelectionIds(ids)}}/>
                     </Box>
                 </ThemeProvider>

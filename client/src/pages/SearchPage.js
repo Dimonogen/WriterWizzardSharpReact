@@ -77,7 +77,14 @@ const SearchPage = () => {
             <div className=''>
                 {
                     Results.map((e) =>
-                        <div className='Block mt-3 d-flex'>
+                        <div className='Block mt-3 d-flex' onDoubleClick={() =>{
+                            navigate(MENU_ROUTE+'/'+e.type.id+'/'+e.object.id);
+                            if (window.getSelection) {
+                                window.getSelection().removeAllRanges();
+                            } else if (document.selection) {
+                                document.selection.empty();
+                            }
+                        }}>
                             <div className='d-flex'>
                                 <div className='d-flex flex-column'>
                                     <label className='fw-semibold me-2'>Тип:</label>

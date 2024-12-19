@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3d525cd8-4ca4-4c02-af18-e14ea1633f2a" name="Changes" comment="" />
+    <list default="true" id="3d525cd8-4ca4-4c02-af18-e14ea1633f2a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/config/ConfigObjTypeComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/config/ConfigObjTypeComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/HomePage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/SearchPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/SearchPage.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,19 +38,20 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "G:/_Projects/WriterWizzardSharpReact/client/src/http",
+    "last_opened_file_path": "G:/_Projects/WriterWizzardSharpReact/client/src/components/elementary",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.lookFeel",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2022.2\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\_Projects\WriterWizzardSharpReact\client\src\components\elementary" />
       <recent name="G:\_Projects\WriterWizzardSharpReact\client\src\http" />
       <recent name="C:\_Files\WriterWizzardSharpReact\client\src\pages" />
       <recent name="C:\_Files\WriterWizzardSharpReact\client\src\components\global" />
       <recent name="C:\_Files\MAI\Diplom\client\src\components\modals" />
-      <recent name="C:\_Files\MAI\Diplom\client\src\components\elementary" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\_Files\MAI\Diplom\client\src\components\global" />
@@ -96,6 +102,7 @@
       <workItem from="1733210684749" duration="788000" />
       <workItem from="1733261499618" duration="8273000" />
       <workItem from="1734527049415" duration="15679000" />
+      <workItem from="1734591866478" duration="5046000" />
     </task>
     <servers />
   </component>
