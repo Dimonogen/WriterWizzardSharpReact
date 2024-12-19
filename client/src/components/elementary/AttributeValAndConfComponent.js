@@ -40,7 +40,7 @@ const AttributeValAndConfComponent = ({e, value, global}) => {
                                                    attrTypes={global.attribTypes}/> : null
                 }
                 <Field isComplex={custom.isComplex} SetModalD={global.SetModal} type={custom.type} setValue={SetValueCur}
-                       value={attribValue.value} name={custom.name} minlen={1} maxlen={255} id={e.id} regex={custom.regEx} objId={global.objId}
+                       value={attribValue.value} name={custom.name} minlen={1} maxlen={4096} id={e.id} regex={custom.regEx} objId={global.objId}
                        placeholder="Не заполнено" nullable={false} disabled={!global.isEdit}/>
             </div>
             <div className="d-flex">

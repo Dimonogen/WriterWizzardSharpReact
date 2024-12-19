@@ -252,13 +252,13 @@ const ObjCardComponent = () => {
                     !isNewObj?
                     obj.attributes.map(e =>
                         <Field isComplex={e.isComplexType} SetModalD={(data) => SetMSelectD(data)} type={e.type} setValue={setValue}
-                               value={e.value} name={e.name} minlen={1} maxlen={255} id={e.number} regex={e.regEx} objId={objId}
+                               value={e.value} name={e.name} minlen={1} maxlen={4096} id={e.number} regex={e.regEx} objId={objId}
                                    placeholder="Не заполнено" nullable={false} key={e.number} disabled={!isEdit} />
                     )
                         :
                     type.attributes.map(e =>
                         <Field isComplex={e.isComplex} SetModalD={(data) => SetMSelectD(data)} type={e.type} setValue={setValue}
-                               value={e.value} name={e.name} minlen={1} maxlen={255} id={e.number} regex={e.regEx} objId={objId}
+                               value={e.value} name={e.name} minlen={1} maxlen={4096} id={e.number} regex={e.regEx} objId={objId}
                                    placeholder="Не заполнено" nullable={false} key={e.number} disabled={!isEdit}/>
                     )
                 }

@@ -20,8 +20,8 @@
 .Mytooltip {
     visibility: hidden;
     position: absolute;
-    bottom:15px;
-    left: -50%;
+    bottom:17px;
+    right: -100px;
     background-color: var(--c-dark);
     transition: 0s visibility;
     transition-delay: 0.5s;

@@ -53,8 +53,8 @@ const SearchPage = () => {
                     <Form className='ms-2 ms-auto mt-auto mb-auto ' onSubmit={event => {event.preventDefault();
                         SearchFun(searchText);
                     }}>
-                        <Form.Control style={{color: 'var(--color-dark)', background: '0', border: '0', borderBottom: '1px solid #ccc', minWidth:'300px'}}
-                                      placeholder={"Поиск"}
+                        <Form.Control style={{color: 'var(--color-dark)', background: '0', border: '0', backgroundColor:'#eee', borderBottom: '2px solid #ccc', minWidth:'300px'}}
+                                      placeholder={"Поиск"} className='fs-5'
                                       value={searchText} onChange={(e) => {SetSearchText(e.target.value)} }
                         />
                     </Form>
@@ -65,7 +65,7 @@ const SearchPage = () => {
 
             </div>
 
-            <div className='mt-3 ms-3'>
+            <div className='mt-4 ms-3 fs-5 mb-3'>
                 {
                     Stats.all == -1 ?
                     <label>Поиск не производился</label>
@@ -85,7 +85,7 @@ const SearchPage = () => {
                                 document.selection.empty();
                             }
                         }}>
-                            <div className='d-flex'>
+                            <div className='d-flex W-20'>
                                 <div className='d-flex flex-column'>
                                     <label className='fw-semibold me-2'>Тип:</label>
                                     <label className='fw-semibold me-2'>Название:</label>
@@ -97,7 +97,7 @@ const SearchPage = () => {
                                     <label>{e.object.state}</label>
                                 </div>
                             </div>
-                            <div className='ms-5'>
+                            <div className='ms-5 W-80'>
                             {
                                 e.inAttributes.map(a =>
                                 <div className='d-flex'>
