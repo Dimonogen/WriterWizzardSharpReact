@@ -12,6 +12,32 @@
     display: block;
 }
 
+.MytooltipAncor:hover .Mytooltip {
+    visibility: visible;
+    transition-delay: 0.5s;
+}
+
+.Mytooltip {
+    visibility: hidden;
+    position: absolute;
+    bottom:15px;
+    left: -50%;
+    background-color: var(--c-dark);
+    transition: 0s visibility;
+    transition-delay: 0.5s;
+}
+
+.Mytooltip:before {
+    content: "";
+    position: absolute;
+    border-top: 10px solid var(--c-dark);
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    top: 100%;
+    left: 45%;
+    margin-left: -5px;
+}
+
 .modal-my-inv
 {
     position: fixed;

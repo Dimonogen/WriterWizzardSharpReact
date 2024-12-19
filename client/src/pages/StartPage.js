@@ -16,6 +16,7 @@ import iconEdit_B from "../assets/Edit_B.svg";
 import iconSave_W from "../assets/Save_W.svg";
 import iconEdit_W from "../assets/Edit_W.svg";
 import {CreateObj, UpdateObj} from "../http/ObjAPI";
+import PopupTooltip from "../components/elementary/PopupTooltip";
 
 
 const StartPage = () => {
@@ -24,13 +25,13 @@ const StartPage = () => {
     const {user} = useContext(Context)
 
     let ActionList = [
-        {id:1, iconB: iconCreate_B, iconW: iconCreate_W, name: "Новый "  },
-        {id:2, iconB: iconReload_B, iconW: iconReload_W, name: "Обновить " },
-        {id:3, iconB: iconDelete_B, iconW: iconDelete_W, name: "Удалить " },
+        {id:1, iconB: iconCreate_B, iconW: iconCreate_W, name: "Новый", text: "Позволяет создать новый экземпляр объекта."  },
+        {id:2, iconB: iconReload_B, iconW: iconReload_W, name: "Обновить", text: "Перезгрузить данные с сервера." },
+        {id:3, iconB: iconDelete_B, iconW: iconDelete_W, name: "Удалить", text: "Перемести к корзину объект." },
         {id:4, iconB: iconSave_B, iconW: iconSave_W, name: "Сохранить",
-            style: {borderColor: "var(--c-alter)", borderWidth: "5px"}, text: "Сохранить" },
+            style: {borderColor: "var(--c-alter)", borderWidth: "5px"}, text: "Сохранить локальные изменения, отправить их на сервер." },
         {id:5, iconB: iconEdit_B, iconW: iconEdit_W, name: "Изменить",
-            style: {}, text: "Изменить" },
+            style: {}, text: "Начать редактировать объект." },
     ]
 
     return(
@@ -63,19 +64,20 @@ const StartPage = () => {
 
                 <div className='mt-4 fs-4'>
                     <span>Интуитивный интерфейс с пиктограммами:</span>
+                    <div className='d-flex flex-row'>
                     {
                         ActionList.map(e =>
-                            <OverlayTrigger trigger={['hover','focus']} key={e.id} overlay={
-                                <Tooltip className="fs-6">{e.name}</Tooltip>
-                            } placement="top">
-                                <Button onClick={e.action} className='p-2 ms-1 me-1'
+                            <div  key={e.id} className=''>
+                                <Button onClick={e.action} className='p-2 ms-1 me-1 MytooltipAncor'
                                         variant={e.variant ? e.variant : 'outline-dark'}>
+                                    <PopupTooltip name={e.name} text={e.text} />
                                     <Image className='Black' height='28px' width='28px' src={e.iconB}/>
                                     <Image className='White' height='28px' width='28px' src={e.iconW}/>
                                 </Button>
-                            </OverlayTrigger>
+                            </div>
                         )
                     }
+                    </div>
                 </div>
 
             </div>

@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3d525cd8-4ca4-4c02-af18-e14ea1633f2a" name="Changes" comment="" />
+    <list default="true" id="3d525cd8-4ca4-4c02-af18-e14ea1633f2a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/CSS/anim.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/CSS/anim.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/StartPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/StartPage.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,7 +37,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "G:/_Projects/WriterWizzardSharpReact/client/src/components/elementary",
+    "last_opened_file_path": "C:/_Files/WriterWizzardSharpReact",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.lookFeel",
     "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2022.2\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external",
@@ -98,6 +102,7 @@
       <workItem from="1733261499618" duration="8273000" />
       <workItem from="1734527049415" duration="15679000" />
       <workItem from="1734591866478" duration="5774000" />
+      <workItem from="1734608640655" duration="3774000" />
     </task>
     <servers />
   </component>
