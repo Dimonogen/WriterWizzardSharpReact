@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
-namespace DiplomBackApi.Models
+namespace Litbase.Models
 {
     /// <summary>
     /// Пункт меню, к которому что-то привязано

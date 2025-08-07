@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace DiplomBackApi.Migrations
+namespace Litbase.Migrations
 {
     /// <inheritdoc />
     public partial class V1 : Migration

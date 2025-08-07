@@ -1,12 +1,13 @@
-﻿using DiplomBackApi.DTO;
-using DiplomBackApi.Models;
+﻿using Litbase.DTO;
+using Litbase.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using System.Text.Json;
 using System.Xml.Linq;
 
-namespace DiplomBackApi.Controllers;
+namespace Litbase.Controllers;
 
 /// <summary>
 /// Контроллер для поиска глобального
@@ -17,7 +18,7 @@ namespace DiplomBackApi.Controllers;
 public class SearchController : MyBaseController
 {
 
-    public SearchController(ApplicationContext context) : base(context)
+    public SearchController(ApplicationContext context, IMemoryCache memoryCache) : base(context, memoryCache)
     {
 
     }

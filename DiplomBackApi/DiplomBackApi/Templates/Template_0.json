@@ -135,13 +135,21 @@
       "IsComplex": true,
       "Type": 3,
       "RegExValidation": ""
+    },
+    {
+      "Id": 8,
+      "UserId": 0,
+      "Name": "Ссылка на Предмет",
+      "IsComplex": true,
+      "Type": 4,
+      "RegExValidation": ""
     }
   ],
   "MenuElement": [
     {
       "Id": 1,
       "UserId": 0,
-      "Name": "Персонажи",
+      "Name": "🧑Персонажи",
       "Description": "Персонажи",
       "ParentMenuId": null,
       "ObjTypeId": 1,
@@ -150,7 +158,7 @@
     {
       "Id": 2,
       "UserId": 0,
-      "Name": "Места действия",
+      "Name": "🗺Места действия",
       "Description": "Места действия",
       "ParentMenuId": null,
       "ObjTypeId": 2,
@@ -159,7 +167,7 @@
     {
       "Id": 3,
       "UserId": 0,
-      "Name": "События",
+      "Name": "🌟События",
       "Description": "События",
       "ParentMenuId": null,
       "ObjTypeId": 3,
@@ -168,7 +176,7 @@
     {
       "Id": 4,
       "UserId": 0,
-      "Name": "Предметы",
+      "Name": "💎Предметы",
       "Description": "Предметы",
       "ParentMenuId": null,
       "ObjTypeId": 4,

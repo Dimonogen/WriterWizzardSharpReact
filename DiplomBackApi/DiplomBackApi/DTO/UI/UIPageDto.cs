@@ -1,4 +1,4 @@
-﻿namespace DiplomBackApi.DTO.UI;
+﻿namespace Litbase.DTO.UI;
 
 public class UIPageDto
 {

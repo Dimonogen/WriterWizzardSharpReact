@@ -1,9 +1,10 @@
-﻿using DiplomBackApi.DTO;
+﻿using Litbase.DTO;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using System.Text.Json;
 
-namespace DiplomBackApi.Controllers;
+namespace Litbase.Controllers;
 
 /// <summary>
 /// Контроллер для поиска глобального
@@ -15,7 +16,7 @@ public class HistoryController : MyBaseController
 
     ILogger _logger;
 
-    public HistoryController(ApplicationContext context, ILogger<HistoryController> logger) : base(context)
+    public HistoryController(ApplicationContext context, ILogger<HistoryController> logger, IMemoryCache memoryCache) : base(context, memoryCache)
     {
         _logger = logger;
     }

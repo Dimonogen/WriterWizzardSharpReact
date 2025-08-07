@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 
-namespace DiplomBackApi.Models
+namespace Litbase.Models
 {
     /// <summary>
     /// Состояние объекта

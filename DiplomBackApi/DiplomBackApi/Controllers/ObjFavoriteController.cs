@@ -1,7 +1,9 @@
-﻿using DiplomBackApi.DTO;
+﻿using Litbase.DTO;
+using Litbase.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 
-namespace DiplomBackApi.Controllers;
+namespace Litbase.Controllers;
 
 /// <summary>
 /// Контроллер избранного
@@ -10,9 +12,14 @@ namespace DiplomBackApi.Controllers;
 [Route("api/favorite")]
 public class ObjFavoriteController : MyBaseController
 {
+    /// <summary>
+    /// Сервис для объектов
+    /// </summary>
+    protected ObjectsService _objectsService { get; set; }
 
-    public ObjFavoriteController(ApplicationContext context) : base(context)
+    public ObjFavoriteController(ApplicationContext context, IMemoryCache memoryCache, ObjectsService objectsService) : base(context, memoryCache)
     {
+        _objectsService = objectsService;
     }
 
     /// <summary>
@@ -30,7 +37,7 @@ public class ObjFavoriteController : MyBaseController
 
         foreach (var obj in objs)
         {
-            list.Add(await db.GetObjDtoAsync(obj.ObjId, user));
+            list.Add(await _objectsService.GetObjDtoAsync(obj.ObjId, user.Id));
         }
 
         return Ok(list);

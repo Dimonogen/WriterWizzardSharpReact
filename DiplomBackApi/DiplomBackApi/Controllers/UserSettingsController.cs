@@ -1,10 +1,11 @@
-﻿using DiplomBackApi.DTO;
+﻿using Litbase.DTO;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using System.Text.Json;
 
-namespace DiplomBackApi.Controllers;
+namespace Litbase.Controllers;
 
 /// <summary>
 /// Контроллер настроек пользователя
@@ -14,7 +15,7 @@ namespace DiplomBackApi.Controllers;
 public class UserSettingsController : MyBaseController
 {
 
-    public UserSettingsController(ApplicationContext context) : base(context)
+    public UserSettingsController(ApplicationContext context, IMemoryCache memoryCache) : base(context, memoryCache)
     {
 
     }

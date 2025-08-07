@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
 
-namespace DiplomBackApi.Models
+namespace Litbase.Models
 {
     /// <summary>
     /// Модель сущности тип объекта
@@ -35,5 +36,10 @@ namespace DiplomBackApi.Models
         [Column("description")]
         public string? Description { get; set; }
 
+        /// <summary>
+        /// Аттрибуты этого типа
+        /// </summary>
+        [JsonIgnore]
+        public virtual ICollection<ObjTypeAttribute>? Attributes { get; set; }
     }
 }

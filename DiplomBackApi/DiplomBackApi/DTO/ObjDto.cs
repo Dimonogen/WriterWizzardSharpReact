@@ -1,6 +1,6 @@
-﻿using DiplomBackApi.Models;
+﻿using Litbase.Models;
 
-namespace DiplomBackApi.DTO
+namespace Litbase.DTO
 {
     /// <summary>
     /// Это тот же самый объект, только объединённый с атрибутами

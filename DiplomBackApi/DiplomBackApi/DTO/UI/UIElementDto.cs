@@ -1,6 +1,6 @@
-﻿using DiplomBackApi.Models.UI;
+﻿using Litbase.Models.UI;
 
-namespace DiplomBackApi.DTO.UI;
+namespace Litbase.DTO.UI;
 
 public class UIElementDto
 {

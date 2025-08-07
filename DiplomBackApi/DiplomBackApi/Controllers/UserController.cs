@@ -1,18 +1,20 @@
+using Litbase.DTO;
+using Litbase.DTO.Response;
+using Litbase.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using DiplomBackApi.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authorization;
-using DiplomBackApi.DTO;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace DiplomBackApi.Controllers;
+namespace Litbase.Controllers;
 
 /// <summary>
-/// Контроллер для пользователей
+/// РљРѕРЅС‚СЂРѕР»Р»РµСЂ РґР»СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
 /// </summary>
 [ApiController]
 [Route("api/user")]
@@ -22,17 +24,17 @@ public class UserController : MyBaseController
     private readonly ILogger<UserController> _logger;
 
     /// <summary>
-    /// Конструктор класса
+    /// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР°
     /// </summary>
     /// <param name="logger"></param>
-    public UserController(ILogger<UserController> logger, ApplicationContext context) : base(context)
+    public UserController(ILogger<UserController> logger, ApplicationContext context, IMemoryCache memoryCache) : base(context, memoryCache)
     {
         _logger = logger;
     }
 
     
     /// <summary>
-    /// Получение всех прав пользователя
+    /// РџРѕР»СѓС‡РµРЅРёРµ РІСЃРµС… РїСЂР°РІ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
     /// </summary>
     /// <returns></returns>
     //[HttpGet("rights")]
@@ -79,7 +81,7 @@ public class UserController : MyBaseController
 
 
     /// <summary>
-    /// end point для логина
+    /// end point РґР»СЏ Р»РѕРіРёРЅР°
     /// </summary>
     /// <returns></returns>
     [HttpPost("login")]
@@ -99,7 +101,8 @@ public class UserController : MyBaseController
 
         if ( user == null )
         {
-            return BadRequest("{\"error\":\"Ошибка, неверная комбинация логина и пароля.\"}");
+            _logger.LogError("User not found. Error login. РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµ РЅР°Р№РґРµРЅ.");
+            return BadRequest(new ResponseDtoError( "РћС€РёР±РєР°, РЅРµРІРµСЂРЅР°СЏ РєРѕРјР±РёРЅР°С†РёСЏ Р»РѕРіРёРЅР° Рё РїР°СЂРѕР»СЏ.") );
         }
 
         var claims = new List<Claim> {  new Claim("email", user.Email),
@@ -107,7 +110,7 @@ public class UserController : MyBaseController
                                         new Claim("role", user.Role)
         };
 
-        // создаем JWT-токен
+        // СЃРѕР·РґР°РµРј JWT-С‚РѕРєРµРЅ
         var jwt = new JwtSecurityToken(
                 issuer: AuthOptions.ISSUER,
                 audience: AuthOptions.AUDIENCE,
@@ -120,7 +123,7 @@ public class UserController : MyBaseController
     }
 
     /// <summary>
-    /// end point для регистрации
+    /// end point РґР»СЏ СЂРµРіРёСЃС‚СЂР°С†РёРё
     /// </summary>
     /// <returns></returns>
     [HttpPost("registration")]
@@ -137,7 +140,7 @@ public class UserController : MyBaseController
 
         if (users.Count > 0)
         {
-            return BadRequest("{\"error\":\"Пользователь с таким email уже существует. Регистрация невозможна.\"}");
+            return BadRequest(new ResponseDtoError("РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЃ С‚Р°РєРёРј email СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚. Р РµРіРёСЃС‚СЂР°С†РёСЏ РЅРµРІРѕР·РјРѕР¶РЅР°.") );
         }
 
         User user = new User
@@ -164,7 +167,7 @@ public class UserController : MyBaseController
                                         new Claim("role", user.Role)
         };
 
-        // создаем JWT-токен
+        // СЃРѕР·РґР°РµРј JWT-С‚РѕРєРµРЅ
         var jwt = new JwtSecurityToken(
                 issuer: AuthOptions.ISSUER,
                 audience: AuthOptions.AUDIENCE,
@@ -176,7 +179,7 @@ public class UserController : MyBaseController
     }
 
     /// <summary>
-    /// Проверка валидности токена авторизации
+    /// РџСЂРѕРІРµСЂРєР° РІР°Р»РёРґРЅРѕСЃС‚Рё С‚РѕРєРµРЅР° Р°РІС‚РѕСЂРёР·Р°С†РёРё
     /// </summary>
     /// <returns></returns>
     [Authorize]
@@ -199,7 +202,7 @@ public class UserController : MyBaseController
                                         new Claim("role", user.Role)
         };
 
-        // создаем JWT-токен
+        // СЃРѕР·РґР°РµРј JWT-С‚РѕРєРµРЅ
         var jwt = new JwtSecurityToken(
                 issuer: AuthOptions.ISSUER,
                 audience: AuthOptions.AUDIENCE,
@@ -212,7 +215,7 @@ public class UserController : MyBaseController
     }
 
     /// <summary>
-    /// Общедоступная информация о пользователе
+    /// РћР±С‰РµРґРѕСЃС‚СѓРїРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рµ
     /// </summary>
     /// <returns></returns>
     [HttpGet("{id}/info")]
@@ -229,7 +232,7 @@ public class UserController : MyBaseController
     }
 
     /// <summary>
-    /// Информация о владельце токена
+    /// РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РІР»Р°РґРµР»СЊС†Рµ С‚РѕРєРµРЅР°
     /// </summary>
     /// <returns></returns>
     [HttpGet("myInfo")]

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 
-namespace DiplomBackApi.Controllers;
+namespace Litbase.Controllers;
 
 /// <summary>
 /// Контроллер БД и сидинга
@@ -9,7 +10,7 @@ namespace DiplomBackApi.Controllers;
 public class DBController : MyBaseController
 {
 
-    public DBController(ApplicationContext context) : base(context)
+    public DBController(ApplicationContext context, IMemoryCache memoryCache) : base(context, memoryCache)
     {
     }
 

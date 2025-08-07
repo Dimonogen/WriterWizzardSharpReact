@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
 
-namespace DiplomBackApi.Models
+namespace Litbase.Models
 {
     /// <summary>
     /// Тип атрибута, примитив число, текст или объект, или даже один из перечня объектов

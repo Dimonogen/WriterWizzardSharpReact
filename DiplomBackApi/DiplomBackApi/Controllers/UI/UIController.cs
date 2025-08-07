@@ -1,7 +1,8 @@
-﻿using DiplomBackApi.DTO;
+﻿using Litbase.DTO;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 
-namespace DiplomBackApi.Controllers.UI;
+namespace Litbase.Controllers.UI;
 
 /// <summary>
 /// Контроллер UI
@@ -11,7 +12,7 @@ namespace DiplomBackApi.Controllers.UI;
 public class UIController : MyBaseController
 {
 
-    public UIController(ApplicationContext context) : base(context)
+    public UIController(ApplicationContext context, IMemoryCache memoryCache) : base(context, memoryCache)
     {
     }
 
@@ -22,8 +23,7 @@ public class UIController : MyBaseController
     [HttpGet("StartPageStructure")]
     public async Task<ActionResult> GetStartPageStructure()
     {
-
-        return Ok();
+        return Ok("test");
     }
 
     /// <summary>
@@ -33,10 +33,6 @@ public class UIController : MyBaseController
     [HttpGet("PageStructure")]
     public async Task<ActionResult> GetPageStructure()
     {
-        
-        return Ok();
+        return Ok("test");
     }
-
-
-
 }

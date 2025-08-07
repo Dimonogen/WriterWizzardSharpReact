@@ -1,18 +1,20 @@
-﻿namespace DiplomBackApi.DTO
+﻿namespace Litbase.DTO;
+
+/// <summary>
+/// Дто дл создания элемента меню
+/// </summary>
+public class MenuElementCreateDto
 {
-    public class MenuElementCreateDto
-    {
 
-        public string name { get; set; }
+    public string name { get; set; }
 
-        public string? description { get; set; }
+    public string? description { get; set; }
 
-        public int RightId { get; set; }
+    public int RightId { get; set; }
 
-        public int? ParentMenuId { get; set; }
+    public int? ParentMenuId { get; set; }
 
-        public int? ObjTypeId { get; set; }
+    public int? ObjTypeId { get; set; }
 
-        public string Filters { get; set; }
-    }
+    public string Filters { get; set; }
 }

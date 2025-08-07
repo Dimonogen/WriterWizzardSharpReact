@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 //using System.Data.Entity;
-using DiplomBackApi.Models;
-using DiplomBackApi.DTO;
+using Litbase.Models;
+using Litbase.DTO;
 using System.Text.Json.Serialization;
 using Newtonsoft.Json;
 using System.Security.Claims;
@@ -11,7 +11,7 @@ using System.Xml.Linq;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 
-namespace DiplomBackApi;
+namespace Litbase;
 
 /// <summary>
 /// Класс контекста БД
@@ -78,20 +78,23 @@ public class ApplicationContext : DbContext
     /// </summary>
     public DbSet<UserSettings> UserSettings { get; set; }
 
-    private IConfiguration _configuration;
+    //private IConfiguration _configuration;
 
-    private ILogger _logger;
+    //private ILogger _logger { get; }
 
     /// <summary>
     /// Конструктор контекста БД
     /// </summary>
-    public ApplicationContext(IConfiguration configuration, ILogger<ApplicationContext> logger)
+    /*public ApplicationContext(IConfiguration configuration, ILogger<ApplicationContext> logger)
     {
         _configuration = configuration;
         _logger = logger;
         Database.EnsureCreated();
-    }
+    }*/
 
+    public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
+    {
+    }
 
     public int GetCurId<TEntity>(int userId, DbSet<TEntity> dbSet) where TEntity : BaseEntity
     {
@@ -107,14 +110,14 @@ public class ApplicationContext : DbContext
     /// Вызываемая при конфигурации функция, здесь настройки подключения к БД
     /// </summary>
     /// <param name="optionsBuilder"></param>
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    /*protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         var connectionString = _configuration.GetSection("ConnectionString");
         optionsBuilder.UseNpgsql(connectionString.Value);
 
         
         //base.OnConfiguring(optionsBuilder);
-    }
+    }*/
 
     /// <summary>
     /// При создании модели БД вызывается функция, но делает ли она что-то хз. Вроде миграции базу меняют, а это шляпа...
@@ -125,101 +128,6 @@ public class ApplicationContext : DbContext
         modelBuilder.HasDefaultSchema("Diplom");
         base.OnModelCreating(modelBuilder);
     }
-
-
-
-    /// <summary>
-    /// Функция возвращает объект по его ID, обогащая сущность атрибутами
-    /// </summary>
-    /// <param name="id">айди объекта</param>
-    /// <param name="user">пользователь</param>
-    /// <returns></returns>
-    public async Task<ObjDto?> GetObjDtoAsync(int id, User? user = null) 
-    {
-        Obj? obj;
-
-        if (user == null)
-            return null;//obj = await Objs.FirstOrDefaultAsync(x => x.Id == id);
-        else
-            obj = await Objs.FirstOrDefaultAsync(x => x.Id == id && x.UserId == user.Id);
-
-        if (obj == null) { return null; }
-
-        ObjDto objDto = new ObjDto(obj);
-        var State = ObjStates.FirstOrDefault(x => obj.StateId == x.Id && x.UserId == user.Id);
-        objDto.State = State?.Name ?? "Состояние";
-
-        var attributes = await ObjAttributes.Where(x => x.ObjId == objDto.Id && x.UserId == user.Id).ToListAsync();
-        var typeAttributes = await ObjTypeAttributes.Where(x => x.TypeId == objDto.TypeId && x.UserId == user.Id).ToListAsync();
-        var attribTypes = await AttributeTypes.Where(x => x.UserId == user.Id).ToListAsync();
-
-        if (typeAttributes == null)
-        {
-            return objDto;
-        }
-
-        foreach (var tAttribute in typeAttributes)
-        {
-            var attribute = attributes.FirstOrDefault(x => x.Number == tAttribute.Number);
-            var attrib_type = attribTypes.FirstOrDefault(x => x.Id == tAttribute.AttributeTypeId);
-
-            if (attribute != null)
-            {
-                objDto.attributes.Add(new ObjAttributeDto
-                {
-                    Id = attribute.Id,
-                    Name = tAttribute.Name,
-                    Number = tAttribute.Number,
-                    Value = attribute.Value,
-                    TypeId = tAttribute.AttributeTypeId,
-                    Type = attrib_type.Type,
-                    RegEx = attrib_type.RegExValidation,
-                    IsComplexType = attrib_type.IsComplex,
-                    IsAdditional = false
-                });
-            }
-            else
-            {
-                objDto.attributes.Add(new ObjAttributeDto
-                {
-                    Id = null,
-                    Name = tAttribute.Name,
-                    Number = tAttribute.Number,
-                    Value = null,
-                    TypeId = tAttribute.AttributeTypeId,
-                    Type = attrib_type.Type,
-                    RegEx = attrib_type.RegExValidation,
-                    IsComplexType = attrib_type.IsComplex,
-                    IsAdditional = false
-                });
-            }
-        }
-
-        var addAttr = await ObjAdditionalAttributes.Where(x => x.ObjId == id && x.UserId == user.Id).ToListAsync();
-        
-
-        foreach(var attr in addAttr)
-        {
-            var attrType = attribTypes.FirstOrDefault(x => x.Id == attr.AttributeTypeId);
-            objDto.extAttributes.Add(new ObjAttributeDto
-            {
-                Name = attr.Name,
-                Number = attr.Number,
-                Id = attr.Id,
-                Value = attr.Value,
-                Type = attrType.Type,
-                IsComplexType = attrType.IsComplex,
-                RegEx = attrType.RegExValidation,
-                TypeId = attr.AttributeTypeId,
-                IsAdditional = true,
-            }
-            );
-        }
-
-        return objDto;
-    
-    }
-
 
     /// <summary>
     /// Очистка и заполнение базы заранее подготовленными данными
@@ -312,7 +220,7 @@ public class ApplicationContext : DbContext
         catch (Exception ex)
         {
             //Console.WriteLine($"Error Seeding data entity: {name}, error msg:{ex.Message} \n\n {ex.StackTrace}");
-            _logger.LogError($"Error init data entity: {name}, error msg:{ex.Message} \n\n {ex.StackTrace}");
+            //_logger.LogError($"Error init data entity: {name}, error msg:{ex.Message} \n\n {ex.StackTrace}");
         }
     }
 
@@ -341,7 +249,7 @@ public class ApplicationContext : DbContext
     {
         string name = typeof(TEntity).Name;
         //Console.WriteLine($"Start seeding: {name}");
-        _logger.LogDebug($"Start seeding: {name}");
+        //_logger.LogDebug($"Start seeding: {name}");
 
         try
         {
@@ -359,7 +267,7 @@ public class ApplicationContext : DbContext
         catch (Exception ex)
         {
             //Console.WriteLine($"Error Seeding data entity: {name}, error msg:{ex.Message} \n\n {ex.StackTrace}");
-            _logger.LogError($"Error Seeding data entity: {name}, error msg:{ex.Message} \n\n {ex.StackTrace}");
+            //_logger.LogError($"Error Seeding data entity: {name}, error msg:{ex.Message} \n\n {ex.StackTrace}");
         }
 
         try
@@ -383,7 +291,7 @@ public class ApplicationContext : DbContext
         catch (Exception ex)
         {
             //Console.WriteLine($"Error fix DB sequence entity: {name}, error msg:{ex.Message} \n\n {ex.StackTrace}");
-            _logger.LogError($"Error fix DB sequence entity: {name}, error msg:{ex.Message} \n\n {ex.StackTrace}");
+            //_logger.LogError($"Error fix DB sequence entity: {name}, error msg:{ex.Message} \n\n {ex.StackTrace}");
         }
         
     }

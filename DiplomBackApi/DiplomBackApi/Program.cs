@@ -1,15 +1,20 @@
-
+using Litbase.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authentication.OAuth;
+using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using System.Reflection;
-using System.Text;
 using Serilog;
 using Serilog.Core;
+using System.Reflection;
+using System.Text;
 
-namespace DiplomBackApi;
+namespace Litbase;
 
 /// <summary>
 /// Главный класс приложения
@@ -22,13 +27,21 @@ public class Program
     /// <param name="args"></param>
     public static void Main(string[] args)
     {
+        ILogger<Program>? logger = null;
         var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
 
-        builder.Services.AddScoped<ApplicationContext, ApplicationContext>();
+        builder.Services.AddScoped<ObjectsService>();
+        builder.Services.AddDbContextPool<ApplicationContext>((service, options) =>
+        {
+            var _configuration = service.GetRequiredService<IConfiguration>();
+            var connectionString = _configuration.GetSection("ConnectionString");
+            options.UseNpgsql(connectionString.Value);
+        });
+        //builder.Services.AddScoped<ApplicationContext, ApplicationContext>();
         builder.Services.AddControllers();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
@@ -38,6 +51,8 @@ public class Program
             var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
             c.IncludeXmlComments(xmlPath);
         });
+        // добавление кэширования
+        builder.Services.AddMemoryCache();
 
         builder.Services.AddCors(options =>
         {
@@ -79,6 +94,11 @@ public class Program
 
         var app = builder.Build();
 
+        using (var serviceScope = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope())
+        {
+            logger = serviceScope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+        }
+
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
         {
@@ -103,6 +123,22 @@ public class Program
 
 
         app.MapControllers();
+
+        app.UseExceptionHandler(handle =>
+        {
+            handle.Run(async context =>
+            {
+                context.Response.StatusCode = StatusCodes.Status200OK;
+
+                var exHandler = context.Features.Get<IExceptionHandlerPathFeature>();
+
+                Console.WriteLine(exHandler?.Error?.ToString() ?? "Internal Error");
+                logger.LogError(exHandler?.Error?.ToString() ?? "Internal Error");
+
+                await context.Response.WriteAsJsonAsync(
+                    "{\"error\":\"" + (exHandler?.Error?.Message ?? "Internal Error") + "\"}");
+            });
+        });
 
         app.Run();
     }

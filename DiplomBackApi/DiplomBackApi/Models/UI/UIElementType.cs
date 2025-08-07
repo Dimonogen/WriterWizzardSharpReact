@@ -1,4 +1,4 @@
-﻿namespace DiplomBackApi.Models.UI;
+﻿namespace Litbase.Models.UI;
 
 /// <summary>
 /// Тип элемента интерфейса, кнопка, надпись и тд

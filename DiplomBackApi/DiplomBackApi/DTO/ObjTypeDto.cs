@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
 
-namespace DiplomBackApi.DTO
+namespace Litbase.DTO
 {
     public class ObjTypeDto
     {

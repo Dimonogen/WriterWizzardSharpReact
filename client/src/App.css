@@ -10,7 +10,7 @@
 }
 
 body {
-  background-color: rgb(241, 241, 232);
+  background-color: rgb(241, 241, 232) !important;
 }
 .App {
   text-align: center;

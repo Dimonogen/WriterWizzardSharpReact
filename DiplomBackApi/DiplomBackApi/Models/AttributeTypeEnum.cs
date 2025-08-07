@@ -1,4 +1,4 @@
-﻿namespace DiplomBackApi.Models
+﻿namespace Litbase.Models
 {
     public enum AttributeTypeEnum
     {

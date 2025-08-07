@@ -1,9 +1,11 @@
-﻿using DiplomBackApi.DTO;
-using DiplomBackApi.Models;
+﻿using Litbase.DTO;
+using Litbase.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 
-namespace DiplomBackApi.Controllers;
+namespace Litbase.Controllers;
 
 /// <summary>
 /// Контроллер меню
@@ -11,8 +13,11 @@ namespace DiplomBackApi.Controllers;
 [Route("api/menu")]
 public class MenuController : MyBaseController
 {
-
-    public MenuController(ApplicationContext context) : base(context)
+    /// <summary>
+    /// Конструктор класса для контроллера меню
+    /// </summary>
+    /// <param name="context"></param>
+    public MenuController(ApplicationContext context, IMemoryCache memoryCache) : base(context, memoryCache)
     {
     }
 
@@ -23,7 +28,6 @@ public class MenuController : MyBaseController
     [HttpGet("")]
     public async Task<ActionResult> GetMenu()
     {
-        
         var user = GetUserIdByAuth();
         //var rolesRaw = db.userRoles.Where(x => x.UserId == user.Id).ToList();
 
@@ -50,7 +54,7 @@ public class MenuController : MyBaseController
         //    }
         //}
 
-        var objs = db.MenuElements.Where(x => x.UserId == user.Id).ToList();//.Where(x => rightIds.Contains(x.RightId)).ToList();
+        var objs = await db.MenuElements.Where(x => x.UserId == user.Id).ToListAsync();//.Where(x => rightIds.Contains(x.RightId)).ToList();
 
         List<MenuElemViewDto> list = new List<MenuElemViewDto>();
 
@@ -90,12 +94,53 @@ public class MenuController : MyBaseController
             //RightId = model.RightId
         };
         db.MenuElements.Add(obj);
-        db.SaveChanges();
+        await db.SaveChangesAsync();
 
         return Ok(obj);
         
     }
 
+    /// <summary>
+    /// Редактирование пункта меню
+    /// </summary>
+    /// <returns></returns>
+    [HttpPost("edit")]
+    public async Task<ActionResult> EditMenuElem([FromBody] MenuElementEditDto model)
+    {
+        var user = GetUserIdByAuth();
+        var elem = await db.MenuElements.FirstOrDefaultAsync(x => x.Id == model.id && x.UserId == user.Id);
+        
+        if(elem == null)
+        {
+            throw new Exception("Error. Id menu elem is not correct.");
+        }
+        
+        elem.Name = model.name;
+        await db.SaveChangesAsync();
+
+        return Ok(elem);
+    }
+
+    /// <summary>
+    /// Удаление пункта меню
+    /// </summary>
+    /// <returns></returns>
+    [HttpDelete("")]
+    public async Task<ActionResult> EditMenuElem(int id)
+    {
+        var user = GetUserIdByAuth();
+        var elem = await db.MenuElements.FirstOrDefaultAsync(x => x.Id == id && x.UserId == user.Id);
+
+        if (elem == null)
+        {
+            throw new Exception("Error. Id menu elem is not correct.");
+        }
+
+        db.MenuElements.Remove(elem);
+        await db.SaveChangesAsync();
+
+        return Ok();
+    }
 
     /// <summary>
     /// Получение всех пунктов меню
@@ -105,10 +150,9 @@ public class MenuController : MyBaseController
     public async Task<ActionResult> GetAll()
     {
         var user = GetUserIdByAuth();
-        var elems = db.MenuElements.Where(x => x.UserId == user.Id).ToList();
+        var elems = await db.MenuElements.Where(x => x.UserId == user.Id).ToListAsync();
 
         return Ok(elems);
-        
     }
 
 

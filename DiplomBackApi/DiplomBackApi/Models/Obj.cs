@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
-namespace DiplomBackApi.Models
+namespace Litbase.Models
 {
     /// <summary>
     /// Модель сущности объект, универсальная штука
@@ -34,5 +34,17 @@ namespace DiplomBackApi.Models
         public int StateId { get; set; }
         [JsonIgnore, ForeignKey("StateId, UserId")]
         public virtual ObjState State { get; set; }
+
+        /// <summary>
+        /// Атрибуты, навигационное поле
+        /// </summary>
+        [JsonIgnore]
+        public virtual ICollection<ObjAttribute>? Attributes { get; set; }
+
+        /// <summary>
+        /// Атрибуты, навигационное поле
+        /// </summary>
+        [JsonIgnore]
+        public virtual ICollection<ObjAdditionalAttribute>? AdditionalAttributes { get; set; }
     }
 }

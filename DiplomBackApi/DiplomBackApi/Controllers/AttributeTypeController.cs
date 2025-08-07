@@ -1,8 +1,9 @@
-﻿using DiplomBackApi.DTO;
+﻿using Litbase.DTO;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 
-namespace DiplomBackApi.Controllers;
+namespace Litbase.Controllers;
 
 /// <summary>
 /// Контроллер api для объектов
@@ -12,7 +13,7 @@ namespace DiplomBackApi.Controllers;
 public class AttributeTypeController : MyBaseController
 {
 
-    public AttributeTypeController(ApplicationContext context) : base(context)
+    public AttributeTypeController(ApplicationContext context, IMemoryCache memoryCache) : base(context, memoryCache)
     {
     }
 

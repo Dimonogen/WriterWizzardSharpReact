@@ -1,11 +1,12 @@
-﻿using DiplomBackApi.DTO;
-using DiplomBackApi.Models;
+﻿using Litbase.DTO;
+using Litbase.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using System.Text.Json;
 
-namespace DiplomBackApi.Controllers;
+namespace Litbase.Controllers;
 
 /// <summary>
 /// Контроллер api для объектов
@@ -16,14 +17,15 @@ namespace DiplomBackApi.Controllers;
 public class ObjTypeController : MyBaseController
 {
 
-    public ObjTypeController(ApplicationContext context) : base(context) { }
+    public ObjTypeController(ApplicationContext context, IMemoryCache memoryCache) : base(context, memoryCache)
+    { }
 
     /// <summary>
     /// End Point для создания типа объекта
     /// </summary>
     /// <param name="typeModel"></param>
     /// <returns></returns>
-    
+
     [HttpPost("create")]
     public async Task<ActionResult> CreateObjType(CreateTypeModel typeModel)
     {
@@ -260,7 +262,8 @@ public class ObjTypeController : MyBaseController
     public async Task<ActionResult> GetItem(int id)
     {
         var user = GetUserIdByAuth();
-        var type = await db.ObjTypes.FirstOrDefaultAsync(x => x.Id == id && x.UserId == user.Id);
+        var type = await db.ObjTypes.Include(x => x.Attributes)
+            .AsNoTracking().FirstOrDefaultAsync(x => x.Id == id && x.UserId == user.Id);
 
         if (type == null)
             return Ok();
@@ -274,20 +277,23 @@ public class ObjTypeController : MyBaseController
             attributes = new List<ObjTypeAttributeDto>()
         };
 
-        db.ObjTypeAttributes.Where(x => x.TypeId == type.Id && x.UserId == user.Id).ToList().ForEach(a =>
+        if (type.Attributes != null)
         {
-            var attrType = db.AttributeTypes.FirstOrDefault(x => x.Id == a.AttributeTypeId);
-            typeDto.attributes.Add(new ObjTypeAttributeDto
+            type.Attributes.ToList().ForEach(a =>
             {
-                Id = a.Id,
-                Name = a.Name,
-                Number = a.Number,
-                TypeId = a.AttributeTypeId,
-                RegEx = attrType.RegExValidation,
-                Type = attrType.Type,
-                IsComplex = attrType.IsComplex
+                var attrType = db.AttributeTypes.FirstOrDefault(x => x.Id == a.AttributeTypeId);
+                typeDto.attributes.Add(new ObjTypeAttributeDto
+                {
+                    Id = a.Id,
+                    Name = a.Name,
+                    Number = a.Number,
+                    TypeId = a.AttributeTypeId,
+                    RegEx = attrType.RegExValidation,
+                    Type = attrType.Type,
+                    IsComplex = attrType.IsComplex
+                });
             });
-        });
+        }
 
         return Ok(typeDto);
 

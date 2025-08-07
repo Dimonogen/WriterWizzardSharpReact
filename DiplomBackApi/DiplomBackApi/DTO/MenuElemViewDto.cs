@@ -1,7 +1,7 @@
-﻿using DiplomBackApi.Models;
+﻿using Litbase.Models;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DiplomBackApi.DTO
+namespace Litbase.DTO
 {
     public class MenuElemViewDto
     {

@@ -1,10 +1,12 @@
-﻿using DiplomBackApi.DTO;
-using DiplomBackApi.Models;
+﻿using Litbase.DTO;
+using Litbase.Models;
+using Litbase.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using System.Text.Json;
 
-namespace DiplomBackApi.Controllers
+namespace Litbase.Controllers
 {
     /// <summary>
     /// Контроллер api для объектов
@@ -14,8 +16,14 @@ namespace DiplomBackApi.Controllers
     public class ObjController : MyBaseController
     {
 
-        public ObjController(ApplicationContext context) : base (context)
+        /// <summary>
+        /// Сервис для работы с объектами
+        /// </summary>
+        protected ObjectsService _objectsService { get; set; }
+
+        public ObjController(ApplicationContext context, IMemoryCache memoryCache, ObjectsService objectsService) : base(context, memoryCache)
         {
+            _objectsService = objectsService;
         }
 
         /// <summary>
@@ -27,7 +35,7 @@ namespace DiplomBackApi.Controllers
         public async Task<ActionResult> GetObj(int id)
         {
             var user = GetUserIdByAuth();
-            ObjDto? obj = await db.GetObjDtoAsync(id, user);
+            ObjDto? obj = await _objectsService.GetObjDtoAsync(id, user.Id);
 
             string jsonString = JsonSerializer.Serialize(obj);
 
@@ -42,7 +50,7 @@ namespace DiplomBackApi.Controllers
             var list = new List<ObjDto>();
             db.LinkObjs.Where(x => x.ObjParentId == id && x.UserId == user.Id).ToList().ForEach(e =>
             {
-                var res = db.GetObjDtoAsync(e.ObjChildId, user).Result;
+                var res = _objectsService.GetObjDtoAsync(e.ObjChildId, user.Id).Result;
                 if (res != null)
                 {
                     list.Add(res);
@@ -91,39 +99,10 @@ namespace DiplomBackApi.Controllers
         public async Task<ActionResult> GetObjTypeList(int typeId)
         {
             var user = GetUserIdByAuth();
-            var stateDelete = await db.ObjStates.FirstOrDefaultAsync(x => x.Code == "deleted" && x.UserId == user.Id);
-                
-            if (stateDelete == null)
-            {
-                throw new Exception("Not found deleted state in DB");
-            }
 
-            var objs = await db.Objs.Where(x => x.TypeId == typeId 
-                                        && x.StateId != stateDelete.Id 
-                                        && x.UserId == user.Id
-                        ).ToArrayAsync();
-                
-            List<ObjDto?> list = new List<ObjDto?>();
-
-            foreach (var obj in objs)
-            {
-                list.Add(
-                    await db.GetObjDtoAsync(obj.Id, user)
-                );
-                foreach(var attr in list.Last().attributes)
-                {
-                    if(attr.IsComplexType && attr.Value != null)
-                    {
-                        int id;
-                        try { id = int.Parse(attr.Value); }
-                        catch (Exception e) { continue; }
-                        attr.Value = db.Objs.First(x => x.Id == id && x.UserId == user.Id ).Name;
-                    }
-                }
-            }
+            var list = await _objectsService.GetListObjDtoAsync(typeId, user.Id);
 
             return Ok(list);
-            
         }
 
         /// <summary>
@@ -175,7 +154,7 @@ namespace DiplomBackApi.Controllers
                     State = x.State.Name,
                     TypeName = x.ObjType.Name,
                 })
-                .ToListAsync();
+                .AsNoTracking().ToListAsync();
 
             return Ok(objs);
             
@@ -239,7 +218,7 @@ namespace DiplomBackApi.Controllers
 
             await db.SaveChangesAsync();
 
-            ObjDto? obj_db = await db.GetObjDtoAsync(obj_n.Id, user);
+            ObjDto? obj_db = await _objectsService.GetObjDtoAsync(obj_n.Id, user.Id);
 
             return Ok(obj_db);
             
@@ -327,7 +306,7 @@ namespace DiplomBackApi.Controllers
 
             await db.SaveChangesAsync();
 
-            ObjDto? obj_db = await db.GetObjDtoAsync(obj_n.Id, user);
+            ObjDto? obj_db = await _objectsService.GetObjDtoAsync(obj_n.Id, user.Id);
 
             return Ok(obj_db);
             

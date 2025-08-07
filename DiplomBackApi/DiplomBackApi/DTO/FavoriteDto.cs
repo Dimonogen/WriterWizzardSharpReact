@@ -1,4 +1,4 @@
-﻿namespace DiplomBackApi.DTO
+﻿namespace Litbase.DTO
 {
     public class FavoriteDto
     {
